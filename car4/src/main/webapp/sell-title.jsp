@@ -166,12 +166,13 @@
 							</div>
 							<!-- row end -->
 						</div>
+						
 						<!-- 두번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="profile">
 							<!-- carinfo start -->
 							<div class="container">
 								<div class="row">
-									<form class="form-horizontal" role="form">
+									<form class="form-horizontal" name="purchase4form" role="form">
 
 										<div class="form-group">
 											<label class="control-label col-md-1" for="phone">차량번호
@@ -196,7 +197,7 @@
 											</div>
 
 											<div class="col-sm-2">
-												<select class="form-control">
+												<select class="form-control" >
 
 													<option>등급</option>
 													<option>1</option>
