@@ -51,14 +51,6 @@
 							</a></li>
 							<!-- 세번째 li 끝-->
 
-							<!-- 네번째 li -->
-							<li><a href="#settings" data-toggle="tab"
-								title="bootsnipp goodies"> <span class="round-tabs three">
-										<i class="glyphicon glyphicon-gift"></i>
-								</span>
-							</a></li>
-							<!-- 네번째 li 끝  -->
-
 							<!-- 다섯번째 li -->
 							<li><a href="#doner" data-toggle="tab" title="blah blah">
 									<span class="round-tabs four"> <i
@@ -81,7 +73,7 @@
 					<div class="tab-content">
 						<div class="tab-pane fade in active" id="home">
 							<div class="row">
-								<div class="col-md-4 col-md-offset-4">
+								<div class="col-md-9 col-md-offset-2">
 									<form class="form-horizontal" role="form" action="">
 										<fieldset>
 
@@ -149,14 +141,17 @@
 											</div>
 											<!-- 지역 끝-->
 
-
+											<br><br><br><br><br>
 											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-10">
-													<div class="pull-right">
-														<button type="submit" class="btn btn-default">취소</button>
-														<a href="#profile"><button type="submit"
-																class="btn btn-primary">저장</button></a>
-													</div>
+												<div class="col-md-8 col-md-offset-1" align="center">
+												<button type="button" class="btn btn-danger btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>취소
+												</button>
+												<button type="button" class="btn btn-primary btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>다음
+												</button>
 												</div>
 											</div>
 
@@ -170,9 +165,9 @@
 						<!-- 두번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="profile">
 							<!-- carinfo start -->
-							<div class="container">
+							<div class="col-md-9 col-md-offset-2">
 								<div class="row">
-									<form class="form-horizontal" name="purchase4form" role="form">
+									<form class="form-horizontal" role="form">
 
 										<div class="form-group">
 											<label class="control-label col-md-1" for="phone">차량번호
@@ -197,7 +192,7 @@
 											</div>
 
 											<div class="col-sm-2">
-												<select class="form-control" >
+												<select class="form-control">
 
 													<option>등급</option>
 													<option>1</option>
@@ -347,10 +342,17 @@
 											<div>만원</div>
 
 										</div>
-										<div class="form-group" style="float: right;">
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">다음</button>
-										</div>
+										<br><br>
+										<div class="col-md-8 col-md-offset-1" align="center">
+												<button type="button" class="btn btn-danger btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>이전
+												</button>
+												<button type="button" class="btn btn-primary btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>다음
+												</button>
+							</div>
 									</form>
 
 								</div>
@@ -362,7 +364,7 @@
 						<!-- 세번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="ppp">
 
-							<div class="container">
+							<div class="col-md-8 col-md-offset-2">
 								<div class="row">
 									<div class="col-md-12">
 										<h3>차량옵션 선택</h3>
@@ -541,38 +543,18 @@
 								</div>
 							</div>
 
-							<div class="container" align="center">
-								  
-								<button type="button" class="btn btn-default btn-lg"
-									value="reset">취소</button>
-								  
-								<button type="button" class="btn btn-info btn-lg">다음</button>
-								      
+							<div class="col-md-6 col-md-offset-3" align="center">
+												<button type="button" class="btn btn-danger btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>이전
+												</button>
+												<button type="button" class="btn btn-primary btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>다음
+									</button>
 							</div>
 						</div>
-						<!-- 네번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade" id="settings">
-
-							<!--  차량 설명글 입력 -->
-							<div class="col-md-8 col-md-offset-2" style="margin-top: 10%">
-
-								<div class="panel panel-default ">
-
-									<div class="panel-heading">
-										<span class="glyphicon glyphicon-refresh" id="reset">
-											다시쓰기</span>
-									</div>
-
-									<textarea class="form-control" id="aaa" rows="15"
-										style="border-radius: 0px;"></textarea>
-
-								</div>
-								<button type="button"
-									class="btn btn-default navbar-btn col-md-offset-11">등록하기</button>
-
-							</div>
-
-						</div>
+						
 						<!-- 다섯번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="doner">
 							<div class="container">
@@ -872,19 +854,21 @@
 										</div>
 
 
-										<!-- button -->
-										<div class="row">
-
-											<div class="form-group col-md-12">
-												<button type="button" class="btn btn-warning btn-lg"
-													style="width: 100%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>등록
-												</button>
-											</div>
-										</div>
+										
 										<!-- col-6 / end -->
 									</div>
 									<!-- list-group / end -->
+									
+									<div class="col-md-8 col-md-offset-2" align="center">
+												<button type="button" class="btn btn-danger btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>이전
+												</button>
+												<button type="button" class="btn btn-primary btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>다음
+												</button>
+									</div>
 								</div>
 								<!-- row / end -->
 							</div>
