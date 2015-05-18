@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/Main.css" rel="stylesheet">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script language="javascript">
+	//상위 셀렉트로 하위 셀렉트 제어하기
+	function showSubs(obj) {
+
+		f = document.forms.select_machine;
+
+		if (obj == 1) {
+
+			f.SUBS1.style.display = "";
+
+			f.SUBS2.style.display = "none";
+
+		} else if (obj == 2) {
+
+			f.SUBS1.style.display = "none";
+
+			f.SUBS2.style.display = "";
+
+		}
+	}
+	function showSub(obj) {
+
+		f = document.forms.select_machine;
+
+		if (obj == 1) {
+
+			f.SUB1.style.display = "";
+
+			f.SUB2.style.display = "none";
+
+			f.SUB3.style.display = "none";
+
+		} else if (obj == 2) {
+			f.SUB1.style.display = "none";
+
+			f.SUB2.style.display = "";
+
+			f.SUB3.style.display = "none";
+
+		} else if (obj == 3) {
+			f.SUB1.style.display = "none";
+
+			f.SUB2.style.display = "none";
+
+			f.SUB3.style.display = "";
+
+		}
+	}
+	function showLocal(obj) {
+		f = document.forms.select_local;
+
+		if (obj == 1) {
+			f.LOCAL1.style.display = "";
+
+			f.LOCAL2.style.display = "none";
+		}
+		if (obj == 2) {
+			f.LOCAL1.style.display = "none";
+
+			f.LOCAL2.style.display = "";
+		}
+	}
+</script>
+</head>
+<body>
+	<!-- header -->
+	<div class="container">
+		<!-- Second navbar for categories -->
+		<div class="row">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
+
+				<a href="#" style="font-size: 50px; padding-left: 20px;">Brand</a>
+			</div>
+
+			<div class="col-md-3"
+				style="margin-top: 10px; padding-left: 100px; color: pink">
+
+				<!-- Login 클릭 -->
+				<a style="color: gray" data-toggle="modal" data-target="#modalLogin">
+					Login</a>
+				<!-- Login 클릭 End -->
+
+				<!-- 모달 Start -->
+				<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel">로그인 해주세요</h4>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<h2>로그인</h2>
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label class="control-label col-sm-1" for="email">Email:</label>
+											<div class="col-sm-4">
+												<input type="email" class="form-control" id="email"
+													placeholder="Enter email">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-sm-1" for="pwd">Password:</label>
+											<div class="col-sm-4">
+												<input type="password" class="form-control" id="pwd"
+													placeholder="Enter password">
+											</div>
+										</div>
+									</form>
+								</div>
+								<!-- container -->
+							</div>
+							<!-- modal body -->
+
+							<div class="modal-footer">
+								<div class="form-group">
+									<label class="control-label col-sm-5"><a
+										herf="http://www.naver.com">비밀번호를 잊으셨나요?</a></label>
+									<div class="col-sm-12">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">로그인</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Login End -->
+
+				<!-- 고객센터 클릭 -->
+				&nbsp; <a style="margin-top: 15px;">|</a> &nbsp; <a href="#"
+					style="color: gray"> 회원가입</a>
+				<!-- 고객센터 끝 -->
+			</div>
+		</div>
+	</div>
+	<!--/header End  -->
+
+	<!-- title 부터 -->
+	<div class="container-fluid">
+		<!-- title start -->
+
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="#">MyList</a></li>
+						<li><a href="#">등록</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- title end -->
+
+		<!-- Search Start -->
+		<div class="container">
+			<div class="" align="right">
+				<button type="button" class="btn btn-info" data-toggle="collapse"
+					data-target="#demo">Search</button>
+			</div>
+			<div id="demo" class="collapse">
+				<div class="row">
+					<form name="select_machine">
+
+						<!-- 최상위 셀렉트박스 -->
+						<div class="col-md-2">
+							<select class="form-control" name=" "
+								onChange="showSubs(this.options[this.selectedIndex].value);">
+								<option value="">선택</option>
+								<option value="1">국산차</option>
+								<option value="2">수입차</option>
+							</select>
+						</div>
+
+						<!-- 상위 셀렉트박스 -->
+						<div class="col-md-2">
+							<select class="form-control" name="SUBS1" style="display:;"
+								onChange="showSub(this.options[this.selectedIndex].value);">
+								<option value="0">제조사</option>
+								<option value="1">현대</option>
+								<option value="2">기아</option>
+							</select> <select class="form-control" name="SUBS2" style="display: none;"
+								onChange="showSub(this.options[this.selectedIndex].value);">
+								<option value="">제조사</option>
+								<option value="3">BMW</option>
+								<option value="4">AUDI</option>
+							</select>
+						</div>
+
+
+						<!-- 여기부턴 하위셀렉트박스 -->
+						<div class="col-md-2">
+							<select class="form-control" name="SUB1" style="display:;">
+								<option value="">차종</option>
+								<option value=" ">쏘나타</option>
+								<option value=" ">그랜저</option>
+								<option value=" ">아반뗴</option>
+								<option value=" ">스타렉스</option>
+								<option value=" ">제네시스</option>
+							</select> <select class="form-control" name="SUB2" style="display: none;">
+								<option value="">차종</option>
+								<option value=" ">K3</option>
+								<option value=" ">K5</option>
+								<option value=" ">K7</option>
+								<option value=" ">K9</option>
+							</select> <select class="form-control" name="SUB3" style="display: none;">
+								<option value="">차종</option>
+								<option value=" ">320d</option>
+								<option value=" ">520d</option>
+								<option value=" ">740d</option>
+								<option value=" ">x5</option>
+							</select>
+						</div>
+
+					</form>
+
+					<form name="select_local">
+
+						<!-- 상위 셀렉트박스 -->
+						<div class="col-md-2">
+							<select class="form-control" name=" "
+								onChange="showLocal(this.options[this.selectedIndex].value);">
+								<option value="">시.도</option>
+								<option value="1">강원도</option>
+								<option value="2">경기도</option>
+							</select>
+						</div>
+
+						<!-- 하위 셀렉트박스 -->
+						<div class="col-md-2">
+							<select class="form-control" name="LOCAL1" style="display:;">
+								<option value="0">지역구</option>
+								<option value="1">강릉시</option>
+								<option value="2">동해시</option>
+							</select> <select class="form-control" name="LOCAL2"
+								style="display: none;">
+								<option value="">지역구</option>
+								<option value="3">포천시</option>
+								<option value="4">파주시</option>
+							</select>
+						</div>
+					</form>
+					<div class="input-group-btn search-panel4">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown">
+							<span id="search_concept">년식</span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#contains">2000</a></li>
+							<li><a href="#its_equal">2001</a></li>
+							<li><a href="#greather_than">2002</a></li>
+							<li><a href="#less_than">2003</a></li>
+							<li><a href="#less_than">2004</a></li>
+							<li><a href="#all">2005</a></li>
+						</ul>
+					</div>
+
+
+					<div class="input-group-btn search-panel5">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown">
+							<span id="search_concept">~년식</span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#contains">2006</a></li>
+							<li><a href="#its_equal">2007</a></li>
+							<li><a href="#greather_than">2008</a></li>
+							<li><a href="#less_than">2009</a></li>
+							<li><a href="#less_than">2010</a></li>
+							<li><a href="#all">2011</a></li>
+						</ul>
+					</div>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Search end -->
+
+
+	<div class="content">
+		<div class="content-left">.</div>
+		<!-- right -->
+		<div class="content-right">
+			<div class="up">
+				<!-- List Start -->
+				<script
+					src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+				<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+				<div class="container">
+					<div class="row">
+
+
+						<div class="col-md-12">
+							<h4>Total list</h4>
+							<div class="table-responsive">
+
+								<table id="mytable" class="table table-bordred table-striped">
+									<thead>
+										<th></th>
+										<th id="uu">No</th>
+										<th id="uu">등록일</th>
+										<th id="uu">제목</th>
+										<th id="uu">낙찰여부</th>
+										<th id="uu">입찰수</th>
+										<th id="uu">수정</th>
+										<th id="uu">삭제</th>
+									</thead>
+
+									<tbody id="table">
+										<tr>
+											<td><input type="checkbox" class="checkthis" /></td>
+											<td>1</td>
+											<td>01/24</td>
+											<td>벤츠 S 클래스 삽니다.</td>
+											<td><button type="button" class="btn btn-primary">낙찰</button></td>
+											<td id="i">1</td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Edit">
+													<button class="btn btn-primary btn-xs" data-title="Edit"
+														data-toggle="modal" data-target="#edit">
+														<span class="glyphicon glyphicon-pencil"></span>
+													</button>
+												</p></td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Delete">
+													<button class="btn btn-danger btn-xs" data-title="Delete"
+														data-toggle="modal" data-target="#delete">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</p></td>
+										</tr>
+
+										<tr>
+											<td><input type="checkbox" class="checkthis" /></td>
+											<td>2</td>
+											<td>03/03</td>
+											<td>08년식 티코 삽니다.</td>
+											<td><button type="button" class="btn btn-primary">낙찰</button></td>
+											<td id="i">2</td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Edit">
+													<button class="btn btn-primary btn-xs" data-title="Edit"
+														data-toggle="modal" data-target="#edit">
+														<span class="glyphicon glyphicon-pencil"></span>
+													</button>
+												</p></td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Delete">
+													<button class="btn btn-danger btn-xs" data-title="Delete"
+														data-toggle="modal" data-target="#delete">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</p></td>
+										</tr>
+
+										<tr>
+											<td><input type="checkbox" class="checkthis" /></td>
+											<td>3</td>
+											<td>04/02</td>
+											<td>10년식 소나타 삽니다.</td>
+											<td><button type="button" class="btn btn-primary">낙찰</button></td>
+											<td id="i">3</td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Edit">
+													<button class="btn btn-primary btn-xs" data-title="Edit"
+														data-toggle="modal" data-target="#edit">
+														<span class="glyphicon glyphicon-pencil"></span>
+													</button>
+												</p></td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Delete">
+													<button class="btn btn-danger btn-xs" data-title="Delete"
+														data-toggle="modal" data-target="#delete">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</p></td>
+										</tr>
+
+										<tr>
+											<td><input type="checkbox" class="checkthis" /></td>
+											<td>4</td>
+											<td>01/02</td>
+											<td>13년식 인피니티 삽니다.</td>
+											<td><button type="button" class="btn btn-danger">입찰중</button></td>
+											<td id="i">1</td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Edit">
+													<button class="btn btn-primary btn-xs" data-title="Edit"
+														data-toggle="modal" data-target="#edit">
+														<span class="glyphicon glyphicon-pencil"></span>
+													</button>
+												</p></td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Delete">
+													<button class="btn btn-danger btn-xs" data-title="Delete"
+														data-toggle="modal" data-target="#delete">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</p></td>
+										</tr>
+
+										<tr>
+											<td><input type="checkbox" class="checkthis" /></td>
+											<td>5</td>
+											<td>06/01</td>
+											<td>15년식 투싼 ix 삽니다.</td>
+											<td><button type="button" class="btn btn-danger">입찰중</button></td>
+											<td id="i">10</td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Edit">
+													<button class="btn btn-primary btn-xs" data-title="Edit"
+														data-toggle="modal" data-target="#edit">
+														<span class="glyphicon glyphicon-pencil"></span>
+													</button>
+												</p></td>
+											<td><p data-placement="top" data-toggle="tooltip"
+													title="Delete">
+													<button class="btn btn-danger btn-xs" data-title="Delete"
+														data-toggle="modal" data-target="#delete">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</p></td>
+										</tr>
+									</tbody>
+
+								</table>
+
+								<div class="clearfix"></div>
+								<ul class="pagination pull-right">
+									<li class="disabled"><a href="#"><span
+											class="glyphicon glyphicon-chevron-left"></span></a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#"><span
+											class="glyphicon glyphicon-chevron-right"></span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="modal fade" id="edit" tabindex="-1" role="dialog"
+					aria-labelledby="edit" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
+								<h4 class="modal-title custom_align" id="Heading">Edit Your
+									Detail</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<input class="form-control " type="text" placeholder="Mohsin">
+								</div>
+								<div class="form-group">
+									<input class="form-control " type="text" placeholder="Irshad">
+								</div>
+								<div class="form-group">
+									<textarea rows="2" class="form-control"
+										placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer ">
+								<button type="button" class="btn btn-warning btn-lg"
+									style="width: 100%;">
+									<span class="glyphicon glyphicon-ok-sign"></span> Update
+								</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+
+				<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+					aria-labelledby="edit" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
+								<h4 class="modal-title custom_align" id="Heading">Delete
+									this entry</h4>
+							</div>
+							<div class="modal-body">
+								<div class="alert alert-danger">
+									<span class="glyphicon glyphicon-warning-sign"></span> Are you
+									sure you want to delete this Record?
+								</div>
+							</div>
+							<div class="modal-footer ">
+								<button type="button" class="btn btn-success">
+									<span class="glyphicon glyphicon-ok-sign"></span> Yes
+								</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">
+									<span class="glyphicon glyphicon-remove"></span> No
+								</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	</div>
+	<!-- right end -->
+
+	<!-- Down -->
+	<br>
+	<hr size="30" />
+	<br>
+
+	<div class="down">
+		<div class="down-left">
+			<section id="t-cards">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-3">
+							<div class="panel panel-default panel-card">
+								<div class="panel-heading">
+									<img
+										src="https://unsplash.imgix.net/12/barley.jpg?q=75&fm=jpg&s=f39de5ca1970a13dbe6af6c86b3c47ec" />
+									<button class="btn btn-primary btn-sm" role="button">Go</button>
+								</div>
+
+								<div class="panel-body text-center">
+									<h4 class="panel-header">
+										<a href="https://twitter.com/maridlcrmn">@Maridlcrmn</a>
+									</h4>
+									<small>A short description goes here.</small>
+								</div>
+								<div class="panel-thumbnails">
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/mzwlj/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/yboaj/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/gv3bp/60x60" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="panel panel-default panel-card">
+								<div class="panel-heading">
+									<img
+										src="https://unsplash.imgix.net/41/bXoAlw8gT66vBo1wcFoO_IMG_9181.jpg?q=75&fm=jpg&s=a760fd82863937c841f4b3870cdef011" />
+									<button class="btn btn-primary btn-sm" role="button">Go</button>
+								</div>
+
+								<div class="panel-body text-center">
+									<h4 class="panel-header">
+										<a href="https://twitter.com/maridlcrmn">@Maridlcrmn</a>
+									</h4>
+									<small>A short description goes here.</small>
+								</div>
+								<div class="panel-thumbnails">
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/dstb9/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/2lsao/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/urcon/60x60" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="panel panel-default panel-card">
+								<div class="panel-heading">
+									<img
+										src="https://ununsplash.imgix.net/19/waves.JPG?q=75&fm=jpg&s=6f316bc8e1dc9887a7cebe0841096e99" />
+									<button class="btn btn-primary btn-sm" role="button">Go</button>
+								</div>
+
+								<div class="panel-body text-center">
+									<h4 class="panel-header">
+										<a href="https://twitter.com/maridlcrmn">@Maridlcrmn</a>
+									</h4>
+									<small>A short description goes here.</small>
+								</div>
+								<div class="panel-thumbnails">
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/7an8e/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/wntpb/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/jrzxa/60x60" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="panel panel-default panel-card">
+								<div class="panel-heading">
+									<img
+										src="https://ununsplash.imgix.net/26/camera-keys.jpg?q=75&fm=jpg&s=b919d3158053cde8e9f0e37b4876c14f" />
+									<button class="btn btn-primary btn-sm" role="button">Go</button>
+								</div>
+
+								<div class="panel-body text-center">
+									<h4 class="panel-header">
+										<a href="https://twitter.com/maridlcrmn">@Maridlcrmn</a>
+									</h4>
+									<!-- 안쪽 글자 변경 -->
+									<small>A short description goes here.</small>
+								</div>
+								<div class="panel-thumbnails">
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/sqfuk/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/71mf8/60x60" />
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="thumbnail">
+												<img src="http://placemi.com/1pdrw/60x60" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			<script
+				src="C:\Users\apple\Desktop\Java util\12. Bootstrap\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\js\bootstrap.js"></script>
+			<script src="js/search.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+===========
+
+
+
+
+
+
+<!-- Search Start -->
+<div class=col-md-12">
+	<form name="select_machine form-horizontal form-group" role="form">
+		<div class="col-md-1 col-md-offset-4">
+			<select class="form-control" name=" "
+				onChange="showSubs(this.options[this.selectedIndex].value);"
+				style="width: 80px">
+				<option value="0">선택</option>
+				<option value="1">국산차</option>
+				<option value="2">수입차</option>
+			</select>
+		</div>
+
+		<div class="col-md-2">
+			<select class="form-control" name="SUBS0" style="display:;"
+				onChange="showSub(this.options[this.selectedIndex].value);">
+				<option value="">제조사</option>
+			</select> <select class="form-control" name="SUBS1" style="display: none;"
+				onChange="showSub(this.options[this.selectedIndex].value);">
+				<option selected="selected" value="">제조사</option>
+				<option value="1">현대</option>
+				<option value="2">기아</option>
+			</select> <select class="form-control" name="SUBS2" style="display: none;"
+				onChange="showSub(this.options[this.selectedIndex].value);">
+				<option selected="selected" value="">제조사</option>
+				<option value="3">BMW</option>
+				<option value="4">BENZ</option>
+			</select>
+		</div>
+
+
+		<div class="col-md-2">
+			<select class="form-control" name="SUB0" style="display:;">
+				<option value=" ">모델명</option>
+			</select> <select class="form-control" name="SUB1" style="display: none;">
+				<option selected="selected" value=" ">모델명</option>
+				<option value=" ">쏘나타</option>
+				<option value=" ">그랜저</option>
+				<option value=" ">아반떼</option>
+				<option value=" ">스타렉스</option>
+				<option value=" ">제네시스</option>
+			</select> <select class="form-control" name="SUB2" style="display: none;">
+				<option selected="selected" value=" ">모델명</option>
+				<option value=" ">K3</option>
+				<option value=" ">K5</option>
+				<option value=" ">K7</option>
+				<option value=" ">K9</option>
+			</select> <select class="form-control" name="SUB3" style="display: none;">
+				<option selected="selected" value=" ">모델명</option>
+				<option value=" ">320d</option>
+				<option value=" ">520d</option>
+				<option value=" ">750i</option>
+				<option value=" ">X5</option>
+			</select> <select class="form-control" name="SUB4" style="display: none;">
+				<option selected="selected" value=" ">모델명</option>
+				<option value=" ">C Class</option>
+				<option value=" ">E Class</option>
+				<option value=" ">S Class</option>
+			</select>
+		</div>
+		<div class="col-md-1">
+			<select class="form-control" name=" "
+				onChange="showLocs(this.options[this.selectedIndex].value);">
+				<option value="0">지역</option>
+				<option value="1">서울</option>
+				<option value="2">경기</option>
+			</select>
+		</div>
+		<div class="col-md-1">
+			<select class="form-control" name="LocS0" style="display:;">
+				<option value="">선택</option>
+			</select> <select class="form-control" name="LocS1" style="display: none;">
+				<option selected="selected" value="">선택</option>
+				<option value="1">강남</option>
+				<option value="2">구로</option>
+			</select> <select class="form-control" name="LocS2" style="display: none;">
+				<option selected="selected" value="">선택</option>
+				<option value="3">부천</option>
+				<option value="4">구리</option>
+			</select>
+		</div>
+		<div class="col-md-1">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
+		</div>
+	</form>
+</div>
+<!-- Search end -->
+</div>

@@ -1,0 +1,12 @@
+.span2 {
+background-color: red;
+width: 20%;
+float: left;
+
+
+}
+.span10{
+	background-color: blue;
+	width: 80%;
+	float: left;
+}
