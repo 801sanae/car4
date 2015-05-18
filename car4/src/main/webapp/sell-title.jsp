@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,17 +141,17 @@
 											</div>
 											<!-- 지역 끝-->
 
-											<br><br><br><br><br>
+											<br> <br> <br> <br> <br>
 											<div class="form-group">
 												<div class="col-md-8 col-md-offset-1" align="center">
-												<button type="button" class="btn btn-danger btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>취소
-												</button>
-												<button type="button" class="btn btn-primary btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
-												</button>
+													<button type="button" class="btn btn-danger btn-lg"
+														style="width: 40%;">
+														<span class="glyphicon glyphicon-ok-sign"></span>취소
+													</button>
+													<button type="button" class="btn btn-primary btn-lg"
+														style="width: 40%;">
+														<span class="glyphicon glyphicon-ok-sign"></span>다음
+													</button>
 												</div>
 											</div>
 
@@ -161,7 +161,7 @@
 							</div>
 							<!-- row end -->
 						</div>
-						
+
 						<!-- 두번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="profile">
 							<!-- carinfo start -->
@@ -342,17 +342,17 @@
 											<div>만원</div>
 
 										</div>
-										<br><br>
+										<br> <br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-												<button type="button" class="btn btn-danger btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>이전
-												</button>
-												<button type="button" class="btn btn-primary btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
-												</button>
-							</div>
+											<button type="button" class="btn btn-danger btn-lg"
+												style="width: 40%;">
+												<span class="glyphicon glyphicon-ok-sign"></span>이전
+											</button>
+											<button type="button" class="btn btn-primary btn-lg"
+												style="width: 40%;">
+												<span class="glyphicon glyphicon-ok-sign"></span>다음
+											</button>
+										</div>
 									</form>
 
 								</div>
@@ -363,6 +363,7 @@
 
 						<!-- 세번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="ppp">
+
 
 							<div class="col-md-8 col-md-offset-2">
 								<div class="row">
@@ -375,186 +376,208 @@
 										<div class="panel-group" id="accordion">
 											<div class="panel panel-default">
 												<div class="panel-heading">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<h4 class="panel-title">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" class="collapsed">내/외장옵</a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse1" aria-expanded="false" class="collapsed">내/외장옵션</a>
 													</h4>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</div>
-												<div id="collapse1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+												<div id="collapse1" class="panel-collapse collapse"
+													aria-expanded="false" style="height: 0px;">
 													<div class="panel-body">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input id="powerWindow" type="checkbox" name="checkbox-test1" value="one"   =""> <label for="powerWindow">파워윈도우</label>
-														<input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> <label for="aircorn">에어콘</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">풀오토에어콘</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">가죽시트</label> <input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-														<label for="warmSheet">열선시트</label> <input id="windSheet" type="checkbox" name="checkbox-test7" value="three">
-														<label for="windSheet">통풍시트</label> <input id="masagiSheet" type="checkbox" name="checkbox-test8" value="four"> <label for="masagiSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-
-														<input id="bucketSheet" type="checkbox" name="checkbox-test9" value="one"   =""> <label for="bucketSheet">버켓시트</label> <input id="memorySheet" type="checkbox" name="checkbox-test10" value="two">
-														<label for="memorySheet">메모리시트</label> <input id="foldingSheet" type="checkbox" name="checkbox-test11" value="three"> <label for="foldingSheet">분활폴딩시트</label>
-														<input id="driveSheet" type="checkbox" name="checkbox-test12" value="four"> <label for="driveSheet">운전석전동시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="dualSheet" type="checkbox" name="checkbox-test13" value="one"> <label for="dualSheet">동승석전동시트</label> <input id="backSheet" type="checkbox" name="checkbox-test14" value="two">
-														<label for="backSheet">뒷자석전동시트</label> <input id="aroWheel" type="checkbox" name="checkbox-test15" value="three"> <label for="aroWheel">알루미뇸휠</label>
-														<input id="chromWheel" type="checkbox" name="checkbox-test16" value="four"> <label for="chromWheel">크롬휠</label><input id="wideTiger" type="checkbox" name="checkbox-test17" value="four">
-														<label for="wideTiger">광폭타이어</label><input id="sharkY" type="checkbox" name="checkbox-test18" value="four">
-														<label for="sharkY">샤크안테나</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="powerWindow" type="checkbox"
+															name="checkbox-test1" value="one"><label
+															for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="fullautoAircorn" type="checkbox"
+															name="checkbox-test3" value="three"><label
+															for="fullautoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="leftrightAircorn" type="checkbox"
+															name="checkbox-test4" value="four"><label
+															for="leftrightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="gaJuksheet" type="checkbox"
+															name="checkbox-test5" value="one"><label
+															for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="warmSheet" type="checkbox" name="checkbox-test6"
+															value="two"> <label for="warmSheet">열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="windSheet" type="checkbox" name="checkbox-test7"
+															value="three"> <label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="masagiSheet" type="checkbox" name="checkbox-test8"
+															value="four"><label for="masagiSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="bucketSheet" type="checkbox"
+															name="checkbox-test9" value="one"><label
+															for="bucketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="memorySheet" type="checkbox" name="checkbox-test10"
+															value="two"> <label for="memorySheet">메모리시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
 											<div class="panel panel-default">
-												<div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="collapsed" aria-expanded="false">편의장치1</a></h4></div>
-												<div id="collapse2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;"><div class="panel-body">
-														<input id="powerWindow" type="checkbox" name="checkbox-test1" value="one"   =""> <label for="powerWindow">썬루</label> <input id="aircorn" type="checkbox" name="checkbox-test2" value="two">
-														<label for="aircorn">파노라마썬루</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">HID/제논램</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">스마트키/키레스고</label> <input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-														<label for="warmSheet">엔진스타트버튼</label> <input id="windSheet" type="checkbox" name="checkbox-test7" value="three"> <label for="windSheet">라이트세척장</label>
-														<input id="masagiSheet" type="checkbox" name="checkbox-test8" value="four"> <label for="masagiSheet">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="bucketSheet" type="checkbox" name="checkbox-test9" value="one"   =""> <label for="bucketSheet">전자주차브레이</label> <input id="memorySheet" type="checkbox" name="checkbox-test10" value="two">
-														<label for="memorySheet">이모빌라이</label> <input id="foldingSheet" type="checkbox" name="checkbox-test11" value="three"> <label for="foldingSheet">트립컴퓨터</label>
-														<input id="driveSheet" type="checkbox" name="checkbox-test12" value="four"> <label for="driveSheet">슈퍼비전계기</label>&nbsp;&nbsp;&nbsp;&nbsp; <input id="dualSheet" type="checkbox" name="checkbox-test13" value="one"> <label for="dualSheet">HUD</label> <input id="backSheet" type="checkbox" name="checkbox-test14" value="two"> <label for="backSheet">나이트비</label>
-														<input id="aroWheel" type="checkbox" name="checkbox-test15" value="three"> <label for="aroWheel">ECM룸미</label> <input id="chromWheel" type="checkbox" name="checkbox-test16" value="four">
-														<label for="chromWheel">쿠르즈컨트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="wideTiger" type="checkbox" name="checkbox-test17" value="four"> <label for="wideTiger">에어서스펜</label>&nbsp;&nbsp;&nbsp;&nbsp; <input id="sharkY" type="checkbox" name="checkbox-test18" value="four"> <label for="sharkY">전동트렁</label></div></div>
-											</div>
-											<div class="panel panel-default">
 												<div class="panel-heading">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<h4 class="panel-title">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="collapsed" aria-expanded="false">편의장치2</a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</h4>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-												<div id="collapse3" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<div class="panel-body" align="center">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse2" class="collapsed" aria-expanded="false">편의장치</a>
 
-														<input id="powerWindow" type="checkbox" name="checkbox-test1" value="one"   =""> <label for="powerWindow">파워핸들</label> <input id="aircorn" type="checkbox" name="checkbox-test2" value="two">
-														<label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">속도감응식핸들</label> <input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-														<label for="warmSheet">원격시동장</label> <input id="windSheet" type="checkbox" name="checkbox-test7" value="three">
-														<label for="windSheet">무선도어리모컨</label> <input id="masagiSheet" type="checkbox" name="checkbox-test8" value="four"> <label for="masagiSheet">유아시트고정장</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="bucketSheet" type="checkbox" name="checkbox-test9" value="one"   =""> <label for="bucketSheet">패들쉬프트</label> <input id="memorySheet" type="checkbox" name="checkbox-test10" value="two">
-														<label for="memorySheet">압축도어</label> <input id="foldingSheet" type="checkbox" name="checkbox-test11" value="three"> <label for="foldingSheet">자동도어잠</label>
-														<input id="driveSheet" type="checkbox" name="checkbox-test12" value="four"> <label for="driveSheet">자동슬라이딩도어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="dualSheet" type="checkbox" name="checkbox-test13" value="one"> <label for="dualSheet">전동접이식미러</label> <input id="backSheet" type="checkbox" name="checkbox-test14" value="two">
-														<label for="backSheet">냉장</label> <input id="aroWheel" type="checkbox" name="checkbox-test15" value="three">
-														<label for="aroWheel">루프캐리어</label> <input id="chromWheel" type="checkbox" name="checkbox-test16" value="four">
-														<label for="chromWheel">에어스카프</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="wideTiger" type="checkbox" name="checkbox-test17" value="four"> <label for="wideTiger">공기청정</label>&nbsp;&nbsp;&nbsp;&nbsp; <input id="sharkY" type="checkbox" name="checkbox-test18" value="four"> <label for="sharkY">전동햇빛가리개</label>
+													</h4>
+												</div>
+												<div id="collapse2" class="panel-collapse collapse"
+													aria-expanded="false" style="height: 0px;">
+													<div class="panel-body">
+														<input id="powerWindow" type="checkbox"
+															name="checkbox-test1" value="one"><label
+															for="powerWindow">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="fullautoAircorn" type="checkbox"
+															name="checkbox-test3" value="three"> <label
+															for="fullautoAircorn">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="leftrightAircorn" type="checkbox"
+															name="checkbox-test4" value="four"> <label
+															for="leftrightAircorn">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="gaJuksheet" type="checkbox" name="checkbox-test5"
+															value="one"> <label for="gajukSheet">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="warmSheet" type="checkbox"
+															name="checkbox-test6" value="two"> <label
+															for="warmSheet">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="windSheet" type="checkbox" name="checkbox-test7"
+															value="three"> <label for="windSheet">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="masagiSheet" type="checkbox" name="checkbox-test8"
+															value="four"> <label for="masagiSheet">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse3" class="collapsed" aria-expanded="false">안전장치</a>
+													</h4>
+												</div>
+												<div id="collapse3" class="panel-collapse collapse"
+													aria-expanded="false">
+													<div class="panel-body">
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">측에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">EBD</label>
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항범</a>
+													</h4>
+												</div>
+												<div id="collapse4" class="panel-collapse collapse"
+													aria-expanded="false">
+													<div class="panel-body">
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">블랙박</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">핸즈프리</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">USB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse5" class="collapsed" aria-expanded="false">튜닝사항</a>
+													</h4>
+												</div>
+												<div id="collapse5" class="panel-collapse collapse"
+													aria-expanded="false">
+													<div class="panel-body">
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">터보차</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">에어로파</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">슈퍼차</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">오디</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">힐/타이</label>&nbsp;&nbsp;&nbsp;&nbsp;
+													</div>
+												</div>
+											</div>
 
-													</div>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<h4 class="panel-title">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse6" class="collapsed" aria-expanded="false">안전장치</a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</h4>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-												<div id="collapse6" class="panel-collapse collapse" aria-expanded="false">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<div class="panel-body" align="center">
-														<div class="row">
-															&nbsp;&nbsp;
-															<div class="col-sm-4">
-																&nbsp;&nbsp;<label for="powerWindow">파워핸들</label> <input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> <label for="aircorn">히팅핸들</label>
-																<input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-																<input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">속도감응식핸들</label> <input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-																<input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> <label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three">
-																<label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;
-																&nbsp;&nbsp;
-															</div>
-															&nbsp;&nbsp;
-															<div class="col-sm-4">
-																&nbsp;&nbsp; &nbsp;&nbsp;<input id="aircorn" type="checkbox" name="checkbox-test2" value="two">
-																<label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-																<input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">속도감응식핸들</label> <input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-																<input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> <label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three">
-																<label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;
-																&nbsp;&nbsp; &nbsp;&nbsp;
-															</div>
-															&nbsp;&nbsp;
-															<div class="col-sm-4">
-																&nbsp;&nbsp; <input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> <label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three">
-																<label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn"> 가죽/우드핸들 </label> <input id="gaJuksheet" type="checkbox" name="checkbox-test5" value="one"> <label for="gajukSheet">속도감응식핸들</label>
-																<input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">&nbsp;&nbsp;
-																<label for="aircorn">히팅핸들</label> <input id="fullautoAircorn" type="checkbox" name="checkbox-test3" value="three"> <label for="fullautoAircorn">리모컨핸들</label> <input id="leftrightAircorn" type="checkbox" name="checkbox-test4" value="four"> <label for="leftrightAircorn">가죽/우드핸들</label>&nbsp;&nbsp;&nbsp;
-																&nbsp;&nbsp; &nbsp;&nbsp;
-															</div>
-														</div>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</div>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<h4 class="panel-title">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항범</a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</h4>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-												<div id="collapse4" class="panel-collapse collapse" aria-expanded="false">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<div class="panel-body">Lorem ipsum dolor sit amet,
-														consectetur adipisicing elit,
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sed do
-														eiusmod tempor incididunt ut labore et dolore magna
-														aliqua. Ut enim ad minim veniam,
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quis
-														nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-														commodo consequat.</div>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<h4 class="panel-title">
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class="collapsed" aria-expanded="false">튜닝사항</a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</h4>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-												<div id="collapse5" class="panel-collapse collapse" aria-expanded="false">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<div class="panel-body">Lorem ipsum dolor sit amet,
-														consectetur adipisicing elit,
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sed do
-														eiusmod tempor incididunt ut labore et dolore magna
-														aliqua. Ut enim ad minim veniam,
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quis
-														nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-														commodo consequat.</div>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
+							<div class="col-md-8 col-md-offset-2">
+								<div class="row">
+									<div class="col-md-12">
+										<h3>차량옵션 설명</h3>
+									</div>
+								</div>
+								<div class="panel panel-default ">
+									<div class="panel-heading">
+										<span class="glyphicon glyphicon-refresh" id="reset">
+											다시쓰기</span>
+									</div>
+									<textarea class="form-control" id="aaa" rows="15"
+										style="border-radius: 0px;"></textarea>
+								</div>
+
+							</div>
+
+
 							<div class="col-md-6 col-md-offset-3" align="center">
-												<button type="button" class="btn btn-danger btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>이전
-												</button>
-												<button type="button" class="btn btn-primary btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
-									</button>
+								<button type="button" class="btn btn-danger btn-lg"
+									style="width: 40%;">
+									<span class="glyphicon glyphicon-ok-sign"></span>이전
+								</button>
+								<button type="button" class="btn btn-primary btn-lg"
+									style="width: 40%;">
+									<span class="glyphicon glyphicon-ok-sign"></span>다음
+								</button>
 							</div>
 						</div>
-						
+
 						<!-- 다섯번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="doner">
 							<div class="container">
@@ -854,20 +877,20 @@
 										</div>
 
 
-										
+
 										<!-- col-6 / end -->
 									</div>
 									<!-- list-group / end -->
-									
+
 									<div class="col-md-8 col-md-offset-2" align="center">
-												<button type="button" class="btn btn-danger btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>이전
-												</button>
-												<button type="button" class="btn btn-primary btn-lg"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
-												</button>
+										<button type="button" class="btn btn-danger btn-lg"
+											style="width: 40%;">
+											<span class="glyphicon glyphicon-ok-sign"></span>이전
+										</button>
+										<button type="button" class="btn btn-primary btn-lg"
+											style="width: 40%;">
+											<span class="glyphicon glyphicon-ok-sign"></span>다음
+										</button>
 									</div>
 								</div>
 								<!-- row / end -->
