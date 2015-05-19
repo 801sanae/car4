@@ -3,6 +3,7 @@ package com.model2.mvc.web.user;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -188,5 +189,20 @@ public class UserController {
 		model.addAttribute("search", search);
 
 		return "forward:/user/listUser.jsp";
+	}
+	
+	@RequestMapping("/updatePassword.do")
+	public String updatePassword( @ModelAttribute("user") User user , Model model , HttpSession session
+			,HttpServletRequest request,HttpServletResponse reponse) throws Exception{
+		
+		String userId = request.getParameter("hideUserId");
+		user.setUserId(userId);
+		
+		System.out.println("/updatePassword.do");
+		//Business Logic
+		userService.updatePassword(user);
+		
+			
+		return "redirect:/index.jsp";
 	}
 }

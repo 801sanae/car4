@@ -26,5 +26,6 @@ public interface UserService {
 	
 	public boolean checkDuplication(String userId) throws Exception;
 	
-	
+	//비밀번호수정
+		public void updatePassword(User user)throws Exception;
 }

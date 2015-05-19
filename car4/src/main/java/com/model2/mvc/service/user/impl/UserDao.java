@@ -58,4 +58,8 @@ public class UserDao{
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("UserMapper.getTotalCount", search);
 	}
+	
+	public void updatePassword(User user)throws Exception{
+		sqlSession.update("UserMapper.updatePassword", user);
+	}
 }

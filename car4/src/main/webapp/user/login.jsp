@@ -87,6 +87,76 @@
             });
         }
     });//else 끝나는부분
+    
+    $("#passwordclick").click(function() {
+        var userid = $("input[id=puserid]").val();
+        $('#hideUserId').val(userid);
+        alert($("#hideUserId").val());
+        
+        if ( $("#puserid").val() != null){
+          alert( $("#puserid").val() );   
+          $.ajax({
+                  url:"emailAuth.do",
+                      data:({
+                        email:$("#puserid").val()
+                      }),
+                      dataType: 'json',
+                      success:function(result){
+                    
+                        if (result.status == "YES"){ 
+                          $('#hideNum').val(result.authNum);
+                          $('#pnamemessage').html("<font color=green>인증번호가 발송되었습니다.</font>");
+                          $('#pnamemessage').show();
+                        }else{
+                  
+                          $('#pnamemessage').html("<font color=red>인증번호 발송 실패.</font>");
+                          $('#pnamemessage').show();
+                          }
+                        
+                          }});
+        }
+      });
+      
+    $("#authnumclick").click(function() {
+        alert($("#hideNum").val());
+        
+        if( $("#hideNum").val() == $("#authnum").val() ){
+          $("#beforeauthnum").hide();
+          $("#afterauthnum").show();
+        }else{
+          alert("인증번호를 다시 입력해주세요.");
+        }
+    });
+    
+     $("#rpassword").keyup(function( pwd ){
+            var pwd = $("#rpassword").val()
+            
+            if(6 > pwd.length || pwd.length > 12){
+              $('#rpasswordmessage').html("<font color=red>비밀번호는 문자, 숫자, 특수문자의 조합으로 6~12자리로 입력해주세요.</font>");
+              $('#rpasswordmessage').show();
+            }
+            else if(! pwd.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/)){
+              $('#rpasswordmessage').html("<font color=red>비밀번호는 문자, 숫자, 특수문자의 조합으로 6~12자리로 입력해주세요.</font>");
+              $('#rpasswordmessage').show();
+            }
+            else{
+              $('#rpasswordmessage').html("<font color=green>사용가능 합니다.</font>");
+              $('#rpasswordmessage').show();
+            }
+          });
+     
+    $("#rpassword1").keyup(function(){
+            var pwd = $("#rpassword").val()
+            var pwds = $("#rpassword1").val()
+            
+            if( pwd == pwds){
+              $('#rpassword1message').html("<font color=green>비밀번호가 일치합니다.</font>");
+              $('#rpassword1message').show();
+            }else{
+              $('#rpassword1message').html("<font color=red>비밀번호가 일치하지 않습니다.</font>");
+              $('#rpassword1message').show();
+            }
+          });
 });
 <%--이부분 지우면 아이디 찾기 실행됨 --%>
     
@@ -141,7 +211,7 @@
                                 <a style="color: gray; cursor: pointer;" data-toggle="modal"
                                     data-target="#myModal" id="findIdATag">아이디 찾기</a> | <a
                                     style="color: gray; cursor: pointer;" data-toggle="modal"
-                                    data-target="#none">비밀번호 찾기</a>
+                                    data-target="#modalPassword">비밀번호 찾기</a>
                             </div>
                             <!-- Modal -->
 
@@ -157,7 +227,112 @@
             </div>
         </div>
     </div>
+    
+    <!-- PasswordFind start -->
+    <div class="modal fade" id="modalPassword" tabindex="-1" role="dialog"
+          aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">비밀번호찾기</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <h2>찾기</h2>
+                  
+                  <div name="beforeauthnum" id="beforeauthnum">
+                  <form class="form-horizontal" role="form" method="post"
+                    action="emailAuth.do" name="authenform">
+                    <div class="form-group">
+                      <label class="control-label col-sm-1" for="email"
+                        name="userId">Email:</label>
+                      <div class="col-sm-2">
+                        <input type="email" class="form-control" id="puserid"
+                          name="userId" placeholder="Enter email">
+                        <div id="pnamemessage" style="display: none;"></div> 
+                      </div>
+                      <div class="col-sm-2">
+                      <button type="button" class="btn btn-primary" id="passwordclick" name=""
+                        value="알림창">인증번호보내기</button> 
+                      </div>
+                    </div>
+                    </form>
+                                                           
+                    <form class="form-horizontal" role="form" method="post"
+                    action="" name="">
+                    <div class="form-group">
+                      <label class="control-label col-sm-1" for="pwd">인증번호:</label>
+                      <div class="col-sm-2">
+                        <input type="" class="form-control" id="authnum"
+                          name="authnum" placeholder="Enter authnum">       
+                      </div>
+                       <div class="col-sm-2">
+                       <button type="button" class="btn btn-primary" id="authnumclick" name=""
+                        value="알림창">확인</button>
+                       </div>
+                    </div>
+                      </form>                  
+                    </div>
+                
+                <div name="afterauthnum" id="afterauthnum" style="display: none;">
+                  <form class="form-horizontal" role="form" method="post"
+                    action="updatePassword.do" name="">
+                    <div class="form-group">
+                      <label class="control-label col-sm-1" for="pwd">비밀번호:</label>
+                      <div class="col-sm-3">
+                        <input type="password" class="form-control" id="rpassword"
+                          name="password" placeholder="Enter password">
+                        <div id="rpasswordmessage" style="display: none;"></div>
+                        <!-- <div name="hideUserId" id="hideUserId" style="display: none;"></div> -->
+                        <input name="hideUserId"  id="hideUserId"  type="hidden">
+                      </div>
+                     </div>
+                        <div class="form-group">
+                      <label class="control-label col-sm-1" for="pwd">비밀번호확인:</label>
+                      <div class="col-sm-3">
+                        <input type="password" class="form-control" id="rpassword1"
+                          name="rpassword1" placeholder="Enter password">       
+                      <div id="rpassword1message" style="display: none;"></div>
+                      </div>
+                      <div class="col-sm-1">
+                       <button type="submit" class="btn btn-primary" id="rpasswordclick" name=""
+                        value="알림창">확인</button>
+                       </div>
+                       <div id="hideNum" style="display: none;"></div>
+                      
+                     </div>  
+                   </form>
+                </div>                
+                  
+                </div>
+            
+                <!-- container -->
+              </div>
+             
+              <!-- modal body -->
 
+              <div class="modal-footer">
+                
+                   <button type="button" class="btn btn-default"
+                  data-dismiss="modal"><a href="email.jsp">비밀번호찾기</a></button>
+            
+                    <button type="" class="btn btn-primary" id="loginclick" name=""
+                value="알림창">로그인</button>
+                  
+                </form>
+            
+              </div>
+            
+            
+            </div>
+          </div>
+        </div>
+<!-- PasswordFind end -->
+    
     <!-- findUserId -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
         aria-labelledby="myModalLabel" aria-hidden="true">

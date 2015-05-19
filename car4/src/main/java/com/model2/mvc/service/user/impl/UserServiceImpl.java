@@ -73,4 +73,7 @@ public class UserServiceImpl implements UserService{
 		return UserDao.findUserId(user);
 	}
 	
+	public void updatePassword(User user)throws Exception{
+		UserDao.updatePassword(user);
+	}
 }
