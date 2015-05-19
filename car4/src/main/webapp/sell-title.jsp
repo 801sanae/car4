@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="board">
-					<!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+					<!-- <h2>Welcome\\\\GHALO!<sup>™</sup></h2>-->
 					<div class="board-inner">
 						<ul class="nav nav-tabs" id="myTab">
 							<div class="liner"></div>
@@ -349,7 +349,7 @@
 												</button>
 												<button type="button" class="btn btn-primary btn-lg"
 													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
+													<span class="glyphicon glyphicon-ok-sign" href="#ppp"></span>다음
 												</button>
 							</div>
 									</form>
