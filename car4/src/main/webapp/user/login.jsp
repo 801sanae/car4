@@ -61,7 +61,7 @@
         }else if($("#findIdName").val()!="" && $("#findIdPhone").val()!=""){
             $.ajax({
                 
-                url : "findId.jsp", //아이디 중복 체크할 페이지 지정
+                url : 'user/findId.jsp', //아이디 중복 체크할 페이지 지정
                 type : 'get',
                 dataType : 'json',
                 data : {
