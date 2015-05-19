@@ -166,42 +166,27 @@
 						<div class="tab-pane fade" id="profile">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-								<div class="row">
-									<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form">
+									<div class="row">
+									
 
 										<div class="form-group">
 											<label class="control-label col-md-1" for="phone">차량번호
 												|</label>
 
 											<div class="col-md-2">
-												<input class="form-control" id="" placeholder="입력">
+												<input type="text" class="form-control" id="" placeholder="입력">
 											</div>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">확인</button>
+											
 
-											<input type="checkbox" class="checkthis" />임시번호/직수입등록 <input
-												type="checkbox" class="checkthis" />사고이력조회
+											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
 
 										<div class="form-group">
 											<label class="control-label col-md-1" for="phone">차량명
 												|</label>
 
-											<div class="col-md-4">
-												<input class="form-control" id="" placeholder="입력">
-											</div>
-
-											<div class="col-sm-2">
-												<select class="form-control">
-
-													<option>등급</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-
-												</select>
-											</div>
-											<div class="col-sm-3">
+											<div class="col-md-2">
 												<select class="form-control">
 
 													<option>세부등급</option>
@@ -211,6 +196,41 @@
 
 												</select>
 											</div>
+											
+											<div class="col-md-2">
+												<select class="form-control">
+
+													<option>세부등급</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+
+												</select>
+											</div>
+											
+											<div class="col-md-2">
+												<select class="form-control">
+
+													<option>세부등급</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+
+												</select>
+											</div>
+											
+											<label class="control-label col-md-1 
+												for="phone">색상 |</label>
+
+											<div class="col-md-2">
+												<select class="form-control">
+
+													<option>년형</option>
+													<option>2015</option>
+													<option>2014</option>
+												</select>
+											</div>
+											
 										</div>
 
 										<div class="form-group">
@@ -237,22 +257,8 @@
 
 												</select>
 											</div>
-										</div>
-
-										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">변속기
-												|</label>
-
-											<div class="col-md-2" s>
-												<select class="form-control">
-
-													<option>선택</option>
-													<option>자동</option>
-													<option>수동</option>
-												</select>
-											</div>
-
-											<label class="control-label col-md-1 col-md-offset-4"
+											
+											<label class="control-label col-md-1 col-md-offset-3"
 												for="phone">형식년도 |</label>
 
 											<div class="col-md-2">
@@ -266,17 +272,18 @@
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">배기량
+											<label class="control-label col-md-1" for="phone">변속기
 												|</label>
 
-
-											<div class="col-md-1">
-												<input class="form-control" id="" placeholder="입력" />
-
+											<div class="col-md-4">
+												<div class="col-md-5"  style="margin-left:-3%;">
+													<input type="checkbox" class="checkthis" />&nbsp;자동
+													&nbsp;&nbsp;
+													<input type="checkbox" class="checkthis" />&nbsp;수동
+												</div>
 											</div>
-											<div class="col-md-1 " style="">cc</div>
 
-											<label class="control-label col-md-1 col-md-offset-4"
+											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">연료 |</label>
 
 											<div class="col-md-2">
@@ -291,26 +298,24 @@
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">색상
+											<label class="control-label col-md-1" for="phone">배기량
 												|</label>
 
-											<div class="col-md-2">
-												<select class="form-control">
 
-													<option>선택</option>
-													<option>빨강</option>
-													<option>노랑</option>
-													<option>블랙</option>
-												</select>
+											<div class="col-md-1">
+												<input type="text" class="form-control" id="" placeholder="입력" />
+
 											</div>
+											<div class="col-md-1">CC</div>
+
 											<label class="control-label col-md-1 col-md-offset-4"
 												for="phone">주행거리 |</label>
 
 											<div class="col-md-1">
-												<input class="form-control" id="" placeholder="입력" />
+												<input type="text"  class="form-control" id="" placeholder="입력" />
 
 											</div>
-											<div class="" style="">Km</div>
+											<div class="" style="margin-top:1%;">Km</div>
 
 										</div>
 
@@ -318,47 +323,58 @@
 											<label class="control-label col-md-1" for="phone">판매구분
 												|</label>
 											<div class="col-md-4">
-												<input type="checkbox" class="checkthis" />일반차량 <input
-													type="checkbox" class="checkthis" />리스승계차량 <input
-													type="checkbox" class="checkthis" />할부승계차량
+												<input type="checkbox" class="checkthis" />&nbsp;일반차량 
+												&nbsp;&nbsp;
+												<input type="checkbox" class="checkthis" />&nbsp;리스승계차량
+												&nbsp;&nbsp;
+												<input type="checkbox" class="checkthis" />&nbsp;할부승계차량
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">사고여부 |</label>
 											<div class="col-md-2">
-												<input type="checkbox" class="checkthis" />무사고 <input
-													type="checkbox" class="checkthis" />사고
+												<input type="checkbox" class="checkthis" />&nbsp;무사고
+												&nbsp;&nbsp;
+												<input type="checkbox" class="checkthis" />&nbsp;사고
 											</div>
 										</div>
 
+										
+										
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">판매가격
+											<label class="control-label col-md-1" for="phone">성능상태점검기록부
 												|</label>
-
-											<div class="col-md-2">
-												<input class="form-control" id="" placeholder="입력" />
-
+											<div class="col-md-4">
+												<button type="button" class="btn btn-default" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
 											</div>
-											<div>만원</div>
 
+											<label class="control-label col-md-1 col-md-offset-2"
+												for="phone">전문평가사 |</label>
+											<div class="col-md-2">
+												<input type="checkbox" class="checkthis" />&nbsp;요청
+												&nbsp;&nbsp;
+												<input type="checkbox" class="checkthis" />&nbsp;미요청
+											</div>
 										</div>
-										<br> <br>
+
+										
+										</div>
+										<br><br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-											<button type="button" class="btn btn-danger btn-lg"
-												style="width: 40%;">
-												<span class="glyphicon glyphicon-ok-sign"></span>이전
-											</button>
-											<button type="button" class="btn btn-primary btn-lg"
-												style="width: 40%;">
-												<span class="glyphicon glyphicon-ok-sign"></span>다음
-											</button>
+												<button type="button" class="btn btn-danger btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>이전
+												</button>
+												<button type="button" class="btn btn-primary btn-lg"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>다음
+												</button>
 										</div>
 									</form>
 
 								</div>
 							</div>
 							<!-- carinfo end -->
-						</div>
 
 
 						<!-- 세번째 동그라미 클릭시 div -->
