@@ -209,7 +209,7 @@
                         <div class="row">
                             <div class="col-md-5 col-sm-5">
                                 <a style="color: gray; cursor: pointer;" data-toggle="modal"
-                                    data-target="#myModal" id="findIdATag">아이디 찾기</a> | <a
+                                    data-target="#findIdModal" id="findIdATag">아이디 찾기</a> | <a
                                     style="color: gray; cursor: pointer;" data-toggle="modal"
                                     data-target="#modalPassword">비밀번호 찾기</a>
                             </div>
@@ -217,8 +217,10 @@
 
                             <div>
                                 <div class="col-md-1 col-sm-1 col-sm-offset-5">
-                                    <button type="submit" class="btn btn-default"
-                                        data-dismiss="modal" onclick="fncLogin()">로그인</button>
+                                    
+										<button class="btn btn-default"
+											id="login" type="submit">로그인</button>
+								
                                 </div>
                             </div>
                         </div>
@@ -334,7 +336,7 @@
 <!-- PasswordFind end -->
     
     <!-- findUserId -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    <div class="modal fade" id="findIdModal" tabindex="-1" role="dialog"
         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

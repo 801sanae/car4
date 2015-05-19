@@ -112,5 +112,16 @@
     WHERE userName = #{userName}
     and   phone = #{phone}
    </select>
+   
+   <!-- SQL : UPDATEPASSWORD -->
+  <update id="updatePassword" parameterType="com.model2.mvc.service.domain.User">
+    UPDATE users
+    <set>
+      password = #{password} 
+    
+    </set>
+    WHERE userId = #{userId}
+  </update>
+   
 
 </mapper>

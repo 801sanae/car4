@@ -34,7 +34,7 @@ dependencies {
     /* providedCompile => 컴파일에서만 사용. 배치에서 제외*/
      providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
      
-     compile 'javax.mail:mail:1.4.7'
+     
      compile 'com.googlecode.json-simple:json-simple:1.1'//추가
      compile 'org.aspectj:aspectjweaver:1.6.8'               //추가
      compile 'junit:junit:4.7'                                 //추가

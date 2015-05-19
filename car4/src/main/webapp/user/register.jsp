@@ -12,13 +12,11 @@
 
 <title>Insert title here</title>
 
-<title>Insert title here</title>
-<script type="text/javascript">
 <script type="text/javascript">
 $(document).ready(function() {
   $("#id_check").keyup(function() {
     $.ajax({
-      url:"idcheck.jsp",
+      url:"user/idcheck.jsp",
       data:({
         userid:$("input[id=id_check]").val()
       }),
@@ -159,7 +157,6 @@ $(document).ready(function() {
       });
 });     
 </script>
-
 </head>
 <body>
 				<!-- 회원가입 클릭 -->

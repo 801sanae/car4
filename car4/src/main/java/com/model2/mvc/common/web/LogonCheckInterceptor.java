@@ -31,7 +31,7 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
 		User user = (User)session.getAttribute("user");
 
 		
-		if(   user != null || request.getServletPath().equals("/findUser.do")  )  {
+		if(   user != null || request.getServletPath().equals("/findUser.do") || request.getServletPath().equals("/emailAuth.do") )  {
 			
 			String uri = request.getRequestURI();
 			if(		uri.indexOf("addUserView") != -1 	|| 	uri.indexOf("addUser") != -1 || 

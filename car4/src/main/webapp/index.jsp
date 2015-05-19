@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script
+<script>
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
+<script>
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="css/test.css" />
 <link rel="stylesheet" type="text/css" href="css/button.css" /> -->
@@ -36,14 +36,14 @@
 				<c:if test="${ empty user }">
 			              <a style="color: gray" data-toggle="modal" data-target="#modalLogin">
 						Login</a>
-					<!-- 회원가입 클릭 -->
-					&nbsp; <a style="margin-top: 15px;">|</a> <a style="color: gray"
-								data-toggle="modal" data-target="#myModal"> Sign</a>
-					<!-- 회원가입 클릭 -->		
+				<!--  회원가입 창 띄우기 -->
+					<jsp:include page="/user/register.jsp"></jsp:include>
+				<!--  회원가입 창 띄우기 -->
 				</c:if>
 			   <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
 					<a style="color: gray" href="user/getUser.jsp"> ${user.userName}님
 						환영합니다 :)</a>
+						
 				</c:if>
 				<!-- Login 클릭 -->
 					
@@ -52,9 +52,7 @@
 				<jsp:include page="/user/login.jsp"></jsp:include>
 				<!--  Login 창 띄우기 -->
 				
-				<!--  회원가입 창 띄우기 -->
-				<jsp:include page="/user/register.jsp"></jsp:include>
-				<!--  회원가입 창 띄우기 -->
+				
 			</div>
 		</div>
 	</div>

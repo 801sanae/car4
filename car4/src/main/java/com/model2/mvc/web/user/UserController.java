@@ -1,5 +1,6 @@
 package com.model2.mvc.web.user;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,14 +10,20 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
+import com.model2.mvc.common.SendEmail;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
@@ -205,4 +212,36 @@ public class UserController {
 			
 		return "redirect:/index.jsp";
 	}
+	
+	@RequestMapping("/emailAuth.do")
+	   @ResponseBody
+	   public ResponseEntity<String> emailAuth(HttpServletRequest request,
+	         HttpServletResponse response)throws Exception{
+	      
+	      String email = request.getParameter("email");
+	      
+	      String authNum = "";
+	      authNum = SendEmail.RandomNum();
+	      
+	      SendEmail.sendEmail(email, authNum);
+	      
+	      /*ModelAndView mv = new ModelAndView();
+	      mv.setViewName("/emailAuth.jsp");
+	      mv.addObject("email", email);
+	      mv.addObject("authNum", authNum);*/
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.set("Content-Type", "text/plain;charset=UTF-8");
+	      
+	      HashMap<String,String> result = new HashMap<String,String>();
+	      result.put("status", "YES");
+	      result.put("authNum", authNum);
+	      
+	      //객체를 JSON(JavaScript Object Notation) 형식의 문자열로 만들기
+	      String jsonString = new Gson().toJson(result);
+	      
+	      return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	   }
+	
+	
+	
 }
