@@ -12,13 +12,13 @@
 
 	<resultMap id="userSelectMap" type="com.model2.mvc.service.domain.User">
 		<result property="userId" 	column="userid" 		jdbcType="VARCHAR"/>
-		<result property="userNum"	column="usernum" 	jdbcType="INTEGER" />
-		<result property="userName" column="username" 	jdbcType="VARCHAR" />
-		<result property="password" column="password" 	jdbcType="VARCHAR" />
+		<result property="userNum"	column="usernum" 	    jdbcType="INTEGER" />
+		<result property="userName" column="username"     	jdbcType="VARCHAR" />
+		<result property="password" column="password" 	    jdbcType="VARCHAR" />
 		<result property="phone" 	column="phone"		 	jdbcType="VARCHAR" />
 		<result property="sex"  	column="sex" 			jdbcType="VARCHAR" />
 		<result property="regDate" 	column="regdate"		jdbcType="DATE" />
-		<result property="role"   	 column="role" 			jdbcType="VARCHAR" />
+		<result property="role"   	column="role" 			jdbcType="VARCHAR" />
 		<result property="addr"   	column="addr" 			jdbcType="VARCHAR"  />
 	</resultMap>
 
