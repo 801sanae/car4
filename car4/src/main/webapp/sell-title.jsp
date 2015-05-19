@@ -166,12 +166,12 @@
 						<div class="tab-pane fade" id="profile">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" name="form2" role="form">
 									<div class="row">
 									
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">차량번호
+											<label class="control-label col-md-1" id="p_carNo" name="p_carNo" >차량번호
 												|</label>
 
 											<div class="col-md-2">
@@ -187,7 +187,7 @@
 												|</label>
 
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_manuCountry" name="p_manuCountry" >
 
 													<option>제조국</option>
 													<option>1</option>
@@ -198,7 +198,7 @@
 											</div>
 											
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_manuCompany" name="p_manuCompany">
 
 													<option>제조사</option>
 													<option>1</option>
@@ -209,7 +209,7 @@
 											</div>
 											
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_model" name="p_model">
 
 													<option>모델명</option>
 													<option>1</option>
@@ -223,7 +223,7 @@
 												for="phone">색상 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_color" name="p_color">
 
 													<option>년형</option>
 													<option>2015</option>
@@ -234,11 +234,11 @@
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">연식
+											<label class="control-label col-md-1" >연식
 												|</label>
 
 											<div class="col-sm-2">
-												<select class="form-control">
+												<select class="form-control" id="p_year" name="p_year">
 
 													<option>년</option>
 													<option>2015</option>
@@ -248,7 +248,7 @@
 												</select>
 											</div>
 											<div class="col-sm-1">
-												<select class="form-control">
+												<select class="form-control" id="p_month" name="p_month">
 
 													<option>월</option>
 													<option>1</option>
@@ -262,7 +262,7 @@
 												for="phone">형식년도 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_carYear" name="p_carYear">
 
 													<option>년형</option>
 													<option>2015</option>
@@ -277,9 +277,9 @@
 
 											<div class="col-md-4">
 												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="radio" checked/>&nbsp;자동
+													<input type="radio" id="p_trans" name="p_trans" value="p_auto" checked/>&nbsp;자동
 													&nbsp;&nbsp;
-													<input type="radio" />&nbsp;수동
+													<input type="radio" id="p_trans" name="p_trans" value="p_passive" />&nbsp;수동
 												</div>
 											</div>
 
@@ -287,23 +287,23 @@
 												for="phone">연료 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control">
+												<select class="form-control" id="p_fuel" name="p_fuel">
 
 													<option>선택</option>
-													<option>가솔린</option>
-													<option>디젤</option>
-													<option>LPG</option>
+													<option name="p_gasoline">가솔린</option>
+													<option name="p_diesel">디젤</option>
+													<option name="p_lpg">LPG</option>
 												</select>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">배기량
+											<label class="control-label col-md-1" >배기량
 												|</label>
 
 
 											<div class="col-md-1">
-												<input type="text" class="form-control" id="" placeholder="입력" />
+												<input type="text" class="form-control" id="p_cc" name="p_cc" placeholder="입력" />
 
 											</div>
 											<div class="col-md-1">CC</div>
@@ -312,7 +312,7 @@
 												for="phone">주행거리 |</label>
 
 											<div class="col-md-1">
-												<input type="text"  class="form-control" id="" placeholder="입력" />
+												<input type="text"  class="form-control" id="p_km" name="p_km" placeholder="입력" />
 
 											</div>
 											<div class="" style="margin-top:1%;">Km</div>
@@ -323,19 +323,19 @@
 											<label class="control-label col-md-1" for="phone">판매구분
 												|</label>
 											<div class="col-md-4">
-												<input type="radio" checked />&nbsp;일반차량 
+												<input type="radio" id="p_sell" name="p_sell" value="p_common" checked />&nbsp;일반차량 
 												&nbsp;&nbsp;
-												<input type="radio" />&nbsp;리스승계차량
+												<input type="radio" id="p_sell" name="p_sell" value="p_lease" />&nbsp;리스승계차량
 												&nbsp;&nbsp;
-												<input type="radio" />&nbsp;할부승계차량
+												<input type="radio" id="p_sell" name="p_sell" value="p_installment"  />&nbsp;할부승계차량
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">사고여부 |</label>
 											<div class="col-md-2">
-												<input type="radio" checked />&nbsp;무사고
+												<input type="radio" id="p_accident" name="p_accident" value="p_noAcc" checked />&nbsp;무사고
 												&nbsp;&nbsp;
-												<input type="radio" />&nbsp;사고
+												<input type="radio" id="p_accident" name="p_accident" value="p_yesAcc" />&nbsp;사고
 											</div>
 										</div>
 
@@ -345,15 +345,15 @@
 											<label class="control-label col-md-1" for="phone">성능상태점검기록부
 												|</label>
 											<div class="col-md-4">
-												<button type="button" class="btn btn-default" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
+												<button type="button" class="btn btn-default" id="p_perfor" name="p_perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">전문평가사 |</label>
 											<div class="col-md-2">
-												<input type="radio" checked />&nbsp;요청
+												<input type="radio" id="p_req" name="p_req" value="p_yes" checked />&nbsp;요청
 												&nbsp;&nbsp;
-												<input type="radio"/>&nbsp;미요청
+												<input type="radio" id="p_req" name="p_req" value="p_no" />&nbsp;미요청
 											</div>
 										</div>
 
@@ -361,7 +361,7 @@
 										</div>
 										<br><br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-												<button type="button" class="btn btn-danger btn-lg"
+												<button type="button" class="btn btn-danger btn-lg" 
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>이전
 												</button>
