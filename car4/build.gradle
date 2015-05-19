@@ -33,7 +33,7 @@ dependencies {
    compile fileTree(dir: 'libs', include: ['*.jar'])
     /* providedCompile => 컴파일에서만 사용. 배치에서 제외*/
      providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
-    compile 'com.googlecode.json-simple:json-simple:1.1'//추가
+     compile 'com.googlecode.json-simple:json-simple:1.1'//추가
      compile 'org.aspectj:aspectjweaver:1.6.8'               //추가
      compile 'junit:junit:4.7'                                 //추가
      compile 'commons-dbcp:commons-dbcp:1.2.2'         //추가
@@ -45,4 +45,6 @@ dependencies {
      compile 'org.mybatis:mybatis-spring:1.2.2'
      compile 'org.mybatis:mybatis:3.2.8'
      compile 'log4j:log4j:1.2.17'
+     compile 'com.google.code.gson:gson:2.3.1'
+     
 }
