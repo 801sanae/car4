@@ -189,7 +189,7 @@
 											<div class="col-md-2">
 												<select class="form-control">
 
-													<option>세부등급</option>
+													<option>제조국</option>
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -200,7 +200,7 @@
 											<div class="col-md-2">
 												<select class="form-control">
 
-													<option>세부등급</option>
+													<option>제조사</option>
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -211,7 +211,7 @@
 											<div class="col-md-2">
 												<select class="form-control">
 
-													<option>세부등급</option>
+													<option>모델명</option>
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -277,9 +277,9 @@
 
 											<div class="col-md-4">
 												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="checkbox" class="checkthis" />&nbsp;자동
+													<input type="radio" checked/>&nbsp;자동
 													&nbsp;&nbsp;
-													<input type="checkbox" class="checkthis" />&nbsp;수동
+													<input type="radio" />&nbsp;수동
 												</div>
 											</div>
 
@@ -323,19 +323,19 @@
 											<label class="control-label col-md-1" for="phone">판매구분
 												|</label>
 											<div class="col-md-4">
-												<input type="checkbox" class="checkthis" />&nbsp;일반차량 
+												<input type="radio" checked />&nbsp;일반차량 
 												&nbsp;&nbsp;
-												<input type="checkbox" class="checkthis" />&nbsp;리스승계차량
+												<input type="radio" />&nbsp;리스승계차량
 												&nbsp;&nbsp;
-												<input type="checkbox" class="checkthis" />&nbsp;할부승계차량
+												<input type="radio" />&nbsp;할부승계차량
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">사고여부 |</label>
 											<div class="col-md-2">
-												<input type="checkbox" class="checkthis" />&nbsp;무사고
+												<input type="radio" checked />&nbsp;무사고
 												&nbsp;&nbsp;
-												<input type="checkbox" class="checkthis" />&nbsp;사고
+												<input type="radio" />&nbsp;사고
 											</div>
 										</div>
 
@@ -351,9 +351,9 @@
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">전문평가사 |</label>
 											<div class="col-md-2">
-												<input type="checkbox" class="checkthis" />&nbsp;요청
+												<input type="radio" checked />&nbsp;요청
 												&nbsp;&nbsp;
-												<input type="checkbox" class="checkthis" />&nbsp;미요청
+												<input type="radio"/>&nbsp;미요청
 											</div>
 										</div>
 
