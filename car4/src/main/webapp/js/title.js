@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	 init_all();
+	 
     $(".dropdown").hover(function() {
         $('.dropdown-menu', this).stop(true, true).slideDown("fast");
         $(this).toggleClass('open');
@@ -6,12 +9,7 @@ $(document).ready(function() {
         $('.dropdown-menu', this).stop(true, true).slideUp("fast");
         $(this).toggleClass('open');
     });
-});
 
-/*
- *  /* right up start
- */
-$(document).ready(function() {
     $("#mytable #checkall").click(function() {
         if ($("#mytable #checkall").is(':checked')) {
             $("#mytable input[type=checkbox]").each(function() {
@@ -26,106 +24,147 @@ $(document).ready(function() {
     });
 
     $("[data-toggle=tooltip]").tooltip();
-});
-/* right up start */
 
-/*$(document).ready(function() {
-    var count = 0;
-    if (count == 0) {
-        $(".list-group-item").on({
-            click : function() {
-            $(this).css();
-            }
-
-        });
-        count = 1;
+    
+  //주행거리 구간 슬라이드 바
+    if (top.location != location) {
+    top.location.href = document.location.href ;
     }
-});*/
+    	$(function(){
+    		window.prettyPrint && prettyPrint();
 
+        $('#sl1').slider({
+          formater: function(value) {
+            return 'Current value: '+value;
+          }
+        });
+        $('#sl2').slider();
 
+        var RGBChange = function() {
+          $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
+        };
 
+        var r = $('#R').slider()
+                .on('slide', RGBChange)
+                .data('slider');
+        var g = $('#G').slider()
+                .on('slide', RGBChange)
+                .data('slider');
+        var b = $('#B').slider()
+                .on('slide', RGBChange)
+                .data('slider');
 
-
-
-
-    
-    
-
-$(document).ready(function() {
-
-	$(".make-list > a").hide();
-/*  
-   $("#list2-1 > a").hide();
-   $("#list2-2 > a").hide();
-   $("#list2-3 > a").hide();
-   $("#list3-1 > a").hide();
-   $("#list3-2 > a").hide();
-   */
-
-});
-
-
-$(document).ready(function() {
-    /* 첫번째 클릭 시작 */
-    $("#list1 > a").click(function(event){
-        if((event.target.id)=="a1"){
-           $("#list2-1 > a").show();
-           $("#list2-1 > p,br").hide();
-           
-           $("#list3-1 > a").hide();
-           $("#list3-1 > br").show();
-           $("#list3-2").hide();
-           
-           $("#list2-1 > a").click(function(event){// a1->list2-1
-        	   if( (event.target.id)=="hd" ) {// list2-1:hd -> list3-1
-        		   $("#list3-1 > a").show();
-                   $("#list3-1 > p,br").hide();
-                   
-                
-        	   }else if( (event.target.id)=="kia" ) {
-        		   $("#list3-2").show();
-        		   var cnt =0;
-        		   alert(cnt);
-        		   cnt ++;
-        		 
-
-                
-        	   }else {
-        		   
-        	   }
-           })//end of a1->list2-1
-           
-    /* 첫번째 클릭 끝 */
-        /* ==== 첫번째 클릭 후 다른 카테고리 클릭 시 ====*/    
-            $("#list1 > a").click(function(event){
-            if((event.target.id)=="a2"){
-                $("#list2-1").hide();
-                $("#list2-2").show();
-                $("#list2-2 > p,br").hide();
-               }
-           });
-        /* ==== 첫번째 클릭 후 다른 카테고리 클릭 끝 ====*/
-        }else if((event.target.id)=="a2"){
-           $("#list2-2 > a").show();
-           $("#list2-2 > p,br").hide();
-    /* 두번째 클릭 끝 */     
-        /* ==== 두번째 클릭 후 다른 카테고리 클릭 시 ====*/      
-           $("#list1 > a").click(function(event){
-            if((event.target.id)=="a1"){
-                $("#list2-2").hide();
-                $("#list2-1").show();
-                $("#list2-1 > p,br").hide();
-               }
-           });
-        /* ==== 두번째 클릭 후 다른 카테고리 클릭 끝 ====*/       
-           
-           
-        }else{
-           $("#list2-3 > a").show();
-           $("#list2-3 > p,br").hide();
-        }
+        $('#eg input').slider();
     });
+
+    
 });
+
+
+// list2, list3 모두 초기화 함수.
+function init_all() {
+	// make-list(list2, list3 포함 클래스) 초기화
+	$(".make-list > a").hide();
+	$(".make-list > p,br").show();
+}
+
+// list3만 초기화하는 함수.
+function init_list3() {
+	// list3에 따로 group3라는 클래스를 부여하여 초기화.
+	$(".group3 > a").hide();
+	$(".group3 > p,br").show(); 
+}
+
+$(".group1 > a").click(function(event){
+	// 리스트1이 선택될 경우 리스트2와 리스트3을 먼저 초기화.
+	init_all();
+	// 해당 target의 id를 리스트이름으로 받아와서 리스트 2를 보여줌.
+	$("#list" + event.target.id + " > a").show();
+	// list2의 문구는 숨김.
+	$(".group2 > p,br").hide();
+});
+
+$(".group2 > a").click(function(event){
+	// 리스트2에서 선택되는 경우 리스트3만 초기화.
+	init_list3();
+	// list1 선택될때와 동일.
+	$("#list3-" + event.target.id + " > a").show();
+	$(".group3 > p,br").hide(); 
+});
+
+
+
+//////// 연식 입력받기 
+//연식 checked/ unchecked
+$("#modelyear").click(function(event){
+	
+	if (  $("#modelyear").is(":checked")   ) {
+		
+		$("#inputmodelyear").css("color", "black");
+		$("#to").css("color", "black");
+		$("#up").attr("disabled", false);
+		$("#down").attr("disabled", false);
+		
+	
+	}else  {
+		
+		$("#inputmodelyear").css("color", "gray");
+		$("#to").css("color", "gray");
+		$("#up").attr("disabled", true);
+		$("#up").val("");
+		$("#down").attr("disabled", true);
+		$("#down").val("");
+	
+	}
+});
+
+////////주행거리 입력받기 
+//주행거리 checked/ unchecked
+$("#modelyear").click(function(event){
+	
+	if (  $("#modelyear").is(":checked")   ) {
+		
+		$("#inputmodelyear").css("color", "black");
+		$("#to").css("color", "black");
+		$("#up").attr("disabled", false);
+		$("#down").attr("disabled", false);
+		
+	
+	}else  {
+		
+		$("#inputmodelyear").css("color", "gray");
+		$("#to").css("color", "gray");
+		$("#up").attr("disabled", true);
+		$("#up").val("");
+		$("#down").attr("disabled", true);
+		$("#down").val("");
+	
+	}
+});
+
+
+
+
+////////text input 자동으로 다음칸 넘어가기
+$("#up").keyup(function () {
+
+	var inputLength = $(this).val().length;
+	var remain = 4 - inputLength;
+
+	if ( remain <=  0) {
+		var up = $("#up").val();
+		
+		$("#down").focus();
+		
+	}
+	});
+
+
+
+
+
+
+
 
 
 
