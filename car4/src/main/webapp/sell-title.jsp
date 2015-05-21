@@ -177,7 +177,7 @@
 						</div>
 
 						<!-- 두번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade " id="second">
+						<div class="tab-pane fade " id="profile">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
 								<form class="form-horizontal" name="form2" role="form">
@@ -185,13 +185,15 @@
 									
 
 										<div class="form-group">
-											<label class="control-label col-md-1" id="p_carNo" name="p_carNo" >차량번호
+											<label class="control-label col-md-1" >차량번호
 												|</label>
 
 											<div class="col-md-2">
-												<input type="text" class="form-control" id="" placeholder="입력">
+												<input type="text" class="form-control" id="p_carNo"
+													name="p_carNo" placeholder="입력" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="올바른 차량번호 형식으로 입력해주세요.">
 											</div>
-											
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
@@ -295,8 +297,8 @@
 										<!-- /자동차 선택 리스트 -->
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >연식
-												|</label>
+											<label class="control-label col-md-1" >
+												연식 |</label>
 
 											<div class="col-sm-2">
 												<select class="form-control" id="p_year" name="p_year">
@@ -363,19 +365,34 @@
 												|</label>
 
 
-											<div class="col-md-1">
+											<!-- <div class="col-md-1">
 												<input type="text" class="form-control" id="p_cc" name="p_cc" placeholder="입력" />
 
+											</div -->
+											<div class="col-md-2">
+											
+												<input type="text" class="form-control" id="p_cc"
+													name="p_cc" placeholder="입력" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
 											<div class="col-md-1">CC</div>
 
-											<label class="control-label col-md-1 col-md-offset-4"
+											<label class="control-label col-md-1 col-md-offset-3"
 												for="phone">주행거리 |</label>
-
+<!-- 
 											<div class="col-md-1">
 												<input type="text"  class="form-control" id="p_km" name="p_km" placeholder="입력" />
 
+											</div> -->
+											
+											<div class="col-md-2">
+												<input type="text" class="form-control" id="p_km"
+													name="p_km" placeholder="입력" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
+											
 											<div class="" style="margin-top:1%;">Km</div>
 
 										</div>
