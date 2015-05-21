@@ -42,9 +42,46 @@ function init_list3() {
 
 // ready함수.
 $(document).ready(function() {
-	 init_all();
-});
+	
+	
+	
+	init_all();
 
+	
+	$("#p_carNo").blur(function() {
+		var check = /^[\uac00-\ud7a3|0-9|\*]+$/;
+		var p_carNo = $("#p_carNo").val();
+
+		$("#p_carNo").popover('show');
+
+		if (p_carNo.match(check)) {
+			$("#p_carNo").popover('hide');
+		}
+	});
+
+	$("#p_cc").blur(function() {
+		var check = /^[\0-9\*]+$/;
+		var p_cc = $("#p_cc").val();
+
+		$("#p_cc").popover('show');
+
+		if (p_cc.match(check)) {
+			$("#p_cc").popover('hide');
+		}
+	});
+	
+	$("#p_km").blur(function() {
+		var check = /^[\0-9\*]+$/;
+		var p_km = $("#p_km").val();
+
+		$("#p_km").popover('show');
+
+		if (p_km.match(check)) {
+			$("#p_km").popover('hide');
+		}
+	});
+	
+});
 
 $(function() {
 	$("#list1").change(function() {
@@ -69,4 +106,12 @@ $(function() {
 		$(".list4-" + aaa).show();
 	});
 });
+
+/*./차량명, 색상 입력 셀렉박스 */
+
+/* 인풋박스 체크 */
+
+
+
+
 	
