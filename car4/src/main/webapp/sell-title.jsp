@@ -17,6 +17,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.toggle-header{
+    padding:3px 0;
+    margin:3px 0;
+    background-color:white;
+    color:white;
+}
+.txt-green{
+    color:green;
+}
+.txt-red{
+    color:red;
+}
+</style>
 </head>
 <body>
 	<section style="background: #ffffff;">
@@ -28,7 +42,7 @@
 						<ul class="nav nav-tabs" id="myTab">
 							<div class="liner"></div>
 							<!-- 첫번째 li -->
-							<li class="active"><a href="#home" data-toggle="tab"
+							<li class="first"><a href="#first" data-toggle="tab"
 								title="판매자 정보입력"> <span class="round-tabs one"> <i
 										class="glyphicon glyphicon-home"></i>
 								</span>
@@ -36,7 +50,7 @@
 							<!-- 첫번째 li 끝-->
 
 							<!-- 두번째 li -->
-							<li><a href="#profile" data-toggle="tab" title="profile">
+							<li><a href="#second" data-toggle="tab" title="profile">
 									<span class="round-tabs two"> <i
 										class="glyphicon glyphicon-user"></i>
 								</span>
@@ -44,7 +58,7 @@
 							<!-- 두번째 li 끝  -->
 
 							<!-- 세번째 li -->
-							<li><a href="#ppp" data-toggle="tab" title="ppp"> <span
+							<li><a href="#third" data-toggle="tab" title="ppp"> <span
 									class="round-tabs two"> <i
 										class="glyphicon glyphicon-user"></i>
 								</span>
@@ -52,7 +66,7 @@
 							<!-- 세번째 li 끝-->
 
 							<!-- 다섯번째 li -->
-							<li><a href="#doner" data-toggle="tab" title="blah blah">
+							<li><a href="#fourth" data-toggle="tab" title="blah blah">
 									<span class="round-tabs four"> <i
 										class="glyphicon glyphicon-comment"></i>
 								</span>
@@ -60,7 +74,7 @@
 							<!-- 다섯번째 li 끝 -->
 
 							<!-- 여섯번째 li -->
-							<li><a href="#doner" data-toggle="tab" title="completed">
+							<li><a href="#fifth" data-toggle="tab" title="completed">
 									<span class="round-tabs five"> <i
 										class="glyphicon glyphicon-ok"></i>
 								</span>
@@ -71,7 +85,7 @@
 
 					<!-- 첫번째 동그라미 클릭시 div -->
 					<div class="tab-content">
-						<div class="tab-pane fade in active" id="home">
+						<div class="tab-pane fade in active" id="first">
 							<div class="row">
 								<div class="col-md-9 col-md-offset-2">
 									<form class="form-horizontal" role="form" action="">
@@ -163,7 +177,7 @@
 						</div>
 
 						<!-- 두번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade " id="profile">
+						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
 								<form class="form-horizontal" name="form2" role="form">
@@ -425,7 +439,7 @@
 
 
 						<!-- 세번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade" id="ppp">
+						<div class="tab-pane fade" id="third">
 
 
 							<div class="col-md-8 col-md-offset-2">
@@ -641,8 +655,8 @@
 							</div>
 						</div>
 
-						<!-- 다섯번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade" id="doner">
+						<!-- 네번째 동그라미 클릭시 div -->
+						<div class="tab-pane fade" id="fourth">
 							<div class="container">
 								<div class="row">
 									<div class='list-group gallery form-group'>
@@ -960,9 +974,340 @@
 							</div>
 							<!-- container / end -->
 						</div>
+						<!-- 4번째 끝  -->
+						
+						
+<!--  fifth 시작  -->
+<div class="tab-pane fade" id="fifth">
+	<div class="container">
+		<div class="row">
+			<div class='list-group gallery form-group'>
+				<div class="row">
+					<div class="container">
+					    <hgroup class="mb20">
+							<h1>판매자 등록</h1>
+							<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
+						</hgroup>
+					
+					    <section class="col-xs-12 col-sm-6 col-md-12">
+							<article class="search-result row">
+								<div class="col-xs-12 col-sm-12 col-md-3">
+									<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+								</div>
+								
+								<div class="col-xs-12 col-sm-12 col-md-9 excerpet">
+									<h3><a href="#" title="">회원 상세 정보</a></h3>
+									<div class="span5">
+								            <table class="table table-striped table-condensed">
+								                  <thead>
+								                  <tr>
+								                      <th>이  름</th>
+								                      <th>주  소</th>
+								                      <th>연락처</th>
+								                      <th>이메일</th>
+								                      <th>지   역</th>                                     
+								                  </tr>
+								              </thead>   
+								              <tbody>
+								                <tr>
+								                    <td>${user.userName}</td>
+					                    <td>${user.addr}</td>
+					                    <td>${user.phone}</td>
+					                    <td>${user.regDate}</td>                                  
+					                </tr>
+					                <tr>                                      
+					                </tr>
+					                                             
+					              </tbody>
+					            </table>
+					            </div>
+					</div>
+					<span class="clearfix borda"></span>
+				</article>
+		
+		        <article class="search-result row">
+					<div class="col-xs-12 col-sm-12 col-md-3">
+						<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/food" alt="Lorem ipsum" /></a>
+					</div>
+					
+					<div class="col-xs-12 col-sm-12 col-md-9">
+						<h3><a href="#" title="">차량 세부 사항</a></h3>
+						
+						
+							<div class="span5">
+					            <table class="table table-striped table-condensed">
+					                  <thead>
+					                  <tr>
+					                      <th>차량번호</th>
+					                      <th>차 량  명</th>
+					                      <th>연      식</th>
+					                      <th>배  속 기</th>    
+					                      <th>배  기  량</th>
+					                      <th>색       상</th>
+					                      <th>연       료</th>
+					                      <th>주행 거리</th>
+					                      <th>판매 구분</th>
+					                      <th>사고 여부</th>                                      
+					                  </tr>
+					              </thead>   
+					              <tbody>
+					                <tr>
+					                    <td>Donna R. Folse</td>
+					                    <td>2012/05/06</td>
+					                    <td>Editor</td>
+					                    <td><span class="label label-success">Active</span>
+					                    <td>Editor</td>
+					                    <td>Editor</td>
+					                    <td>Editor</td>
+					                    <td>Editor</td>
+					                    <td>Editor</td>
+					                    <td>Editor</td>
+					                                                         
+					                </tr>
+					                <thead>
+					                <tr>
+					                    <td colspan="10" align="center" data-toggle="collapse" data-target="#car-info">
+					  						
+					<div class="panel panel-default clearfix">
+							<!-- header -->
+                            <div class="col-xs-12 toggle-header">
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
+                                        <i class="glyphicon glyphicon-resize-vertical"></i>상품 세부 사항 확인시 클릭하십시오.
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /header -->
+                            <br><br><br>
+                            
+                            <!--  collapse -->
+                                <div id="demo" class="collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    [내|외장] 옵션                                            
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          
+                                         <!--  편의 장치  시작  -->
+                                         <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    [편 의 장 치]                                           
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  편의 장치   -->
+                                         <!--  안전 장치  시작  -->
+                                         <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    [안 전 장 치]                                           
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  안전 장치   -->
+                                       <!--  튜닝  사항 시작  -->
+                                         <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    [튜 닝 사 항]                                            
+                                                </div>
+                                                <div class="col-xs-1 text-left">
+                                                	<p>가나다라마바</p>
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  튜닝사항   -->
+                                         <!--  AV/오디오/항범  시작  -->
+                                         <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    [AV/오디오/항범]                                            
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                                <div class="col-xs-1 text-center">
+                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  편의 장치   -->
+                                         
+                                     </div>
+                                     <!-- /collapse -->
+                            </div>
+                        </td>
+					  </tr>
+                   </thead>                          
+             	 </tbody>
+            	</table>
+			</div>
+		</div>
+					<span class="clearfix borda"></span>
+				</article>
+			</section>	
+		</div>
+						
+						<!--  이전 최종 확인 부분  -->
+						<br><br><br>
+								<div class="col-md-8 col-md-offset-2" align="center">
+									<button type="button" class="btn btn-danger btn-lg"
+										style="width: 40%;">
+										<span class="glyphicon glyphicon-ok-sign"></span>이전
+									</button>
+									<button type="button" class="btn btn-primary btn-lg"
+										style="width: 40%;">
+										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
+									</button>						
+								</div>
+						<br>
+					</div>
+								<!-- row / end -->
+							</div>
+							<!-- container / end -->
+						</div>
+						
+						
+						
+						
+=======
+>>>>>>> .r32
 						<div class="clearfix"></div>
 					</div>
 				</div>
+				<!--  다섯번째 끝     -->
+				
+				
 			</div>
 		</div>
 	</section>
