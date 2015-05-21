@@ -30,6 +30,7 @@ public class UserDao{
 
 	///Method
 	public void addUser(User user) throws Exception {
+		System.out.println("AddUserDAO나와라" + user);
 		sqlSession.insert("UserMapper.addUser", user);
 	}
 

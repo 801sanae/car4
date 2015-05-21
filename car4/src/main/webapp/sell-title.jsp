@@ -177,23 +177,21 @@
 						</div>
 
 						<!-- 두번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade " id="profile">
+						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-								<form class="form-horizontal" name="form2" role="form">
+								<form class="form-horizontal" name="form2" role="form" action="addCar.do">
 									<div class="row">
 									
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >차량번호
+											<label class="control-label col-md-1" id="carNum" name="carNum" >차량번호
 												|</label>
 
 											<div class="col-md-2">
-												<input type="text" class="form-control" id="p_carNo"
-													name="p_carNo" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="올바른 차량번호 형식으로 입력해주세요.">
+												<input type="text" class="form-control" id="" placeholder="입력">
 											</div>
+											
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
@@ -205,7 +203,7 @@
 												|</label>
 											
 											<!-- '제조국' 선택 리스트  -->
-											<div class="col-md-2"  name="p_manuCountry" >
+											<div class="col-md-2"  name="manuCountry" id="manuCountry">
 											
 												<select class="form-control country" id="list1">
 													<option>제조국</option>
@@ -216,7 +214,7 @@
 											<!-- /'제조국' 선택 리스트  -->
 											
 											<!-- '제조사' 선택 리스트  -->
-											<div class="col-md-2" id="p_manuCompany" name="p_manuCompany">
+											<div class="col-md-2" id="manuCo" name="manuCo">
 												
 												<select class="form-control company" id="list2">
 
@@ -238,7 +236,7 @@
 											
 											
 											<!-- '모델명' 선택 리스트  -->
-											<div class="col-md-2" id="p_model" name="p_model">
+											<div class="col-md-2" id="model" name="model">
 										
 												
 												<select class="form-control" id="list3">
@@ -271,7 +269,7 @@
 											<div class="col-md-2">
 											
 												<!-- basic -->
-												<select class="form-control" id="list4">
+												<select class="form-control" id="list4" name="color">
 													<option id="color_option">색상</option>
 												<!-- /basic -->
 												
@@ -297,11 +295,11 @@
 										<!-- /자동차 선택 리스트 -->
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >
-												연식 |</label>
+											<label class="control-label col-md-1" >연식
+												|</label>
 
 											<div class="col-sm-2">
-												<select class="form-control" id="p_year" name="p_year">
+												<select class="form-control" id="year" name="year">
 
 													<option>년</option>
 													<option>2015</option>
@@ -325,7 +323,7 @@
 												for="phone">형식년도 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control" id="p_carYear" name="p_carYear">
+												<select class="form-control" id="carYear" name="carYear">
 
 													<option>년형</option>
 													<option>2015</option>
@@ -350,12 +348,12 @@
 												for="phone">연료 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control" id="p_fuel" name="p_fuel">
+												<select class="form-control" id="fuel" name="fuel">
 
 													<option>선택</option>
-													<option name="p_gasoline">가솔린</option>
-													<option name="p_diesel">디젤</option>
-													<option name="p_lpg">LPG</option>
+													<option value="Gasolin">가솔린</option>
+													<option value="Diesel">디젤</option>
+													<option value="LPG">LPG</option>
 												</select>
 											</div>
 										</div>
@@ -365,34 +363,19 @@
 												|</label>
 
 
-											<!-- <div class="col-md-1">
-												<input type="text" class="form-control" id="p_cc" name="p_cc" placeholder="입력" />
+											<div class="col-md-1">
+												<input type="text" class="form-control" id="cc" name="cc" placeholder="입력" />
 
-											</div -->
-											<div class="col-md-2">
-											
-												<input type="text" class="form-control" id="p_cc"
-													name="p_cc" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
 											<div class="col-md-1">CC</div>
 
-											<label class="control-label col-md-1 col-md-offset-3"
+											<label class="control-label col-md-1 col-md-offset-4"
 												for="phone">주행거리 |</label>
-<!-- 
-											<div class="col-md-1">
-												<input type="text"  class="form-control" id="p_km" name="p_km" placeholder="입력" />
 
-											</div> -->
-											
-											<div class="col-md-2">
-												<input type="text" class="form-control" id="p_km"
-													name="p_km" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
+											<div class="col-md-1">
+												<input type="text"  class="form-control" id="mileage" name="mileage" placeholder="입력" />
+
 											</div>
-											
 											<div class="" style="margin-top:1%;">Km</div>
 
 										</div>
@@ -443,7 +426,7 @@
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>이전
 												</button>
-												<button type="button" class="btn btn-primary btn-lg"
+												<button type="submit" class="btn btn-primary btn-lg"
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>다음
 												</button>
