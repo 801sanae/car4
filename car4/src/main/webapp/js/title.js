@@ -61,39 +61,6 @@ $(document).ready(function() {
 });
 
 
-// list2, list3 모두 초기화 함수.
-function init_all() {
-	// make-list(list2, list3 포함 클래스) 초기화
-	$(".make-list > a").hide();
-	$(".make-list > p,br").show();
-}
-
-// list3만 초기화하는 함수.
-function init_list3() {
-	// list3에 따로 group3라는 클래스를 부여하여 초기화.
-	$(".group3 > a").hide();
-	$(".group3 > p,br").show(); 
-}
-
-$(".group1 > a").click(function(event){
-	// 리스트1이 선택될 경우 리스트2와 리스트3을 먼저 초기화.
-	init_all();
-	// 해당 target의 id를 리스트이름으로 받아와서 리스트 2를 보여줌.
-	$("#list" + event.target.id + " > a").show();
-	// list2의 문구는 숨김.
-	$(".group2 > p,br").hide();
-});
-
-$(".group2 > a").click(function(event){
-	// 리스트2에서 선택되는 경우 리스트3만 초기화.
-	init_list3();
-	// list1 선택될때와 동일.
-	$("#list3-" + event.target.id + " > a").show();
-	$(".group3 > p,br").hide(); 
-});
-
-
-
 //////// 연식 입력받기 
 //연식 checked/ unchecked
 $("#modelyear").click(function(event){
@@ -143,8 +110,6 @@ $("#modelyear").click(function(event){
 });
 
 
-
-
 ////////text input 자동으로 다음칸 넘어가기
 $("#up").keyup(function () {
 
@@ -157,19 +122,33 @@ $("#up").keyup(function () {
 		$("#down").focus();
 		
 	}
-	});
+});
 
+//list2, list3 모두 초기화 함수.
+function init_all() {
+	// make-list(list2, list3 포함 클래스) 초기화
+	$(".make-list > a").hide();
+	$(".make-list > p,br").show();
+}
 
+$(".group1 > a").click(function(event){
+	// 리스트1이 선택될 경우 리스트2와 리스트3을 먼저 초기화.
+	
+	$("#table2").hide();
+	init_all();
+	// 해당 target의 id를 리스트이름으로 받아와서 리스트 2를 보여줌.
+	$("#list" + event.target.id + " > a").show();
+	// list2의 문구는 숨김.
+	$(".group2 > p,br").hide();
+});
 
-
-
-
-
-
-
-
-
-
-
-
+$(".group2 > a").click(function(event){
+	$("#table3").hide();
+	$(".group3 > a").hide();
+	$(".group3 > p,br").show(); 
+	
+	// list1 선택될때와 동일.
+	$("#list3-" + event.target.id + " > a").show();
+	$(".group3 > p,br").hide(); 
+});
 
