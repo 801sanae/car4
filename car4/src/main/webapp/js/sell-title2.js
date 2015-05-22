@@ -49,36 +49,36 @@ $(document).ready(function() {
 
 	
 	/* popover를 이용한 인풋박스 유효성 검사 */
-	$("#p_carNo").blur(function() {
+	$("#carNum").blur(function() {
 		var check = /^[\uac00-\ud7a3|0-9|\*]+$/;
-		var p_carNo = $("#p_carNo").val();
+		var p_carNo = $("#carNum").val();
 
-		$("#p_carNo").popover('show');
+		$("#carNum").popover('show');
 
-		if (p_carNo.match(check)) {
-			$("#p_carNo").popover('hide');
+		if (carNum.match(check)) {
+			$("#carNum").popover('hide');
 		}
 	});
 
-	$("#p_cc").blur(function() {
+	$("#cc").blur(function() {
 		var check = /^[\0-9\*]+$/;
-		var p_cc = $("#p_cc").val();
+		var p_cc = $("#cc").val();
 
-		$("#p_cc").popover('show');
+		$("#cc").popover('show');
 
-		if (p_cc.match(check)) {
-			$("#p_cc").popover('hide');
+		if (cc.match(check)) {
+			$("#cc").popover('hide');
 		}
 	});
 	
-	$("#p_km").blur(function() {
+	$("#km").blur(function() {
 		var check = /^[\0-9\*]+$/;
-		var p_km = $("#p_km").val();
+		var p_km = $("#km").val();
 
-		$("#p_km").popover('show');
+		$("#km").popover('show');
 
-		if (p_km.match(check)) {
-			$("#p_km").popover('hide');
+		if (km.match(check)) {
+			$("#km").popover('hide');
 		}
 	});
 	
