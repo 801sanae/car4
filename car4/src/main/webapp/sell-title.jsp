@@ -473,31 +473,32 @@
 												<div id="collapse1" class="panel-collapse collapse"
 													aria-expanded="false" style="height: 0px;">
 													<div class="panel-body">
-														<input id="powerWindow" type="checkbox"
-															name="checkbox-test1" value="one"><label
-															for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="fullautoAircorn" type="checkbox"
-															name="checkbox-test3" value="three"><label
-															for="fullautoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="leftrightAircorn" type="checkbox"
-															name="checkbox-test4" value="four"><label
-															for="leftrightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="gaJuksheet" type="checkbox"
-															name="checkbox-test5" value="one"><label
-															for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="warmSheet" type="checkbox" name="checkbox-test6"
-															value="two"> <label for="warmSheet">열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="windSheet" type="checkbox" name="checkbox-test7"
-															value="three"> <label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="masagiSheet" type="checkbox" name="checkbox-test8"
-															value="four"><label for="masagiSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="bucketSheet" type="checkbox"
-															name="checkbox-test9" value="one"><label
-															for="bucketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="memorySheet" type="checkbox" name="checkbox-test10"
-															value="two"> <label for="memorySheet">메모리시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															<input id="powerWindow" type="checkbox" name="checkbox-test1" value="one">
+															<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> 
+															<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="fullAutoAircorn" type="checkbox" name="checkbox-test3" value="three">
+															<label for="fullAutoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="leftRightAircorn" type="checkbox" name="checkbox-test4" value="four">
+															<label for="leftRightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="gajukSheet" type="checkbox" name="checkbox-test5" value="one">
+															<label for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="warmSheet" type="checkbox" name="checkbox-test6" value="two"> 
+															<label for=warmSheet>열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="windSheet" type="checkbox" name="checkbox-test7" value="three">
+															<label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="msgSheet" type="checkbox" name="checkbox-test8" value="four">
+															<label for="msgSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+															
+															<input id="burcketSheet" type="checkbox" name="checkbox-test9" value="one">
+															<label for="burcketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
@@ -512,26 +513,32 @@
 												<div id="collapse2" class="panel-collapse collapse"
 													aria-expanded="false" style="height: 0px;">
 													<div class="panel-body">
-														<input id="powerWindow" type="checkbox"
-															name="checkbox-test1" value="one"><label
-															for="powerWindow">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="fullautoAircorn" type="checkbox"
-															name="checkbox-test3" value="three"> <label
-															for="fullautoAircorn">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="leftrightAircorn" type="checkbox"
-															name="checkbox-test4" value="four"> <label
-															for="leftrightAircorn">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="gaJuksheet" type="checkbox" name="checkbox-test5"
-															value="one"> <label for="gajukSheet">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="warmSheet" type="checkbox"
-															name="checkbox-test6" value="two"> <label
-															for="warmSheet">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="windSheet" type="checkbox" name="checkbox-test7"
-															value="three"> <label for="windSheet">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-															id="masagiSheet" type="checkbox" name="checkbox-test8"
-															value="four"> <label for="masagiSheet">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="sunRoof" type="checkbox" name="checkbox-test1" value="one">
+														<label for="sunRoof">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="pnrmSunRoof" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="pnrmSunRoof">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="hidRam" type="checkbox" name="checkbox-test3" value="three"> 
+														<label for="hidRam">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="autoRight" type="checkbox" name="checkbox-test4" value="four"> 
+														<label for="autoRight">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="ecmRoomMirror" type="checkbox" name="checkbox-test5"value="one">
+														<label for="ecmRoomMirror">ECM룸미러</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+														
+														<input id="smartKey" type="checkbox" name="checkbox-test5"value="one">
+														<label for="smartKey">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+														
+														<input id="egStartButton" type="checkbox" name="checkbox-test6" value="two"> 
+														<label for="egStartButton">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="rigthClean" type="checkbox" name="checkbox-test7" value="three">
+														<label for="rigthClean">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="jkSubSystem" type="checkbox" name="checkbox-test8" value="four">
+														<label for="jkSubSystem">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
@@ -545,25 +552,33 @@
 												<div id="collapse3" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">측에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<label for="powerWindow">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">EBD</label>
+														<input id="driverAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="driverAirBag">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="driverFriendAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="driverFriendAirBag">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="sideAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="sideAirBag">측면에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="ctAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="ctAirBag">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="passengerDetectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="passengerDetectAirBag">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="mrProtectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="mrProtectAirBag">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="activeHeadRest" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="activeHeadRest">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="abs" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="abs">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="bas" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="bas">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
 													</div>
 												</div>
 											</div>
@@ -577,25 +592,33 @@
 												<div id="collapse4" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">블랙박</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">핸즈프리</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<label for="powerWindow">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">USB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="navi" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="navi">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="hipass" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="hipass">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="blackBox" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="blackBox">블랙박스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="handFreeze" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="handFreeze">핸즈프리즈</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="blueTooth" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="blueTooth">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="dvdPlayer" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="dvdPlayer">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="dmb" type="checkbox" name="checkbox-test2" value="two">
+														<label for="dmb">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="mp3" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="mp3">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="iPhoneAdapter" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="iPhoneAdapter">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
 													</div>
 												</div>
 											</div>
@@ -609,25 +632,32 @@
 												<div id="collapse5" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">터보차</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">에어로파</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">슈퍼차</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<label for="powerWindow">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="powerWindow">오디</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														<input id="aircorn" type="checkbox" name="checkbox-test2"
-															value="two"> <label for="aircorn">힐/타이</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="turboChaser" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="turboChaser">터보차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="airrowFigher" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="airrowFigher">에어로파이터</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="superChaser" type="checkbox" name="checkbox-test2" value="two">
+														<label for="superChaser">슈퍼차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="mission" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="mission">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="handle" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="handle">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="spoiler" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="spoiler">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="ggFan" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="ggFan">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="audio" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="audio">오디오</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<input id="wheelTiger" type="checkbox" name="checkbox-test2" value="two"> 
+														<label for="wheelTiger">힐/타이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
