@@ -3,7 +3,7 @@ package com.model2.mvc.service.domain;
 public class Car {
 
 	//Field
-	
+
 	private int carNum;				//차량번호
 	private String manuCountry;		//제조국 
 	private String manuCo;			//제조사
@@ -18,44 +18,24 @@ public class Car {
 	private String sell;			//판매구분
 	private String accident;			//사고여부
 	private String professor;			//전문 평가사
-	
 
-	
-
-	
 	//Constructor
 	public Car() {
 		// TODO Auto-generated constructor stub
 		System.out.println(this.getClass());
 	}
 
-
-
-
-
 	public int getCarNum() {
 		return carNum;
 	}
-
-
-
-
 
 	public void setCarNum(int carNum) {
 		this.carNum = carNum;
 	}
 
-
-
-
-
 	public String getManuCountry() {
 		return manuCountry;
 	}
-
-
-
-
 
 	public void setManuCountry(String manuCountry) {
 		this.manuCountry = manuCountry;
@@ -270,5 +250,5 @@ public class Car {
 
 
 
-	
+
 }

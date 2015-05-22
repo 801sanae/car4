@@ -1,0 +1,49 @@
+내/외장옵션
+
+powerWindow 파워윈도우
+aircorn 에어콘
+fullAutoAircorn 풀오토에어콘
+leftRightAircorn 좌/우독립에어콘
+gajukSheet 가죽시트
+warmSheet 열선시트
+windSheet 통풍시트
+msgSheet 마사지시트
+burcketSheet 버켓시트
+memorySheet 메모리시트
+
+편의장치
+
+sunRoof 썬루프
+pnrmSunRoof 파노라마썬루
+hidRam HID/제논램
+autoRight 오토라이트
+smartKey 스마트키/키레스고
+egStartButton 엔진스타트버튼
+rigthClean 라이트세척장
+jkSubSystem 주차조향보조시스템
+
+안전장치
+
+driverAirBag 운전석에어백
+driverFriendAirBag 동승석에어백
+sideAirBag 측면에어백
+ctAirBag 커튼에어백
+passengerDetectAirBag 승객감지에어백
+mrProtectAirBag 무릎보호에어백
+activeHeadRest 액티브헤드레스트
+abs ABS
+bas BAS
+ebd EBD
+
+AV/오디오/항법
+
+navi 내비게이션
+hipass 하이패스
+blackBox 블랙박스
+handFreeze 핸즈프리즈
+blueTooth 블루투스
+dvdPlayer VD플레이어
+dmb DMB
+mp3 MP3
+iPhoneAdapter 아이폰단자
+usb USB
