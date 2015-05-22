@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -182,23 +182,22 @@
 						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-							<form action="addCar.do">
-							<input name="carNum">
-							<button type="submit">gg</button>
-							</form>
-							
-								<form class="form-horizontal" name="form2" role="form" action="addCar.do">
+												
+								<form class="form-horizontal" name="form2" role="form" action="addCar.do" method="post">
 									<div class="row">
 									
 
 										<div class="form-group">
 											<label class="control-label col-md-1">차량번호
 												|</label>
-
+												
 											<div class="col-md-2">
-												<input type="text" class="form-control"  placeholder="입력" id="carNum" name="carNum" >
+												<input type="text" class="form-control" id="carNum"
+													name="carNum" placeholder="입력" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="올바른 차량번호 형식으로 입력해주세요.">
 											</div>
-											
+
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
@@ -214,8 +213,8 @@
 											
 												<select class="form-control country" id="list1" name="manuCountry">
 													<option>제조국</option>
-													<option id="2-1" value="korea">국산차</option>
-													<option id="2-2" value="foreign">수입차</option>
+													<option value="2-1">국산차</option>
+													<option value="2-2">수입차</option>
 												</select>
 											</div>
 											<!-- /'제조국' 선택 리스트  -->
@@ -227,15 +226,15 @@
 
 													<option id="company_basic">제조사</option>
 													<!-- 국내차 -->
-													<option class="list2-1" id="hyundai" value="hyundai">현대</option>
-													<option class="list2-1" id="kia" value="kia">기아</option>
-													<option class="list2-1" id="chevolet" value="chevolet">쉐보레</option>
+													<option class="list2-1" value="hyundai">현대</option>
+													<option class="list2-1" value="kia">기아</option>
+													<option class="list2-1" value="chevolet">쉐보레</option>
 													<!-- /국내차 -->
 													
 													<!-- 수입차 -->
-													<option class="list2-2" id="bmw" value="bmw">bmw</option>
-													<option class="list2-2" id="audi" value="audi">아우디</option>
-													<option class="list2-2" id="volkswagen" value="volkswagen">폭스바겐</option>
+													<option class="list2-2" value="bmw">bmw</option>
+													<option class="list2-2" value="audi">아우디</option>
+													<option class="list2-2" value="volkswagen">폭스바겐</option>
 													<!-- /수입차 -->
 												</select>
 											</div>
@@ -243,28 +242,28 @@
 											
 											
 											<!-- '모델명' 선택 리스트  -->
-											<div class="col-md-2" id="model">
+											<div class="col-md-2">
 										
 												
 												<select class="form-control" id="list3"  name="model">
 													<option id="model_basic">모델명</option>
 												
 												<!-- hyundai -->
-													<option class="list3-hyundai" id="sonata" value="sonata">쏘나타</option>
-													<option class="list3-hyundai" id="grandeur" value="grandeur">그랜져</option>
-													<option class="list3-hyundai" id="avante" value="avante">아반떼</option>
+													<option class="list3-hyundai" value="sonata">쏘나타</option>
+													<option class="list3-hyundai" value="grandeur">그랜져</option>
+													<option class="list3-hyundai" value="avante">아반떼</option>
 												<!-- /hyundai -->
 				
 												<!-- kia -->
-													<option class="list3-kia" id="carnival" value="carnival">카니발</option>
-													<option class="list3-kia" id="porte" value="porte">포르테</option>
-													<option class="list3-kia" id="morning" value="morning">모닝</option>
+													<option class="list3-kia" value="carnival">카니발</option>
+													<option class="list3-kia" value="porte">포르테</option>
+													<option class="list3-kia" value="morning">모닝</option>
 												<!-- /kia -->
 												
 												<!-- bmw -->
-													<option class="list3-bmw" id="320d" value="320d">320d</option>
-													<option class="list3-bmw" id="i3" value="i3">i3</option>
-													<option class="list3-bmw" id="i8" value="i8">i8</option>
+													<option class="list3-bmw" value="320d">320d</option>
+													<option class="list3-bmw" value="i3">i3</option>
+													<option class="list3-bmw" value="i8">i8</option>
 												</select>
 												<!-- /bmw -->
 											</div>
@@ -281,60 +280,58 @@
 												<!-- /basic -->
 												
 												<!-- 소나타 -->
-													<option class="list4-sonata">red</option>
-													<option class="list4-sonata">주황</option>
+													<option class="list4-sonata" value="red">빨강</option>
+													<option class="list4-sonata" value="orange">주황</option>
 												<!-- /소나타 -->
 												
 												<!-- 카니발 -->
-													<option class="list4-carnival">노랑</option>
-													<option class="list4-carnival">초록</option>
+													<option class="list4-carnival" value="yellow">노랑</option>
+													<option class="list4-carnival" value="green">초록</option>
 												<!-- /카니발 -->
 												
 												<!-- 320d -->
-													<option class="list4-320d">파랑</option>
-													<option class="list4-320d">보라</option>
+													<option class="list4-320d" value="blue">파랑</option>
+													<option class="list4-320d" value="pupple">보라</option>
 												</select>
 												<!-- /320d -->
 												
 											</div>
-											
 										</div>
 										<!-- /자동차 선택 리스트 -->
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >연식
-												|</label>
+											<label class="control-label col-md-1" >
+												연식 |</label>
 
 											<div class="col-sm-2">
-												<select class="form-control" id="year" name="year">
+												<select class="form-control" name="year">
 
 													<option>년</option>
-													<option>2015</option>
-													<option>2014</option>
-													<option>2013</option>
+													<option value="2015">2015</option>
+													<option value="2014">2014</option>
+													<option value="2013">2013</option>
 
 												</select>
 											</div>
 											<div class="col-sm-1">
-												<select class="form-control">
+												<select class="form-control" name="month">
 
 													<option>월</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
 
 												</select>
 											</div>
 											
 											<label class="control-label col-md-1 col-md-offset-3"
-												for="phone">형식년도 |</label>
+												>형식년도 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control" id="carYear" name="carYear">
-
+												<select class="form-control" name="carYear">
 													<option>년형</option>
-													<option>2015</option>
-													<option>2014</option>
+													<option value="2015">2015</option>
+													<option value="2014">2014</option>
 												</select>
 											</div>
 										</div>
@@ -345,9 +342,9 @@
 
 											<div class="col-md-4">
 												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="radio" id="transmission" name="transmission" value="auto" checked/>&nbsp;자동
+													<input type="radio" name="transmission" value="auto" checked/>&nbsp;자동
 													&nbsp;&nbsp;
-													<input type="radio" id="transmission" name="transmission" value="passive" />&nbsp;수동
+													<input type="radio" name="transmission" value="passive" />&nbsp;수동
 												</div>
 											</div>
 
@@ -355,7 +352,7 @@
 												for="phone">연료 |</label>
 
 											<div class="col-md-2">
-												<select class="form-control" id="fuel" name="fuel">
+												<select class="form-control" name="fuel">
 
 													<option>선택</option>
 													<option value="Gasolin">가솔린</option>
@@ -370,58 +367,66 @@
 												|</label>
 
 
-											<div class="col-md-1">
-												<input type="text" class="form-control" id="cc" name="cc" placeholder="입력" />
-
+											
+											<div class="col-md-2">
+											
+												<input type="text" class="form-control" id="cc"
+													name="cc" OnKeyUp="comma(this)" placeholder="입력" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
+											
 											<div class="col-md-1">CC</div>
 
-											<label class="control-label col-md-1 col-md-offset-4"
+											<label class="control-label col-md-1 col-md-offset-3"
 												for="phone">주행거리 |</label>
 
-											<div class="col-md-1">
-												<input type="text"  class="form-control" id="mileage" name="mileage" placeholder="입력" />
-
+											
+											<div class="col-md-2">
+												<input type="text" class="form-control" id="km"
+													name="km" placeholder="입력" OnKeyUp="comma(this)" data-container="body"
+													data-toggle="popover" data-placement="bottom"
+													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
 											<div class="" style="margin-top:1%;">Km</div>
 
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">판매구분
+											<label class="control-label col-md-1">판매구분
 												|</label>
 											<div class="col-md-4">
-												<input type="radio" id="p_sell" name="sell" value="p_common" checked />&nbsp;일반차량 
+												<input type="radio" name="sell" value="common" checked />&nbsp;일반차량 
 												&nbsp;&nbsp;
-												<input type="radio" id="p_sell" name="sell" value="p_lease" />&nbsp;리스승계차량
+												<input type="radio" name="sell" value="lease" />&nbsp;리스승계차량
 												&nbsp;&nbsp;
-												<input type="radio" id="p_sell" name="sell" value="p_installment"  />&nbsp;할부승계차량
+												<input type="radio" name="sell" value="installment"  />&nbsp;할부승계차량
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">사고여부 |</label>
 											<div class="col-md-2">
-												<input type="radio" id="p_accident" name="accident" value="p_noAcc" checked />&nbsp;무사고
+												<input type="radio" name="accident" value="noAcc" checked />&nbsp;무사고
 												&nbsp;&nbsp;
-												<input type="radio" id="p_accident" name="accident" value="p_yesAcc" />&nbsp;사고
+												<input type="radio" name="accident" value="yesAcc" />&nbsp;사고
 											</div>
 										</div>
 
 										
 										
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">성능상태점검기록부
+											<label class="control-label col-md-1">성능상태점검기록부
 												|</label>
 											<div class="col-md-4">
-												<button type="button" class="btn btn-default" id="p_perfor" name="perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
+												<button type="button" class="btn btn-default" name="perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">전문평가사 |</label>
 											<div class="col-md-2">
-												<input type="radio" id="professor" name="professor" value="p_yes" checked />&nbsp;요청
+												<input type="radio" name="professor" value="yes" checked />&nbsp;요청
 												&nbsp;&nbsp;
-												<input type="radio" id="professor" name="professor" value="p_no" />&nbsp;미요청
+												<input type="radio" name="professor" value="no" />&nbsp;미요청
 											</div>
 										</div>
 
@@ -468,73 +473,65 @@
 												<div id="collapse1" class="panel-collapse collapse"
 													aria-expanded="false" style="height: 0px;">
 													<div class="panel-body">
-													
-															<input id="powerWindow" type="checkbox" name="checkbox-test1" value="one">
-															<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id=aircorn type="checkbox" name="checkbox-test2" value="two">
-															<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="fullAutoAircorn" type="checkbox" name="checkbox-test3" value="three">
-															<label for="fullAutoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="leftRightAircorn" type="checkbox" name="checkbox-test4" value="four">
-															<label for="leftRightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="gajukSheet" type="checkbox" name="checkbox-test5" value="one">
-															<label for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="warmSheet" type="checkbox" name="checkbox-test6" value="two">
-															<label for="warmSheet">열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="windSheet" type="checkbox" name="checkbox-test7" value="three"> 
-															<label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="msgSheet" type="checkbox" name="checkbox-test8" value="four">
-															<label for="msgSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="burcketSheet" type="checkbox" name="checkbox-test9" value="one">
-															<label for="burcketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="memorySheet" type="checkbox" name="checkbox-test10" value="two"> 
-															<label for="memorySheet">메모리시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
+														<input id="powerWindow" type="checkbox"
+															name="checkbox-test1" value="one"><label
+															for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="fullautoAircorn" type="checkbox"
+															name="checkbox-test3" value="three"><label
+															for="fullautoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="leftrightAircorn" type="checkbox"
+															name="checkbox-test4" value="four"><label
+															for="leftrightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="gaJuksheet" type="checkbox"
+															name="checkbox-test5" value="one"><label
+															for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="warmSheet" type="checkbox" name="checkbox-test6"
+															value="two"> <label for="warmSheet">열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="windSheet" type="checkbox" name="checkbox-test7"
+															value="three"> <label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="masagiSheet" type="checkbox" name="checkbox-test8"
+															value="four"><label for="masagiSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="bucketSheet" type="checkbox"
+															name="checkbox-test9" value="one"><label
+															for="bucketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="memorySheet" type="checkbox" name="checkbox-test10"
+															value="two"> <label for="memorySheet">메모리시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
 											<div class="panel panel-default">
 												<div class="panel-heading">
 													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion" 
+														<a data-toggle="collapse" data-parent="#accordion"
 															href="#collapse2" class="collapsed" aria-expanded="false">편의장치</a>
+
 													</h4>
 												</div>
 												<div id="collapse2" class="panel-collapse collapse"
 													aria-expanded="false" style="height: 0px;">
 													<div class="panel-body">
-															<input id="sunRoof" type="checkbox" name="checkbox-test1" value="one">
-															<label for="sunRoof">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="pnrmSunRoof" type="checkbox" name="checkbox-test2" value="two"> 
-															<label for="pnrmSunRoof">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="hidRam" type="checkbox" name="checkbox-test3" value="three"> 
-															<label for="hidRam">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="autoRight" type="checkbox" name="checkbox-test4" value="four"> 
-															<label for="autoRight">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="smartKey" type="checkbox" name="checkbox-test5" value="one"> 
-															<label for="smartKey">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="egStartButton" type="checkbox" name="checkbox-test6" value="two"> 
-															<label for="egStartButton">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="rigthClean" type="checkbox" name="checkbox-test7" value="three"> 
-															<label for="rigthClean">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="jkSubSystem" type="checkbox" name="checkbox-test8" value="four"> 
-															<label for="jkSubSystem">주차조향보조시스템</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="powerWindow" type="checkbox"
+															name="checkbox-test1" value="one"><label
+															for="powerWindow">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="fullautoAircorn" type="checkbox"
+															name="checkbox-test3" value="three"> <label
+															for="fullautoAircorn">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="leftrightAircorn" type="checkbox"
+															name="checkbox-test4" value="four"> <label
+															for="leftrightAircorn">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="gaJuksheet" type="checkbox" name="checkbox-test5"
+															value="one"> <label for="gajukSheet">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="warmSheet" type="checkbox"
+															name="checkbox-test6" value="two"> <label
+															for="warmSheet">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="windSheet" type="checkbox" name="checkbox-test7"
+															value="three"> <label for="windSheet">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+															id="masagiSheet" type="checkbox" name="checkbox-test8"
+															value="four"> <label for="masagiSheet">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
@@ -548,35 +545,25 @@
 												<div id="collapse3" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="driverAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="driverAirBag"">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="driverFriendAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="driverFriendAirBag">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="sideAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="sideAirBag">측면에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ctAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="ctAirBag">커튼에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="passengerDetectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="passengerDetectAirBag">승객감지에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mrProtectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mrProtectAirBag">무릎보호에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="activeHeadRest" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="activeHeadRest">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="abs" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="abs">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="bas" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="bas">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ebd" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="ebd">EBD</label>
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">측에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">EBD</label>
 													</div>
 												</div>
 											</div>
@@ -584,41 +571,31 @@
 												<div class="panel-heading">
 													<h4 class="panel-title">
 														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항법</a>
+															href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항범</a>
 													</h4>
 												</div>
 												<div id="collapse4" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="navi" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="navi">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="hipass" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="hipass">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="blackBox" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="blackBox">블랙박스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="handFreeze" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="handFreeze">핸즈프리즈</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="blueTooth" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="blueTooth">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="dvdPlayer" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="dvdPlayer">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="dmb" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="dmb">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mp3" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mp3">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="iPhoneAdapter" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="iPhoneAdapter">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="usb" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="usb">USB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">블랙박</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">핸즈프리</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">USB</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
@@ -632,35 +609,25 @@
 												<div id="collapse5" class="panel-collapse collapse"
 													aria-expanded="false">
 													<div class="panel-body">
-														<input id="tuboChase" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="tuboChase">터보차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="airrowFigher" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="airrowFigher">에어로파이터</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="superChase" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="superChase">슈퍼차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mission" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mission">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="handle" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="handle">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="streetBar" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="streetBar">스트릿바</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ggFfan" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="ggFfan">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="spoiler" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="spoiler">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="audio" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="audio">오디오</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="wheelTiger" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="wheelTiger">힐/타이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">터보차</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">에어로파</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">슈퍼차</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<label for="powerWindow">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="powerWindow">오디</label>&nbsp;&nbsp;&nbsp;&nbsp;
+														<input id="aircorn" type="checkbox" name="checkbox-test2"
+															value="two"> <label for="aircorn">힐/타이</label>&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 												</div>
 											</div>
@@ -681,7 +648,8 @@
 										<span class="glyphicon glyphicon-refresh" id="reset">
 											다시쓰기</span>
 									</div>
-									<textarea class="form-control" id="aaa" rows="15" style="border-radius: 0px;"/>
+									<textarea class="form-control" id="aaa" rows="15"
+										style="border-radius: 0px;"></textarea>
 								</div>
 
 							</div>
