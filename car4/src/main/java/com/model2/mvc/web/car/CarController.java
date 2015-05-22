@@ -24,6 +24,7 @@ public class CarController {
 
 
 	public CarController(){
+		System.out.println("Constructor");
 		System.out.println(this.getClass());
 	}
 
@@ -42,9 +43,9 @@ public class CarController {
 	@RequestMapping("/addCar.do")
 	public String addCar( @ModelAttribute("car") Car car, HttpSession session ) throws Exception {
 
-		System.out.println("/addUser.do");
+		System.out.println("/addCar.do");
 		//Business Logic
-		
+		System.out.println("Come");
 		carService.addCar(car);
 		session.setAttribute("car", car);
 

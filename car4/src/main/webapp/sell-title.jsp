@@ -176,26 +176,33 @@
 							<!-- row end -->
 						</div>
 
+							
+						
 						<!-- 두번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
+							<form action="addCar.do">
+							<input name="carNum">
+							<button type="submit">gg</button>
+							</form>
+							
 								<form class="form-horizontal" name="form2" role="form" action="addCar.do">
 									<div class="row">
 									
 
 										<div class="form-group">
-											<label class="control-label col-md-1" id="carNum" name="carNum" >차량번호
+											<label class="control-label col-md-1">차량번호
 												|</label>
 
 											<div class="col-md-2">
-												<input type="text" class="form-control" id="" placeholder="입력">
+												<input type="text" class="form-control"  placeholder="입력" id="carNum" name="carNum" >
 											</div>
 											
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
-
+										
 
 										<!-- 차량명 선택 리스트 -->
 										<div class="form-group">
@@ -203,9 +210,9 @@
 												|</label>
 											
 											<!-- '제조국' 선택 리스트  -->
-											<div class="col-md-2"  name="manuCountry" id="manuCountry">
+											<div class="col-md-2"   id="manuCountry">
 											
-												<select class="form-control country" id="list1">
+												<select class="form-control country" id="list1" name="manuCountry">
 													<option>제조국</option>
 													<option id="2-1" value="korea">국산차</option>
 													<option id="2-2" value="foreign">수입차</option>
@@ -214,9 +221,9 @@
 											<!-- /'제조국' 선택 리스트  -->
 											
 											<!-- '제조사' 선택 리스트  -->
-											<div class="col-md-2" id="manuCo" name="manuCo">
+											<div class="col-md-2">
 												
-												<select class="form-control company" id="list2">
+												<select class="form-control company" id="list2" name="manuCo">
 
 													<option id="company_basic">제조사</option>
 													<!-- 국내차 -->
@@ -236,10 +243,10 @@
 											
 											
 											<!-- '모델명' 선택 리스트  -->
-											<div class="col-md-2" id="model" name="model">
+											<div class="col-md-2" id="model">
 										
 												
-												<select class="form-control" id="list3">
+												<select class="form-control" id="list3"  name="model">
 													<option id="model_basic">모델명</option>
 												
 												<!-- hyundai -->
@@ -274,7 +281,7 @@
 												<!-- /basic -->
 												
 												<!-- 소나타 -->
-													<option class="list4-sonata">빨강</option>
+													<option class="list4-sonata">red</option>
 													<option class="list4-sonata">주황</option>
 												<!-- /소나타 -->
 												
@@ -309,7 +316,7 @@
 												</select>
 											</div>
 											<div class="col-sm-1">
-												<select class="form-control" id="p_month" name="p_month">
+												<select class="form-control">
 
 													<option>월</option>
 													<option>1</option>
@@ -338,9 +345,9 @@
 
 											<div class="col-md-4">
 												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="radio" id="p_trans" name="p_trans" value="p_auto" checked/>&nbsp;자동
+													<input type="radio" id="transmission" name="transmission" value="auto" checked/>&nbsp;자동
 													&nbsp;&nbsp;
-													<input type="radio" id="p_trans" name="p_trans" value="p_passive" />&nbsp;수동
+													<input type="radio" id="transmission" name="transmission" value="passive" />&nbsp;수동
 												</div>
 											</div>
 
@@ -384,19 +391,19 @@
 											<label class="control-label col-md-1" for="phone">판매구분
 												|</label>
 											<div class="col-md-4">
-												<input type="radio" id="p_sell" name="p_sell" value="p_common" checked />&nbsp;일반차량 
+												<input type="radio" id="p_sell" name="sell" value="p_common" checked />&nbsp;일반차량 
 												&nbsp;&nbsp;
-												<input type="radio" id="p_sell" name="p_sell" value="p_lease" />&nbsp;리스승계차량
+												<input type="radio" id="p_sell" name="sell" value="p_lease" />&nbsp;리스승계차량
 												&nbsp;&nbsp;
-												<input type="radio" id="p_sell" name="p_sell" value="p_installment"  />&nbsp;할부승계차량
+												<input type="radio" id="p_sell" name="sell" value="p_installment"  />&nbsp;할부승계차량
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">사고여부 |</label>
 											<div class="col-md-2">
-												<input type="radio" id="p_accident" name="p_accident" value="p_noAcc" checked />&nbsp;무사고
+												<input type="radio" id="p_accident" name="accident" value="p_noAcc" checked />&nbsp;무사고
 												&nbsp;&nbsp;
-												<input type="radio" id="p_accident" name="p_accident" value="p_yesAcc" />&nbsp;사고
+												<input type="radio" id="p_accident" name="accident" value="p_yesAcc" />&nbsp;사고
 											</div>
 										</div>
 
@@ -406,15 +413,15 @@
 											<label class="control-label col-md-1" for="phone">성능상태점검기록부
 												|</label>
 											<div class="col-md-4">
-												<button type="button" class="btn btn-default" id="p_perfor" name="p_perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
+												<button type="button" class="btn btn-default" id="p_perfor" name="perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
 											</div>
 
 											<label class="control-label col-md-1 col-md-offset-2"
 												for="phone">전문평가사 |</label>
 											<div class="col-md-2">
-												<input type="radio" id="p_req" name="p_req" value="p_yes" checked />&nbsp;요청
+												<input type="radio" id="professor" name="professor" value="p_yes" checked />&nbsp;요청
 												&nbsp;&nbsp;
-												<input type="radio" id="p_req" name="p_req" value="p_no" />&nbsp;미요청
+												<input type="radio" id="professor" name="professor" value="p_no" />&nbsp;미요청
 											</div>
 										</div>
 

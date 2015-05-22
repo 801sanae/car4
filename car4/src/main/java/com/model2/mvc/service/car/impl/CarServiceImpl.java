@@ -27,6 +27,7 @@ public class CarServiceImpl implements CarService{
 
 	///Method
 	public void addCar(Car car) throws Exception {
+		System.out.println("SK-TELECOM");
 		CarDao.addCar(car);
 	}
 }

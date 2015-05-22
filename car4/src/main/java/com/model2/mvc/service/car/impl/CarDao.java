@@ -25,12 +25,14 @@ public class CarDao{
 	
 	///Constructor
 	public CarDao() {
+		System.out.println("나와라 좀");
 		System.out.println(this.getClass());
 	}
 
 	///Method
 	public void addCar(Car car) throws Exception {
-		System.out.println("AddUserDAO나와라" + car);
-		sqlSession.insert("UserMapper.addUser", car);
+		System.out.println("돌아간다신난다.");
+		System.out.println("UUUUUUU"+sqlSession.insert("CarMapper.addCar", car));
+		sqlSession.insert("CarMapper.addCar", car);
 	}
 }

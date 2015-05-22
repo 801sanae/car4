@@ -3,24 +3,23 @@ package com.model2.mvc.service.domain;
 public class Car {
 
 	//Field
-	private int carNo;				//자동차일련번호 
-	private int carOptionNo;		//자동차상세옵션일련번호
-	private String manuCountry;		//제조국 
-	private String manuCo;		//제조사
-	private int year;			//연식
-	private String model;			//모델
+	
 	private int carNum;				//차량번호
-	private String transmission;	//변속기
-	private int mileage;			//주행거리
-	private String sell;
-	private char accident;			//사고여부
-	private String fuel;			//연료
+	private String manuCountry;		//제조국 
+	private String manuCo;			//제조사
+	private String model;			//모델
 	private String color;			//색상
-	private char request;			//전문 평가사
-	private int price;				//가격
+	private int year;				//연식
 	private int carYear;			//형식년도
+	private String transmission;	//변속기
+	private String fuel;			//연료
 	private int cc;					//배기량
-	private String carDetail;		//차량상세글
+	private int mileage;			//주행거리
+	private String sell;			//판매구분
+	private String accident;			//사고여부
+	private String professor;			//전문 평가사
+	
+
 	
 
 	
@@ -32,81 +31,13 @@ public class Car {
 
 
 
-	public int getCarNo() {
-		return carNo;
-	}
-
-
-
-	public void setCarNo(int carNo) {
-		this.carNo = carNo;
-	}
-
-
-
-	public int getCarOptionNo() {
-		return carOptionNo;
-	}
-
-
-
-	public void setCarOptionNo(int carOptionNo) {
-		this.carOptionNo = carOptionNo;
-	}
-
-
-
-	public String getManuCountry() {
-		return manuCountry;
-	}
-
-
-
-	public void setManuCountry(String manuCountry) {
-		this.manuCountry = manuCountry;
-	}
-
-
-
-	public String getManuCo() {
-		return manuCo;
-	}
-
-
-
-	public void setManuCo(String manuCo) {
-		this.manuCo = manuCo;
-	}
-
-
-
-	public int getYear() {
-		return year;
-	}
-
-
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-
-
-	public String getModel() {
-		return model;
-	}
-
-
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
 
 
 	public int getCarNum() {
 		return carNum;
 	}
+
+
 
 
 
@@ -116,63 +47,53 @@ public class Car {
 
 
 
-	public String getTransmission() {
-		return transmission;
+
+
+	public String getManuCountry() {
+		return manuCountry;
 	}
 
 
 
-	public void setTransmission(String transmission) {
-		this.transmission = transmission;
+
+
+	public void setManuCountry(String manuCountry) {
+		this.manuCountry = manuCountry;
 	}
 
 
 
-	public int getMileage() {
-		return mileage;
+
+
+	public String getManuCo() {
+		return manuCo;
 	}
 
 
 
-	public void setMileage(int mileage) {
-		this.mileage = mileage;
+
+
+	public void setManuCo(String manuCo) {
+		this.manuCo = manuCo;
 	}
 
 
 
-	public String getSell() {
-		return sell;
+
+
+	public String getModel() {
+		return model;
 	}
 
 
 
-	public void setSell(String sell) {
-		this.sell = sell;
+
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 
-
-	public char getAccident() {
-		return accident;
-	}
-
-
-
-	public void setAccident(char accident) {
-		this.accident = accident;
-	}
-
-
-
-	public String getFuel() {
-		return fuel;
-	}
-
-
-
-	public void setFuel(String fuel) {
-		this.fuel = fuel;
-	}
 
 
 
@@ -182,33 +103,29 @@ public class Car {
 
 
 
+
+
 	public void setColor(String color) {
 		this.color = color;
 	}
 
 
 
-	public char getRequest() {
-		return request;
+
+
+	public int getYear() {
+		return year;
 	}
 
 
 
-	public void setRequest(char request) {
-		this.request = request;
+
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 
-
-	public int getPrice() {
-		return price;
-	}
-
-
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 
 
@@ -218,9 +135,45 @@ public class Car {
 
 
 
+
+
 	public void setCarYear(int carYear) {
 		this.carYear = carYear;
 	}
+
+
+
+
+
+	public String getTransmission() {
+		return transmission;
+	}
+
+
+
+
+
+	public void setTransmission(String transmission) {
+		this.transmission = transmission;
+	}
+
+
+
+
+
+	public String getFuel() {
+		return fuel;
+	}
+
+
+
+
+
+	public void setFuel(String fuel) {
+		this.fuel = fuel;
+	}
+
+
 
 
 
@@ -230,35 +183,92 @@ public class Car {
 
 
 
+
+
 	public void setCc(int cc) {
 		this.cc = cc;
 	}
 
 
 
-	public String getCarDetail() {
-		return carDetail;
+
+
+	public int getMileage() {
+		return mileage;
 	}
 
 
 
-	public void setCarDetail(String carDetail) {
-		this.carDetail = carDetail;
+
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
 	}
+
+
+
+
+
+	public String getSell() {
+		return sell;
+	}
+
+
+
+
+
+	public void setSell(String sell) {
+		this.sell = sell;
+	}
+
+
+
+
+
+	public String getAccident() {
+		return accident;
+	}
+
+
+
+
+
+	public void setAccident(String accident) {
+		this.accident = accident;
+	}
+
+
+
+
+
+	public String getProfessor() {
+		return professor;
+	}
+
+
+
+
+
+	public void setProfessor(String professor) {
+		this.professor = professor;
+	}
+
+
 
 
 
 	@Override
 	public String toString() {
-		return "Car [carNo=" + carNo + ", carOptionNo=" + carOptionNo
-				+ ", manuCountry=" + manuCountry + ", manuCo=" + manuCo
-				+ ", year=" + year + ", model=" + model + ", carNum=" + carNum
-				+ ", transmission=" + transmission + ", mileage=" + mileage
-				+ ", accident=" + accident + ", fuel=" + fuel + ", color="
-				+ color + ", request=" + request + ", price=" + price
-				+ ", carYear=" + carYear + ", cc=" + cc + ", carDetail="
-				+ carDetail + "]";
+		return "Car [carNum=" + carNum + ", manuCountry=" + manuCountry
+				+ ", manuCo=" + manuCo + ", model=" + model + ", color="
+				+ color + ", year=" + year + ", carYear=" + carYear
+				+ ", transmission=" + transmission + ", fuel=" + fuel + ", cc="
+				+ cc + ", mileage=" + mileage + ", sell=" + sell
+				+ ", accident=" + accident + ", professor=" + professor + "]";
 	}
+
+
+
 
 	
 }
