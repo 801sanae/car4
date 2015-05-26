@@ -29,4 +29,9 @@ public class CarDao{
 		
 		sqlSession.insert("CarMapper.addCar", car);
 	}
+	
+	public Car getCar(String carNum) throws Exception {
+		return sqlSession.selectOne("CarMapper.getCar", carNum);
+	}
+	
 }

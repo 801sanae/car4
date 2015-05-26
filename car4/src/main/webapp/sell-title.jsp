@@ -219,271 +219,306 @@ $(document).ready(function() {
 						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-												
-								<form class="form-horizontal" name="form2" role="form" method="post">
+
+								<form class="form-horizontal" name="form2" role="form"
+									action="addCar.do" method="post">
 									<div class="row">
+
+
 										<div class="form-group">
-											<label class="control-label col-md-1">차량번호
-												|</label>
-												
+											<label class="control-label col-md-1">차량번호 |</label>
+
 											<div class="col-md-2">
 												<input type="text" class="form-control" id="carNum"
-													name="carNum" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="올바른 차량번호 형식으로 입력해주세요.">
-											</div>
+													name="carNum" placeholder="입력">
 
+											</div>
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
 										
-
-										<!-- 차량명 선택 리스트 -->
+										<!-- message DIV  -->
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">차량명
-												|</label>
-											
-											<!-- '제조국' 선택 리스트  -->
-											<div class="col-md-2">
-											
-												<select class="form-control country" id="list1" name="manuCountry">
-													<option>제조국</option>
-													<option value="korea">국산차</option>
-													<option value="foreign">수입차</option>
-												</select>
-											</div>
-											<!-- /'제조국' 선택 리스트  -->
-											
-											<!-- '제조사' 선택 리스트  -->
-											<div class="col-md-2">
-												
-												<select class="form-control company" id="list2" name="manuCo">
+											<div class=" col-md-12">
 
-													<option id="company_basic">제조사</option>
-													<!-- 국내차 -->
-													<option class="list2-1" value="hyundai">현대</option>
-													<option class="list2-1" value="kia">기아</option>
-													<option class="list2-1" value="chevolet">쉐보레</option>
-													<!-- /국내차 -->
-													
-													<!-- 수입차 -->
-													<option class="list2-2" value="bmw">bmw</option>
-													<option class="list2-2" value="audi">아우디</option>
-													<option class="list2-2" value="volkswagen">폭스바겐</option>
-													<!-- /수입차 -->
-												</select>
+												<!-- carNummessage 보여줄 곳  -->
+												<div id="carNummessage" class="col-md-offset-1"
+													style="font-size: 12px; padding-left: 8px; margin-top: -1%;display:none;">
+												</div>
+
 											</div>
-											<!-- /'제조사' 선택 리스트  -->
-											
-											
-											<!-- '모델명' 선택 리스트  -->
-											<div class="col-md-2">
+										</div>
+										<!-- /message DIV  -->
 										
-												
-												<select class="form-control" id="list3"  name="model">
-													<option id="model_basic">모델명</option>
-												
-												<!-- hyundai -->
-													<option class="list3-hyundai" value="sonata">쏘나타</option>
-													<option class="list3-hyundai" value="grandeur">그랜져</option>
-													<option class="list3-hyundai" value="avante">아반떼</option>
-												<!-- /hyundai -->
-				
-												<!-- kia -->
-													<option class="list3-kia" value="carnival">카니발</option>
-													<option class="list3-kia" value="porte">포르테</option>
-													<option class="list3-kia" value="morning">모닝</option>
-												<!-- /kia -->
-												
-												<!-- bmw -->
-													<option class="list3-bmw" value="320d">320d</option>
-													<option class="list3-bmw" value="i3">i3</option>
-													<option class="list3-bmw" value="i8">i8</option>
-												</select>
-												<!-- /bmw -->
+
+
+											<!-- 차량명 선택 리스트 -->
+											<div class="form-group">
+												<label class="control-label col-md-1" for="phone">차량명
+													|</label>
+
+												<!-- '제조국' 선택 리스트  -->
+												<div class="col-md-2" id="manuCountry">
+
+													<select class="form-control country" id="list1"
+														name="manuCountry">
+														<option>제조국</option>
+														<option value="2-1">국산차</option>
+														<option value="2-2">수입차</option>
+													</select>
+												</div>
+												<!-- /'제조국' 선택 리스트  -->
+
+												<!-- '제조사' 선택 리스트  -->
+												<div class="col-md-2">
+
+													<select class="form-control company" id="list2"
+														name="manuCo">
+
+														<option id="company_basic">제조사</option>
+														<!-- 국내차 -->
+														<option class="list2-1" value="hyundai">현대</option>
+														<option class="list2-1" value="kia">기아</option>
+														<option class="list2-1" value="chevolet">쉐보레</option>
+														<!-- /국내차 -->
+
+														<!-- 수입차 -->
+														<option class="list2-2" value="bmw">bmw</option>
+														<option class="list2-2" value="audi">아우디</option>
+														<option class="list2-2" value="volkswagen">폭스바겐</option>
+														<!-- /수입차 -->
+													</select>
+												</div>
+												<!-- /'제조사' 선택 리스트  -->
+
+
+												<!-- '모델명' 선택 리스트  -->
+												<div class="col-md-2">
+
+
+													<select class="form-control" id="list3" name="model">
+														<option id="model_basic">모델명</option>
+
+														<!-- hyundai -->
+														<option class="list3-hyundai" value="sonata">쏘나타</option>
+														<option class="list3-hyundai" value="grandeur">그랜져</option>
+														<option class="list3-hyundai" value="avante">아반떼</option>
+														<!-- /hyundai -->
+
+														<!-- kia -->
+														<option class="list3-kia" value="carnival">카니발</option>
+														<option class="list3-kia" value="porte">포르테</option>
+														<option class="list3-kia" value="morning">모닝</option>
+														<!-- /kia -->
+
+														<!-- bmw -->
+														<option class="list3-bmw" value="320d">320d</option>
+														<option class="list3-bmw" value="i3">i3</option>
+														<option class="list3-bmw" value="i8">i8</option>
+													</select>
+													<!-- /bmw -->
+												</div>
+
+
+												<label class="control-label col-md-1">색상 |</label>
+
+												<!-- 색상 선택 리스트 -->
+												<div class="col-md-2">
+
+													<!-- basic -->
+													<select class="form-control" id="list4" name="color">
+														<option id="color_option">색상</option>
+														<!-- /basic -->
+
+														<!-- 소나타 -->
+														<option class="list4-sonata" value="red">빨강</option>
+														<option class="list4-sonata" value="orange">주황</option>
+														<!-- /소나타 -->
+
+														<!-- 카니발 -->
+														<option class="list4-carnival" value="yellow">노랑</option>
+														<option class="list4-carnival" value="green">초록</option>
+														<!-- /카니발 -->
+
+														<!-- 320d -->
+														<option class="list4-320d" value="blue">파랑</option>
+														<option class="list4-320d" value="pupple">보라</option>
+													</select>
+													<!-- /320d -->
+
+												</div>
 											</div>
-											
-											
-											<label class="control-label col-md-1">색상 |</label>
-											
-											<!-- 색상 선택 리스트 -->
-											<div class="col-md-2">
-											
-												<!-- basic -->
-												<select class="form-control" id="list4" name="color">
-													<option id="color_option">색상</option>
-												<!-- /basic -->
-												
-												<!-- 소나타 -->
-													<option class="list4-sonata" value="red">빨강</option>
-													<option class="list4-sonata" value="orange">주황</option>
-												<!-- /소나타 -->
-												
-												<!-- 카니발 -->
-													<option class="list4-carnival" value="yellow">노랑</option>
-													<option class="list4-carnival" value="green">초록</option>
-												<!-- /카니발 -->
-												
-												<!-- 320d -->
-													<option class="list4-320d" value="blue">파랑</option>
-													<option class="list4-320d" value="pupple">보라</option>
-												</select>
-												<!-- /320d -->
-												
-											</div>
-										</div>
-										<!-- /자동차 선택 리스트 -->
+											<!-- /자동차 선택 리스트 -->
 
-										<div class="form-group">
-											<label class="control-label col-md-1" >
-												연식 |</label>
 
-											<div class="col-sm-2">
-												<select class="form-control" name="year">
 
-													<option>년</option>
-													<option value="2015">2015</option>
-													<option value="2014">2014</option>
-													<option value="2013">2013</option>
+											<div class="form-group">
+												<label class="control-label col-md-1"> 연식 |</label>
 
-												</select>
-											</div>
-											<div class="col-sm-1">
-												<select class="form-control" name="month">
+												<div class="col-sm-2">
+													<select class="form-control" name="year">
 
-													<option>월</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
+														<option>년</option>
+														<% for(int i=2015;i>2000; i--) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
 
-												</select>
-											</div>
-											
-											<label class="control-label col-md-1 col-md-offset-3"
-												>형식년도 |</label>
+													</select>
+												</div>
+												<div class="col-sm-1">
+													<select class="form-control" name="month">
 
-											<div class="col-md-2">
-												<select class="form-control" name="carYear">
-													<option>년형</option>
-													<option value="2015">2015</option>
-													<option value="2014">2014</option>
-												</select>
-											</div>
-										</div>
+														<option>월</option>
+														<% for(int i=1;i<13; i++) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
 
-										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">변속기
-												|</label>
+													</select>
+												</div>
 
-											<div class="col-md-4">
-												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="radio" name="transmission" value="auto" checked/>&nbsp;자동
-													&nbsp;&nbsp;
-													<input type="radio" name="transmission" value="passive" />&nbsp;수동
+												<label class="control-label col-md-1 col-md-offset-3">형식년도
+													|</label>
+
+												<div class="col-md-2">
+													<select class="form-control" name="carYear">
+														<option>년형</option>
+														<% for(int i=2015;i>2000; i--) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
+													</select>
 												</div>
 											</div>
 
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">연료 |</label>
+											<div class="form-group">
+												<label class="control-label col-md-1" for="phone">변속기
+													|</label>
 
-											<div class="col-md-2">
-												<select class="form-control" name="fuel">
+												<div class="col-md-4">
+													<div class="col-md-5" style="margin-left: -3%;">
+														<input type="radio" name="transmission" value="auto"
+															checked />&nbsp;자동 &nbsp;&nbsp; <input type="radio"
+															name="transmission" value="passive" />&nbsp;수동
+													</div>
+												</div>
 
-													<option>선택</option>
-													<option value="Gasolin">가솔린</option>
-													<option value="Diesel">디젤</option>
-													<option value="LPG">LPG</option>
-												</select>
+												<label class="control-label col-md-1 col-md-offset-2"
+													for="phone">연료 |</label>
+
+												<div class="col-md-2">
+													<select class="form-control" name="fuel">
+
+														<option>선택</option>
+														<option value="Gasolin">가솔린</option>
+														<option value="Diesel">디젤</option>
+														<option value="LPG">LPG</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label col-md-1">배기량 |</label>
+
+
+
+												<div class="col-md-2">
+													<input type="text" class="form-control" id="tempcc" name="tempcc"
+														 placeholder="입력"  onkeyup="inputNumberFormat(this, 'cc')" />
+													
+													<input type="hidden" class="form-control" id="cc" name="cc" />
+												</div>
+
+												<div class="col-md-1">CC</div>
+
+												<label class="control-label col-md-1 col-md-offset-3"
+													for="phone">주행거리 |</label>
+
+
+												<div class="col-md-2">
+													<input type="text" class="form-control" id="tempmileage" name="tempmileage"
+														placeholder="입력"  onkeyup="inputNumberFormat(this, 'mileage')" />
+												
+													<input type="hidden" class="form-control" id="mileage" name="mileage" />
+												</div>
+												<div style="margin-top: 1%;">Km</div>
+
+											</div>
+
+										<!-- message DIV  -->
+										<div class="form-group">
+											<div class=" col-md-12">
+
+												<!-- CCmessage 보여줄 곳  -->
+												<div id="CCmessage" class="col-md-offset-1"
+													style="font-size: 12px; padding-left: 8px; margin-top: -1%; display: none;">
+												</div>	
+												<!-- carNummessage 보여줄 곳  -->
+												
+												<!-- Mileagemessage 보여줄 곳  -->									
+												<div id="Mileagemessage" class="col-md-offset-3"
+													style="font-size: 12px; padding-left: 43.5%; margin-top: -1.2%; display: none;">
+												</div>
+												<!-- carNummessage 보여줄 곳  -->
+
 											</div>
 										</div>
+										<!-- /message DIV  -->
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >배기량
-												|</label>
+												<label class="control-label col-md-1">판매구분 |</label>
+												<div class="col-md-4">
+													<input type="radio" name="sell" value="common" checked />&nbsp;일반차량
+													&nbsp;&nbsp; <input type="radio" name="sell" value="lease" />&nbsp;리스승계차량
+													&nbsp;&nbsp; <input type="radio" name="sell"
+														value="installment" />&nbsp;할부승계차량
+												</div>
 
-
-											
-											<div class="col-md-2">
-											
-												<input type="text" class="form-control" id="cc"
-													name="cc" OnKeyUp="comma(this)" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
+												<label class="control-label col-md-1 col-md-offset-2"
+													for="phone">사고여부 |</label>
+												<div class="col-md-2">
+													<input type="radio" name="accident" value="noAcc" checked />&nbsp;무사고
+													&nbsp;&nbsp; <input type="radio" name="accident"
+														value="yesAcc" />&nbsp;사고
+												</div>
 											</div>
-											
-											<div class="col-md-1">CC</div>
 
-											<label class="control-label col-md-1 col-md-offset-3"
-												for="phone">주행거리 |</label>
 
-											
-											<div class="col-md-2">
-												<input type="text" class="form-control" id="mileage"
-													name="mileage" placeholder="입력" OnKeyUp="comma(this)" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
+
+											<div class="form-group">
+												<label class="control-label col-md-1">성능상태점검기록부 |</label>
+												<div class="col-md-4">
+													<button type="button" class="btn btn-default" name="perfor"
+														style="margin-top: 2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
+												</div>
+
+												<!-- <label class="control-label col-md-1 col-md-offset-2"
+													for="phone">전문평가사 |</label>
+												<div class="col-md-2">
+													<input type="radio" name="professor" value="yes" checked />&nbsp;요청
+													&nbsp;&nbsp; <input type="radio" name="professor"
+														value="no" />&nbsp;미요청
+												</div> -->
 											</div>
-											<div class="" style="margin-top:1%;">Km</div>
+
 
 										</div>
-
-										<div class="form-group">
-											<label class="control-label col-md-1">판매구분
-												|</label>
-											<div class="col-md-4">
-												<input type="radio" name="sell" value="common" checked />&nbsp;일반차량 
-												&nbsp;&nbsp;
-												<input type="radio" name="sell" value="lease" />&nbsp;리스승계차량
-												&nbsp;&nbsp;
-												<input type="radio" name="sell" value="installment"  />&nbsp;할부승계차량
-											</div>
-
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">사고여부 |</label>
-											<div class="col-md-2">
-												<input type="radio" name="accident" value="noAcc" checked />&nbsp;무사고
-												&nbsp;&nbsp;
-												<input type="radio" name="accident" value="yesAcc" />&nbsp;사고
-											</div>
-										</div>
-
-										
-										
-										<div class="form-group">
-											<label class="control-label col-md-1">성능상태점검기록부
-												|</label>
-											<div class="col-md-4">
-												<button type="button" class="btn btn-default" name="perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
-											</div>
-
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">전문평가사 |</label>
-											<div class="col-md-2">
-												<input type="radio" name="professor" value="yes" checked />&nbsp;요청
-												&nbsp;&nbsp;
-												<input type="radio" name="professor" value="no" />&nbsp;미요청
-											</div>
-										</div>
-
-										
-										</div>
-										<br><br>
+										<br>
+										<br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-												<button type="button" class="btn btn-danger btn-lg" 
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>이전
-												</button>
-												<button type="submit" class="btn btn-primary btn-lg" id="t2"
-													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span><a href="#third">다음</a>
-												</button>
+											<button type="button" class="btn btn-danger btn-lg"
+												style="width: 40%;">
+												<span class="glyphicon glyphicon-ok-sign"></span>이전
+											</button>
+											<button type="submit" class="btn btn-primary btn-lg"
+												style="width: 40%;" id="submit2">
+												<span class="glyphicon glyphicon-ok-sign"></span>다음
+											</button>
 										</div>
-									</form>
+								</form>
 
-								</div>
 							</div>
-							<!-- carinfo end -->
-				<!--  두번째 동그라미 End -->
+						</div>
+						<!-- carinfo end -->
+
 				
 
 				<!-- 세번째 동그라미 클릭시 div -->

@@ -45,5 +45,13 @@
 		VALUES(
 		carGno.NEXTVAL,#{carNo},#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{professor})
 	</insert>
+	
+	<select id="getCar" parameterType="String" resultMap="carSelectMap">
+		SELECT
+		*
+		FROM car
+		WHERE carNum = #{value}
+	</select>
+	
 
 </mapper>
