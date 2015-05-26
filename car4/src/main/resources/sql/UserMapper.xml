@@ -122,5 +122,13 @@
     WHERE userId = #{userId}
   </update>
    
+    <!-- SQL : getUserInfo -->
+  <select id="getUserInfo" parameterType="user" resultMap="userSelectMap">
+    SELECT
+    user_id , user_num, user_name , password , sex,  cell_phone , addr , role , 
+    reg_date
+    FROM users
+    WHERE user_id = #{userId}
+  </select>
 
 </mapper>
