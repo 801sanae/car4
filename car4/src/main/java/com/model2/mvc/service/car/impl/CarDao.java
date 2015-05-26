@@ -31,8 +31,7 @@ public class CarDao{
 
 	///Method
 	public void addCar(Car car) throws Exception {
-		System.out.println("돌아간다신난다.");
-		System.out.println("UUUUUUU"+sqlSession.insert("CarMapper.addCar", car));
+		
 		sqlSession.insert("CarMapper.addCar", car);
 	}
 }
