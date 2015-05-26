@@ -76,4 +76,8 @@ public class UserServiceImpl implements UserService{
 	public void updatePassword(User user)throws Exception{
 		UserDao.updatePassword(user);
 	}
+	
+	public User getUserInfo(User user) throws Exception{
+		return UserDao.getUserInfo(user);
+	}
 }
