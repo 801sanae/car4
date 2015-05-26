@@ -77,8 +77,11 @@
 
 			<div class="top_right">
 
-
-				<button type="button" class="btn btn-sunny text-uppercase btn-lg">팔러갑시다</button>
+          <form class="form-horizontal" role="" name="getForm"
+                    method="post" action="getUserInfo.do">
+				<button type="submit" class="btn btn-sunny text-uppercase btn-lg">팔러갑시다</button>
+				<input name="userId"  id="hideUserId1"  type="hidden">    
+        </form> 
 			</div>
 		</div>
 		<br>
