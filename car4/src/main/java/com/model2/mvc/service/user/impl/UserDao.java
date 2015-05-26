@@ -63,4 +63,8 @@ public class UserDao{
 	public void updatePassword(User user)throws Exception{
 		sqlSession.update("UserMapper.updatePassword", user);
 	}
+	
+	public User getUserInfo(User user) throws Exception{
+		return sqlSession.selectOne("UserMapper.getUserInfo", user);
+	}
 }
