@@ -12,7 +12,8 @@ import com.model2.mvc.service.domain.Car;
 
 @Repository("carDao")
 public class CarDao{
-
+	
+	
 	///Field
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
@@ -28,6 +29,7 @@ public class CarDao{
 
 	///Method
 	public void addCar(Car car) throws Exception {
+		
 		sqlSession.insert("CarMapper.addCar", car);
 	}
 }
