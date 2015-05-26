@@ -242,6 +242,19 @@ public class UserController {
 	      return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
 	   }
 	
-	
+	@RequestMapping("/getUserInfo.do")
+	public String getUserInfo( @ModelAttribute("user") User user ,Model model , HttpSession session ) throws Exception{
+		
+		System.out.println("/getUserInfo.do");
+		
+		User users = (User)session.getAttribute("user");
+		
+		//Business Logic
+		User userInfo = userService.getUserInfo(users);
+		// Model 과 View 연결
+		model.addAttribute("userInfo", userInfo);
+		
+		return "forward:/sell-title.jsp";
+	}
 	
 }
