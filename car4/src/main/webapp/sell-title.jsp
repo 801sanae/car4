@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,8 +99,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이름</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder="이름을 입력하세요."
-														class="form-control" id="name">
+													<input type="text" placeholder=""
+														class="form-control" id="name" value="${ userInfo.userName }">
 												</div>
 											</div>
 
@@ -107,8 +108,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">주소</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder="주소를 입력하세요."
-														class="form-control" id="addr">
+													<input type="text" placeholder=""
+														class="form-control" id="addr" value="${ userInfo.addr }">
 												</div>
 											</div>
 
@@ -116,8 +117,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">연락처</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder="연락처를 입력하세요."
-														class="form-control" id="phone">
+													<input type="text" placeholder=""
+														class="form-control" id="phone" value="${ userInfo.phone }">
 												</div>
 											</div>
 
@@ -125,8 +126,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이메일</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder="이메일을 입력하세요."
-														class="form-control" id="email">
+													<input type="text" placeholder=""
+														class="form-control" id="email" value="${ userInfo.userId }">
 												</div>
 											</div>
 
