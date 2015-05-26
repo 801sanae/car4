@@ -150,14 +150,12 @@ public class UserController {
 		return "redirect:/index.jsp";
 	}
 
-
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session ) throws Exception{
 
 		System.out.println("logout.do");
-
 		session.invalidate();
-
+		
 		return "redirect:/index.jsp";
 	}
 
@@ -167,13 +165,13 @@ public class UserController {
 		System.out.println("/checkDuplication.do");
 		//Business Logic
 		boolean result=userService.checkDuplication(userId);
-		// Model �� View ����
+		
 		model.addAttribute("result", new Boolean(result));
 		model.addAttribute("userId", userId);
 
 		return "forward:/user/checkDuplication.jsp";
 	}
-
+	
 	@RequestMapping("/listUser.do")
 	public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
 
@@ -248,12 +246,14 @@ public class UserController {
 		System.out.println("/getUserInfo.do");
 		
 		User users = (User)session.getAttribute("user");
+		System.out.println("들어와1?");
 		
 		//Business Logic
 		User userInfo = userService.getUserInfo(users);
+		
 		// Model 과 View 연결
 		model.addAttribute("userInfo", userInfo);
-		
+		System.out.println("들어와?2");
 		return "forward:/sell-title.jsp";
 	}
 	

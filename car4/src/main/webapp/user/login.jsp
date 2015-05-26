@@ -115,7 +115,7 @@
                           $('#pnamemessage').html("<font color=red>인증번호 발송 실패.</font>");
                           $('#pnamemessage').show();
                           }
-                        
+
                           }});
         }
       });

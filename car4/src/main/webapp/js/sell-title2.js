@@ -51,7 +51,7 @@ $(document).ready(function() {
 	/* popover를 이용한 인풋박스 유효성 검사 */
 	$("#carNum").blur(function() {
 		var check = /^[\uac00-\ud7a3|0-9|\*]+$/;
-		var p_carNo = $("#carNum").val();
+		var carNum = $("#carNum").val();
 
 		$("#carNum").popover('show');
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 	$("#cc").blur(function() {
 		var check = /^[\0-9\*]+$/;
-		var p_cc = $("#cc").val();
+		var cc = $("#cc").val();
 
 		$("#cc").popover('show');
 
@@ -71,14 +71,15 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#km").blur(function() {
+	$("#mileage").blur(function() {
+
 		var check = /^[\0-9\*]+$/;
-		var p_km = $("#km").val();
+		var mileage = $("#mileage").val();
 
-		$("#km").popover('show');
+		$("#mileage").popover('show');
 
-		if (km.match(check)) {
-			$("#km").popover('hide');
+		if (mileage.match(check)) {
+			$("#mileage").popover('hide');
 		}
 	});
 	
@@ -237,7 +238,3 @@ function comma(what)
     what.value = add_comma(dataval);
 }
 /*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
-
-
-
-	

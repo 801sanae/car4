@@ -123,12 +123,12 @@
   </update>
    
     <!-- SQL : getUserInfo -->
-  <select id="getUserInfo" parameterType="user" resultMap="userSelectMap">
+  <select id="getUserInfo" parameterType="com.model2.mvc.service.domain.User" resultMap="userSelectMap">
     SELECT
-    user_id , user_num, user_name , password , sex,  cell_phone , addr , role , 
-    reg_date
+    userid , usernum, username , password , sex,  phone , addr , role , 
+    regdate
     FROM users
-    WHERE user_id = #{userId}
+    WHERE userid = #{userId}
   </select>
 
 </mapper>

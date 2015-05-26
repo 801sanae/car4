@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +11,9 @@
 <!-- image upload -->
 <link href="css\jasny-bootstrap.css" rel="stylesheet">
 <link href="css\jasny-bootstrap.css.map" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/sell-title2.js"></script>
+
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,6 +32,43 @@
     color:red;
 }
 </style>
+<script>
+$(document).ready(function() {
+    $('#t2').click(function() {
+    	var queryString = $("form[name=form2]").serialize();
+    	alert(queryString);
+        $.ajax({
+            url : 'duplicate1.jsp',
+            type : 'get',
+            data : queryString,
+            dataType:'json',
+            success : function(json) {
+               alert(json);
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    $('#t3').click(function() {
+    	var qu = $("form[name=form3]").serialize();
+    	alert(qu);
+        $.ajax({
+            url : 'check.do',
+            type : 'get',
+            data : {
+                qu : qu
+            },
+            dataType:'json',
+            success : function(json) {
+               alert(json);
+            }
+        });
+    });
+});
+</script>
+
 </head>
 <body>
 	<section style="background: #ffffff;">
@@ -41,7 +78,6 @@
 					<!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
 					<div class="board-inner">
 						<ul class="nav nav-tabs" id="myTab">
-							<div class="liner"></div>
 							<!-- 첫번째 li -->
 							<li class="first"><a href="#first" data-toggle="tab"
 								title="판매자 정보입력"> <span class="round-tabs one"> <i
@@ -100,7 +136,7 @@
 												<label class="col-sm-2 control-label" for="textinput">이름</label>
 												<div class="col-sm-10">
 													<input type="text" placeholder=""
-														class="form-control" id="name" value="${ userInfo.userName }">
+														class="form-control" id="name" value="${userInfo.userName}">
 												</div>
 											</div>
 
@@ -108,8 +144,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">주소</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder=""
-														class="form-control" id="addr" value="${ userInfo.addr }">
+													<input type="text"
+														class="form-control" id="addr"  value="${userInfo.addr}">
 												</div>
 											</div>
 
@@ -117,8 +153,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">연락처</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder=""
-														class="form-control" id="phone" value="${ userInfo.phone }">
+													<input type="text"
+														class="form-control" id="phone"  value="${userInfo.phone}">
 												</div>
 											</div>
 
@@ -126,8 +162,8 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이메일</label>
 												<div class="col-sm-10">
-													<input type="text" placeholder=""
-														class="form-control" id="email" value="${ userInfo.userId }">
+													<input type="text"
+														class="form-control" id="email"  value="${userInfo.userId}">
 												</div>
 											</div>
 
@@ -163,7 +199,7 @@
 														style="width: 40%;">
 														<span class="glyphicon glyphicon-ok-sign"></span>취소
 													</button>
-													<button type="button" class="btn btn-primary btn-lg"
+													<button type="button" class="btn btn-primary btn-lg" id="next1"
 														style="width: 40%;">
 														<span class="glyphicon glyphicon-ok-sign"></span>다음
 													</button>
@@ -184,10 +220,8 @@
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
 												
-								<form class="form-horizontal" name="form2" role="form" action="addCar.do" method="post">
+								<form class="form-horizontal" name="form2" role="form" method="post">
 									<div class="row">
-									
-
 										<div class="form-group">
 											<label class="control-label col-md-1">차량번호
 												|</label>
@@ -210,12 +244,12 @@
 												|</label>
 											
 											<!-- '제조국' 선택 리스트  -->
-											<div class="col-md-2"   id="manuCountry">
+											<div class="col-md-2">
 											
 												<select class="form-control country" id="list1" name="manuCountry">
 													<option>제조국</option>
-													<option value="2-1">국산차</option>
-													<option value="2-2">수입차</option>
+													<option value="korea">국산차</option>
+													<option value="foreign">수입차</option>
 												</select>
 											</div>
 											<!-- /'제조국' 선택 리스트  -->
@@ -384,8 +418,8 @@
 
 											
 											<div class="col-md-2">
-												<input type="text" class="form-control" id="km"
-													name="km" placeholder="입력" OnKeyUp="comma(this)" data-container="body"
+												<input type="text" class="form-control" id="mileage"
+													name="mileage" placeholder="입력" OnKeyUp="comma(this)" data-container="body"
 													data-toggle="popover" data-placement="bottom"
 													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
 											</div>
@@ -439,9 +473,9 @@
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>이전
 												</button>
-												<button type="submit" class="btn btn-primary btn-lg"
+												<button type="submit" class="btn btn-primary btn-lg" id="t2"
 													style="width: 40%;">
-													<span class="glyphicon glyphicon-ok-sign"></span>다음
+													<span class="glyphicon glyphicon-ok-sign"></span><a href="#third">다음</a>
 												</button>
 										</div>
 									</form>
@@ -449,226 +483,220 @@
 								</div>
 							</div>
 							<!-- carinfo end -->
+				<!--  두번째 동그라미 End -->
+				
 
-
-						<!-- 세번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade" id="third">
-
-
-							<div class="col-md-8 col-md-offset-2">
-								<div class="row">
-									<div class="col-md-12">
-										<h3>차량옵션 선택</h3>
-									</div>
+				<!-- 세번째 동그라미 클릭시 div -->
+		<div class="tab-pane fade" id="third">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row">
+				<div class="col-md-12">
+					<h3>차량옵션 선택</h3>
+				</div>
+				</div>
+					<div class="row">
+						<div class="col-md-12">
+						<form class="form-horizontal" name="form3" role="form" method="post">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion"
+											href="#collapse1" aria-expanded="false" class="collapsed">내/외장옵션</a>
+									</h4>
 								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="panel-group" id="accordion">
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse1" aria-expanded="false" class="collapsed">내/외장옵션</a>
-													</h4>
-												</div>
-												<div id="collapse1" class="panel-collapse collapse"
-													aria-expanded="false" style="height: 0px;">
-													<div class="panel-body">
-															<input id="powerWindow" type="checkbox" name="checkbox-test1" value="one">
-															<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="aircorn" type="checkbox" name="checkbox-test2" value="two"> 
-															<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="fullAutoAircorn" type="checkbox" name="checkbox-test3" value="three">
-															<label for="fullAutoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="leftRightAircorn" type="checkbox" name="checkbox-test4" value="four">
-															<label for="leftRightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="gajukSheet" type="checkbox" name="checkbox-test5" value="one">
-															<label for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="warmSheet" type="checkbox" name="checkbox-test6" value="two"> 
-															<label for=warmSheet>열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="windSheet" type="checkbox" name="checkbox-test7" value="three">
-															<label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="msgSheet" type="checkbox" name="checkbox-test8" value="four">
-															<label for="msgSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-															
-															<input id="burcketSheet" type="checkbox" name="checkbox-test9" value="one">
-															<label for="burcketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-													</div>
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse2" class="collapsed" aria-expanded="false">편의장치</a>
-
-													</h4>
-												</div>
-												<div id="collapse2" class="panel-collapse collapse"
-													aria-expanded="false" style="height: 0px;">
-													<div class="panel-body">
-														<input id="sunRoof" type="checkbox" name="checkbox-test1" value="one">
-														<label for="sunRoof">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="pnrmSunRoof" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="pnrmSunRoof">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="hidRam" type="checkbox" name="checkbox-test3" value="three"> 
-														<label for="hidRam">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="autoRight" type="checkbox" name="checkbox-test4" value="four"> 
-														<label for="autoRight">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ecmRoomMirror" type="checkbox" name="checkbox-test5"value="one">
-														<label for="ecmRoomMirror">ECM룸미러</label>&nbsp;&nbsp;&nbsp;&nbsp; 
-														
-														<input id="smartKey" type="checkbox" name="checkbox-test5"value="one">
-														<label for="smartKey">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp; 
-														
-														<input id="egStartButton" type="checkbox" name="checkbox-test6" value="two"> 
-														<label for="egStartButton">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="rigthClean" type="checkbox" name="checkbox-test7" value="three">
-														<label for="rigthClean">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="jkSubSystem" type="checkbox" name="checkbox-test8" value="four">
-														<label for="jkSubSystem">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-													</div>
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse3" class="collapsed" aria-expanded="false">안전장치</a>
-													</h4>
-												</div>
-												<div id="collapse3" class="panel-collapse collapse"
-													aria-expanded="false">
-													<div class="panel-body">
-														<input id="driverAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="driverAirBag">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="driverFriendAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="driverFriendAirBag">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="sideAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="sideAirBag">측면에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ctAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="ctAirBag">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="passengerDetectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="passengerDetectAirBag">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mrProtectAirBag" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mrProtectAirBag">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="activeHeadRest" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="activeHeadRest">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="abs" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="abs">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="bas" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="bas">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-													</div>
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항범</a>
-													</h4>
-												</div>
-												<div id="collapse4" class="panel-collapse collapse"
-													aria-expanded="false">
-													<div class="panel-body">
-														<input id="navi" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="navi">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="hipass" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="hipass">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="blackBox" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="blackBox">블랙박스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="handFreeze" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="handFreeze">핸즈프리즈</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="blueTooth" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="blueTooth">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="dvdPlayer" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="dvdPlayer">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="dmb" type="checkbox" name="checkbox-test2" value="two">
-														<label for="dmb">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mp3" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mp3">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="iPhoneAdapter" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="iPhoneAdapter">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-													</div>
-												</div>
-											</div>
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordion"
-															href="#collapse5" class="collapsed" aria-expanded="false">튜닝사항</a>
-													</h4>
-												</div>
-												<div id="collapse5" class="panel-collapse collapse"
-													aria-expanded="false">
-													<div class="panel-body">
-														<input id="turboChaser" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="turboChaser">터보차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="airrowFigher" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="airrowFigher">에어로파이터</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="superChaser" type="checkbox" name="checkbox-test2" value="two">
-														<label for="superChaser">슈퍼차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="mission" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="mission">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="handle" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="handle">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="spoiler" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="spoiler">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="ggFan" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="ggFan">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="audio" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="audio">오디오</label>&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<input id="wheelTiger" type="checkbox" name="checkbox-test2" value="two"> 
-														<label for="wheelTiger">힐/타이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
-													</div>
-												</div>
-											</div>
-
-										</div>
-									</div>
+						<div id="collapse1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+						<div class="panel-body">
+							<input id="powerWindow" type="checkbox" name="powerWindow" value="powerWindow">
+							<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="aircorn" type="checkbox" name="aircorn" value="aircorn"> 
+							<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="fullAutoAircorn" type="checkbox" name="fullAutoAircorn" value="fullAutoAircorn">
+							<label for="fullAutoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="leftRightAircorn" type="checkbox" name="leftRightAircorn" value="leftRightAircorn">
+							<label for="leftRightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="gajukSheet" type="checkbox" name="gajukSheet" value="gajukSheet">
+							<label for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="warmSheet" type="checkbox" name="warmSheet" value="warmSheet"> 
+							<label for=warmSheet>열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="windSheet" type="checkbox" name="windSheet" value="windSheet">
+							<label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="msgSheet" type="checkbox" name="msgSheet" value="msgSheet">
+							<label for="msgSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input id="burcketSheet" type="checkbox" name="burcketSheet" value="burcketSheet">
+							<label for="burcketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#collapse2" class="collapsed" aria-expanded="false">편의장치</a>
+								</h4>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse"
+								aria-expanded="false" style="height: 0px;">
+								<div class="panel-body">
+									<input id="sunRoof" type="checkbox" name="sunRoof" value="sunRoof">
+									<label for="sunRoof">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="pnrmSunRoof" type="checkbox" name="pnrmSunRoof" value="pnrmSunRoof"> 
+									<label for="pnrmSunRoof">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="hidRam" type="checkbox" name="hidRam" value="hidRam"> 
+									<label for="hidRam">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="autoRight" type="checkbox" name="autoRight" value="autoRight"> 
+									<label for="autoRight">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="ecmRoomMirror" type="checkbox" name="ecmRoomMirror"value="ecmRoomMirror">
+									<label for="ecmRoomMirror">ECM룸미러</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+									
+									<input id="smartKey" type="checkbox" name="smartKey"value="smartKey">
+									<label for="smartKey">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+									
+									<input id="egStartButton" type="checkbox" name="egStartButton" value="egStartButton"> 
+									<label for="egStartButton">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="rigthClean" type="checkbox" name="rigthClean" value="rigthClean">
+									<label for="rigthClean">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="jkSubSystem" type="checkbox" name="jkSubSystem" value="jkSubSystem">
+									<label for="jkSubSystem">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 							</div>
-
-							<div class="col-md-8 col-md-offset-2">
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#collapse3" class="collapsed" aria-expanded="false">안전장치</a>
+								</h4>
+							</div>
+							<div id="collapse3" class="panel-collapse collapse"
+								aria-expanded="false">
+								<div class="panel-body">
+									<input id="driverAirBag" type="checkbox" name="driverAirBag" value="driverAirBag"> 
+									<label for="driverAirBag">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="driverFriendAirBag" type="checkbox" name="driverFriendAirBag" value="driverFriendAirBag"> 
+									<label for="driverFriendAirBag">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="sideAirBag" type="checkbox" name="sideAirBag" value="sideAirBag"> 
+									<label for="sideAirBag">측면에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="ctAirBag" type="checkbox" name="ctAirBag" value="ctAirBag"> 
+									<label for="ctAirBag">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="passengerDetectAirBag" type="checkbox" name="passengerDetectAirBag" value="passengerDetectAirBag"> 
+									<label for="passengerDetectAirBag">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="mrProtectAirBag" type="checkbox" name="mrProtectAirBag" value="mrProtectAirBag"> 
+									<label for="mrProtectAirBag">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="activeHeadRest" type="checkbox" name="activeHeadRest" value="activeHeadRest"> 
+									<label for="activeHeadRest">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="abs" type="checkbox" name="abs" value="abs"> 
+									<label for="abs">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="bas" type="checkbox" name="bas" value="bas"> 
+									<label for="bas">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#collapse4" class="collapsed" aria-expanded="false">AV/오디오/항범</a>
+								</h4>
+							</div>
+							<div id="collapse4" class="panel-collapse collapse"
+								aria-expanded="false">
+								<div class="panel-body">
+									<input id="navi" type="checkbox" name="navi" value="navi"> 
+									<label for="navi">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="hipass" type="checkbox" name="hipass" value="hipass"> 
+									<label for="hipass">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="blackBox" type="checkbox" name="blackBox" value="blackBox"> 
+									<label for="blackBox">블랙박스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="handFreeze" type="checkbox" name="handFreeze" value="handFreeze"> 
+									<label for="handFreeze">핸즈프리즈</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="blueTooth" type="checkbox" name="blueTooth" value="blueTooth"> 
+									<label for="blueTooth">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="dvdPlayer" type="checkbox" name="dvdPlayer" value="dvdPlayer"> 
+									<label for="dvdPlayer">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="dmb" type="checkbox" name="dmb" value="dmb">
+									<label for="dmb">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="mp3" type="checkbox" name="mp3" value="mp3"> 
+									<label for="mp3">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="iPhoneAdapter" type="checkbox" name="iPhoneAdapter" value="iPhoneAdapter"> 
+									<label for="iPhoneAdapter">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#collapse5" class="collapsed" aria-expanded="false">튜닝사항</a>
+								</h4>
+							</div>
+							<div id="collapse5" class="panel-collapse collapse"
+								aria-expanded="false">
+								<div class="panel-body">
+									<input id="turboChaser" type="checkbox" name="turboChaser" value="turboChaser"> 
+									<label for="turboChaser">터보차저</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="airrowFigher" type="checkbox" name="airrowFigher" value="airrowFigher"> 
+									<label for="airrowFigher">에어로파이터</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="superChaser" type="checkbox" name="superChaser" value="superChaser">
+									<label for="superChaser">슈퍼차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="mission" type="checkbox" name="mission" value="mission"> 
+									<label for="mission">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="handle" type="checkbox" name="handle" value="handle"> 
+									<label for="handle">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="spoiler" type="checkbox" name="spoiler" value="spoiler"> 
+									<label for="spoiler">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="ggFan" type="checkbox" name="ggFan" value="ggFan"> 
+									<label for="ggFan">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="audio" type="checkbox" name="audio" value="audio"> 
+									<label for="audio">오디오</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									<input id="wheelTiger" type="checkbox" name="wheelTiger" value="wheelTiger"> 
+									<label for="wheelTiger">힐/타이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								</div>
+								</div>
+								</div>
+	
+								<div class="col-md-12">
 								<div class="row">
 									<div class="col-md-12">
 										<h3>차량옵션 설명</h3>
@@ -679,24 +707,35 @@
 										<span class="glyphicon glyphicon-refresh" id="reset">
 											다시쓰기</span>
 									</div>
-									<textarea class="form-control" id="aaa" rows="15"
+									<textarea class="form-control" name ="info-text" id="info-text" rows="15"
 										style="border-radius: 0px;"></textarea>
 								</div>
-
 							</div>
-
-
+							
 							<div class="col-md-6 col-md-offset-3" align="center">
 								<button type="button" class="btn btn-danger btn-lg"
 									style="width: 40%;">
 									<span class="glyphicon glyphicon-ok-sign"></span>이전
 								</button>
-								<button type="button" class="btn btn-primary btn-lg"
+								<button type="submit" id="t3" class="btn btn-primary btn-lg"
 									style="width: 40%;">
 									<span class="glyphicon glyphicon-ok-sign"></span>다음
 								</button>
+								</div>
+							</form>
 							</div>
+							
+								</div><!--  두번째  row 끝  -->
+							</div>
+							
+							
 						</div>
+						
+						<!-- 세번째 동그라미 End -->
+						
+						
+						
+
 
 						<!-- 네번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="fourth">
@@ -1019,354 +1058,333 @@
 						</div>
 						<!-- 4번째 끝  -->
 						
+					
 						
 <!--  fifth 시작  -->
 <div class="tab-pane fade" id="fifth">
-	<div class="container">
-		<div class="row">
-			<div class='list-group gallery form-group'>
-				<div class="row">
-					<div class="container">
-					    <hgroup class="mb20">
-							<h1>판매자 등록</h1>
-							<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
-						</hgroup>
-					
-					    <section class="col-xs-12 col-sm-6 col-md-12">
-							<article class="search-result row">
-								<div class="col-xs-12 col-sm-12 col-md-3">
-									<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
-								</div>
-								
-								<div class="col-xs-12 col-sm-12 col-md-9 excerpet">
-									<h3><a href="#" title="">회원 상세 정보</a></h3>
-									<div class="span5">
-								            <table class="table table-striped table-condensed">
-								                  <thead>
-								                  <tr>
-								                      <th>이  름</th>
-								                      <th>주  소</th>
-								                      <th>연락처</th>
-								                      <th>이메일</th>
-								                      <th>지   역</th>                                     
-								                  </tr>
-								              </thead>   
-								              <tbody>
-								                <tr>
-								                    <td>${user.userName}</td>
-					                    <td>${user.addr}</td>
-					                    <td>${user.phone}</td>
-					                    <td>${user.regDate}</td>                                  
-					                </tr>
-					                <tr>                                      
-					                </tr>
-					                                             
-					              </tbody>
-					            </table>
-					            </div>
-					</div>
-					<span class="clearfix borda"></span>
-				</article>
-		
-		        <article class="search-result row">
-					<div class="col-xs-12 col-sm-12 col-md-3">
-						<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/food" alt="Lorem ipsum" /></a>
-					</div>
-					
-					<div class="col-xs-12 col-sm-12 col-md-9">
-						<h3><a href="#" title="">차량 세부 사항</a></h3>
+<div class="container">
+<div class="row">
+<div class='list-group gallery form-group'>
+<div class="row">
+<div class="container">
+    <hgroup class="mb20">
+		<h1>판매자 등록</h1>
+		<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
+	</hgroup>
+		<form method="post" action="addCar.do">
+		<section class="col-xs-12 col-sm-6 col-md-12">
+			<article class="search-result row">
+				<div class="col-xs-12 col-sm-12 col-md-3">
+					<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+				</div>
 						
-						
-							<div class="span5">
-					            <table class="table table-striped table-condensed">
-					                  <thead>
-					                  <tr>
-					                      <th>차량번호</th>
-					                      <th>차 량  명</th>
-					                      <th>연      식</th>
-					                      <th>배  속 기</th>    
-					                      <th>배  기  량</th>
-					                      <th>색       상</th>
-					                      <th>연       료</th>
-					                      <th>주행 거리</th>
-					                      <th>판매 구분</th>
-					                      <th>사고 여부</th>                                      
-					                  </tr>
-					              </thead>   
-					              <tbody>
-					                <tr>
-					                    <td>Donna R. Folse</td>
-					                    <td>2012/05/06</td>
-					                    <td>Editor</td>
-					                    <td><span class="label label-success">Active</span>
-					                    <td>Editor</td>
-					                    <td>Editor</td>
-					                    <td>Editor</td>
-					                    <td>Editor</td>
-					                    <td>Editor</td>
-					                    <td>Editor</td>
-					                                                         
-					                </tr>
-					                <thead>
-					                <tr>
-					                    <td colspan="10" align="center" data-toggle="collapse" data-target="#car-info">
-					  						
-					<div class="panel panel-default clearfix">
-							<!-- header -->
-                            <div class="col-xs-12 toggle-header">
-                                <div class="col-xs-12">
-                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
-                                        <i class="glyphicon glyphicon-resize-vertical"></i>상품 세부 사항 확인시 클릭하십시오.
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /header -->
-                            <br><br><br>
-                            
-                            <!--  collapse -->
-                                <div id="demo" class="collapse">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    [내|외장] 옵션                                            
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                          
-                                         <!--  편의 장치  시작  -->
-                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    [편 의 장 치]                                           
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  편의 장치   -->
-                                         <!--  안전 장치  시작  -->
-                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    [안 전 장 치]                                           
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  안전 장치   -->
-                                       <!--  튜닝  사항 시작  -->
-                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    [튜 닝 사 항]                                            
-                                                </div>
-                                                <div class="col-xs-1 text-left">
-                                                	<p>가나다라마바</p>
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  튜닝사항   -->
-                                         <!--  AV/오디오/항범  시작  -->
-                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    [AV/오디오/항범]                                            
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                                <div class="col-xs-1 text-center">
-                                                    <i class="glyphicon glyphicon-ok txt-green"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  편의 장치   -->
-                                         
-                                     </div>
-                                     <!-- /collapse -->
-                            </div>
-                        </td>
-					  </tr>
-                   </thead>                          
-             	 </tbody>
-            	</table>
+				<div class="col-xs-12 col-sm-12 col-md-9 excerpet"><h3><a href="#" title="">회원 상세 정보</a></h3>
+				<div class="span5">
+	            <table class="table table-striped table-condensed">
+                  <thead>
+                  <tr>
+                      <th>이  름</th>
+                      <th>주  소</th>
+                      <th>연락처</th>
+                      <th>이메일</th>
+                      <th>지   역</th>                                     
+                  </tr>
+	              </thead>   
+		          <tbody>
+	                <tr>
+	                <td>${user.userName}</td>
+	                <td>${user.addr}</td>
+	                <td>${user.phone}</td>
+	                <td>${user.regDate}</td>                                  
+		            </tr>
+	           	  </tbody>
+			    </table>
+			    </div>
 			</div>
-		</div>
-					<span class="clearfix borda"></span>
-				</article>
+			</article>
+
+        	<article class="search-result row">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/food" alt="Lorem ipsum" /></a>
+			</div>
+			
+			<div class="col-xs-12 col-sm-12 col-md-9"><h3><a href="#" title="">차량 세부 사항</a></h3>
+				<div class="span5">
+			    <table class="table table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th>차량번호</th>
+                    <th>제조국</th>
+                    <th>제조사</th>
+                    <th>모델명</th>    
+                    <th>색상</th>
+                    <th>연식</th>
+                    <th>형식년도</th>
+                    <th>변속기</th>
+                    <th>연료</th>
+                    <th>cc</th>
+                    <th>주행거리</th>
+                    <th>판매구분</th>
+                    <th>사고유무</th>                       
+	            </tr>
+	            </thead>   
+                <tbody>
+                <tr align="center">
+                    <td id="p_carNum"></td>
+                    <td id="p_manuCountry"></td>
+                    <td id="p_manuCo"></td>
+                    <td id="p_model"></td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                    <td>Editor</td>
+                                                         
+                </tr>
+                <thead>
+                <tr>
+			    <td colspan="10" align="center" data-toggle="collapse" data-target="#car-info">
+			  						
+				<div class="panel panel-default clearfix">
+					<!-- header -->
+	              <div class="col-xs-12 toggle-header">
+	                  <div class="col-xs-12">
+	                      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
+	                          <i class="glyphicon glyphicon-resize-vertical"></i>상품 세부 사항 확인시 클릭하십시오.
+	                      </button>
+	                  </div>
+	              </div>
+	              <!-- /header -->
+	              <br><br><br>
+	              <!--  collapse -->
+	                  <div id="demo" class="collapse">
+                      <div class="panel-body">
+                          <div class="row">
+                              <div class="col-xs-3">
+                                  [내|외장] 옵션                                            
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              </div>
+                          </div>
+                      </div>
+                                        
+                          <!--  편의 장치  시작  -->
+                          <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-xs-3">
+                                     [편 의 장 치]                                           
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--  편의 장치   -->
+                          <!--  안전 장치  시작  -->
+                          <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-xs-3">
+                                     [안 전 장 치]                                           
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--  안전 장치   -->
+                        <!--  튜닝  사항 시작  -->
+                          <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-xs-3">
+                                     [튜 닝 사 항]                                            
+                                 </div>
+                                 <div class="col-xs-1 text-left">
+                                 	<p>가나다라마바</p>
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--  튜닝사항   -->
+                          <!--  AV/오디오/항범  시작  -->
+                          <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-xs-3">
+                                     [AV/오디오/항범]                                            
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green" id="i1"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                                 <div class="col-xs-1 text-center">
+                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--  편의 장치   -->
+                         </div><!-- /collapse -->
+                         </div>
+                      	 </td><!-- Claryfy End -->
+			  			</tr>
+            </thead>                          
+           	</tbody>
+          	</table>
+			</div></div></article>
+			
 			</section>	
-		</div>
-						
-						<!--  이전 최종 확인 부분  -->
+			<!--  이전/최종 확인 부분  -->
 						<br><br><br>
 								<div class="col-md-8 col-md-offset-2" align="center">
 									<button type="button" class="btn btn-danger btn-lg"
 										style="width: 40%;">
 										<span class="glyphicon glyphicon-ok-sign"></span>이전
 									</button>
-									<button type="button" class="btn btn-primary btn-lg"
+									<button type="submit" class="btn btn-primary btn-lg"
 										style="width: 40%;">
 										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
 									</button>						
-								</div>
-						<br>
-					</div>
-								<!-- row / end -->
-							</div>
-							<!-- container / end -->
-						</div>
-						
-						
-						
-						
-=======
->>>>>>> .r32
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<!--  다섯번째 끝     -->
-				
-				
-			</div>
-		</div>
-	</section>
+								</div><br>
+			</form><!-- Form End -->
+</div><!-- Container End -->
+</div><!-- row / end -->
+</div><!-- List Group -->
+</div><!-- row / end -->
+</div><!-- Container End -->
+</div><!--  다섯번째 끝     -->
+</div><!-- Tab Content End -->
+</div><!--  Board End -->
+</div><!-- Row End -->
+</div><!--  Container Fluid End -->
+</section>
+
+<!-- script start -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<!--  <script src="js/sell.js"></script>-->
-
-	<!-- image upload -->
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-
-	<script src="
-  js/jasny-bootstrap.min.js"></script>
+	<script src="js/jasny-bootstrap.min.js"></script>
+<!--  script end -->
 
 </body>
 </html>

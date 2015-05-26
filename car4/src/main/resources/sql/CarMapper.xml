@@ -11,6 +11,7 @@
 <mapper namespace="CarMapper">
 
 	<resultMap id="carSelectMap" type="com.model2.mvc.service.domain.Car">
+		<result property="carNum" 		column="carNum" 		jdbcType="VARCHAR" />
 		<result property="carGno" 		column="carGno" 		jdbcType="INTEGER" />  <!-- generate Number -->	
 		<result property="carNo" 		column="carNo" 			jdbcType="INTEGER" />
 		<result property="carNum" 		column="carNum" 		jdbcType="VARCHAR" />

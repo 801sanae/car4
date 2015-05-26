@@ -1,5 +1,6 @@
 package com.model2.mvc.web.car;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,22 @@ public class CarController {
 
 		return "redirect:user/welcome.jsp";
 	}
+	
+	@RequestMapping("/check.do")
+	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request ) throws Exception {
 
+		System.out.println("/check.do");
+		//Business Logic
+		
+		System.out.println("Form"+request.getParameter("qu"));
+		String temp = request.getParameter("qu");
+		String[] t  = temp.split("&");
+		for(String str : t) {
+			System.out.println("SPLIT (((((   "+str);
+		}
+		carService.addCar(car);
+		session.setAttribute("car", car);
+
+		return "redirect:user/welcome.jsp";
+	}
 }

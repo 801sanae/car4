@@ -65,6 +65,7 @@ public class UserDao{
 	}
 	
 	public User getUserInfo(User user) throws Exception{
+		System.out.println("DAO sㅏ와라");
 		return sqlSession.selectOne("UserMapper.getUserInfo", user);
 	}
 }
