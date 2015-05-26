@@ -46,8 +46,12 @@ public class CarController {
 		System.out.println("/addCar.do");
 		//Business Logic
 		System.out.println("Come");
+		System.out.println("::before mybatis carGno="+car.getCarGno());
+		
 		carService.addCar(car);
 		session.setAttribute("car", car);
+		
+		System.out.println("::after mybatis carGno="+car.getCarGno());
 
 		return "redirect:user/welcome.jsp";
 	}
