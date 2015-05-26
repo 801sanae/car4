@@ -10,11 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Car;
 
-
-
 @Repository("carDao")
 public class CarDao{
-	
+
 	///Field
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
@@ -22,16 +20,14 @@ public class CarDao{
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
+
 	///Constructor
 	public CarDao() {
-		System.out.println("나와라 좀");
 		System.out.println(this.getClass());
 	}
 
 	///Method
 	public void addCar(Car car) throws Exception {
-		
 		sqlSession.insert("CarMapper.addCar", car);
 	}
 }

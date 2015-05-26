@@ -3,8 +3,9 @@ package com.model2.mvc.service.domain;
 public class Car {
 
 	//Field
-	private int carNo;				//치량일련번호
-	private int carNum;				//차량번호
+	private int carGno;				//치량일련번호
+	private int carNo;				//차사진이랑
+	private String carNum;			//차량번호
 	private String manuCountry;		//제조국 
 	private String manuCo;			//제조사
 	private String model;			//모델
@@ -16,15 +17,25 @@ public class Car {
 	private int cc;					//배기량
 	private int mileage;			//주행거리
 	private String sell;			//판매구분
-	private String accident;			//사고여부
-	private String professor;			//전문 평가사
+	private String accident;		//사고여부
+	private String professor;		//전문 평가사
 
-	//Constructor
+	
+	//default Constructor
 	public Car() {
 		System.out.println(this.getClass());
 	}
 	
+	
 	//Getter Setter
+	public void setCarGno(int carGno) {
+		this.carGno = carGno;
+	}
+	
+	public int getCarGno() {
+		return carGno;
+	}
+	
 	public void setCarNo(int carNo) {
 		this.carNo = carNo;
 	}
@@ -33,11 +44,11 @@ public class Car {
 		return carNo;
 	}
 
-	public int getCarNum() {
+	public String getCarNum() {
 		return carNum;
 	}
 
-	public void setCarNum(int carNum) {
+	public void setCarNum(String carNum) {
 		this.carNum = carNum;
 	}
 
