@@ -19,6 +19,9 @@
         
     $(document).ready(function() {
         $('#login').click(function() {
+        	
+        	var userid = $("input[id=email]").val();
+          $('#hideUserId1').val(userid);
             $.ajax({
                 url : 'regCheck.jsp',
                 type : 'get',
