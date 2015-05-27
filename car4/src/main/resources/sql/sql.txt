@@ -88,7 +88,11 @@ CREATE TABLE carOption (
 	constraint fk_car_no foreign key(car_no)references car(car_no)
 );
 
-
+CREATE TABLE IMAGE(
+	img_num integer not null,
+	img_path varchar2(255) not null,
+	car_no integer not null REFERENCES car(car_no)
+);
 
 CREATE sequence user_no increment by 1 start with 1;	//user_No sequence
 
