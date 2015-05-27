@@ -91,8 +91,8 @@ public class FileUploadController {
 					
 					System.out.println("패스 : " + path);
 					
-					fileUpload.setFileName(fileUrl);
-					fileUpload.setFileNo(getCountIndex());
+					fileUpload.setImgPath(fileUrl);
+					fileUpload.setImgNum(getCountIndex());
 					
 					try {
 						file.transferTo(new File(path));
