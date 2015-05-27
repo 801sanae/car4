@@ -7,7 +7,7 @@ public class User {
 	
 	///Field
 	private String userId;
-	private int userNum;
+	private int userNo;
 	private String userName;
 	private String password;
 	private String sex;
@@ -40,14 +40,14 @@ public class User {
 		this.userId = userId;
 	}
 
-	public int getUserNum() {
-		return userNum;
+	public int getUserNo() {
+		return userNo;
 	}
 
 
 
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 
@@ -179,7 +179,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userNum=" + userNum
+		return "User [userId=" + userId + ", userNo=" + userNo
 				+ ", userName=" + userName + ", password=" + password
 				+ ", sex=" + sex + ", regDate=" + regDate + ", role=" + role
 				+ ", addr=" + addr + ", phone=" + phone + ", phone1=" + phone1

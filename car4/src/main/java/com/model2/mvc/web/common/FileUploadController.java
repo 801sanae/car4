@@ -44,7 +44,7 @@ public class FileUploadController {
 		
 	}
 	
-	@RequestMapping(value="/addFile.do", method=RequestMethod.POST)
+	@RequestMapping(value="*/addFile.do", method=RequestMethod.POST)
 	public String upload(FileUpload fileUpload, HttpServletRequest request, Model model)throws Exception{
 
 //			@RequestParam("fileName") MultipartFile uploadFile,

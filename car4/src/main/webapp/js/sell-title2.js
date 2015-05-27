@@ -48,63 +48,44 @@ $(document).ready(function() {
 	init_all();
 
 	
-	/* 인풋박스 유효성 검사 (div) */
+	/* popover를 이용한 인풋박스 유효성 검사 */
 	$("#carNum").blur(function() {
-
-		var chk = /([0-9].*[\uac00-\ud7a3])|([\uac00-\ud7a3].*[0-9])/;
-		
+		var check = /^[\uac00-\ud7a3|0-9|\*]+$/;
 		var carNum = $("#carNum").val();
 
-		$("#carNummessage").html("<font color=red>올바른 차량번호 형식</font>으로 입력해주세요.");
-		$("#carNummessage").show();
-		
-		if (carNum.match(chk) ) {
-			$("#carNummessage").hide();
-			
-			$.ajax({
-				url:"isDupCarnum.do",
-				dataType:'json',
-				method:'post',
-				data:{
-					"carNum":$("#carNum").val()
-				},
-				success:function(result){
-					if (result.status == "no") {
-						
-					} else {
-						$("#carNummessage").html("<font color=red>중복된 차량번호</font> 입니다.");
-						$("#carNummessage").show();
-					}
-				}
-			
-			});
+		$("#carNum").popover('show');
+
+		if (carNum.match(check)) {
+			$("#carNum").popover('hide');
 		}
 	});
 
-	$("#tempcc").blur(function() {
+	$("#cc").blur(function() {
 		var check = /^[\0-9\*]+$/;
 		var cc = $("#cc").val();
-		$("#CCmessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
-		$("#CCmessage").show();
-		
-		if ( cc.match(check) ) { 
-			$("#CCmessage").hide();
+
+		$("#cc").popover('show');
+
+		if (cc.match(check)) {
+			$("#cc").popover('hide');
 		}
 	});
 	
-	$("#tempmileage").blur(function() {
+	$("#mileage").blur(function() {
 
 		var check = /^[\0-9\*]+$/;
 		var mileage = $("#mileage").val();
-		$("#Mileagemessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
-		$("#Mileagemessage").show();
-		
-		if ( mileage.match(check) ) {
-			$("#Mileagemessage").hide();
+
+		$("#mileage").popover('show');
+
+		if (mileage.match(check)) {
+			$("#mileage").popover('hide');
 		}
 	});
 	
 });
+
+
 $(function() {
 	//제조국이 선택되었을때 -> 제조사리스트
 	$("#list1").change(function() {
@@ -128,99 +109,132 @@ $(function() {
 		var aaa = $("#list3 option:selected").val();
 		$(".list4-" + aaa).show();
 	});
+	/* ./popover를 이용한 인풋박스 유효성 검사 */	
 	
 	
 });
+
 /*./차량명, 색상 입력 셀렉박스 */
 
-// 내용이 다 입력되어야 <다음>으로 넘어간다.
-$("#submit2").click(function(event) {
-	if ($("#carNum").val() == null){
-		alert("carNum");
-		return;
-	} else if ($("#manuCountry option:selected").val() == null){
-		alert("manuCountry");
-		return;
-	} else if ($("#manuCo option:selected").val() == null){
-		alert("manuCo");
-		return;
-	} else if ($("#model option:selected").val() == null){
-		alert("model");
-		return;
-	} else if ($("#color option:selected").val() == null){
-		alert("color");
-		return;
-	} else if ($("#year option:selected").val() == null){
-		alert("year");
-		return;
-	} else if ($("#carYear option:selected").val() == null){
-		alert("carYear");
-		return;
-	} else if ($("#month option:selected").val() == null){
-		alert("month");
-		return;
-	} else if ($("#transmission option:selected").val() == null){
-		alert("transmission");
-		return;
-	} else if ($("#fuel option:selected").val() == null){
-		alert("fuel");
-		return;
-	} else if ($("cc").val() == null){
-		alert("cc");
-		return;
-	} else if ($("#mileage").val() == null){
-		alert("mileage");
-		return;
-	} else if ($("#sell").val() == null){
-		alert("sell");
-		return;
-	} else if ($("#accident").val() == null){
-		alert("accident");
-		return;
-	} else {
-	   alert("else!")
-	}
-	
-	$("#form2").attr({action:"addCar.do", method:"post"}).submit();
-			
-
-});
-
-
 /* CC, Km 인풋박스에 자동으로 화폐단위 변환 */
-
-//콤마찍기
-function comma(str) {
-    str = String(str);
-
-    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-   
-}
-
-//콤마풀기
-function uncomma(str) {
-    str = String(str);
-    return str.replace(/[^\d]+/g, '');
-}
-
-
-//input box에서 사용자 입력시 바로 콤마를 찍어주기 위한 함수도 추가 한다.
-function inputNumberFormat(obj, id) {
-    obj.value = comma(uncomma(obj.value));
-
-	if(id=='cc') {
-		$("#cc").val(uncomma(obj.value));
-	} else if(id=='mileage') {
-		$("#mileage").val(uncomma(obj.value));
-	} else {
-		
-	}
+function strip_comma(data)
+{
+    var flag = 1;
+    var valid = "1234567890";
+    var output = '';
+    if (data.charAt(0) == '-')
+    {
+        flag = 0;
+        data = data.substring(1);
+    }
     
+    for (var i=0; i<data.length; i++)
+    {
+        if (valid.indexOf(data.charAt(i)) != -1)
+            output += data.charAt(i)
+    }
+    
+    if (flag == 1)
+        return output;
+    else if (flag == 0)
+        return ('-' + output);
 }
-
-
+  
+function add_comma(what)
+{
+    var flag = 1;
+    var data = what;
+    var len = data.length;
+    
+    if (data.charAt(0) == '-')
+    {
+        flag = 0;
+        data = data.substring(1);
+    }
+    if (data.charAt(0) == '0' && data.charAt(1) == '-')
+    {
+        flag = 0;
+        data = data.substring(2);
+    }
+    
+    var number = strip_comma(data);
+    number = '' + number;
+    if (number.length > 3)
+    {
+        var mod = number.length % 3;
+        var output = (mod > 0 ? (number.substring(0,mod)) : '');
+        for (i=0; i<Math.floor(number.length/3); i++)
+        {
+            if ((mod == 0) && (i == 0))
+                output += number.substring(mod+3*i, mod+3*i+3);
+            else
+                output += ',' + number.substring(mod+3*i, mod+3*i+3);
+        }
+        if (flag == 0)
+        {
+            return ('-' + output);
+        }
+        else
+        {
+            return (output);
+        }
+    }
+    else
+    {
+        if (flag == 0)
+        {
+            return ('-' + number);
+        }
+        else
+        {
+            return (number);
+        }
+    }
+}
+  
+function replace(str, original, replacement)
+{
+    var result;
+    result = "";
+    while(str.indexOf(original) != -1)
+    {
+        if (str.indexOf(original) > 0)
+            result = result + str.substring(0, str.indexOf(original)) + replacement;
+        else
+            result = result + replacement;
+            str = str.substring(str.indexOf(original) + original.length, str.length);
+    }
+    return result + str;
+}
+  
+function comma(what)
+{
+    var data = what.value;
+    
+    if ((event.keyCode == 107) || (event.keyCode == 187))
+    {
+        if ((data == "+") || (data == "0+") || (Math.floor(replace((replace(data,"+","")),",","")) == 0))
+        {
+            dataval = "";
+        }
+        else
+        {
+            var dataval = data + '000';
+            dataval = replace(dataval,"+","");
+        }
+    }
+    else
+    {
+        if (Math.floor(data) == 0)
+        {
+            dataval = "";
+        }
+        else
+        {
+            var dataval = data;
+        }
+    }
+    
+    what.value = add_comma(dataval);
+}
 /*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
-
-
-
-	

@@ -1,0 +1,46 @@
+CREATE TABLE users (
+	user_no integer not null,
+	user_id varchar2(50) NOT NULL, 
+	user_name varchar2(50) NOT NULL, 
+	password varchar2(30) NOT NULL,
+	sex varchar2(10) NOT NULL,	
+	role varchar2(30),	
+	phone varchar2(100),
+	addr varchar2(50) NOT NULL,  
+	reg_date DATE NOT NULL,
+	constraint pk_user_no primary key(user_no)
+);
+
+
+
+CREATE TABLE car(
+	car_no integer not null,
+	car_num varchar2(50) not null,
+	manu_country varchar2(50) not null,
+	manu_co varchar2(50) not null,
+	model varchar2(50) not null,
+	color varchar2(50) not null,
+	year integer not null,
+	car_year integer not null,
+	transmission varchar2(50) not null,
+	fuel varchar2(50) not null,
+	cc integer not null,
+	mileage integer not null,
+	sell  varchar2(50) not null,
+	accident  varchar2(50) not null,
+	professor  varchar2(50) not null,
+	price integer,
+	user_no integer not null REFERENCES users(user_no),
+	constraint pk_car_no primary key(car_no),
+	constraint fk_user_no foreign key(user_no)references users(user_no)
+);
+
+
+CREATE sequence user_no increment by 1 start with 1;	//user_No sequence
+
+CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
+
+CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
+
+
+

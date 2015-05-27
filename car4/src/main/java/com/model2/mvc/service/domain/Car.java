@@ -3,7 +3,6 @@ package com.model2.mvc.service.domain;
 public class Car {
 
 	//Field
-	private int carGno;				//치량일련번호
 	private int carNo;				//차사진이랑
 	private String carNum;			//차량번호
 	private String manuCountry;		//제조국 
@@ -19,7 +18,8 @@ public class Car {
 	private String sell;			//판매구분
 	private String accident;		//사고여부
 	private String professor;		//전문 평가사
-
+	private int price;
+	private User userNo;			//User값
 	
 	//default Constructor
 	public Car() {
@@ -27,15 +27,7 @@ public class Car {
 	}
 	
 	
-	//Getter Setter
-	public void setCarGno(int carGno) {
-		this.carGno = carGno;
-	}
-	
-	public int getCarGno() {
-		return carGno;
-	}
-	
+
 	public void setCarNo(int carNo) {
 		this.carNo = carNo;
 	}
@@ -156,14 +148,40 @@ public class Car {
 		this.professor = professor;
 	}
 
+	
+	public int getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+
+	public User getUserNo() {
+		return userNo;
+	}
+
+
+	public void setUserNo(User userNo) {
+		this.userNo = userNo;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Car [carGno="+carGno+", carNo="+carNo+", carNum=" + carNum + ", manuCountry=" + manuCountry
-				+ ", manuCo=" + manuCo + ", model=" + model + ", color="
-				+ color + ", year=" + year + ", carYear=" + carYear
-				+ ", transmission=" + transmission + ", fuel=" + fuel + ", cc="
-				+ cc + ", mileage=" + mileage + ", sell=" + sell
-				+ ", accident=" + accident + ", professor=" + professor + "]";
+		return "Car [carNo=" + carNo + ", carNum=" + carNum + ", manuCountry="
+				+ manuCountry + ", manuCo=" + manuCo + ", model=" + model
+				+ ", color=" + color + ", year=" + year + ", carYear="
+				+ carYear + ", transmission=" + transmission + ", fuel=" + fuel
+				+ ", cc=" + cc + ", mileage=" + mileage + ", sell=" + sell
+				+ ", accident=" + accident + ", professor=" + professor
+				+ ", price=" + price + ", userNo=" + userNo + "]";
 	}
+
 
 }

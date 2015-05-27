@@ -27,8 +27,6 @@ public class CarServiceImpl implements CarService{
 
 	///Method
 	public void addCar(Car car) throws Exception {
-		System.out.println("::CarServiceImpl\n::before carGno = "+car.getCarGno());
 		CarDao.addCar(car);
-		System.out.println("::after carGno = "+car.getCarGno());
 	}
 }
