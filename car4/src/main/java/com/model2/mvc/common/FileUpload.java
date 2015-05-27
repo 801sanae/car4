@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUpload {
 	
 	private List<MultipartFile> upfile;
-	private String fileName;
-	private int fileNo;
+	private String imgPath;
+	private int imgNum;
 	
 	public FileUpload(){
 		System.out.println(this.getClass());
@@ -20,17 +20,17 @@ public class FileUpload {
 	public void setUpfile(List<MultipartFile> upfile) {
 		this.upfile = upfile;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getImgPath() {
+		return imgPath;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
-	public int getFileNo() {
-		return fileNo;
+	public int getImgNum() {
+		return imgNum;
 	}
-	public void setFileNo(int fileNo) {
-		this.fileNo = fileNo;
+	public void setImgNum(int imgNum) {
+		this.imgNum = imgNum;
 	}
 	
 }
