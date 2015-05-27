@@ -49,17 +49,20 @@ public class FileUploadController {
 
 //			@RequestParam("fileName") MultipartFile uploadFile,
 //			Model model, HttpServletRequest request) throws Exception{
-
+		System.out.println("돌아간다 신나니?");
+		
 		List<MultipartFile> list = fileUpload.getUpfile();
 		
+		System.out.println("List : " + list);
+		System.out.println("asdffffffffffffffffffff");
 		for(MultipartFile file : list){
+			System.out.println("돌아간다신난닼ㅋ");
 			if(! file.isEmpty()){
 				String originalFileName = file.getOriginalFilename();
 				
 				if (originalFileName != null) {
 					
-					System.out.println("돌아가니?");
-					System.out.println("---------->");
+					System.out.println("--->");
 					System.out.println(file.getOriginalFilename());
 					System.out.println(file.getName());
 					
@@ -103,6 +106,7 @@ public class FileUploadController {
 				}
 			}
 		}
+		System.out.println("asdfff");
 		model.addAttribute("fileUpload", fileUpload);
 
 		return "Upload";
