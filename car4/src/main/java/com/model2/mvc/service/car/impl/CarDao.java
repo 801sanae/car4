@@ -29,7 +29,6 @@ public class CarDao{
 
 	///Method
 	public void addCar(Car car) throws Exception {
-		
 		sqlSession.insert("CarMapper.addCar", car);
 	}
 	
