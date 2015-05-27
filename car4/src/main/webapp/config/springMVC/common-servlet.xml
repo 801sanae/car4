@@ -33,12 +33,16 @@
 
 	<!--  :: ViewResolver 선언 -->	
     <bean id="viewResolver"
-				class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
-	
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" /> -->
+	</bean>
 
 	<!-- 	:: exception resolver  선언 :: 서술적 / 선언적 예외처리 
 			:: Servlet 에서의 선언적 예외처리를 다시 생각하며....  -->
-	<bean id="exceptionResolver"
+	<!-- <bean id="exceptionResolver"
 				class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		
 		<property name="exceptionMappings">
@@ -50,6 +54,13 @@
 		
 		<property name="defaultErrorView"	value="/common/error.jsp" />
 		
-	</bean>
+	</bean> -->
+	
+	
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- one of the properties available; the maximum file size in bytes -->
+    <property name="maxUploadSize" value="10000000"/>
+    </bean>
 
 </beans>
