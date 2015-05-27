@@ -503,21 +503,22 @@ $(document).ready(function() {
 										<br>
 										<br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-											<button type="button" class="btn btn-danger btn-lg"
-												style="width: 40%;">
-												<span class="glyphicon glyphicon-ok-sign"></span>이전
-											</button>
-											<button type="submit" class="btn btn-primary btn-lg"
-												style="width: 40%;" id="submit2">
-												<span class="glyphicon glyphicon-ok-sign"></span>다음
-											</button>
+												<button type="button" class="btn btn-danger btn-lg" 
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span>이전
+												</button>
+												<button type="submit" class="btn btn-primary btn-lg" id="t2"
+													style="width: 40%;">
+													<span class="glyphicon glyphicon-ok-sign"></span><a href="#third">다음</a>
+												</button>
 										</div>
-								</form>
+									</form>
 
+								</div>
 							</div>
-						</div>
-						<!-- carinfo end -->
+							<!-- carinfo end -->
 				<!--  두번째 동그라미 End -->
+
 				
 
 				<!-- 세번째 동그라미 클릭시 div -->
