@@ -12,7 +12,6 @@ CREATE TABLE users (
 );
 
 
-
 CREATE TABLE car(
 	car_no integer not null,
 	car_num varchar2(50) not null,
@@ -30,9 +29,9 @@ CREATE TABLE car(
 	accident  varchar2(50) not null,
 	professor  varchar2(50) not null,
 	price integer,
-	user_no integer not null REFERENCES users(user_no),
+	user_no integer not null,
 	constraint pk_car_no primary key(car_no),
-	constraint fk_user_no foreign key(user_no)references users(user_no)
+	constraint fk_user_no foreign key(user_no) references users(user_no)
 );
 
 
