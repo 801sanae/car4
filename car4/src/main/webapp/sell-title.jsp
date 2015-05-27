@@ -798,7 +798,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[0]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -823,7 +823,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[1]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -848,7 +848,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[2]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -873,7 +873,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[3]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -898,7 +898,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[4]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -923,7 +923,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[5]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -951,7 +951,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[6]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -976,7 +976,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[7]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -1001,7 +1001,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[8]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -1026,7 +1026,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[9]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -1051,7 +1051,7 @@ $(document).ready(function() {
 														<span class="btn btn-default btn-file"><span
 															class="fileinput-new">Select image</span><span
 															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
+															name="upfile[10]"></span> <a href="#"
 															class="btn btn-default fileinput-exists"
 															data-dismiss="fileinput">Remove</a>
 													</div>
@@ -1059,15 +1059,30 @@ $(document).ready(function() {
 											</div>
 											<!-- col-6 / end -->
 											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<a class="thumbnail fancybox" rel="ligthbox"
-													href="http://placehold.it/300x320.png"> <img
-													class="img-responsive" alt=""
-													src="http://placehold.it/320x320" />
-													<div class='text-right'>
-														<small class='text-muted'>Image Title</small>
-													</div> <!-- text-right / end -->
-												</a>
+												<div class="fileinput fileinput-new"
+													data-provides="fileinput">
+													<div class="fileinput-new thumbnail"
+														style="width: 170px; height: 160px;">
+														<img data-src="holder.js/100x100%" alt="">
+														<div class='text-right'>
+															<small class='text-muted'>측면</small>
+														</div>
+														<!-- text-right / end -->
+													</div>
+													<div class="fileinput-preview fileinput-exists thumbnail"
+														style="max-width: 250px; max-height: 250px;"
+														align="center"></div>
+													<div align="center">
+														<span class="btn btn-default btn-file"><span
+															class="fileinput-new">Select image</span><span
+															class="fileinput-exists">Change</span><input type="file"
+															name="upfile[11]"></span> <a href="#"
+															class="btn btn-default fileinput-exists"
+															data-dismiss="fileinput">Remove</a>
+													</div>
+												</div>
 											</div>
+											<!-- col-6 / end -->
 										</div>
 
 
