@@ -81,7 +81,7 @@ $(document).ready(function() {
 							<!-- 첫번째 li -->
 							<li class="first"><a href="#first" data-toggle="tab"
 								title="판매자 정보입력"> <span class="round-tabs one"> <i
-										class="glyphicon glyphicon-home"></i>
+										class="glyphicon glyphicon-user"></i>
 								</span>
 							</a></li>
 							<!-- 첫번째 li 끝-->
@@ -89,7 +89,7 @@ $(document).ready(function() {
 							<!-- 두번째 li -->
 							<li><a href="#second" data-toggle="tab" title="profile">
 									<span class="round-tabs two"> <i
-										class="glyphicon glyphicon-user"></i>
+										class="glyphicon glyphicon-list-alt"></i>
 								</span>
 							</a></li>
 							<!-- 두번째 li 끝  -->
@@ -97,7 +97,7 @@ $(document).ready(function() {
 							<!-- 세번째 li -->
 							<li><a href="#third" data-toggle="tab" title="ppp"> <span
 									class="round-tabs two"> <i
-										class="glyphicon glyphicon-user"></i>
+										class="glyphicon glyphicon-list"></i>
 								</span>
 							</a></li>
 							<!-- 세번째 li 끝-->
@@ -105,7 +105,7 @@ $(document).ready(function() {
 							<!-- 다섯번째 li -->
 							<li><a href="#fourth" data-toggle="tab" title="blah blah">
 									<span class="round-tabs four"> <i
-										class="glyphicon glyphicon-comment"></i>
+										class="glyphicon glyphicon-camera"></i>
 								</span>
 							</a></li>
 							<!-- 다섯번째 li 끝 -->
