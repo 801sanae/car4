@@ -27,7 +27,7 @@
 		<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
 		<result property="professor"   	column="professor" 		jdbcType="VARCHAR"  />
 		<result property="price"   		column="price" 			jdbcType="INTEGER"  />
-		<result property="userNo"   	column="user_no" 		jdbcType="INTEGER"  />
+		<result property="userNo.userNo"	column="user_no" 	    jdbcType="INTEGER" />
 	</resultMap>
 
 
@@ -41,9 +41,9 @@
 		year, car_Year, 
 		transmission, cc, 
 		fuel, mileage, 
-		sell, accident, professor,user_no)
+		sell, accident, professor, user_no)
 		VALUES(
-		car_No.NEXTVAL ,#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{professor},#{userNo})
+		car_No.NEXTVAL ,#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{professor},#{userNo.userNo})
 	</insert>
 	
 	<select id="getCar" parameterType="String" resultMap="carSelectMap">
