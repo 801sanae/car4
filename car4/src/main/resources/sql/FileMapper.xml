@@ -19,7 +19,7 @@
 	<insert id="addFile" parameterType="com.model2.mvc.common.FileUpload">
 		INSERT
 		INTO
-		CARPATH(fileNo, fileName)
+		filepath(fileNo, fileName)
 		VALUES(#{fileNo}, #{fileName})
 	</insert>
 
