@@ -100,5 +100,41 @@ CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
 
 CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
 
-
+INSERT INTO car (
+	car_no,
+	car_num,
+	manu_country,
+	manu_co,
+	model,
+	color,
+	year,
+	car_year,
+	transmission,
+	fuel,
+	cc,
+	mileage,
+	sell,
+	accident,
+	professor,
+	price,
+	user_no
+) VALUES (
+	car_no.nextval,
+	'16가2000',
+	'국산차',
+	'횬다이',
+	'AVANTE',
+	'white',
+	2010,
+	2011,
+	'auto',
+	'gasoline',
+	1600,
+	43000,
+	'lease',
+	'no',
+	'no',
+	10000000,
+	1
+);
 
