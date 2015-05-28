@@ -12,8 +12,6 @@
 <link href="css\jasny-bootstrap.css" rel="stylesheet">
 <link href="css\jasny-bootstrap.css.map" rel="stylesheet">
 <script src="https://code.jquery.com/jquery.js"></script>
-<script src="js/sell-title2.js"></script>
-
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,46 +30,18 @@
     color:red;
 }
 </style>
-<script>
-$(document).ready(function() {
-    $('#t2').click(function() {
-    	var queryString = $("form[name=form2]").serialize();
-    	alert(queryString);
-        $.ajax({
-            url : 'duplicate1.jsp',
-            type : 'get',
-            data : queryString,
-            dataType:'json',
-            success : function(json) {
-               alert(json);
-            }
-        });
-    });
-});
-</script>
-<script>
-$(document).ready(function() {
-    $('#t3').click(function() {
-    	var qu = $("form[name=form3]").serialize();
-        $.ajax({
-            url : 'duplicate2.jsp',
-            type : 'post',
-            data : {
-                qu : qu
-            },
-            dataType:'json',
-            success : function(json) {
-               alert(json);
-            }
-        });
-    });
-});
-</script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<!--  <script src="js/sell.js"></script>-->
+	<script src="js/jasny-bootstrap.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $('#next1').click(function() {
-    	
-    	$('#change2').trigger('click');
+       
+       $('#change2').trigger('click');
     });
     $('#next2').click(function() {
         
@@ -104,8 +74,326 @@ $(document).ready(function() {
 });
 </script>
 
+
+
+
+
+<script>
+$(document).ready(function() {
+    $('#next2').click(function() {
+    	var queryString = $("form[name=form2]").serialize();
+    	$.ajax({
+            url : 'duplicate1.jsp',
+            type : 'post',
+            data : queryString,
+            dataType:'json',
+            success : function(jsonString) {
+            	alert(jsonString.carNum);
+            	$("#p_carNum").val(jsonString.carNum);
+            	$("#p_manuCountry").val(jsonString.manuCountry);
+            	$("#p_manuCo").val(jsonString.manuCo);
+            	$("#p_model").val(jsonString.model);
+            	$("#p_color").val(jsonString.color);
+            	$("#p_year").val(jsonString.year);
+            	$("#p_carYear").val(jsonString.carYear);
+            	$("#p_transmission").val(jsonString.transmission);
+            	$("#p_fuel").val(jsonString.fuel);
+            	$("#p_cc").val(jsonString.cc);
+            	$("#p_mileage").val(jsonString.mileage);
+            	$("#p_sell").val(jsonString.sell);
+            	$("#p_accident").val(jsonString.accident);
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    $('#next3').click(function() {
+    	var qu = $("form[name=form3]").serialize();
+        $.ajax({
+            url : 'duplicate2.jsp',
+            type : 'post',
+            data : {
+                qu : qu
+            },
+            dataType:'json',
+            success : function(result) {
+            	$("#p_powerWindow").val(result.powerWindow);
+            	$("#p_aircorn").val(result.aircorn);
+            	$("#p_fullAutoAircorn").val(result.fullAutoAircorn);
+            	$("#p_leftRightAircorn").val(result.leftRightAircorn);
+            	$("#p_gajukSheet").val(result.gajukSheet);
+            	$("#p_warmSheet").val(result.warmSheet);
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    $('#next').click(function() {
+    	console.log($("#formFileUpload input[name='upfile[0]']").val());
+    	$("#okok").clone(true).appendTo("#formtest");
+    	$("#formFileUpload input:file").appendTo("#formtest");
+    	//var fileUpload = $("form[name=formFileUpload]").serialize();
+    	//console.log(fileUpload);
+        /*
+    	$.ajax({
+            url : 'addFile.do',
+            type : 'post',
+            data : {
+            	fileUpload : fileUpload
+            },
+            dataType:'json',
+            success : function(json) {
+               alert(json);
+            }
+        });*/
+    });
+});
+</script>
+
+
+<script>
+
+/*sell-title2.js*/
+ 
+ /*
+ * 두번째 동그라미에 대한 자바스크립트 파일 
+ */
+
+/* 차량명, 색상 입력 셀렉박스 */
+
+//전체 셀렉박스 초기화함수.
+
+function init_all() {
+	
+	$(".list2-1").hide();
+	$(".list2-2").hide();
+	$(".list3-hyundai").hide();
+	$(".list3-kia").hide();
+	$(".list3-bmw").hide();
+	$(".list4-sonata").hide();
+	$(".list4-carnival").hide();
+	$(".list4-320d").hide();
+	
+}
+
+//list2 셀렉박스 초기화함수.
+function init_list2() {
+
+	$(".list3-hyundai").hide();
+	$(".list3-kia").hide();
+	$(".list3-bmw").hide(); 
+	$(".list4-sonata").hide();
+	$(".list4-carnival").hide();
+	$(".list4-320d").hide();
+
+}
+
+//list3 셀렉박스 초기화함수. 
+function init_list3() {
+
+	$(".list4-sonata").hide();
+	$(".list4-carnival").hide();
+	$(".list4-320d").hide();
+
+}
+
+
+// ready함수.
+$(document).ready(function() {
+	
+	
+	
+	init_all();
+
+	
+	/* 인풋박스 유효성 검사 (div) */
+	$("#carNum").blur(function() {
+
+		var chk = /([0-9].*[\uac00-\ud7a3])|([\uac00-\ud7a3].*[0-9])/;
+		
+		var carNum = $("#carNum").val();
+
+		$("#carNummessage").html("<font color=red>올바른 차량번호 형식</font>으로 입력해주세요.");
+		$("#carNummessage").show();
+		
+		if (carNum.match(chk) ) {
+			$("#carNummessage").hide();
+			
+			$.ajax({
+				url:"isDupCarnum.do",
+				dataType:'json',
+				method:'post',
+				data:{
+					"carNum":$("#carNum").val()
+				},
+				success:function(result){
+					if (result.status == "no") {
+						
+					} else {
+						$("#carNummessage").html("<font color=red>중복된 차량번호</font> 입니다.");
+						$("#carNummessage").show();
+					}
+				}
+			
+			});
+		}
+	});
+
+	$("#tempcc").blur(function() {
+		var check = /^[\0-9\*]+$/;
+		var cc = $("#cc").val();
+		$("#CCmessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
+		$("#CCmessage").show();
+		
+		if ( cc.match(check) ) { 
+			$("#CCmessage").hide();
+		}
+	});
+	
+	$("#tempmileage").blur(function() {
+
+		var check = /^[\0-9\*]+$/;
+		var mileage = $("#mileage").val();
+		$("#Mileagemessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
+		$("#Mileagemessage").show();
+		
+		if ( mileage.match(check) ) {
+			$("#Mileagemessage").hide();
+		}
+	});
+	
+});
+$(function() {
+	//제조국이 선택되었을때 -> 제조사리스트
+	$("#list1").change(function() {
+		init_all();
+		var aaa = $("#list1 option:selected").val();
+		$(".list" + aaa).show();
+	});
+});
+	//제조사가 선택되었을때 -> 모델명리스트
+$(function() {
+	$("#list2").change(function() {
+		init_list2();
+		var aaa = $("#list2 option:selected").val();
+		$(".list3-" + aaa).show();
+	});
+});
+	//모델명이 선택되었을때 -> 컬러리스트
+$(function() {
+	$("#list3").change(function() {
+		init_list3();
+		var aaa = $("#list3 option:selected").val();
+		$(".list4-" + aaa).show();
+	});
+	
+	
+});
+/*./차량명, 색상 입력 셀렉박스 */
+
+/*
+// 내용이 다 입력되어야 <다음>으로 넘어간다.
+$("#submit2").click(function(event) {
+	if ($("#carNum").val() == null){
+		alert("carNum");
+		return;
+	} else if ($("#manuCountry option:selected").val() == null){
+		alert("manuCountry");
+		return;
+	} else if ($("#manuCo option:selected").val() == null){
+		alert("manuCo");
+		return;
+	} else if ($("#model option:selected").val() == null){
+		alert("model");
+		return;
+	} else if ($("#color option:selected").val() == null){
+		alert("color");
+		return;
+	} else if ($("#year option:selected").val() == null){
+		alert("year");
+		return;
+	} else if ($("#carYear option:selected").val() == null){
+		alert("carYear");
+		return;
+	} else if ($("#month option:selected").val() == null){
+		alert("month");
+		return;
+	} else if ($("#transmission option:selected").val() == null){
+		alert("transmission");
+		return;
+	} else if ($("#fuel option:selected").val() == null){
+		alert("fuel");
+		return;
+	} else if ($("cc").val() == null){
+		alert("cc");
+		return;
+	} else if ($("#mileage").val() == null){
+		alert("mileage");
+		return;
+	} else if ($("#sell").val() == null){
+		alert("sell");
+		return;
+	} else if ($("#accident").val() == null){
+		alert("accident");
+		return;
+	} else {
+	   alert("else!")
+	}
+	
+	$("#form2").attr({action:"addCar.do", method:"post"}).submit();
+});
+*/
+
+
+/* CC, Km 인풋박스에 자동으로 화폐단위 변환 */
+
+//콤마찍기
+function comma(str) {
+    str = String(str);
+
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+   
+}
+
+//콤마풀기
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+
+
+//input box에서 사용자 입력시 바로 콤마를 찍어주기 위한 함수도 추가 한다.
+function inputNumberFormat(obj, id) {
+    obj.value = comma(uncomma(obj.value));
+
+	if(id=='cc') {
+		$("#cc").val(uncomma(obj.value));
+	} else if(id=='mileage') {
+		$("#mileage").val(uncomma(obj.value));
+	} else {
+		
+	}
+    
+}
+/*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
+
+
+</script>
+
 </head>
 <body>
+
+<form action="test.do" enctype="multipart/form-data" method="post">
+	<input type="file" id="testok" name="testok">
+  <div id="formtest" style="display: ">
+  </div> 
+  <button>파일 업로드</button>
+</form>
+
 	<section style="background: #ffffff;">
 		<div class="container-fluid">
 			<div class="row">
@@ -115,14 +403,14 @@ $(document).ready(function() {
 						<ul class="nav nav-tabs" id="myTab">
 							<!-- 첫번째 li -->
 							<li class="first"><a href="#first" data-toggle="tab"
-								title="판매자 정보입력" id="change1" > <span class="round-tabs one"> <i
+								title="판매자 정보입력" id="change1"> <span class="round-tabs one"> <i
 										class="glyphicon glyphicon-user"></i>
 								</span>
 							</a></li>
 							<!-- 첫번째 li 끝-->
 
 							<!-- 두번째 li -->
-							<li><a href="#second" data-toggle="tab" title="profile" id="change2" >
+							<li><a href="#second" data-toggle="tab" title="profile" id="change2">
 									<span class="round-tabs two"> <i
 										class="glyphicon glyphicon-list-alt"></i>
 								</span>
@@ -130,30 +418,30 @@ $(document).ready(function() {
 							<!-- 두번째 li 끝  -->
 
 							<!-- 세번째 li -->
-							<li><a href="#third" data-toggle="tab" title="ppp" id="change3" > <span
+							<li><a href="#third" data-toggle="tab" title="ppp" id="change3"> <span
 									class="round-tabs three"> <i
 										class="glyphicon glyphicon-list"></i>
 								</span>
 							</a></li>
 							<!-- 세번째 li 끝-->
 
-							<!-- 네번째 li -->
-							<li><a href="#fourth" data-toggle="tab" title="blah blah" id="change4" >
+							<!-- 다섯번째 li -->
+							<li><a href="#fourth" data-toggle="tab" title="blah blah" id="change4">
 									<span class="round-tabs four"> <i
 										class="glyphicon glyphicon-camera"></i>
 								</span>
 							</a></li>
-							<!-- 네번째 li 끝 -->
+							<!-- 다섯번째 li 끝 -->
 
-							<!-- 다섯번째 li -->
-							<li><a href="#fifth" data-toggle="tab" title="completed" id="change5" >
+							<!-- 여섯번째 li -->
+							<li><a href="#fifth" data-toggle="tab" title="completed" id="change5">
 									<span class="round-tabs five"> <i
 										class="glyphicon glyphicon-ok"></i>
 								</span>
 							</a></li>
 						</ul>
 					</div>
-              <!-- 다섯번째 li 끝 -->
+
 
 					<!-- 첫번째 동그라미 클릭시 div -->
 					<div class="tab-content">
@@ -169,7 +457,7 @@ $(document).ready(function() {
 											<!-- 이름 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이름</label>
-												<div class="col-sm-5">
+												<div class="col-sm-10">
 													<input type="text" placeholder=""
 														class="form-control" id="name" value="${userInfo.userName}">
 												</div>
@@ -178,7 +466,7 @@ $(document).ready(function() {
 											<!-- 주소 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">주소</label>
-												<div class="col-sm-5">
+												<div class="col-sm-10">
 													<input type="text"
 														class="form-control" id="addr"  value="${userInfo.addr}">
 												</div>
@@ -187,7 +475,7 @@ $(document).ready(function() {
 											<!-- 연락처 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">연락처</label>
-												<div class="col-sm-5">
+												<div class="col-sm-10">
 													<input type="text"
 														class="form-control" id="phone"  value="${userInfo.phone}">
 												</div>
@@ -196,7 +484,7 @@ $(document).ready(function() {
 											<!-- 이메일 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이메일</label>
-												<div class="col-sm-5">
+												<div class="col-sm-10">
 													<input type="text"
 														class="form-control" id="email"  value="${userInfo.userId}">
 												</div>
@@ -251,264 +539,299 @@ $(document).ready(function() {
 							
 						
 						<!-- 두번째 동그라미 클릭시 div -->
-						<div class="tab-pane fade" id="second">
+						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-												
-								<form class="form-horizontal" name="form2" role="form" method="post">
+
+								<form class="form-horizontal" name="form2" role="form"
+									action="addCar.do" method="post">
 									<div class="row">
+
+
 										<div class="form-group">
-											<label class="control-label col-md-1">차량번호
-												|</label>
-												
+											<label class="control-label col-md-1">차량번호 |</label>
+
 											<div class="col-md-2">
 												<input type="text" class="form-control" id="carNum"
-													name="carNum" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="올바른 차량번호 형식으로 입력해주세요.">
-											</div>
+													name="carNum" placeholder="입력">
 
+											</div>
 
 											<input type="checkbox" class="checkthis" />&nbsp;임시번호/직수입등록
 										</div>
 										
-
-										<!-- 차량명 선택 리스트 -->
+										<!-- message DIV  -->
 										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">차량명
-												|</label>
-											
-											<!-- '제조국' 선택 리스트  -->
-											<div class="col-md-2">
-											
-												<select class="form-control country" id="list1" name="manuCountry">
-													<option>제조국</option>
-													<option value="korea">국산차</option>
-													<option value="foreign">수입차</option>
-												</select>
-											</div>
-											<!-- /'제조국' 선택 리스트  -->
-											
-											<!-- '제조사' 선택 리스트  -->
-											<div class="col-md-2">
-												
-												<select class="form-control company" id="list2" name="manuCo">
+											<div class=" col-md-12">
 
-													<option id="company_basic">제조사</option>
-													<!-- 국내차 -->
-													<option class="list2-1" value="hyundai">현대</option>
-													<option class="list2-1" value="kia">기아</option>
-													<option class="list2-1" value="chevolet">쉐보레</option>
-													<!-- /국내차 -->
-													
-													<!-- 수입차 -->
-													<option class="list2-2" value="bmw">bmw</option>
-													<option class="list2-2" value="audi">아우디</option>
-													<option class="list2-2" value="volkswagen">폭스바겐</option>
-													<!-- /수입차 -->
-												</select>
+												<!-- carNummessage 보여줄 곳  -->
+												<div id="carNummessage" class="col-md-offset-1"
+													style="font-size: 12px; padding-left: 8px; margin-top: -1%;display:none;">
+												</div>
+
 											</div>
-											<!-- /'제조사' 선택 리스트  -->
-											
-											
-											<!-- '모델명' 선택 리스트  -->
-											<div class="col-md-2">
+										</div>
+										<!-- /message DIV  -->
 										
-												
-												<select class="form-control" id="list3"  name="model">
-													<option id="model_basic">모델명</option>
-												
-												<!-- hyundai -->
-													<option class="list3-hyundai" value="sonata">쏘나타</option>
-													<option class="list3-hyundai" value="grandeur">그랜져</option>
-													<option class="list3-hyundai" value="avante">아반떼</option>
-												<!-- /hyundai -->
-				
-												<!-- kia -->
-													<option class="list3-kia" value="carnival">카니발</option>
-													<option class="list3-kia" value="porte">포르테</option>
-													<option class="list3-kia" value="morning">모닝</option>
-												<!-- /kia -->
-												
-												<!-- bmw -->
-													<option class="list3-bmw" value="320d">320d</option>
-													<option class="list3-bmw" value="i3">i3</option>
-													<option class="list3-bmw" value="i8">i8</option>
-												</select>
-												<!-- /bmw -->
+
+
+											<!-- 차량명 선택 리스트 -->
+											<div class="form-group">
+												<label class="control-label col-md-1" for="phone">차량명
+													|</label>
+
+												<!-- '제조국' 선택 리스트  -->
+												<div class="col-md-2">
+
+													<select class="form-control country" id="list1"
+														name="manuCountry">
+														<option>제조국</option>
+														<option value="2-1">국산차</option>
+														<option value="2-2">수입차</option>
+													</select>
+												</div>
+												<!-- /'제조국' 선택 리스트  -->
+`
+												<!-- '제조사' 선택 리스트  -->
+												<div class="col-md-2">
+
+													<select class="form-control company" id="list2"
+														name="manuCo">
+
+														<option >제조사</option>
+														<!-- 국내차 -->
+														<option class="list2-1" value="hyundai">현대</option>
+														<option class="list2-1" value="kia">기아</option>
+														<option class="list2-1" value="chevolet">쉐보레</option>
+														<!-- /국내차 -->
+
+														<!-- 수입차 -->
+														<option class="list2-2" value="bmw">bmw</option>
+														<option class="list2-2" value="audi">아우디</option>
+														<option class="list2-2" value="volkswagen">폭스바겐</option>
+														<!-- /수입차 -->
+													</select>
+												</div>
+												<!-- /'제조사' 선택 리스트  -->
+
+
+												<!-- '모델명' 선택 리스트  -->
+												<div class="col-md-2">
+
+
+													<select class="form-control" id="list3" name="model">
+														<option id="model_basic">모델명</option>
+
+														<!-- hyundai -->
+														<option class="list3-hyundai" value="sonata">쏘나타</option>
+														<option class="list3-hyundai" value="grandeur">그랜져</option>
+														<option class="list3-hyundai" value="avante">아반떼</option>
+														<!-- /hyundai -->
+
+														<!-- kia -->
+														<option class="list3-kia" value="carnival">카니발</option>
+														<option class="list3-kia" value="porte">포르테</option>
+														<option class="list3-kia" value="morning">모닝</option>
+														<!-- /kia -->
+
+														<!-- bmw -->
+														<option class="list3-bmw" value="320d">320d</option>
+														<option class="list3-bmw" value="i3">i3</option>
+														<option class="list3-bmw" value="i8">i8</option>
+													</select>
+													<!-- /bmw -->
+												</div>
+
+
+												<label class="control-label col-md-1">색상 |</label>
+
+												<!-- 색상 선택 리스트 -->
+												<div class="col-md-2">
+
+													<!-- basic -->
+													<select class="form-control" id="list4" name="color">
+														<option id="color_option">색상</option>
+														<!-- /basic -->
+
+														<!-- 소나타 -->
+														<option class="list4-sonata" value="red">빨강</option>
+														<option class="list4-sonata" value="orange">주황</option>
+														<!-- /소나타 -->
+
+														<!-- 카니발 -->
+														<option class="list4-carnival" value="yellow">노랑</option>
+														<option class="list4-carnival" value="green">초록</option>
+														<!-- /카니발 -->
+
+														<!-- 320d -->
+														<option class="list4-320d" value="blue">파랑</option>
+														<option class="list4-320d" value="pupple">보라</option>
+													</select>
+													<!-- /320d -->
+
+												</div>
 											</div>
-											
-											
-											<label class="control-label col-md-1">색상 |</label>
-											
-											<!-- 색상 선택 리스트 -->
-											<div class="col-md-2">
-											
-												<!-- basic -->
-												<select class="form-control" id="list4" name="color">
-													<option id="color_option">색상</option>
-												<!-- /basic -->
-												
-												<!-- 소나타 -->
-													<option class="list4-sonata" value="red">빨강</option>
-													<option class="list4-sonata" value="orange">주황</option>
-												<!-- /소나타 -->
-												
-												<!-- 카니발 -->
-													<option class="list4-carnival" value="yellow">노랑</option>
-													<option class="list4-carnival" value="green">초록</option>
-												<!-- /카니발 -->
-												
-												<!-- 320d -->
-													<option class="list4-320d" value="blue">파랑</option>
-													<option class="list4-320d" value="pupple">보라</option>
-												</select>
-												<!-- /320d -->
-												
-											</div>
-										</div>
-										<!-- /자동차 선택 리스트 -->
+											<!-- /자동차 선택 리스트 -->
 
-										<div class="form-group">
-											<label class="control-label col-md-1" >
-												연식 |</label>
 
-											<div class="col-sm-2">
-												<select class="form-control" name="year">
 
-													<option>년</option>
-													<option value="2015">2015</option>
-													<option value="2014">2014</option>
-													<option value="2013">2013</option>
+											<div class="form-group">
+												<label class="control-label col-md-1"> 연식 |</label>
 
-												</select>
-											</div>
-											<div class="col-sm-1">
-												<select class="form-control" name="month">
+												<div class="col-sm-2">
+													<select class="form-control" name="year">
 
-													<option>월</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
+														<option>년</option>
+														<% for(int i=2015;i>2000; i--) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
 
-												</select>
-											</div>
-											
-											<label class="control-label col-md-1 col-md-offset-3"
-												>형식년도 |</label>
+													</select>
+												</div>
+												<div class="col-sm-1">
+													<select class="form-control" name="month">
 
-											<div class="col-md-2">
-												<select class="form-control" name="carYear">
-													<option>년형</option>
-													<option value="2015">2015</option>
-													<option value="2014">2014</option>
-												</select>
-											</div>
-										</div>
+														<option>월</option>
+														<% for(int i=1;i<13; i++) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
 
-										<div class="form-group">
-											<label class="control-label col-md-1" for="phone">변속기
-												|</label>
+													</select>
+												</div>
 
-											<div class="col-md-4">
-												<div class="col-md-5"  style="margin-left:-3%;">
-													<input type="radio" name="transmission" value="auto" checked/>&nbsp;자동
-													&nbsp;&nbsp;
-													<input type="radio" name="transmission" value="passive" />&nbsp;수동
+												<label class="control-label col-md-1 col-md-offset-3">형식년도
+													|</label>
+
+												<div class="col-md-2">
+													<select class="form-control" name="carYear">
+														<option>년형</option>
+														<% for(int i=2015;i>2000; i--) { %>
+														<option value="<%= i %>"><%= i %></option>
+														<% } %>
+													</select>
 												</div>
 											</div>
 
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">연료 |</label>
+											<div class="form-group">
+												<label class="control-label col-md-1" for="phone">변속기
+													|</label>
 
-											<div class="col-md-2">
-												<select class="form-control" name="fuel">
+												<div class="col-md-4">
+													<div class="col-md-5" style="margin-left: -3%;">
+														<input type="radio" name="transmission" value="자동"
+															checked />&nbsp;자동 &nbsp;&nbsp; <input type="radio"
+															name="transmission" value="수동" />&nbsp;수동
+													</div>
+												</div>
 
-													<option>선택</option>
-													<option value="Gasolin">가솔린</option>
-													<option value="Diesel">디젤</option>
-													<option value="LPG">LPG</option>
-												</select>
+												<label class="control-label col-md-1 col-md-offset-2"
+													for="phone">연료 |</label>
+
+												<div class="col-md-2">
+													<select class="form-control" name="fuel">
+
+														<option>선택</option>
+														<option value="가솔린">가솔린</option>
+														<option value="디젤">디젤</option>
+														<option value="LPG">LPG</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="control-label col-md-1">배기량 |</label>
+
+
+
+												<div class="col-md-2">
+													<input type="text" class="form-control" id="tempcc" name="tempcc"
+														 placeholder="입력"  onkeyup="inputNumberFormat(this, 'cc')" />
+													
+													<input type="hidden" class="form-control" id="cc" name="cc" />
+												</div>
+
+												<div class="col-md-1">CC</div>
+
+												<label class="control-label col-md-1 col-md-offset-3"
+													for="phone">주행거리 |</label>
+
+
+												<div class="col-md-2">
+													<input type="text" class="form-control" id="tempmileage" name="tempmileage"
+														placeholder="입력"  onkeyup="inputNumberFormat(this, 'mileage')" />
+												
+													<input type="hidden" class="form-control" id="mileage" name="mileage" />
+												</div>
+												<div style="margin-top: 1%;">Km</div>
+
+											</div>
+
+										<!-- message DIV  -->
+										<div class="form-group">
+											<div class=" col-md-12">
+
+												<!-- CCmessage 보여줄 곳  -->
+												<div id="CCmessage" class="col-md-offset-1"
+													style="font-size: 12px; padding-left: 8px; margin-top: -1%; display: none;">
+												</div>	
+												<!-- carNummessage 보여줄 곳  -->
+												
+												<!-- Mileagemessage 보여줄 곳  -->									
+												<div id="Mileagemessage" class="col-md-offset-3"
+													style="font-size: 12px; padding-left: 43.5%; margin-top: -1.2%; display: none;">
+												</div>
+												<!-- carNummessage 보여줄 곳  -->
+
 											</div>
 										</div>
+										<!-- /message DIV  -->
 
 										<div class="form-group">
-											<label class="control-label col-md-1" >배기량
-												|</label>
+												<label class="control-label col-md-1">판매구분 |</label>
+												<div class="col-md-4">
+													<input type="radio" name="sell" value="일반차량" checked />&nbsp;일반차량
+													&nbsp;&nbsp; <input type="radio" name="sell" value="리스승계차량" />&nbsp;리스승계차량
+													&nbsp;&nbsp; <input type="radio" name="sell"
+														value="할부승계차량" />&nbsp;할부승계차량
+												</div>
 
-
-											
-											<div class="col-md-2">
-											
-												<input type="text" class="form-control" id="cc"
-													name="cc" OnKeyUp="comma(this)" placeholder="입력" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
+												<label class="control-label col-md-1 col-md-offset-2"
+													for="phone">사고여부 |</label>
+												<div class="col-md-2">
+													<input type="radio" name="accident" value="무사고" checked />&nbsp;무사고
+													&nbsp;&nbsp; <input type="radio" name="accident"
+														value="사고" />&nbsp;사고
+												</div>
 											</div>
-											
-											<div class="col-md-1">CC</div>
 
-											<label class="control-label col-md-1 col-md-offset-3"
-												for="phone">주행거리 |</label>
 
-										
-											<div class="col-md-2">
-												<input type="text" class="form-control" id="mileage"
-													name="mileage" placeholder="입력" OnKeyUp="comma(this)" data-container="body"
-													data-toggle="popover" data-placement="bottom"
-													data-trigger="manual" data-content="숫자형식으로 입력해주세요.">
+
+											<div class="form-group">
+												<label class="control-label col-md-1">성능상태점검기록부 |</label>
+												<div class="col-md-4">
+													<button type="button" class="btn btn-default" name="perfor"
+														style="margin-top: 2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
+												</div>
+
+												<!-- <label class="control-label col-md-1 col-md-offset-2"
+													for="phone">전문평가사 |</label>
+												<div class="col-md-2">
+													<input type="radio" name="professor" value="yes" checked />&nbsp;요청
+													&nbsp;&nbsp; <input type="radio" name="professor"
+														value="no" />&nbsp;미요청
+												</div> -->
 											</div>
-											<div class="" style="margin-top:1%;">Km</div>
+
 
 										</div>
-
-										<div class="form-group">
-											<label class="control-label col-md-1">판매구분
-												|</label>
-											<div class="col-md-4">
-												<input type="radio" name="sell" value="common" checked />&nbsp;일반차량 
-												&nbsp;&nbsp;
-												<input type="radio" name="sell" value="lease" />&nbsp;리스승계차량
-												&nbsp;&nbsp;
-												<input type="radio" name="sell" value="installment"  />&nbsp;할부승계차량
-											</div>
-
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">사고여부 |</label>
-											<div class="col-md-2">
-												<input type="radio" name="accident" value="noAcc" checked />&nbsp;무사고
-												&nbsp;&nbsp;
-												<input type="radio" name="accident" value="yesAcc" />&nbsp;사고
-											</div>
-										</div>
-
-										
-										
-										<div class="form-group">
-											<label class="control-label col-md-1">성능상태점검기록부
-												|</label>
-											<div class="col-md-4">
-												<button type="button" class="btn btn-default" name="perfor" style="margin-top:2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
-											</div>
-
-											<label class="control-label col-md-1 col-md-offset-2"
-												for="phone">전문평가사 |</label>
-											<div class="col-md-2">
-												<input type="radio" name="professor" value="yes" checked />&nbsp;요청
-												&nbsp;&nbsp;
-												<input type="radio" name="professor" value="no" />&nbsp;미요청
-											</div>
-										</div>
-
-										
-										</div>
-										<br><br>
+										<br>
+										<br>
 										<div class="col-md-8 col-md-offset-1" align="center">
-												<a href="#first" data-toggle="tab" title="판매자 정보입력"><button type="button" class="btn btn-danger btn-lg" id="before2"
+												<a href="#first" data-toggle="tab" title="판매자 정보입력"><button type="button" id="before2" class="btn btn-danger btn-lg" 
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>이전
 												</button></a>
-												<a href="#third" data-toggle="tab" title="ppp"><button type="submit" class="btn btn-primary btn-lg" id="next2"
+												<a href="#third" data-toggle="tab" title="ppp"><button type="button" class="btn btn-primary btn-lg" id="next2"
 													style="width: 40%;">
 													<span class="glyphicon glyphicon-ok-sign"></span>다음
 												</button></a>
@@ -542,31 +865,31 @@ $(document).ready(function() {
 								</div>
 						<div id="collapse1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
 						<div class="panel-body">
-							<input id="powerWindow" type="checkbox" value="powerWindow">
+							<input id="powerWindow" type="checkbox" name="powerWindow">
 							<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="aircorn" type="checkbox"  value="aircorn"> 
+							<input id="aircorn" type="checkbox" name="aircorn"> 
 							<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="fullAutoAircorn" type="checkbox" name="fullAutoAircorn" value="fullAutoAircorn">
+							<input id="fullAutoAircorn" type="checkbox" name="fullAutoAircorn">
 							<label for="fullAutoAircorn">풀오토에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="leftRightAircorn" type="checkbox" name="leftRightAircorn" value="leftRightAircorn">
+							<input id="leftRightAircorn" type="checkbox" name="leftRightAircorn">
 							<label for="leftRightAircorn">좌/우독립에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="gajukSheet" type="checkbox" name="gajukSheet" value="gajukSheet">
+							<input id="gajukSheet" type="checkbox" name="gajukSheet">
 							<label for="gajukSheet">가죽시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="warmSheet" type="checkbox" name="warmSheet" value="warmSheet"> 
+							<input id="warmSheet" type="checkbox" name="warmSheet"> 
 							<label for=warmSheet>열선시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="windSheet" type="checkbox" name="windSheet" value="windSheet">
+							<input id="windSheet" type="checkbox" name="windSheet">
 							<label for="windSheet">통풍시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="msgSheet" type="checkbox" name="msgSheet" value="msgSheet">
+							<input id="msgSheet" type="checkbox" name="msgSheet">
 							<label for="msgSheet">마사지시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="burcketSheet" type="checkbox" name="burcketSheet" value="burcketSheet">
+							<input id="burcketSheet" type="checkbox" name="burcketSheet">
 							<label for="burcketSheet">버켓시트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 							</div>
@@ -581,31 +904,31 @@ $(document).ready(function() {
 							<div id="collapse2" class="panel-collapse collapse"
 								aria-expanded="false" style="height: 0px;">
 								<div class="panel-body">
-									<input id="sunRoof" type="checkbox" name="sunRoof" value="sunRoof">
+									<input id="sunRoof" type="checkbox" name="sunRoof">
 									<label for="sunRoof">썬루프</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="pnrmSunRoof" type="checkbox" name="pnrmSunRoof" value="pnrmSunRoof"> 
+									<input id="pnrmSunRoof" type="checkbox" name="pnrmSunRoof"> 
 									<label for="pnrmSunRoof">파노라마썬루</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="hidRam" type="checkbox" name="hidRam" value="hidRam"> 
+									<input id="hidRam" type="checkbox" name="hidRam"> 
 									<label for="hidRam">HID/제논램</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="autoRight" type="checkbox" name="autoRight" value="autoRight"> 
+									<input id="autoRight" type="checkbox" name="autoRight"> 
 									<label for="autoRight">오토라이트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="ecmRoomMirror" type="checkbox" name="ecmRoomMirror"value="ecmRoomMirror">
+									<input id="ecmRoomMirror" type="checkbox" name="ecmRoomMirror">
 									<label for="ecmRoomMirror">ECM룸미러</label>&nbsp;&nbsp;&nbsp;&nbsp; 
 									
-									<input id="smartKey" type="checkbox" name="smartKey"value="smartKey">
+									<input id="smartKey" type="checkbox" name="smartKey">
 									<label for="smartKey">스마트키/키레스고</label>&nbsp;&nbsp;&nbsp;&nbsp; 
 									
-									<input id="egStartButton" type="checkbox" name="egStartButton" value="egStartButton"> 
+									<input id="egStartButton" type="checkbox" name="egStartButton"> 
 									<label for="egStartButton">엔진스타트버튼</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="rigthClean" type="checkbox" name="rigthClean" value="rigthClean">
+									<input id="rigthClean" type="checkbox" name="rigthClean">
 									<label for="rigthClean">라이트세척장</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="jkSubSystem" type="checkbox" name="jkSubSystem" value="jkSubSystem">
+									<input id="jkSubSystem" type="checkbox" name="jkSubSystem">
 									<label for="jkSubSystem">주차조향보조시스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 							</div>
@@ -620,31 +943,31 @@ $(document).ready(function() {
 							<div id="collapse3" class="panel-collapse collapse"
 								aria-expanded="false">
 								<div class="panel-body">
-									<input id="driverAirBag" type="checkbox" name="driverAirBag" value="driverAirBag"> 
+									<input id="driverAirBag" type="checkbox" name="driverAirBag"> 
 									<label for="driverAirBag">운전석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="driverFriendAirBag" type="checkbox" name="driverFriendAirBag" value="driverFriendAirBag"> 
+									<input id="driverFriendAirBag" type="checkbox" name="driverFriendAirBag"> 
 									<label for="driverFriendAirBag">동승석에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="sideAirBag" type="checkbox" name="sideAirBag" value="sideAirBag"> 
+									<input id="sideAirBag" type="checkbox" name="sideAirBag"> 
 									<label for="sideAirBag">측면에어백</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="ctAirBag" type="checkbox" name="ctAirBag" value="ctAirBag"> 
+									<input id="ctAirBag" type="checkbox" name="ctAirBag"> 
 									<label for="ctAirBag">커튼에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="passengerDetectAirBag" type="checkbox" name="passengerDetectAirBag" value="passengerDetectAirBag"> 
+									<input id="passengerDetectAirBag" type="checkbox" name="passengerDetectAirBag"> 
 									<label for="passengerDetectAirBag">승객감지에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="mrProtectAirBag" type="checkbox" name="mrProtectAirBag" value="mrProtectAirBag"> 
+									<input id="mrProtectAirBag" type="checkbox" name="mrProtectAirBag"> 
 									<label for="mrProtectAirBag">무릎보호에어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="activeHeadRest" type="checkbox" name="activeHeadRest" value="activeHeadRest"> 
+									<input id="activeHeadRest" type="checkbox" name="activeHeadRest"> 
 									<label for="activeHeadRest">액티브헤드레스트</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="abs" type="checkbox" name="abs" value="abs"> 
+									<input id="abs" type="checkbox" name="abs"> 
 									<label for="abs">ABS</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="bas" type="checkbox" name="bas" value="bas"> 
+									<input id="bas" type="checkbox" name="bas"> 
 									<label for="bas">BAS</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
 								</div>
@@ -660,31 +983,31 @@ $(document).ready(function() {
 							<div id="collapse4" class="panel-collapse collapse"
 								aria-expanded="false">
 								<div class="panel-body">
-									<input id="navi" type="checkbox" name="navi" value="navi"> 
+									<input id="navi" type="checkbox" name="navi"> 
 									<label for="navi">내비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="hipass" type="checkbox" name="hipass" value="hipass"> 
+									<input id="hipass" type="checkbox" name="hipass"> 
 									<label for="hipass">하이패스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="blackBox" type="checkbox" name="blackBox" value="blackBox"> 
+									<input id="blackBox" type="checkbox" name="blackBox"> 
 									<label for="blackBox">블랙박스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="handFreeze" type="checkbox" name="handFreeze" value="handFreeze"> 
+									<input id="handFreeze" type="checkbox" name="handFreeze"> 
 									<label for="handFreeze">핸즈프리즈</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="blueTooth" type="checkbox" name="blueTooth" value="blueTooth"> 
+									<input id="blueTooth" type="checkbox" name="blueTooth"> 
 									<label for="blueTooth">블루투스</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="dvdPlayer" type="checkbox" name="dvdPlayer" value="dvdPlayer"> 
+									<input id="dvdPlayer" type="checkbox" name="dvdPlayer"> 
 									<label for="dvdPlayer">DVD플레이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="dmb" type="checkbox" name="dmb" value="dmb">
+									<input id="dmb" type="checkbox" name="dmb">
 									<label for="dmb">DMB</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="mp3" type="checkbox" name="mp3" value="mp3"> 
+									<input id="mp3" type="checkbox" name="mp3"> 
 									<label for="mp3">MP3</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="iPhoneAdapter" type="checkbox" name="iPhoneAdapter" value="iPhoneAdapter"> 
+									<input id="iPhoneAdapter" type="checkbox" name="iPhoneAdapter"> 
 									<label for="iPhoneAdapter">아이폰단자</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
 								</div>
@@ -700,31 +1023,31 @@ $(document).ready(function() {
 							<div id="collapse5" class="panel-collapse collapse"
 								aria-expanded="false">
 								<div class="panel-body">
-									<input id="turboChaser" type="checkbox" name="turboChaser" value="turboChaser"> 
+									<input id="turboChaser" type="checkbox" name="turboChaser"> 
 									<label for="turboChaser">터보차저</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="airrowFigher" type="checkbox" name="airrowFigher" value="airrowFigher"> 
+									<input id="airrowFigher" type="checkbox" name="airrowFigher"> 
 									<label for="airrowFigher">에어로파이터</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="superChaser" type="checkbox" name="superChaser" value="superChaser">
+									<input id="superChaser" type="checkbox" name="superChaser">
 									<label for="superChaser">슈퍼차져</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="mission" type="checkbox" name="mission" value="mission"> 
+									<input id="mission" type="checkbox" name="mission"> 
 									<label for="mission">미션</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="handle" type="checkbox" name="handle" value="handle"> 
+									<input id="handle" type="checkbox" name="handle"> 
 									<label for="handle">핸들</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="spoiler" type="checkbox" name="spoiler" value="spoiler"> 
+									<input id="spoiler" type="checkbox" name="spoiler"> 
 									<label for="spoiler">스포일러</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="ggFan" type="checkbox" name="ggFan" value="ggFan"> 
+									<input id="ggFan" type="checkbox" name="ggFan"> 
 									<label for="ggFan">계기판</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="audio" type="checkbox" name="audio" value="audio"> 
+									<input id="audio" type="checkbox" name="audio"> 
 									<label for="audio">오디오</label>&nbsp;&nbsp;&nbsp;&nbsp;
 									
-									<input id="wheelTiger" type="checkbox" name="wheelTiger" value="wheelTiger"> 
+									<input id="wheelTiger" type="checkbox" name="wheelTiger"> 
 									<label for="wheelTiger">힐/타이어</label>&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								</div>
@@ -748,360 +1071,355 @@ $(document).ready(function() {
 							</div>
 							
 							<div class="col-md-6 col-md-offset-3" align="center">
-								<a href="#two" data-toggle="tab" title="ppp"><button type="button" id="before3"class="btn btn-danger btn-lg"
-									style="width: 40%;">
-									<span class="glyphicon glyphicon-ok-sign"></span>이전
-								</button></a>
-								<a href="#fourth" data-toggle="tab" title="blah blah"><button type="submit" id="next3" class="btn btn-primary btn-lg"
-									style="width: 40%;">
-									<span class="glyphicon glyphicon-ok-sign"></span>다음
-								</button></a>
+								<a href="#second" data-toggle="tab" title="ppp"><button type="button" id="before3"class="btn btn-danger btn-lg"
+                           style="width: 40%;">
+                           <span class="glyphicon glyphicon-ok-sign"></span>이전
+                        </button></a>
+                        <a href="#fourth" data-toggle="tab" title="blah blah"><button type="submit" id="next3" class="btn btn-primary btn-lg"
+                           style="width: 40%;">
+                           <span class="glyphicon glyphicon-ok-sign"></span>다음
+                        </button></a>
 								</div>
+								
 							</form>
 							</div>
 							
 								</div><!--  두번째  row 끝  -->
 							</div>
 							
-							
 						</div>
 						
 						<!-- 세번째 동그라미 End -->
 						
-						
-						
-
 
 						<!-- 네번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="fourth">
-							<div class="container">
-								<div class="row">
-									<div class='list-group gallery form-group'>
-										<div class="row">
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 100%; height: 100%;">
-														<img data-src="holder.js/100x100%">
-														<div class='text-right'>
-															<small class='text-muted'><img
-																src="http://placehold.it/320x320"
-																style="height: 100%; width: 100%"></small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>실내</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>전면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>후면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>측면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>Engine</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 100%; height: 100%;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'><img
-																src="http://placehold.it/320x320"
-																style="height: 100%; width: 100%"></small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>실내</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>전면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>후면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-new thumbnail"
-														style="width: 170px; height: 160px;">
-														<img data-src="holder.js/100x100%" alt="">
-														<div class='text-right'>
-															<small class='text-muted'>측면</small>
-														</div>
-														<!-- text-right / end -->
-													</div>
-													<div class="fileinput-preview fileinput-exists thumbnail"
-														style="max-width: 250px; max-height: 250px;"
-														align="center"></div>
-													<div align="center">
-														<span class="btn btn-default btn-file"><span
-															class="fileinput-new">Select image</span><span
-															class="fileinput-exists">Change</span><input type="file"
-															name="..."></span> <a href="#"
-															class="btn btn-default fileinput-exists"
-															data-dismiss="fileinput">Remove</a>
-													</div>
-												</div>
-											</div>
-											<!-- col-6 / end -->
-											<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-												<a class="thumbnail fancybox" rel="ligthbox"
-													href="http://placehold.it/300x320.png"> <img
-													class="img-responsive" alt=""
-													src="http://placehold.it/320x320" />
-													<div class='text-right'>
-														<small class='text-muted'>Image Title</small>
-													</div> <!-- text-right / end -->
-												</a>
-											</div>
-										</div>
-
-
-
-										<!-- col-6 / end -->
-									</div>
-									<!-- list-group / end -->
-
-									<div class="col-md-8 col-md-offset-2" align="center">
-										<a href="#third" data-toggle="tab" title="ppp"><button type="button" id="before4"class="btn btn-danger btn-lg"
-											style="width: 40%;">
-											<span class="glyphicon glyphicon-ok-sign"></span>이전
-										</button></a>
-										<a href="#fifth" data-toggle="tab" title="completed"><button type="button" id="next4" class="btn btn-primary btn-lg"
-											style="width: 40%;">
-											<span class="glyphicon glyphicon-ok-sign"></span>다음
-										</button></a>
-									</div>
-								</div>
-								<!-- row / end -->
-							</div>
-							<!-- container / end -->
+						<div class="container">
+						<form id="formFileUpload" method="post" action="addFile.do" enctype="multipart/form-data" name="formFileUpload">
+						<div class="row">
+						<div class='list-group gallery form-group'>
+						<div class="row">
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 100%; height: 100%;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'><img
+						src="http://placehold.it/320x320"
+						style="height: 100%; width: 100%"></small>
 						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[0]" id="upfile0"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a><input type="text" id="okok">
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>실내</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[1]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>전면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[2]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>후면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[3]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>측면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[4]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>Engine</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[5]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						</div>
+						<div class="row">
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 100%; height: 100%;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'><img
+						src="http://placehold.it/320x320"
+						style="height: 100%; width: 100%"></small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[6]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>실내</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[7]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>전면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[8]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>후면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[9]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>측면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[10]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail"
+						style="width: 100%; height: 100%;">
+						<img data-src="holder.js/100x100%" alt="">
+						<div class='text-right'>
+						<small class='text-muted'><img
+						src="http://placehold.it/320x320"
+						style="height: 100%; width: 100%"></small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 250px; max-height: 250px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">Select image</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[11]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						<!-- col-6 / end -->
+						</div>
+						
+						
+						<!-- button -->
+						<!-- col-6 / end -->
+						</div>
+						<!-- list-group / end -->
+						</div>
+						<!-- row / end -->
+						</form>
+						<!-- form / end -->
+						<div class="row">
+						
+						<div class="col-md-8 col-md-offset-2" align="center">
+						<a href="#third" data-toggle="tab" title="ppp"><button type="button" id="before4"class="btn btn-danger btn-lg"
+                                 style="width: 40%;">
+                                 <span class="glyphicon glyphicon-ok-sign"></span>이전
+                              </button></a>
+                              <a href="#fifth" data-toggle="tab" title="completed"><button type="button" id="next4" class="btn btn-primary btn-lg"
+                                 style="width: 40%;">
+                                 <span class="glyphicon glyphicon-ok-sign"></span>다음
+                              </button></a>
+						</div>
+						</div>
+						</div>
+						</div>
+						<!-- container / end -->
 						<!-- 4번째 끝  -->
 						
 					
 						
-<!--  fifth 시작  -->
+<!--  다섯번째 시작  -->
 <div class="tab-pane fade" id="fifth">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 <div class='list-group gallery form-group'>
 <div class="row">
-<div class="container">
+<div class="container-fluid">
     <hgroup class="mb20">
 		<h1>판매자 등록</h1>
 		<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
@@ -1109,11 +1427,8 @@ $(document).ready(function() {
 		<form method="post" action="addCar.do">
 		<section class="col-xs-12 col-sm-6 col-md-12">
 			<article class="search-result row">
-				<div class="col-xs-12 col-sm-12 col-md-3">
-					<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
-				</div>
 						
-				<div class="col-xs-12 col-sm-12 col-md-9 excerpet"><h3><a href="#" title="">회원 상세 정보</a></h3>
+				<div class="col-xs-12 col-sm-12 col-md-12 excerpet"><h3><a href="#" title="">회원 상세 정보</a></h3>
 				<div class="span5">
 	            <table class="table table-striped table-condensed">
                   <thead>
@@ -1122,15 +1437,16 @@ $(document).ready(function() {
                       <th>주  소</th>
                       <th>연락처</th>
                       <th>이메일</th>
-                      <th>지   역</th>                                     
+                      <th>비  고</th>                                    
                   </tr>
 	              </thead>   
 		          <tbody>
 	                <tr>
-	                <td>${user.userName}</td>
-	                <td>${user.addr}</td>
-	                <td>${user.phone}</td>
-	                <td>${user.regDate}</td>                                  
+	                <td>${userInfo.userName}</td>
+	                <td>${userInfo.addr}</td>
+	                <td>${userInfo.phone}</td>
+	                <td>${userInfo.userId}</td>
+	                <td></td>                                  
 		            </tr>
 	           	  </tbody>
 			    </table>
@@ -1139,11 +1455,8 @@ $(document).ready(function() {
 			</article>
 
         	<article class="search-result row">
-			<div class="col-xs-12 col-sm-12 col-md-3">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/food" alt="Lorem ipsum" /></a>
-			</div>
-			
-			<div class="col-xs-12 col-sm-12 col-md-9"><h3><a href="#" title="">차량 세부 사항</a></h3>
+		
+			<div class="col-xs-12 col-sm-12 col-md-12"><h3><a href="#" title="">차량 세부 사항</a></h3>
 				<div class="span5">
 			    <table class="table table-striped table-condensed">
                 <thead>
@@ -1165,24 +1478,23 @@ $(document).ready(function() {
 	            </thead>   
                 <tbody>
                 <tr align="center">
-                    <td id="p_carNum"></td>
-                    <td id="p_manuCountry"></td>
-                    <td id="p_manuCo"></td>
-                    <td id="p_model"></td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                    <td>Editor</td>
-                                                         
+                    <td align="left"><input type="text" id="p_carNum" size="2"></td>
+                    <td align="left"><input type="text" id="p_manuCountry" size="2"></td>
+                    <td align="left"><input type="text"  id="p_manuCo" size="2"></td>
+                    <td align="left"><input type="text"  id="p_model" size="2"></td>
+                    <td align="left"><input type="text"  id="p_color" size="1"></td>
+                    <td align="left"><input type="text"  id="p_year" size="1"></td>
+                    <td align="left"><input type="text"  id="p_carYear" size="1"></td>
+                    <td align="left"><input type="text"  id="p_transmission" size="2"></td>
+                    <td align="left"><input type="text"  id="p_fuel" size="1"></td>
+                    <td align="left"><input type="text"  id="p_cc" size="2"></td>
+                    <td align="left"><input type="text"  id="p_mileage" size="1"></td>
+                    <td align="left"><input type="text"  id="p_sell" size="8"></td>
+                    <td align="left"><input type="text"  id="p_accident" size="2"></td>                                      
                 </tr>
                 <thead>
                 <tr>
-			    <td colspan="10" align="center" data-toggle="collapse" data-target="#car-info">
+			    <td colspan="13" align="center" data-toggle="collapse" data-target="#car-info">
 			  						
 				<div class="panel panel-default clearfix">
 					<!-- header -->
@@ -1199,35 +1511,16 @@ $(document).ready(function() {
 	                  <div id="demo" class="collapse">
                       <div class="panel-body">
                           <div class="row">
-                              <div class="col-xs-3">
-                                  [내|외장] 옵션                                            
+                              <div class="col-xs-2">
+                                  [내|외장] 옵션    : &nbsp;&nbsp;                    
                               </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
-                              </div>
-                              <div class="col-xs-1 text-center">
-                                  <i class="glyphicon glyphicon-ok txt-green"></i>
+                              <div class="col-xs-6">
+                                 <input type="text"  id="p_powerWindow" size="11">
+                                 <input type="text"  id="p_aircorn" size="11">
+                                 <input type="text"  id="p_fullAutoAircorn" size="11">
+                                 <input type="text"  id="p_leftRightAircorn" size="11">
+                                 <input type="text"  id="p_gajukSheet" size="11">
+                                 <input type="text"  id="p_warmSheet" size="11">         
                               </div>
                           </div>
                       </div>
@@ -1235,146 +1528,67 @@ $(document).ready(function() {
                           <!--  편의 장치  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-3">
+                                 <div class="col-xs-2">
                                      [편 의 장 치]                                           
                                  </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                             </div>
+                                 <div class="col-xs-6">
+                                 <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">       
+                              </div>
+                                </div>
                          </div>
                          <!--  편의 장치   -->
                           <!--  안전 장치  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-3">
+                                 <div class="col-xs-2">
                                      [안 전 장 치]                                           
                                  </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
+                                  <div class="col-xs-6">
+                                 <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">       
+                              </div>
                                  </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                             </div>
                          </div>
                          <!--  안전 장치   -->
                         <!--  튜닝  사항 시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-3">
-                                     [튜 닝 사 항]                                            
+                                 <div class="col-xs-2">
+                                 	[AV/오디오/항범]                                             
                                  </div>
-                                 <div class="col-xs-1 text-left">
-                                 	<p>가나다라마바</p>
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                             </div>
+                                  <div class="col-xs-6">
+                                 <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">       
+                              </div>
                          </div>
                          <!--  튜닝사항   -->
                           <!--  AV/오디오/항범  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-3">
-                                     [AV/오디오/항범]                                            
+                                 <div class="col-xs-2">
+                                                      [튜 닝 사 항]                          
                                  </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green" id="i1"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                                 <div class="col-xs-1 text-center">
-                                     <i class="glyphicon glyphicon-ok txt-green"></i>
-                                 </div>
-                             </div>
+                                  <div class="col-xs-6">
+                                 <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">
+                                <input type="text"  size="11">       
+                              </div>
                          </div>
                          <!--  편의 장치   -->
                          </div><!-- /collapse -->
@@ -1390,10 +1604,10 @@ $(document).ready(function() {
 			<!--  이전/최종 확인 부분  -->
 						<br><br><br>
 								<div class="col-md-8 col-md-offset-2" align="center">
-									<a href="#fifth" data-toggle="tab" title="completed"><button type="button" id="before5"class="btn btn-danger btn-lg"
-										style="width: 40%;">
-										<span class="glyphicon glyphicon-ok-sign"></span>이전
-									</button></a>
+									<a href="#fourth" data-toggle="tab" title="completed"><button type="button" id="before5"class="btn btn-danger btn-lg"
+                              style="width: 40%;">
+                              <span class="glyphicon glyphicon-ok-sign"></span>이전
+                           </button></a>
 									<button type="submit" class="btn btn-primary btn-lg"
 										style="width: 40%;">
 										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
@@ -1413,12 +1627,7 @@ $(document).ready(function() {
 </section>
 
 <!-- script start -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<!--  <script src="js/sell.js"></script>-->
-	<script src="js/jasny-bootstrap.min.js"></script>
+	
 <!--  script end -->
 
 </body>
