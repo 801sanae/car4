@@ -169,7 +169,7 @@ $(document).ready(function() {
 											<!-- 이름 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이름</label>
-												<div class="col-sm-10">
+												<div class="col-sm-5">
 													<input type="text" placeholder=""
 														class="form-control" id="name" value="${userInfo.userName}">
 												</div>
@@ -178,7 +178,7 @@ $(document).ready(function() {
 											<!-- 주소 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">주소</label>
-												<div class="col-sm-10">
+												<div class="col-sm-5">
 													<input type="text"
 														class="form-control" id="addr"  value="${userInfo.addr}">
 												</div>
@@ -187,7 +187,7 @@ $(document).ready(function() {
 											<!-- 연락처 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">연락처</label>
-												<div class="col-sm-10">
+												<div class="col-sm-5">
 													<input type="text"
 														class="form-control" id="phone"  value="${userInfo.phone}">
 												</div>
@@ -196,7 +196,7 @@ $(document).ready(function() {
 											<!-- 이메일 -->
 											<div class="form-group">
 												<label class="col-sm-2 control-label" for="textinput">이메일</label>
-												<div class="col-sm-10">
+												<div class="col-sm-5">
 													<input type="text"
 														class="form-control" id="email"  value="${userInfo.userId}">
 												</div>
