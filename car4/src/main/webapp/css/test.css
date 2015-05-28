@@ -1,7 +1,7 @@
-@charset "UTF-8";
-/******************************************************
+/* @charset "UTF-8";
+*****************************************************
 made by bum
-******************************************************/
+*****************************************************
 
 body {
     background-color: #c8c8c8;
@@ -93,6 +93,22 @@ p {
     text-align:right;
     color:gold;
 }
+ */
+.panel{
+	width: 400px;
+  	height: 245px;
+	overflow: scroll;
+}
+.panel1{
+	width: 450px;
+  	height: 400px;
+  	.center-block();
+	overflow: scroll;
+}
+.paneltitle{
+	width: 400px;
+}
 
-
-
+#list1{
+	heigth: 80px;
+}
