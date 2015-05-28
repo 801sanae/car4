@@ -321,26 +321,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
-
-		<!-- Down -->
-		<br>
-		<hr size="30" />
-		<br> <a class="btn btn-default btn-primary btn-lg" data-toggle="collapse"
-			href="#collapseExample" aria-expanded="false"
-			aria-controls="collapseExample">회원정보 수정 </a>
-		
-		<div class="collapse" id="collapseExample">
-			<div class="row"><jsp:include page="user/updateUser.jsp"></jsp:include></div>
-		</div>
-
-
 	</div>
-
-
-
-
-
-	
 
 </body>
 
