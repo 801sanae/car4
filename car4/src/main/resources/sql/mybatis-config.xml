@@ -19,6 +19,7 @@
 		<mapper resource="sql/CarMapper.xml"/>
 		<mapper resource="sql/PurchaseMapper.xml"/>
 		<mapper resource="sql/FileMapper.xml"/>
+		<mapper resource="sql/AuctionMapper.xml"/>
 	</mappers>
 
 </configuration>
