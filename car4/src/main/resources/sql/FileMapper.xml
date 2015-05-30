@@ -11,16 +11,16 @@
 <mapper namespace="FileMapper">
 
 	<resultMap id="userSelectMap" type="com.model2.mvc.common.FileUpload">
-		<result property="fileNo" 		column="fileNo"		jdbcType="INTEGER"/>
-		<result property="fileName" 	column="fileName"	jdbcType="VARCHAR"/>
+		<result property="imgNum" 	column="img_num"	jdbcType="INTEGER"/>
+		<result property="imgPath" 	column="img_path"	jdbcType="VARCHAR"/>
 	</resultMap>
 
 
 	<insert id="addFile" parameterType="com.model2.mvc.common.FileUpload">
 		INSERT
 		INTO
-		filepath(fileNo, fileName)
-		VALUES(#{fileNo}, #{fileName})
+		image(img_num, img_path)
+		VALUES(#{imgNum}, #{imgPath})
 	</insert>
 
 </mapper>

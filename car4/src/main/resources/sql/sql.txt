@@ -28,8 +28,6 @@ CREATE TABLE car(
 	mileage integer not null,
 	sell  varchar2(50) not null,
 	accident  varchar2(50) not null,
-	professor  varchar2(50) not null,
-	price integer,
 	user_no integer not null REFERENCES users(user_no),
 	constraint pk_car_no primary key(car_no),
 	constraint fk_user_no foreign key(user_no)references users(user_no)
@@ -100,41 +98,5 @@ CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
 
 CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
 
-INSERT INTO car (
-	car_no,
-	car_num,
-	manu_country,
-	manu_co,
-	model,
-	color,
-	year,
-	car_year,
-	transmission,
-	fuel,
-	cc,
-	mileage,
-	sell,
-	accident,
-	professor,
-	price,
-	user_no
-) VALUES (
-	car_no.nextval,
-	'16가2000',
-	'국산차',
-	'횬다이',
-	'AVANTE',
-	'white',
-	2010,
-	2011,
-	'auto',
-	'gasoline',
-	1600,
-	43000,
-	'lease',
-	'no',
-	'no',
-	10000000,
-	1
-);
+
 

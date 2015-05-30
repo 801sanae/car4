@@ -5,16 +5,19 @@
 	pageEncoding="UTF-8"
 	trimDirectiveWhitespaces="true" %>
 <%@ page import="com.google.gson.Gson"%>
-<%@ page import="java.util.*" %>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+
 <%
-System.out.println("Form"+request.getParameter("qu"));
 String temp = request.getParameter("qu");
-String[] t  = temp.split("&");
+String[] t  = temp.split("=on&");
 
 Map<String,String> map = new HashMap<String,String>();
 
 for(int i=0; i<t.length; i++) {
-	map.put(i+"", t[i+1]);
+	map.put(t[i]+"", t[i]);
 }
-System.out.println("Map"+map);
+String result = new Gson().toJson(map);
+System.out.println("Song "+result);
+out.print(result);
 %>

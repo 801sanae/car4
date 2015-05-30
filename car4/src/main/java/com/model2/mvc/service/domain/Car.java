@@ -16,10 +16,8 @@ public class Car {
 	private int cc;					//배기량
 	private int mileage;			//주행거리
 	private String sell;			//판매구분
-	private String accident;		//사고여부
-	private String professor;		//전문 평가사
-	private int price;
-	private User userNo;			//User값
+	private String accident;		//사고여부	
+	private User user;			//User값
 	
 	//default Constructor
 	public Car() {
@@ -140,34 +138,16 @@ public class Car {
 		this.accident = accident;
 	}
 
-	public String getProfessor() {
-		return professor;
-	}
 
-	public void setProfessor(String professor) {
-		this.professor = professor;
-	}
 
-	
-	public int getPrice() {
-		return price;
+
+	public User getUser() {
+		return user;
 	}
 
 
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-
-
-	public User getUserNo() {
-		return userNo;
-	}
-
-
-	public void setUserNo(User userNo) {
-		this.userNo = userNo;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
@@ -179,8 +159,7 @@ public class Car {
 				+ ", color=" + color + ", year=" + year + ", carYear="
 				+ carYear + ", transmission=" + transmission + ", fuel=" + fuel
 				+ ", cc=" + cc + ", mileage=" + mileage + ", sell=" + sell
-				+ ", accident=" + accident + ", professor=" + professor
-				+ ", price=" + price + ", userNo=" + userNo + "]";
+				+ ", accident=" + accident + ",  user=" + user + "]";
 	}
 
 

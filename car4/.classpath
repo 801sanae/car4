@@ -151,22 +151,22 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/workspace/car4/libs/activation.jar" exported="true">
+	<classpathentry kind="lib" path="C:/workspace/car6/libs/activation.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/workspace/car4/libs/additionnal.jar" exported="true">
+	<classpathentry kind="lib" path="C:/workspace/car6/libs/additionnal.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/workspace/car4/libs/mail.jar" exported="true">
+	<classpathentry kind="lib" path="C:/workspace/car6/libs/mail.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/workspace/car4/libs/ojdbc14.jar" exported="true">
+	<classpathentry kind="lib" path="C:/workspace/car6/libs/ojdbc14.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>

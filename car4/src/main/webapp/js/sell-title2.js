@@ -132,6 +132,63 @@ $(function() {
 	
 });
 /*./차량명, 색상 입력 셀렉박스 */
+//$(document).ready(function() {
+//
+//// 내용이 다 입력되어야 <다음>으로 넘어간다.
+//$("#t2").click(function(event) {
+//	alert($("select[name=manuCountry]").val());
+//	if ($("#carNum").val() == null || $("#carNum").val()=="") {
+//		alert("carNum");
+//		return;
+//	} else if ($("#select[name=manuCountry] option:selected").val() == null){
+//		alert("manuCountry");
+//		return;
+//	} else if ($("#list2 option:selected").val() == null){
+//		alert("manuCo");
+//		return;
+//	} else if ($("#list3 option:selected").val() == null){
+//		alert("model");
+//		return;
+//	} else if ($("#list4 option:selected").val() == null){
+//		alert("color");
+//		return;
+//	} else if ($("select[name=year] option:selected").val() == null){
+//		alert("year");
+//		return;
+//	} else if ($("#carYear option:selected").val() == null){
+//		alert("carYear");
+//		return;
+//	} else if ($("#month option:selected").val() == null){
+//		alert("month");
+//		return;
+//	} else if ($("#transmission option:selected").val() == null){
+//		alert("transmission");
+//		return;
+//	} else if ($("#fuel option:selected").val() == null){
+//		alert("fuel");
+//		return;
+//	} else if ($("cc").val() == null){
+//		alert("cc");
+//		return;
+//	} else if ($("#mileage").val() == null){
+//		alert("mileage");
+//		return;
+//	} else if ($("#sell").val() == null){
+//		alert("sell");
+//		return;
+//	} else if ($("#accident").val() == null){
+//		alert("accident");
+//		return;
+//	} else {
+//	   alert("else!");
+//	   return;
+//	}
+//	
+//	$("#form2").attr({action:"addCar.do", method:"post"}).submit();
+//			
+//
+//});
+//});
 
 // 내용이 다 입력되어야 <다음>으로 넘어간다.
 $("#submit2").click(function(event) {
@@ -222,5 +279,6 @@ function inputNumberFormat(obj, id) {
 /*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
 
 
+/*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
 
-	
+

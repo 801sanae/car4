@@ -25,10 +25,66 @@
 		<result property="mileage"   	column="mileage" 		jdbcType="INTEGER" />
 		<result property="sell"  	 	column="sell" 			jdbcType="VARCHAR" />
 		<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
-		<result property="professor"   	column="professor" 		jdbcType="VARCHAR"  />
-		<result property="price"   		column="price" 			jdbcType="INTEGER"  />
-		<result property="userNo.userNo"	column="user_no" 	    jdbcType="INTEGER" />
+		<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
 	</resultMap>
+
+
+	<resultMap id="carOption" type="com.model2.mvc.service.domain.CarOption">
+		<result property="carNo" 		column="carNo" 			jdbcType="INTEGER" />
+		<result property="powerWindow" 	column="powerWindow"    jdbcType="VARCHAR" />
+		<result property="aircorn" 		column="aircorn" 	    jdbcType="VARCHAR" />
+		<result property="fullAutoAircorn" 		column="fullAutoAircorn" 			jdbcType="VARCHAR" />
+		<result property="leftRightAircorn" 		column="leftRightAircorn" 			jdbcType="VARCHAR" />
+		<result property="gajukSheet" column="gajukSheet" 	jdbcType="VARCHAR" />
+		<result property="warmSheet"   		column="warmSheet" 			jdbcType="VARCHAR" />
+		<result property="windSheet"  	 	column="windSheet" 			jdbcType="VARCHAR" />
+		<result property="msgSheet"   	column="msgSheet" 		jdbcType="VARCHAR" />
+		
+		
+		
+		<result property="sunRoof" 	column="sunRoof"    jdbcType="VARCHAR" />
+		<result property="pnrmSunRoof" 		column="pnrmSunRoof" 	    jdbcType="VARCHAR" />
+		<result property="hidRam" 		column="hidRam" 			jdbcType="VARCHAR" />
+		<result property="autoRight" 		column="autoRight" 			jdbcType="VARCHAR" />
+		<result property="ecmRoomMirror" column="ecmRoomMirror" 	jdbcType="VARCHAR" />
+		<result property="smartKey"   		column="smartKey" 			jdbcType="VARCHAR" />
+		<result property="egStartButton"  	 	column="egStartButton" 			jdbcType="VARCHAR" />
+		<result property="rigthClean"   	column="rigthClean" 		jdbcType="VARCHAR" />
+		<result property="jkSubSystem "   	column="jkSubSystem" 		jdbcType="VARCHAR" />
+			
+		<result property="navi" 	column="navi"    jdbcType="VARCHAR" />
+		<result property="hipass" 		column="hipass" 	    jdbcType="VARCHAR" />
+		<result property="blackBox" 		column="blackBox" 			jdbcType="VARCHAR" />
+		<result property="handFreeze" 		column="handFreeze" 			jdbcType="VARCHAR" />
+		<result property="blueTooth" column="blueTooth" 	jdbcType="VARCHAR" />
+		<result property="dvdPlayer"   		column="dvdPlayer" 			jdbcType="VARCHAR" />
+		<result property="dmb"  	 	column="dmb" 			jdbcType="VARCHAR" />
+		<result property="mp3 "   	column="mp3" 		jdbcType="VARCHAR" />
+		<result property="iPhoneAdapter"   	column="iPhoneAdapter" 		jdbcType="VARCHAR" />
+		
+		<result property="driverAirBag" 	column="driverAirBag"    jdbcType="VARCHAR" />
+		<result property="driverFriendAirBag" 		column="driverFriendAirBag" 	    jdbcType="VARCHAR" />
+		<result property="sideAirBag" 		column="sideAirBag" 			jdbcType="VARCHAR" />
+		<result property="ctAirBag" 		column="ctAirBag" 			jdbcType="VARCHAR" />
+		<result property="passengerDetectAirBag" column="passengerDetectAirBag" 	jdbcType="VARCHAR" />
+		<result property="mrProtectAirBag"   		column="mrProtectAirBag" 			jdbcType="VARCHAR" />
+		<result property="activeHeadRest"  	 	column="activeHeadRest" 			jdbcType="VARCHAR" />
+		<result property="abs"   	column="abs" 		jdbcType="VARCHAR" />
+		<result property="airrowfigher"   	column="airrowfigher" 		jdbcType="VARCHAR" />
+		
+		
+		<result property="turboChaser" 	column="turboChaser"    jdbcType="VARCHAR" />
+		<result property="superChaser" 		column="superChaser" 			jdbcType="VARCHAR" />
+		<result property="mission" 		column="mission" 			jdbcType="VARCHAR" />
+		<result property="handle" column="handle" 	jdbcType="VARCHAR" />
+		<result property="spoiler"   		column="spoiler" 			jdbcType="VARCHAR" />
+		<result property="ggFan"  	 	column="ggFan" 			jdbcType="VARCHAR" />
+		<result property="audio "   	column="audio" 		jdbcType="VARCHAR" />
+		<result property="wheelTiger"   	column="wheelTiger" 		jdbcType="VARCHAR" />
+		<result property="burcketsheet"   	column="burcketsheet" 		jdbcType="VARCHAR" />
+		 
+	</resultMap>
+	
 
 
 
@@ -41,10 +97,29 @@
 		year, car_Year, 
 		transmission, cc, 
 		fuel, mileage, 
-		sell, accident, professor, user_no)
+		sell, accident, user_no)
 		VALUES(
-		car_No.NEXTVAL ,#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{professor},#{userNo.userNo})
+		car_No.NEXTVAL ,#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{user.userNo})
 	</insert>
+	
+	
+	<insert id="addCarOption" parameterType="com.model2.mvc.service.domain.CarOption">
+	INSERT
+	INTO
+	caroption(
+	car_no, powerwindow, aircorn, fullAutoAircorn, leftrightaircorn, gajukSheet, warmSheet ,windSheet ,msgSheet ,
+	sunRoof ,pnrmSunRoof,hidRam,autoRight,ecmRoomMirror ,smartKey ,egStartButton ,rigthClean ,jkSubSystem ,
+	navi , hipass ,blackBox ,handFreeze ,blueTooth ,dvdPlayer,dmb,mp3,ipotadapter,
+	driverairbag,driverFriendAirBag ,sideAirBag ,ctAirBag ,passengerDetectAirBag ,mrProtectAirBag,activeHeadRest,abs, airrowfigher,
+	turbochaser,superchaser,mission,handle,spoiler,ggFan,audio,wheelTiger, burcketsheet )
+	VALUES(
+	#{car.carNo}, #{powerwindow}, #{aircorn}, #{fullAutoAircorn}, #{leftrightaircorn}, #{gajukSheet}, #{warmSheet}, #{windSheet}, #{msgSheet},
+	#{sunRoof},#{pnrmSunRoof}, #{hidRam}, #{autoRight}, #{ecmRoomMirror},#{smartKey},#{egStartButton},#{rigthClean}, #{jkSubSystem},
+	#{navi}, #{hipass},#{blackBox},#{handFreeze},#{blueTooth}, #{dvdPlayer}, #{dmb}, #{mp3},#{ipotadapter},
+	#{driverairbag},#{driverFriendAirBag}, #{sideAirBag}, #{ctAirBag}, #{passengerDetectAirBag},#{mrProtectAirBag},#{activeHeadRest},#{abs}, #{airrowfigher},
+	#{turbochaser}, #{superchaser},#{mission},#{handle},#{spoiler}, #{ggFan}, #{audio}, #{wheelTiger},#{burcketsheet})
+	</insert>
+	
 	
 	<select id="getCar" parameterType="String" resultMap="carSelectMap">
 		SELECT

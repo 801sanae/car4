@@ -246,7 +246,7 @@ public class UserController {
 		System.out.println("/getUserInfo.do");
 		
 		User users = (User)session.getAttribute("user");
-		System.out.println("들어와1?");
+		System.out.println("들어와1?"+user);
 		
 		//Business Logic
 		User userInfo = userService.getUserInfo(users);

@@ -12,6 +12,7 @@
 <link href="css\jasny-bootstrap.css" rel="stylesheet">
 <link href="css\jasny-bootstrap.css.map" rel="stylesheet">
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="js\sell-title2.js">
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,8 +77,6 @@ $(document).ready(function() {
 
 
 
-
-
 <script>
 $(document).ready(function() {
     $('#next2').click(function() {
@@ -132,10 +131,17 @@ $(document).ready(function() {
 </script>
 <script>
 $(document).ready(function() {
-    $('#next').click(function() {
+    $('#next4').click(function() {
     	console.log($("#formFileUpload input[name='upfile[0]']").val());
     	$("#okok").clone(true).appendTo("#formtest");
-    	$("#formFileUpload input:file").appendTo("#formtest");
+    	$("#upfile1").appendTo("#formtest");
+    	$("#upfile2").appendTo("#formtest");
+    	$("#upfile3").appendTo("#formtest");
+    	
+    	var arr = [$("#formFileUpload input[name='upfile[0]']").val(),"input[name='upfile[1]']","input[name='upfile[2]']"];
+    	
+    	alert(arr[0]);
+    	
     	//var fileUpload = $("form[name=formFileUpload]").serialize();
     	//console.log(fileUpload);
         /*
@@ -153,247 +159,21 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
 <script>
-
-/*sell-title2.js*/
- 
- /*
- * 두번째 동그라미에 대한 자바스크립트 파일 
- */
-
-/* 차량명, 색상 입력 셀렉박스 */
-
-//전체 셀렉박스 초기화함수.
-
-function init_all() {
-	
-	$(".list2-1").hide();
-	$(".list2-2").hide();
-	$(".list3-hyundai").hide();
-	$(".list3-kia").hide();
-	$(".list3-bmw").hide();
-	$(".list4-sonata").hide();
-	$(".list4-carnival").hide();
-	$(".list4-320d").hide();
-	
-}
-
-//list2 셀렉박스 초기화함수.
-function init_list2() {
-
-	$(".list3-hyundai").hide();
-	$(".list3-kia").hide();
-	$(".list3-bmw").hide(); 
-	$(".list4-sonata").hide();
-	$(".list4-carnival").hide();
-	$(".list4-320d").hide();
-
-}
-
-//list3 셀렉박스 초기화함수. 
-function init_list3() {
-
-	$(".list4-sonata").hide();
-	$(".list4-carnival").hide();
-	$(".list4-320d").hide();
-
-}
-
-
-// ready함수.
 $(document).ready(function() {
-	
-	
-	
-	init_all();
-
-	
-	/* 인풋박스 유효성 검사 (div) */
-	$("#carNum").blur(function() {
-
-		var chk = /([0-9].*[\uac00-\ud7a3])|([\uac00-\ud7a3].*[0-9])/;
-		
-		var carNum = $("#carNum").val();
-
-		$("#carNummessage").html("<font color=red>올바른 차량번호 형식</font>으로 입력해주세요.");
-		$("#carNummessage").show();
-		
-		if (carNum.match(chk) ) {
-			$("#carNummessage").hide();
-			
-			$.ajax({
-				url:"isDupCarnum.do",
-				dataType:'json',
-				method:'post',
-				data:{
-					"carNum":$("#carNum").val()
-				},
-				success:function(result){
-					if (result.status == "no") {
-						
-					} else {
-						$("#carNummessage").html("<font color=red>중복된 차량번호</font> 입니다.");
-						$("#carNummessage").show();
-					}
-				}
-			
-			});
-		}
-	});
-
-	$("#tempcc").blur(function() {
-		var check = /^[\0-9\*]+$/;
-		var cc = $("#cc").val();
-		$("#CCmessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
-		$("#CCmessage").show();
-		
-		if ( cc.match(check) ) { 
-			$("#CCmessage").hide();
-		}
-	});
-	
-	$("#tempmileage").blur(function() {
-
-		var check = /^[\0-9\*]+$/;
-		var mileage = $("#mileage").val();
-		$("#Mileagemessage").html("<font color=red>숫자 형식</font>으로 입력해주세요.");
-		$("#Mileagemessage").show();
-		
-		if ( mileage.match(check) ) {
-			$("#Mileagemessage").hide();
-		}
-	});
-	
-});
-$(function() {
-	//제조국이 선택되었을때 -> 제조사리스트
-	$("#list1").change(function() {
-		init_all();
-		var aaa = $("#list1 option:selected").val();
-		$(".list" + aaa).show();
+	$("#oops").click(function() {
+		alert("나와");
+		  //$( "#form1" ).submit();
+		  $("#form2").submit();
+		  $("#form3").submit();
+		  //$( "#formFileUpload" ).submit();
+		  //$( "#form4" ).submit();
 	});
 });
-	//제조사가 선택되었을때 -> 모델명리스트
-$(function() {
-	$("#list2").change(function() {
-		init_list2();
-		var aaa = $("#list2 option:selected").val();
-		$(".list3-" + aaa).show();
-	});
-});
-	//모델명이 선택되었을때 -> 컬러리스트
-$(function() {
-	$("#list3").change(function() {
-		init_list3();
-		var aaa = $("#list3 option:selected").val();
-		$(".list4-" + aaa).show();
-	});
-	
-	
-});
-/*./차량명, 색상 입력 셀렉박스 */
-
-/*
-// 내용이 다 입력되어야 <다음>으로 넘어간다.
-$("#submit2").click(function(event) {
-	if ($("#carNum").val() == null){
-		alert("carNum");
-		return;
-	} else if ($("#manuCountry option:selected").val() == null){
-		alert("manuCountry");
-		return;
-	} else if ($("#manuCo option:selected").val() == null){
-		alert("manuCo");
-		return;
-	} else if ($("#model option:selected").val() == null){
-		alert("model");
-		return;
-	} else if ($("#color option:selected").val() == null){
-		alert("color");
-		return;
-	} else if ($("#year option:selected").val() == null){
-		alert("year");
-		return;
-	} else if ($("#carYear option:selected").val() == null){
-		alert("carYear");
-		return;
-	} else if ($("#month option:selected").val() == null){
-		alert("month");
-		return;
-	} else if ($("#transmission option:selected").val() == null){
-		alert("transmission");
-		return;
-	} else if ($("#fuel option:selected").val() == null){
-		alert("fuel");
-		return;
-	} else if ($("cc").val() == null){
-		alert("cc");
-		return;
-	} else if ($("#mileage").val() == null){
-		alert("mileage");
-		return;
-	} else if ($("#sell").val() == null){
-		alert("sell");
-		return;
-	} else if ($("#accident").val() == null){
-		alert("accident");
-		return;
-	} else {
-	   alert("else!")
-	}
-	
-	$("#form2").attr({action:"addCar.do", method:"post"}).submit();
-});
-*/
-
-
-/* CC, Km 인풋박스에 자동으로 화폐단위 변환 */
-
-//콤마찍기
-function comma(str) {
-    str = String(str);
-
-    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-   
-}
-
-//콤마풀기
-function uncomma(str) {
-    str = String(str);
-    return str.replace(/[^\d]+/g, '');
-}
-
-
-//input box에서 사용자 입력시 바로 콤마를 찍어주기 위한 함수도 추가 한다.
-function inputNumberFormat(obj, id) {
-    obj.value = comma(uncomma(obj.value));
-
-	if(id=='cc') {
-		$("#cc").val(uncomma(obj.value));
-	} else if(id=='mileage') {
-		$("#mileage").val(uncomma(obj.value));
-	} else {
-		
-	}
-    
-}
-/*./CC, Km 인풋박스에 자동으로 화폐단위 변환 */
-
-
 </script>
 
 </head>
 <body>
-
-<form action="test.do" enctype="multipart/form-data" method="post">
-	<input type="file" id="testok" name="testok">
-  <div id="formtest" style="display: ">
-  </div> 
-  <button>파일 업로드</button>
-</form>
-
 	<section style="background: #ffffff;">
 		<div class="container-fluid">
 			<div class="row">
@@ -448,7 +228,7 @@ function inputNumberFormat(obj, id) {
 						<div class="tab-pane fade in active" id="first">
 							<div class="row">
 								<div class="col-md-9 col-md-offset-2">
-									<form class="form-horizontal" role="form" action="">
+									<form class="form-horizontal" role="form" id="form1" action="addCar.do" method="post">
 										<fieldset>
 
 											<!-- Form Name -->
@@ -543,7 +323,7 @@ function inputNumberFormat(obj, id) {
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
 
-								<form class="form-horizontal" name="form2" role="form"
+								<form class="form-horizontal"  id="form2" name="form2" role="form"
 									action="addCar.do" method="post">
 									<div class="row">
 
@@ -854,7 +634,7 @@ function inputNumberFormat(obj, id) {
 				</div>
 					<div class="row">
 						<div class="col-md-12">
-						<form class="form-horizontal" name="form3" role="form" method="post">
+						<form class="form-horizontal" id="form3" role="form" method="post" name="form3" action="addOption.do">
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -1100,7 +880,7 @@ function inputNumberFormat(obj, id) {
 						<div class='list-group gallery form-group'>
 						<div class="row">
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput" id="upfile1">
 						<div class="fileinput-new thumbnail"
 						style="width: 100%; height: 100%;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1119,13 +899,13 @@ function inputNumberFormat(obj, id) {
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[0]" id="upfile0"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
-						data-dismiss="fileinput">Remove</a><input type="text" id="okok">
+						data-dismiss="fileinput">Remove</a>
 						</div>
 						</div>
 						</div>
 						<!-- col-6 / end -->
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile2">
 						<div class="fileinput-new thumbnail"
 						style="width: 170px; height: 160px;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1148,7 +928,7 @@ function inputNumberFormat(obj, id) {
 						</div>
 						<!-- col-6 / end -->
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile3">
 						<div class="fileinput-new thumbnail"
 						style="width: 170px; height: 160px;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1171,7 +951,7 @@ function inputNumberFormat(obj, id) {
 						</div>
 						<!-- col-6 / end -->
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile1">
 						<div class="fileinput-new thumbnail"
 						style="width: 170px; height: 160px;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1424,7 +1204,7 @@ function inputNumberFormat(obj, id) {
 		<h1>판매자 등록</h1>
 		<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
 	</hgroup>
-		<form method="post" action="addCar.do">
+		
 		<section class="col-xs-12 col-sm-6 col-md-12">
 			<article class="search-result row">
 						
@@ -1592,9 +1372,13 @@ function inputNumberFormat(obj, id) {
                          </div>
                          <!--  편의 장치   -->
                          </div><!-- /collapse -->
-                         </div>
-                      	 </td><!-- Claryfy End -->
-			  			</tr>
+                         
+	
+  <div id="formtest" style="display: ">
+  </div> 
+             </div>
+          	 </td><!-- Claryfy End -->
+			</tr>
             </thead>                          
            	</tbody>
           	</table>
@@ -1608,12 +1392,12 @@ function inputNumberFormat(obj, id) {
                               style="width: 40%;">
                               <span class="glyphicon glyphicon-ok-sign"></span>이전
                            </button></a>
-									<button type="submit" class="btn btn-primary btn-lg"
+									<button id="oops" class="btn btn-primary btn-lg"
 										style="width: 40%;">
 										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
 									</button>						
 								</div><br>
-			</form><!-- Form End -->
+			
 </div><!-- Container End -->
 </div><!-- row / end -->
 </div><!-- List Group -->
