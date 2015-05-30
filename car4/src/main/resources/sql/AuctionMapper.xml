@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml :: SQL 를 갖는 MetaData - MyBatis Framework 은 XML MetaData 
+	를 사용 SQL구문을 관리 (SQL은 xml 을 통해 적절히 캡슐화 되어 애플리케이선 외부로 분리함) - SQL문의 입력(?) / 
+	출력(?)을 매핑한다. <== 아래의 select element 참조 -->
+
+<mapper namespace="AuctionMapper">
+
+	<resultMap id="AuctionSelectMap" type="com.model2.mvc.service.domain.Auction">
+		<result property="actionNo" 		column="auction_no" 		jdbcType="INTEGER"/>
+		<result property="manuCountry"		column="manu_country" 	    jdbcType="VARCHAR" />
+		<result property="manuCo" 			column="manu_co"     		jdbcType="VARCHAR" />
+		<result property="model" 			column="model" 	    		jdbcType="VARCHAR" />
+		<result property="fuel" 			column="fuel"		 		jdbcType="VARCHAR" />
+		
+		<result property="transmission" 	column="transmission" 		jdbcType="VARCHAR" />
+		<result property="year" 			column="year"				jdbcType="VARCHAR" />
+		<result property="mileage"   		column="mileage" 			jdbcType="VARCHAR" />
+		<result property="professor"   		column="professor" 			jdbcType="VARCHAR" />
+		<result property="auctionPrice" 	column="auction_price" 		jdbcType="INTEGER" />
+		
+		<result property="carDetail"   		column="car_detail" 		jdbcType="VARCHAR" />
+		<result property="title"   			column="title" 				jdbcType="VARCHAR" />
+		<result property="userNo.userNo"	column="user_no" 			jdbcType="INTEGER" />
+		<result property="regDate"   		column="reg_date" 			jdbcType="DATE" />
+	</resultMap>
+
+
+	<insert id="addAuction" parameterType="com.model2.mvc.service.domain.Auction" >
+		INSERT
+		INTO
+		Auction(auction_no,manu_country,manu_co,model,fuel,   transmission,year,mileage,professor,auction_price,   car_detail,title,user_no,reg_date)
+		VALUES(auction_no.nextval,
+				#{manuCountry},
+				#{manuCo},
+				#{model},
+				#{fuel},
+					
+				#{transmission},
+				#{year},
+				#{mileage},
+				'example',
+				1000,
+					
+				#{carDetail},
+				'example',
+				1000,
+				sysdate)
+	</insert>
+
+</mapper>
