@@ -28,7 +28,6 @@ public class CarController {
 
 
 	public CarController(){
-		System.out.println("Constructor");
 		System.out.println(this.getClass());
 	}
 
