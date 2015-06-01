@@ -49,6 +49,9 @@ $("[data-toggle=tooltip]").tooltip();
 				<!-- Login 클릭 -->
 					
 								
+				<!--  Login 창 띄우기 -->
+				<jsp:include page="/user/login.jsp"></jsp:include>
+				<!--  Login 창 띄우기 -->
 				
 				
 			</div>
@@ -76,15 +79,17 @@ $("[data-toggle=tooltip]").tooltip();
 				<ul class="nav navbar-nav">
 					<li><a href="index.jsp">index.jsp</a></li>
 					<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu" style="display: none;">
-                <li><a href="user/updateUser.jsp">회원정보 수정</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
+			              <ul class="dropdown-menu" role="menu" style="display: none;">
+			                <li><a href="user/getUser.jsp">회원정보 수정</a></li>
+			                <li><a href="#">Another action</a></li>
+			                <li><a href="#">Something else here</a></li>
+			                <li class="divider"></li>
+			                <li><a href="#">Separated link</a></li>
+			              </ul>
+		            </li>
+					<li><a href="getUserInfo.do">판매</a></li>
+					<li><a href="buy.jsp">구매</a></li>
 				</ul>
 
 			</div>
