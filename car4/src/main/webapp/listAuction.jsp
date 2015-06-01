@@ -103,6 +103,7 @@
 									<th id="title">제목</th>
 									<th id="id">Id</th>
 									<th id="regDate">등록일</th>
+									
 									<th id="cnt">조회수</th>	
 									<th id="tranCode">경매진행상태</th>
 									<th id="bid">입찰여부</th>
@@ -115,10 +116,13 @@
 										<c:set var="i" value="${i+1}" />									
 										<tr>
 											<td>${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
-											
-											<td>${auction.userNo.userId}</td>
 											<td>${auction.model}</td>
 											<td>${auction.title}</td>
+											<td>${auction.userNo.userId}</td>
+											<td>${auction.regDate}</td>
+											
+											<td>cnt</td>
+											
 											 <td>
 												<c:if test="${!empty auction.tranCode && auction.tranCode eq '0'}">
 													<button type="button" class="btn btn-primary">경매중</button>
@@ -135,8 +139,7 @@
 													<button type="button" class="btn btn-primary">입찰</button>
 												</c:if>
 												</td>
-											<td>${auction.regDate}</td>
-											<td>${auction.bid}</td>
+											<td>bidcnt</td>
 											
 										</tr>
 										
