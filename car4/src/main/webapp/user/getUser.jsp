@@ -5,22 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>UpdateUserView</title>
+
 <!-- updateuserView.do -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<title>UpdateUserView</title>
 </head>
 
 <body>
@@ -31,59 +28,24 @@
 		<!-- Second navbar for categories -->
 		<div class="row">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
+			<div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
 
-				<a href="main2.jsp"
+				<a href="../index.jsp"
 					style="font-size: 50px; padding-left: 20px; color: gray;">Car4</a>
 			</div>
 
-			<div class="col-md-3" style="margin-top: 10px; padding-left: 100px;">
+			<div class="col-md-4" style="margin-top: 10px; padding-left: 100px;">
 				<a href="#" style="color: gray;">${user.userName} 님 환영합니다.</a>
-				&nbsp; <a style="margin-top: 15px;">|</a> &nbsp; <a href="#"
-					style="color: gray;"> 고객센터</a>
+			|| <a style="color: gray" href="../logout.do">로그아웃</a>		
 			</div>
 		</div>
 
 	</div>
 	<!--/header -->
 
-
-	<!-- navigation var -->
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid" style="margin-left: 48px">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"></a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-				<ul class="nav navbar-nav">
-					<li><a href="#">MyList</a></li>
-					<li class="dropdown mega-dropdown active"><a href="#"
-						style="background-color: #f8f8f8;" class="dropdown-toggle"
-						data-toggle="dropdown">등록하기</a> <!-- Sub menu -->
-						<div class="dropdown-menu mega-dropdown-menu">
-							<div align="center">
-								<span> <a href="#" style="color: gray;" data-toggle="tab">국산차</a>&nbsp;&nbsp;
-								</span> <span> <a href="#" style="color: gray;"
-									data-toggle="tab">수입차</a></span>
-							</div>
-						</div> <!-- /.Sub menu --></li>
-				</ul>
-
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	<!-- /navigation var -->
+ <!-- nav bar  -->
+    <jsp:include page="../nav.jsp"></jsp:include>
+  <!--  nav end -->
 
 	<h3 style="margin-left: 100px">내 정보 수정</h3>
 
