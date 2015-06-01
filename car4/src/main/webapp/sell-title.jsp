@@ -77,35 +77,9 @@ $(document).ready(function() {
 
 
 
-<script>
-$(document).ready(function() {
-    $('#next2').click(function() {
-    	var queryString = $("form[name=form2]").serialize();
-    	$.ajax({
-            url : 'duplicate1.jsp',
-            type : 'post',
-            data : queryString,
-            dataType:'json',
-            success : function(jsonString) {
-            	alert(jsonString.carNum);
-            	$("#p_carNum").val(jsonString.carNum);
-            	$("#p_manuCountry").val(jsonString.manuCountry);
-            	$("#p_manuCo").val(jsonString.manuCo);
-            	$("#p_model").val(jsonString.model);
-            	$("#p_color").val(jsonString.color);
-            	$("#p_year").val(jsonString.year);
-            	$("#p_carYear").val(jsonString.carYear);
-            	$("#p_transmission").val(jsonString.transmission);
-            	$("#p_fuel").val(jsonString.fuel);
-            	$("#p_cc").val(jsonString.cc);
-            	$("#p_mileage").val(jsonString.mileage);
-            	$("#p_sell").val(jsonString.sell);
-            	$("#p_accident").val(jsonString.accident);
-            }
-        });
-    });
-});
-</script>
+
+
+
 <script>
 $(document).ready(function() {
     $('#next3').click(function() {
@@ -143,33 +117,55 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
 <script>
 $(document).ready(function() {
     $('#next4').click(function() {
+    	var queryString = $("form[name=form2]").serialize();
+    	$.ajax({
+            url : 'duplicate1.jsp',
+            type : 'post',
+            data : queryString,
+            dataType:'json',
+            success : function(jsonString) {
+            	alert(jsonString.carNum);
+            	$("#p_carNum").val(jsonString.carNum);
+            	$("#p_manuCountry").val(jsonString.manuCountry);
+            	$("#p_manuCo").val(jsonString.manuCo);
+            	$("#p_model").val(jsonString.model);
+            	$("#p_color").val(jsonString.color);
+            	$("#p_year").val(jsonString.year);
+            	$("#p_carYear").val(jsonString.carYear);
+            	$("#p_transmission").val(jsonString.transmission);
+            	$("#p_fuel").val(jsonString.fuel);
+            	$("#p_cc").val(jsonString.cc);
+            	$("#p_mileage").val(jsonString.mileage);
+            	$("#p_sell").val(jsonString.sell);
+            	$("#p_accident").val(jsonString.accident);
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+
+<script>
+$(document).ready(function() {
+    $('#next4').click(function() {
+    	
     	console.log($("#formFileUpload input[name='upfile[0]']").val());
     	$("#okok").clone(true).appendTo("#formtest");
     	
-    	$("upfile[2]").appendTo("#formtest");
+    	$("#upfile1").appendTo("#formtest");
     	$("#upfile2").appendTo("#formtest");
-
-    	var arr = [$("#formFileUpload input[name='upfile[0]']").val(),"input[name='upfile[1]']","input[name='upfile[2]']"];
     	
+    	var arr = [$("#formFileUpload input[name='upfile[0]']").val()];
+    	$("#p_file").val(arr);
     	alert(arr[0]);
-    	
-    	//var fileUpload = $("form[name=formFileUpload]").serialize();
-    	//console.log(fileUpload);
-        /*
-    	$.ajax({
-            url : 'addFile.do',
-            type : 'post',
-            data : {
-            	fileUpload : fileUpload
-            },
-            dataType:'json',
-            success : function(json) {
-               alert(json);
-            }
-        });*/
     });
 });
 </script>
@@ -1375,6 +1371,13 @@ $(document).ready(function() {
                          
 	
   <div id="formtest" style="display: ">
+ 
+ 
+ 
+  
+  <div id="pp_file" style="display: none;">
+   <input type="text" name="p_file" id="p_file" size="11">
+  </div>
   </div> 
              </div>
           	 </td><!-- Claryfy End -->

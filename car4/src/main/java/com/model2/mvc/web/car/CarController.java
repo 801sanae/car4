@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.FileUpload;
@@ -34,9 +34,20 @@ public class CarController {
 	public Car car;
 	public CarOption carOption;
 	
-	
-	
 
+	@Autowired
+	ServletContext ctx;
+	
+	int countNo;
+	int indexNo;
+	
+	@Autowired
+	@Qualifier("fileServiceImpl")
+	private FileService fileService;
+	public FileUpload fileupload;
+
+	
+	
 	public CarController(){
 		System.out.println("Constructor");
 		System.out.println(this.getClass());
@@ -55,12 +66,12 @@ public class CarController {
 
 
 	@RequestMapping("/addCar.do")
-	public String addCar( @ModelAttribute("car") Car car, @ModelAttribute("carOption") CarOption carOption, HttpSession session, HttpServletRequest request) throws Exception {
+	public String addCar(FileUpload fileUpload, @ModelAttribute("car") Car car, @ModelAttribute("carOption") CarOption carOption, HttpSession session, HttpServletRequest request) throws Exception {
 
-		System.out.println("/addCar.do");
 		//Business Logic
 		car.setUser((User)session.getAttribute("user"));
 		System.out.println("나와?"+car.getUser());
+		
 		
 		car.setCarNum(request.getParameter("p_carNum"));
 		car.setManuCountry(request.getParameter("p_manuCountry"));
@@ -100,8 +111,69 @@ public class CarController {
 		carOption.setAirrowFigher(request.getParameter("airrowFigher"));
 		carOption.setCar(carService.getCar(car.getCarNum()));
 		
-		System.out.println("CarOption_CarNo"+carOption.getCar().getCarNo());
+	
 		carService.addOption(carOption);
+		
+		
+		fileUpload.setCar(carService.getCar(car.getCarNum()));
+		//fileUpLoad
+		List<MultipartFile> list = fileUpload.getUpfile();
+		
+		System.out.println("List : " + list);
+		
+		for(MultipartFile file : list){
+			System.out.println("돌아간다신난닼ㅋ");
+			if(! file.isEmpty()){
+				String originalFileName = file.getOriginalFilename();
+				
+				if (originalFileName != null) {
+					
+					System.out.println("--->");
+					System.out.println(file.getOriginalFilename());
+					System.out.println(file.getName());
+					
+					String originalFilename = file.getOriginalFilename();
+					
+					int lastIndex = originalFilename.lastIndexOf('.');
+					
+					String fileName = System.currentTimeMillis()
+							+ "_" + getCountNo()
+							+ originalFilename.substring(lastIndex);
+					
+					System.out.println("파일네임 ::::::::: " + fileName);
+					
+//					String fileUrl= "http://"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+ctx.getContextPath()+"/image/"+fileName;
+					String fileUrl= "/image/"+fileName;
+					
+					System.out.println("fileUrl :::::::::::: " + fileUrl);
+								
+					String path = (String)ctx.getRealPath("/image") + "/" + fileName;
+					
+					File newFile = new File(path);
+					
+					if(! newFile.isDirectory()){
+						newFile.mkdirs();
+					}
+					
+					System.out.println("패스 : " + path);
+					
+					fileUpload.setImgPath(fileUrl);
+					fileUpload.setImgNum(getCountIndex());
+					
+					try {
+						file.transferTo(new File(path));
+					} catch (Exception e) {
+						e.printStackTrace();
+					} 
+					
+					System.out.println("before::::");
+					fileService.addFile(fileUpload);
+					System.out.println("after::::");
+				}
+			}
+		}
+		
+		
 		
 		
 		return "redirect:user/welcome.jsp";
@@ -124,7 +196,7 @@ public class CarController {
 	
 	
 	@RequestMapping("/check.do")
-	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request ) throws Exception {
+	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request) throws Exception {
 
 		System.out.println("/check.do");
 		//Business Logic
@@ -141,6 +213,17 @@ public class CarController {
 		return "redirect:user/welcome.jsp";
 	}
 	
+
+	synchronized private int getCountNo() {
+		if (countNo > 1000)
+			countNo = 0;
+		return ++countNo;
+	}
 	
+	synchronized private int getCountIndex() {
+		if (indexNo > 1000)
+			indexNo = 0;
+		return ++indexNo;
+	}
 	
 }

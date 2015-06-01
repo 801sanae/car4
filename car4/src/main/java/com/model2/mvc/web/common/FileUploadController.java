@@ -54,7 +54,7 @@ public class FileUploadController {
 		List<MultipartFile> list = fileUpload.getUpfile();
 		
 		System.out.println("List : " + list);
-		System.out.println("asdffffffffffffffffffff");
+	
 		for(MultipartFile file : list){
 			System.out.println("돌아간다신난닼ㅋ");
 			if(! file.isEmpty()){

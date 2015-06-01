@@ -13,14 +13,15 @@
 	<resultMap id="userSelectMap" type="com.model2.mvc.common.FileUpload">
 		<result property="imgNum" 	column="img_num"	jdbcType="INTEGER"/>
 		<result property="imgPath" 	column="img_path"	jdbcType="VARCHAR"/>
+		<result property="Car" 		column="car_No" 			jdbcType="INTEGER" />
 	</resultMap>
 
 
 	<insert id="addFile" parameterType="com.model2.mvc.common.FileUpload">
 		INSERT
 		INTO
-		image(img_num, img_path)
-		VALUES(#{imgNum}, #{imgPath})
+		image(img_num, img_path,car_No)
+		VALUES(#{imgNum}, #{imgPath},#{car.carNo})
 	</insert>
 
 </mapper>
