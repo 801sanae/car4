@@ -147,7 +147,7 @@ public class UserController {
 			session.setAttribute("user", dbUser);
 		}
 
-		return "redirect:/login_index.jsp";
+		return "redirect:/index.jsp";
 	}
 
 	@RequestMapping("/logout.do")

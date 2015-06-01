@@ -148,10 +148,10 @@ $(document).ready(function() {
     $('#next4').click(function() {
     	console.log($("#formFileUpload input[name='upfile[0]']").val());
     	$("#okok").clone(true).appendTo("#formtest");
-    	$("#upfile1").appendTo("#formtest");
-    	$("#upfile2").appendTo("#formtest");
-    	$("#upfile3").appendTo("#formtest");
     	
+    	$("upfile[2]").appendTo("#formtest");
+    	$("#upfile2").appendTo("#formtest");
+
     	var arr = [$("#formFileUpload input[name='upfile[0]']").val(),"input[name='upfile[1]']","input[name='upfile[2]']"];
     	
     	alert(arr[0]);
@@ -1205,7 +1205,7 @@ $(document).ready(function() {
 <!--  다섯번째 시작  -->
 <div class="tab-pane fade" id="fifth">
 <div class="container-fluid">
-<form action ="addCar.do" method="post" id="form5"> 
+<form action ="addCar.do" method="post" id="form5"  enctype="multipart/form-data" > 
 <div class="row">
 <div class='list-group gallery form-group'>
 <div class="row">
@@ -1308,22 +1308,7 @@ $(document).ready(function() {
                                  <input type="text" name="p_powerWindow" id="p_powerWindow" size="11">
                                  <input type="text" name="aircorn" id="p_aircorn" size="11">
                                  <input type="text" name="p_fullAutoAircorn" id="p_fullAutoAircorn" size="11">
-                                 
-                                 <input type="text" name="sunRoof" id="p_sunRoof" size="11">
-                                 <input type="text" name="pnrmSunRoof" id="p_pnrmSunRoof" size="11">
-                                 <input type="text" name="hidRam" id="p_hidRam" size="11">
-                                 
-                                 <input type="text" name="navi" id="p_navi" size="11">
-                                 <input type="text" name="hipass" id="p_hipass" size="11">
-                                 <input type="text" name="blackBox" id="p_blackBox" size="11">
-                                 
-                                 <input type="text" name="driverairbag" id="p_driverairbag" size="11">
-                                 <input type="text" name="driverFriendAirBag" id="p_driverFriendAirBag" size="11">
-                                 <input type="text" name="sideAirBag" id="p_sideAirBag" size="11">
-                                 
-                                 <input type="text" name="turbochaser" id="p_turbochaser" size="11">
-                                 <input type="text" name="superchaser" id="p_superchaser" size="11">
-                                 <input type="text" name="airrowFigher" id="p_airrowFigher" size="11">         
+                                       
                               </div>
                           </div>
                       </div>
@@ -1335,12 +1320,10 @@ $(document).ready(function() {
                                      [편 의 장 치]                                           
                                  </div>
                                  <div class="col-xs-6">
-                                 <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">       
+                                 <input type="text" name="sunRoof" id="p_sunRoof" size="11">
+                                 <input type="text" name="pnrmSunRoof" id="p_pnrmSunRoof" size="11">
+                                 <input type="text" name="hidRam" id="p_hidRam" size="11">
+                                        
                               </div>
                                 </div>
                          </div>
@@ -1352,12 +1335,10 @@ $(document).ready(function() {
                                      [안 전 장 치]                                           
                                  </div>
                                   <div class="col-xs-6">
-                                 <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">       
+                                <input type="text" name="navi" id="p_navi" size="11">
+                                 <input type="text" name="hipass" id="p_hipass" size="11">
+                                 <input type="text" name="blackBox" id="p_blackBox" size="11">
+                                     
                               </div>
                                  </div>
                          </div>
@@ -1369,12 +1350,11 @@ $(document).ready(function() {
                                  	[AV/오디오/항범]                                             
                                  </div>
                                   <div class="col-xs-6">
-                                 <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">       
+                                   
+                                 <input type="text" name="driverairbag" id="p_driverairbag" size="11">
+                                 <input type="text" name="driverFriendAirBag" id="p_driverFriendAirBag" size="11">
+                                 <input type="text" name="sideAirBag" id="p_sideAirBag" size="11">
+                                 
                               </div>
                          </div>
                          <!--  튜닝사항   -->
@@ -1385,12 +1365,9 @@ $(document).ready(function() {
                                                       [튜 닝 사 항]                          
                                  </div>
                                   <div class="col-xs-6">
-                                 <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">
-                                <input type="text"  size="11">       
+                                 <input type="text" name="turbochaser" id="p_turbochaser" size="11">
+                                 <input type="text" name="superchaser" id="p_superchaser" size="11">
+                                 <input type="text" name="airrowFigher" id="p_airrowFigher" size="11">        
                               </div>
                          </div>
                          <!--  편의 장치   -->
