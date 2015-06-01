@@ -89,10 +89,10 @@
 
 
 
-
+		<a href="listAuction.do">경매현황게시판</a>
 		<div>
 			<div id="carousel-example-generic" class="carousel slide"
-				data-ride="carousel">
+				data-ride="carousel" >
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-example-generic" data-slide-to="0"
 						class=""></li>
@@ -108,7 +108,7 @@
 							alt="First slide [1140x500]" src="img/car1.jpg"
 							data-holder-rendered="true">
 							<div class="carousel-caption">
-								<h3>BMW</h3>
+								<h3 >BMW</h3>
 							</div>
 						</a>
 					</div>
