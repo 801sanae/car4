@@ -27,7 +27,7 @@
 		INSERT
 		INTO
 		users(user_Id,user_No,user_Name,password,phone,sex,reg_Date,role,addr)
-		VALUES(#{userId},user_no.NEXTVAL,#{userName},#{password},#{phone},#{sex},sysdate,'user','seoul')
+		VALUES(#{userId},user_no.NEXTVAL,#{userName},#{password},#{phone},#{sex},sysdate,'user','addr')
 	</insert>
 
 	<select id="getUser" parameterType="String" resultMap="userSelectMap">
