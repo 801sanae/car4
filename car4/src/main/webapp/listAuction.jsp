@@ -14,11 +14,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script type="text/javascript">
+
+	function fncGetList(currentPage) {
+		document.getElementById("currentPage").value = currentPage;
+	   	document.detailForm.submit();		
+	}
+
+</script>
 
 </head>
 
 <body>
 
+	
 	<!-- header -->
 	<div class="container">
 		<!-- Second navbar for categories -->
@@ -78,10 +87,11 @@
 	</nav>
 	<!-- /navigation var -->
 	
-	${auction.model}
 	<!-- 역경매 게시글 리스트 -->
 	<div class="container">
 		<div class="col-md-12">
+			<form name="detailForm" action="listAuction.do" method="post">
+			
 					
 					<h4>경매현황게시판</h4>
 					<div class="row">
@@ -89,23 +99,22 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th id="no">No</th>
-					
-									<th id="id">Id</th>
 									<th id="model">모델명</th>
 									<th id="title">제목</th>
-									<th id="tranCode">경매진행상태</th>
-									<th id="bid">입찰여부</th>
+									<th id="id">Id</th>
 									<th id="regDate">등록일</th>
 									<th id="cnt">조회수</th>	
+									<th id="tranCode">경매진행상태</th>
+									<th id="bid">입찰여부</th>
+									<th id="bidcnt">입찰수</th>
 								</thead>
 	
 								<tbody id="table">
 								<c:set var="i" value="0" />
 									<c:forEach var="auction" items="${list}">
-										<c:set var="i" value="${i+1}" />
-										${i}
+										<c:set var="i" value="${i+1}" />									
 										<tr>
-											<td>${i}</td>
+											<td>${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
 											
 											<td>${auction.userNo.userId}</td>
 											<td>${auction.model}</td>
@@ -120,7 +129,7 @@
 											</td>
 											<td>
 												<c:if test="${!empty auction.bid && auction.bid eq '0'}">
-													
+													-
 												</c:if>
 												<c:if test="${!empty auction.bid && auction.bid eq '1'}">
 													<button type="button" class="btn btn-primary">입찰</button>
@@ -138,18 +147,61 @@
 	
 							</table>
 	
+	
+					<!-- 페이지네이션 -->
+							   <input type="hidden" id="currentPage" name="currentPage" value=""/>
+					
 							<div class="clearfix"></div>
 								 <ul class="pagination pull-right">
-								<li class="disabled"><a href="#"><span
-										class="glyphicon glyphicon-chevron-left"></span></a></li>
-								<li class="active"><a href="#">1</a></li>
+				 		<!-- 아무기능없는 이전버튼 -->
+								<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
+									<li class="disabled">
+										<span class="glyphicon glyphicon-chevron-left">
+										</span>
+									</li>
+								</c:if> 
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
+								 
+								<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
+									<li class="disabled">
+										<a href="javascript:fncGetList('${ resultPage.currentPage-1}')">
+											<span class="glyphicon glyphicon-chevron-left">
+											</span>
+										</a>
+									</li>
+								</c:if>
 								
-								<li><a href="#"><span
-										class="glyphicon glyphicon-chevron-right"></span></a></li>
+						<!-- 가운데 보여질 페이지들 -->
+								<c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
+									<li>
+										<a href="javascript:fncGetList('${ i }');">${ i }
+										</a>
+									</li>
+								</c:forEach>
+						<!-- 아무기능없는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
+									<li>
+											<span class="glyphicon glyphicon-chevron-right">
+											</span>
+										</a>
+									</li>
+								</c:if>
+								
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
+									<li>
+										<a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
+										<span class="glyphicon glyphicon-chevron-right">
+										</span>
+									</li>
+								</c:if>
 							</ul> 
+					<!-- /페이지네이션 -->
+							
 						</div>
 					</div>
 					
+					</form>
 					
 				</div>
 			</div>
@@ -159,7 +211,6 @@
 	
 	
 	
-
 
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
