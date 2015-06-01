@@ -121,9 +121,23 @@ $(document).ready(function() {
             	$("#p_powerWindow").val(result.powerWindow);
             	$("#p_aircorn").val(result.aircorn);
             	$("#p_fullAutoAircorn").val(result.fullAutoAircorn);
-            	$("#p_leftRightAircorn").val(result.leftRightAircorn);
-            	$("#p_gajukSheet").val(result.gajukSheet);
-            	$("#p_warmSheet").val(result.warmSheet);
+            	
+            	$("#p_sunRoof").val(result.sunRoof);
+            	$("#p_pnrmSunRoof").val(result.pnrmSunRoof);
+            	$("#p_hidRam").val(result.hidRam);
+            	
+            	$("#p_navi").val(result.navi);
+            	$("#p_hipass").val(result.hipass);
+            	$("#p_blackBox").val(result.blackBox);
+            	
+            	$("#p_driverairbag").val(result.driverAirBag);
+            	$("#p_driverFriendAirBag").val(result.driverFriendAirBag);
+            	$("#p_sideAirBag").val(result.sideAirBag);
+            	
+            	$("#p_turbochaser").val(result.turboChaser);
+            	$("#p_superchaser").val(result.superChaser);
+            	$("#p_airrowFigher").val(result.airrowFigher);
+
             }
         });
     });
@@ -162,12 +176,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
 	$("#oops").click(function() {
-		alert("나와");
-		  //$( "#form1" ).submit();
-		  $("#form2").submit();
-		  $("#form3").submit();
-		  //$( "#formFileUpload" ).submit();
-		  //$( "#form4" ).submit();
+		  $("#form5").submit();
 	});
 });
 </script>
@@ -1196,6 +1205,7 @@ $(document).ready(function() {
 <!--  다섯번째 시작  -->
 <div class="tab-pane fade" id="fifth">
 <div class="container-fluid">
+<form action ="addCar.do" method="post" id="form5"> 
 <div class="row">
 <div class='list-group gallery form-group'>
 <div class="row">
@@ -1258,19 +1268,19 @@ $(document).ready(function() {
 	            </thead>   
                 <tbody>
                 <tr align="center">
-                    <td align="left"><input type="text" id="p_carNum" size="2"></td>
-                    <td align="left"><input type="text" id="p_manuCountry" size="2"></td>
-                    <td align="left"><input type="text"  id="p_manuCo" size="2"></td>
-                    <td align="left"><input type="text"  id="p_model" size="2"></td>
-                    <td align="left"><input type="text"  id="p_color" size="1"></td>
-                    <td align="left"><input type="text"  id="p_year" size="1"></td>
-                    <td align="left"><input type="text"  id="p_carYear" size="1"></td>
-                    <td align="left"><input type="text"  id="p_transmission" size="2"></td>
-                    <td align="left"><input type="text"  id="p_fuel" size="1"></td>
-                    <td align="left"><input type="text"  id="p_cc" size="2"></td>
-                    <td align="left"><input type="text"  id="p_mileage" size="1"></td>
-                    <td align="left"><input type="text"  id="p_sell" size="8"></td>
-                    <td align="left"><input type="text"  id="p_accident" size="2"></td>                                      
+                    <td align="left"><input type="text" name="p_carNum" id="p_carNum" size="2"></td>
+                    <td align="left"><input type="text" name="p_manuCountry"  id="p_manuCountry" size="2"></td>
+                    <td align="left"><input type="text" name="p_manuCo"  id="p_manuCo" size="2"></td>
+                    <td align="left"><input type="text" name="p_model"   id="p_model" size="2"></td>
+                    <td align="left"><input type="text" name="p_color"   id="p_color" size="1"></td>
+                    <td align="left"><input type="text" name="p_year"   id="p_year" size="1"></td>
+                    <td align="left"><input type="text" name="p_carYear"   id="p_carYear" size="1"></td>
+                    <td align="left"><input type="text" name="p_transmission"   id="p_transmission" size="2"></td>
+                    <td align="left"><input type="text" name="p_fuel"   id="p_fuel" size="1"></td>
+                    <td align="left"><input type="text" name="p_cc"   id="p_cc" size="2"></td>
+                    <td align="left"><input type="text" name="p_mileage"   id="p_mileage" size="1"></td>
+                    <td align="left"><input type="text" name="p_sell"   id="p_sell" size="8"></td>
+                    <td align="left"><input type="text" name="p_accident"   id="p_accident" size="2"></td>                                      
                 </tr>
                 <thead>
                 <tr>
@@ -1295,12 +1305,25 @@ $(document).ready(function() {
                                   [내|외장] 옵션    : &nbsp;&nbsp;                    
                               </div>
                               <div class="col-xs-6">
-                                 <input type="text"  id="p_powerWindow" size="11">
-                                 <input type="text"  id="p_aircorn" size="11">
-                                 <input type="text"  id="p_fullAutoAircorn" size="11">
-                                 <input type="text"  id="p_leftRightAircorn" size="11">
-                                 <input type="text"  id="p_gajukSheet" size="11">
-                                 <input type="text"  id="p_warmSheet" size="11">         
+                                 <input type="text" name="p_powerWindow" id="p_powerWindow" size="11">
+                                 <input type="text" name="aircorn" id="p_aircorn" size="11">
+                                 <input type="text" name="p_fullAutoAircorn" id="p_fullAutoAircorn" size="11">
+                                 
+                                 <input type="text" name="sunRoof" id="p_sunRoof" size="11">
+                                 <input type="text" name="pnrmSunRoof" id="p_pnrmSunRoof" size="11">
+                                 <input type="text" name="hidRam" id="p_hidRam" size="11">
+                                 
+                                 <input type="text" name="navi" id="p_navi" size="11">
+                                 <input type="text" name="hipass" id="p_hipass" size="11">
+                                 <input type="text" name="blackBox" id="p_blackBox" size="11">
+                                 
+                                 <input type="text" name="driverairbag" id="p_driverairbag" size="11">
+                                 <input type="text" name="driverFriendAirBag" id="p_driverFriendAirBag" size="11">
+                                 <input type="text" name="sideAirBag" id="p_sideAirBag" size="11">
+                                 
+                                 <input type="text" name="turbochaser" id="p_turbochaser" size="11">
+                                 <input type="text" name="superchaser" id="p_superchaser" size="11">
+                                 <input type="text" name="airrowFigher" id="p_airrowFigher" size="11">         
                               </div>
                           </div>
                       </div>
@@ -1393,7 +1416,7 @@ $(document).ready(function() {
                               <span class="glyphicon glyphicon-ok-sign"></span>이전
                            </button></a>
 									<button id="oops" class="btn btn-primary btn-lg"
-										style="width: 40%;">
+										style="width: 40%;" type="submit">
 										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
 									</button>						
 								</div><br>
@@ -1401,7 +1424,11 @@ $(document).ready(function() {
 </div><!-- Container End -->
 </div><!-- row / end -->
 </div><!-- List Group -->
+
+
 </div><!-- row / end -->
+</form>
+
 </div><!-- Container End -->
 </div><!--  다섯번째 끝     -->
 </div><!-- Tab Content End -->

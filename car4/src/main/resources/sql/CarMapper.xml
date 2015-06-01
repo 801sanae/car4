@@ -107,17 +107,17 @@
 	INSERT
 	INTO
 	caroption(
-	car_no, powerwindow, aircorn, fullAutoAircorn, leftrightaircorn, gajukSheet, warmSheet ,windSheet ,msgSheet ,
-	sunRoof ,pnrmSunRoof,hidRam,autoRight,ecmRoomMirror ,smartKey ,egStartButton ,rigthClean ,jkSubSystem ,
-	navi , hipass ,blackBox ,handFreeze ,blueTooth ,dvdPlayer,dmb,mp3,ipotadapter,
-	driverairbag,driverFriendAirBag ,sideAirBag ,ctAirBag ,passengerDetectAirBag ,mrProtectAirBag,activeHeadRest,abs, airrowfigher,
-	turbochaser,superchaser,mission,handle,spoiler,ggFan,audio,wheelTiger, burcketsheet )
+	car_No, powerwindow, aircorn, fullAutoAircorn, 
+	sunRoof ,pnrmSunRoof,hidRam,
+	navi , hipass ,blackBox ,
+	driverairbag,driverFriendAirBag ,sideAirBag ,
+	turbochaser,superchaser,airrowFigher)
 	VALUES(
-	#{car.carNo}, #{powerwindow}, #{aircorn}, #{fullAutoAircorn}, #{leftrightaircorn}, #{gajukSheet}, #{warmSheet}, #{windSheet}, #{msgSheet},
-	#{sunRoof},#{pnrmSunRoof}, #{hidRam}, #{autoRight}, #{ecmRoomMirror},#{smartKey},#{egStartButton},#{rigthClean}, #{jkSubSystem},
-	#{navi}, #{hipass},#{blackBox},#{handFreeze},#{blueTooth}, #{dvdPlayer}, #{dmb}, #{mp3},#{ipotadapter},
-	#{driverairbag},#{driverFriendAirBag}, #{sideAirBag}, #{ctAirBag}, #{passengerDetectAirBag},#{mrProtectAirBag},#{activeHeadRest},#{abs}, #{airrowfigher},
-	#{turbochaser}, #{superchaser},#{mission},#{handle},#{spoiler}, #{ggFan}, #{audio}, #{wheelTiger},#{burcketsheet})
+	#{car.carNo}, #{powerWindow}, #{airCorn}, #{fullAutoAircorn},
+	#{sunRoof},#{pnrmSunRoof}, #{hidRam},
+	#{navi}, #{hipass},#{blackBox},
+	#{driverAirBag},#{driverFriendAirBag}, #{sideAirBag},
+	#{turboChaser}, #{superChaser},#{airrowFigher})
 	</insert>
 	
 	
@@ -127,5 +127,8 @@
 		FROM car
 		WHERE car_Num = #{value}
 	</select>
+	
+	
+	
 	
 </mapper>

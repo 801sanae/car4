@@ -5,7 +5,7 @@ public class CarOption {
 	//Field
 	private Car car;				//차사진이랑
 	private String powerWindow;
-	private String aircorn;
+	private String airCorn;
 	private String fullAutoAircorn;
 	private String leftRightAircorn;
 	private String gajukSheet;
@@ -79,12 +79,12 @@ public class CarOption {
 		this.powerWindow = powerWindow;
 	}
 
-	public String getAircorn() {
-		return aircorn;
+	public String getAirCorn() {
+		return airCorn;
 	}
 
-	public void setAircorn(String aircorn) {
-		this.aircorn = aircorn;
+	public void setAirCorn(String airCorn) {
+		this.airCorn = airCorn;
 	}
 
 	public String getFullAutoAircorn() {
@@ -426,7 +426,7 @@ public class CarOption {
 	@Override
 	public String toString() {
 		return "CarOption [car=" + car + ", powerWindow=" + powerWindow
-				+ ", aircorn=" + aircorn + ", fullAutoAircorn="
+				+ ", airCorn=" + airCorn + ", fullAutoAircorn="
 				+ fullAutoAircorn + ", leftRightAircorn=" + leftRightAircorn
 				+ ", gajukSheet=" + gajukSheet + ", warmSheet=" + warmSheet
 				+ ", windSheet=" + windSheet + ", msgSheet=" + msgSheet

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Car;
+import com.model2.mvc.service.domain.CarOption;
 
 
 
@@ -28,5 +29,14 @@ public class CarServiceImpl implements CarService{
 	///Method
 	public void addCar(Car car) throws Exception {
 		CarDao.addCar(car);
+	}
+	
+	public Car getCar(String carNum) throws Exception {
+		return CarDao.getCar(carNum);
+	}
+
+	@Override
+	public void addOption(CarOption carOption) throws Exception {
+		CarDao.addOption(carOption);
 	}
 }

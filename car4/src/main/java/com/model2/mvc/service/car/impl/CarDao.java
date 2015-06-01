@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Car;
+import com.model2.mvc.service.domain.CarOption;
 
 @Repository("carDao")
 public class CarDao{
@@ -35,4 +36,9 @@ public class CarDao{
 	public Car getCar(String carNum) throws Exception {
 		return sqlSession.selectOne("CarMapper.getCar", carNum);
 	}
+	
+	public void addOption(CarOption carOption) throws Exception {
+		sqlSession.insert("CarMapper.addCarOption", carOption);
+	}
+	
 }
