@@ -20,6 +20,8 @@ public class Auction {
 	private String title;			//제목
 	private User userNo;			//유저넘버
 	private Date regDate;			//등록일자
+	private int tranCode; 			//경매진행상태코드
+	private int bid;				//입찰여부
 	
 	
 	//default constructor
@@ -140,6 +142,22 @@ public class Auction {
 		this.regDate = regDate;
 	}
 
+	public int getTranCode() {
+		return tranCode;
+	}
+
+	public void setTranCode(int tranCode) {
+		this.tranCode = tranCode;
+	}
+
+	public int getBid() {
+		return bid;
+	}
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
 	@Override
 	public String toString() {
 		return "Auction [auctionNo=" + auctionNo + ", manuCountry="
@@ -148,8 +166,10 @@ public class Auction {
 				+ ", year=" + year + ", mileage=" + mileage + ", professor="
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
 				+ carDetail + ", title=" + title + ", userNo=" + userNo
-				+ ", regDate=" + regDate + "]";
+				+ ", regDate=" + regDate + ", tranCode=" + tranCode + ", bid="
+				+ bid + "]";
 	}
+
 	
 	
 }
