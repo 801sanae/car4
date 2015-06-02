@@ -98,16 +98,16 @@
 						<div class="table-responsive">
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
-									<th id="no">No</th>
-									<th id="model">모델명</th>
-									<th id="title">제목</th>
-									<th id="id">Id</th>
-									<th id="regDate">등록일</th>
+									<th class="col-md-1" id="no" align="center">No</th>
+									<th class="col-md-1" id="model">모델명</th>
+									<th class="col-md-3" id="title" align="center">제목</th>
+									<th class="col-md-1" id="id">이름</th>
+									<th class="col-md-1" id="regDate">등록일</th>
 									
-									<th id="cnt">조회수</th>	
-									<th id="tranCode">경매진행상태</th>
-									<th id="bid">입찰여부</th>
-									<th id="bidcnt">입찰수</th>
+									<th class="col-md-1" id="cnt">조회수</th>	
+									<th class="col-md-1" id="tranCode">경매진행상태</th>
+									<th class="col-md-1" id="bid">입찰여부</th>
+									<th class="col-md-1" id="bidcnt">입찰수</th>
 								</thead>
 	
 								<tbody id="table">
@@ -115,31 +115,31 @@
 									<c:forEach var="auction" items="${list}">
 										<c:set var="i" value="${i+1}" />									
 										<tr>
-											<td>${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
+											<td >${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
 											<td>${auction.model}</td>
 											<td>${auction.title}</td>
-											<td>${auction.userNo.userId}</td>
+											<td>${auction.userNo}</td>
 											<td>${auction.regDate}</td>
 											
-											<td>cnt</td>
+											<td>${auction.cnt}</td>
 											
 											 <td>
-												<c:if test="${!empty auction.tranCode && auction.tranCode eq '0'}">
+												<c:if test="${!empty auction.tranCode && (auction.tranCode).trim() eq '0'}">
 													<button type="button" class="btn btn-primary">경매중</button>
 												</c:if>
-												<c:if test="${!empty auction.tranCode && auction.tranCode eq '1'}">
+												<c:if test="${!empty auction.tranCode && (auction.tranCode).trim() eq '1'}">
 													<button type="button" class="btn btn-danger">경매종료</button>
 												</c:if>
 											</td>
 											<td>
-												<c:if test="${!empty auction.bid && auction.bid eq '0'}">
+												<c:if test="${!empty auction.bid && (auction.bid).trim() eq '0'}">
 													-
 												</c:if>
-												<c:if test="${!empty auction.bid && auction.bid eq '1'}">
+												<c:if test="${!empty auction.bid && (auction.bid).trim() eq '1'}">
 													<button type="button" class="btn btn-primary">입찰</button>
 												</c:if>
 												</td>
-											<td>bidcnt</td>
+											<td>${auction.bidCnt}</td>
 											
 										</tr>
 										
