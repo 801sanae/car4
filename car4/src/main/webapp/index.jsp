@@ -90,6 +90,7 @@
 
 
 		<a href="listAuction.do">경매현황게시판</a>
+		<a href="carView.do">자동차View</a>
 		<div>
 			<div id="carousel-example-generic" class="carousel slide"
 				data-ride="carousel" >

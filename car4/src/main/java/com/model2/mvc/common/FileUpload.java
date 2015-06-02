@@ -12,7 +12,7 @@ public class FileUpload {
 	private String imgPath;
 	private int imgNum;
 	private Car car;
-	
+
 	public FileUpload(){
 		System.out.println(this.getClass());
 	}

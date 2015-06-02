@@ -10,7 +10,7 @@
 
 <mapper namespace="FileMapper">
 
-	<resultMap id="userSelectMap" type="com.model2.mvc.common.FileUpload">
+	<resultMap id="fileSelectMap" type="com.model2.mvc.common.FileUpload">
 		<result property="imgNum" 	column="img_num"	jdbcType="INTEGER"/>
 		<result property="imgPath" 	column="img_path"	jdbcType="VARCHAR"/>
 		<result property="Car" 		column="car_No" 			jdbcType="INTEGER" />
@@ -23,5 +23,13 @@
 		image(img_num, img_path,car_No)
 		VALUES(#{imgNum}, #{imgPath},#{car.carNo})
 	</insert>
+	
+	<select id="getFile" parameterType="Integer" resultMap="fileSelectMap">
+		SELECT
+		img_path
+		FROM image
+		WHERE car_No = #{value}
+	</select>
+	
 
 </mapper>

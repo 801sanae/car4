@@ -41,4 +41,33 @@ public class CarDao{
 		sqlSession.insert("CarMapper.addCarOption", carOption);
 	}
 	
+	public Car carView(String carNum) throws Exception {
+		return sqlSession.selectOne("CarMapper.carView", carNum);
+	}
+	public CarOption carOption(int carNo) throws Exception {
+		return sqlSession.selectOne("CarMapper.carViewOption", carNo);
+	}
+
+	
+	//지워도될부분
+	public List<Car> getCarList(Search search) {
+		String keyword = search.getSearchKeyword();
+		
+		if(search.getSearchKeyword() != null && search.getSearchCondition().equals("1") && search.getSearchKeyword() !=""){
+			search.setSearchKeyword("%"+keyword+"%");
+		}
+			
+		List<Car> list = sqlSession.selectList("CarMapper.getCarList", search);
+		
+		search.setSearchKeyword(keyword);
+		
+		//Purchase purchase = sqlSession.selectOne("PurchaseMapper.getPurchase2", prodNo);
+		return list;
+	}
+
+	public int getTotalCount(Search search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("CarMapper.getTotalCount", search);
+	}
+	
 }

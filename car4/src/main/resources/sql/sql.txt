@@ -92,11 +92,45 @@ CREATE TABLE IMAGE(
 	car_no integer not null REFERENCES car(car_no)
 );
 
+create table auction(
+ auction_no integer,
+ manu_country varchar2(50),
+ manu_co varchar2(50),
+ model varchar2(50),
+ fuel varchar2(50),
+ transmission varchar2(50),
+ year varchar2(50),
+ mileage varchar2(50),
+ professor varchar2(50),
+ auction_price integer,
+ car_detail varchar2(255),
+ title varchar2(50),
+ user_no number(30),
+reg_date date,
+bid char(1),
+tran_code char(1),
+constraint pk_auction_no primary key(auction_no)
+);
+
+
+
+CREATE table AUCTION_LIST(
+auction_No integer,
+car_No varchar2(255),
+constraint fk_auction_No foreign key(auction_No)references auction(auction_No),
+constraint fk_car_No foreign key(car_No)references car(car_No)
+);
+
+
+
+
+
 CREATE sequence user_no increment by 1 start with 1;	//user_No sequence
 
 CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
 
 CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
 
+create sequence auction_no increment by 1 start with 1;
 
 

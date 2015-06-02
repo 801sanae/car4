@@ -52,7 +52,7 @@ public class AuctionController {
 		System.out.println("/addAuction.do");
 		//Business Logic
 		auctionService.addAuction(auction);
-
+		session.setAttribute("auction", auction);
 		return "redirect:/listAuction.do";
 	}
 
