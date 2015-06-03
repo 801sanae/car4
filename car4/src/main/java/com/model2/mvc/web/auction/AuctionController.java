@@ -1,6 +1,5 @@
 package com.model2.mvc.web.auction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
