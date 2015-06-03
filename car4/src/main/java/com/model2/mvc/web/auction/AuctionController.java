@@ -194,6 +194,7 @@ public class AuctionController {
 			return "forward:auctionInfo.jsp";
 		}
 
+		// asdfasdflaksjdflksjdf
 		
 		
 		
