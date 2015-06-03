@@ -22,7 +22,7 @@ import com.model2.mvc.service.domain.Auction;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
 
-
+//
 @Controller
 public class AuctionController {
 
