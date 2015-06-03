@@ -36,6 +36,7 @@ public class AuctionServiceImpl implements AuctionService {
 		// TODO Auto-generated method stub
 		auctionDao.addAuction(auction);
 	}
+	
 
 	@Override
 	public Map<String, Object> getAuctionList(Search search) throws Exception {
@@ -50,8 +51,15 @@ public class AuctionServiceImpl implements AuctionService {
 		return map;
 	}
 
+	public void auctionInfo(Auction auction) throws Exception {
+		// TODO Auto-generated method stub
+		auctionDao.addAuction(auction);
+	}
+
+
 	@Override
 	public Auction getAuction(int auctionNo) throws Exception {
 		return auctionDao.getAuction(auctionNo);
 	}
+
 }

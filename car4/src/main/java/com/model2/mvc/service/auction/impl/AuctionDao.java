@@ -45,4 +45,10 @@ public class AuctionDao{
 		return sqlSession.selectOne("AuctionMapper.getAuction", auctionNo);
 	}
 	
+	public void auctionInfo(Auction auction) throws Exception {
+		sqlSession.insert("AuctionMapper.auctionInfo", auction);
+	}
+	
+	
+	
 }	
