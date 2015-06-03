@@ -1,6 +1,5 @@
 package com.model2.mvc.web.auction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,14 +13,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
-import com.model2.mvc.service.auction.AuctionService;
-import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Auction;
-import com.model2.mvc.service.domain.Car;
+import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.domain.User;
+import com.model2.mvc.service.auction.AuctionService;
 
 
 @Controller
@@ -33,13 +35,6 @@ public class AuctionController {
 	private AuctionService auctionService;
 	public Auction auction;
 
-	@Autowired
-	@Qualifier("carServiceImpl")
-	private CarService carService;
-	public Car car;
-	
-	
-	
 	//default Constructor
 	public AuctionController(){
 		System.out.println(this.getClass());
@@ -89,45 +84,6 @@ public class AuctionController {
 		return "forward:/listAuction.jsp";
 	}
 	
-	
-	@RequestMapping("/auctionInfo.do")
-	public String auctionInfo( @ModelAttribute("auction") Auction auction, Model model, HttpSession session,HttpServletRequest request ) throws Exception {
-
-
-		System.out.println("/auctionInfo.do");
-		//접속된 유저정보를 통해 판매자 정보를 불러온다.
-		User user = (User)session.getAttribute("user");
-		System.out.println("UserName"+user.getUserName());
-		System.out.println("UserName2"+user.getUserNo());
-		
-		
-		//판매자정보 불러오는  부분 
-		carService.getAuction(user.getUserNo());
-		List<Car> list = carService.getAuction(user.getUserNo());
-		
-		for(int i =0; i<list.size(); i++) {
-			
-			if(list.get(i).getModel().equals(request.getParameter("option"))){
-				car = list.get(i);
-				System.out.println("CCCCCCCCCCCC"+car.getCarNum());
-				model.addAttribute("car", car);
-			}
-		}
-		//auction클릭시 발생하는 부분 
-		auction = (Auction)session.getAttribute("auction");
-		auctionService.auctionInfo(auction);
-		
-		
-		model.addAttribute("auction", auction);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("user", user);
-		return "forward:/auction/auction_info.jsp";
-	}
-
-	
-
-
 
 		@RequestMapping("/getAuctionView.do")
 		public String listCar(@ModelAttribute("serach") Search search, Model model , 
@@ -150,7 +106,7 @@ public class AuctionController {
 			
 //			System.out.println("Board"+file.getImgPath());
 			
-			model.addAttribute("auction", dbAuction);
+			model.addAttribute("auction", dbAuction); //모델 dbAuction 연결
 //			model.addAttribute( "file", file);
 			
 //			**********Car 정보제공  끝---------------
@@ -175,43 +131,21 @@ public class AuctionController {
 //			model.addAttribute("resultPage", resultPage);
 //			model.addAttribute("search", search);
 //			
-			
 			return "forward:carView.jsp";
 		}
 		
-		
-		
-		@RequestMapping("/selectCar.do")
-		public String selectCar( @ModelAttribute("auction") Auction auction, Model model, HttpSession session, HttpServletRequest request ) throws Exception {
+		@RequestMapping("/joinAuctionView.do")
+		public String joinAuctionView(Model model , 
+				HttpServletRequest request, Auction auction) throws Exception{
+			
+			System.out.println("/getAuctionView.do");
 
+			System.out.println("auction.getAuctionNo() ::::::::: "+ auction.getAuctionNo() );
+			
+			Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //auctionNo 가져와서 쿼리
+			
+			model.addAttribute("auction", dbAuction); //모델 dbAuction 연결
 
-			System.out.println("/selectCar.do");
-			//접속된 유저정보를 통해 판매자 정보를 불러온다.
-			User user = (User)session.getAttribute("user");
-			System.out.println("UserName"+user.getUserName());
-			System.out.println("UserName2"+user.getUserNo());
-			
-			
-			//판매자정보 불러오는  부분 
-			carService.getAuction(user.getUserNo());
-			//car = carService.getAuction(user.getUserNo());
-			
-			//System.out.println("Carrrrrrr"+car);
-			
-			//auction클릭시 발생하는 부분 
-			auction = (Auction)session.getAttribute("auction");
-			auctionService.auctionInfo(auction);
-			
-			model.addAttribute("auction", auction);
-			model.addAttribute("car", car);
-			model.addAttribute("user", user);
-			return "forward:/auction/auction_info.jsp";
+			return "forward:auctionInfo.jsp";
 		}
-
-		
-		
-		
-		
-		
-		
 }
