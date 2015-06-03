@@ -133,7 +133,7 @@ public class AuctionController {
 //			
 			return "forward:carView.jsp";
 		}
-		
+		  
 		@RequestMapping("/joinAuctionView.do")
 		public String joinAuctionView(Model model , 
 				HttpServletRequest request, Auction auction) throws Exception{
