@@ -49,4 +49,9 @@ public class AuctionServiceImpl implements AuctionService {
 
 		return map;
 	}
+
+	@Override
+	public Auction getAuction(int auctionNo) throws Exception {
+		return auctionDao.getAuction(auctionNo);
+	}
 }
