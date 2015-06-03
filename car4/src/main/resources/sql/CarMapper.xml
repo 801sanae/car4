@@ -189,4 +189,16 @@
 	
 	<!-- 지워도될부분 -->
 	
+	
+	<!-- Auction에서 Car정보 가져가기 -->
+	
+	<select id="getAuction" parameterType="integer" resultMap="carSelectMap">
+		select*from car where user_no = #{value}
+	</select>
+	
+	
+	<select id="selectCar" parameterType="integer" resultMap="carSelectMap">
+		select*from car where user_no = #{value}
+	</select>
+	
 </mapper>
