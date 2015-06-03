@@ -109,7 +109,7 @@
 	
 	<select id="auctionInfo" parameterType="com.model2.mvc.service.domain.Auction"
 		resultMap="AuctionSelectMap">
-		select * from action;
+		select * from auction;
 	</select>
 
 
