@@ -36,30 +36,36 @@
 	</resultMap>
 
 
-	<insert id="addAuction" parameterType="com.model2.mvc.service.domain.Auction" >
-		INSERT
-		INTO
-		Auction(auction_no, manu_country, manu_co,model, fuel,   transmission, year, mileage, professor, auction_price,   car_detail, title, user_no, reg_date, tran_Code,     bid)
-		VALUES(auction_no.nextval,
-				#{manuCountry},
-				#{manuCo},
-				#{model},
-				#{fuel},
-					
-				#{transmission},
-				#{year},
-				#{mileage},
-				'example',
-				1000,
-					
-				#{carDetail},
-				'example',
-				1001,
-				sysdate,
-				0,
-				
-				0)
-	</insert>
+   <insert id="addAuction" parameterType="com.model2.mvc.service.domain.Auction" >
+      INSERT
+      INTO
+      Auction(auction_no, manu_country, manu_co, model, fuel,
+      		transmission, year, mileage, professor, auction_price,
+      		car_detail, title, user_no, reg_date, tran_Code,
+      		bid, cnt, bid_Cnt)
+    VALUES(auction_no.nextval,
+            #{manuCountry},
+            #{manuCo},
+            #{model},
+            #{fuel},
+               
+            #{transmission},
+            #{year},
+            #{mileage},
+           'professor',
+           1000,
+               
+            #{carDetail},
+           'title',
+           <!-- 1, -->
+            #{userNo.userNo},
+            sysdate,
+            '0',
+            
+            '0',
+            0,
+            0)
+   </insert>
 	
 	<!-- 총 게시물  -->
 	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
@@ -83,34 +89,28 @@
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="com.model2.mvc.common.Search"
 		resultMap="AuctionSelectMap">
-		SELECT *
-		FROM ( SELECT inner_table.* , ROWNUM AS row_seq
-		FROM ( SELECT
-		*
-		FROM auction
-		<if test="searchCondition != null">
-			<where>
-				<if test="searchCondition == 0 and searchKeyword !='' ">
-					auction_no = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1 and searchKeyword !='' ">
-					model like #{searchKeyword}
-				</if>
-			</where>
-		</if>
-		ORDER BY auction_no desc ) inner_table
-		WHERE ROWNUM &lt;= #{endRowNum} )
-		WHERE
-		row_seq BETWEEN #{startRowNum} AND
-		#{endRowNum}
+		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, a.tran_code, a.bid, a.cnt, a.bid_cnt from 
+			( SELECT inner_table.* , ROWNUM AS row_seq FROM
+				 ( SELECT * FROM auction
+					<if test="searchCondition != null">
+						<where>
+							<if test="searchCondition == 0 and searchKeyword !='' ">
+								auction_no = #{searchKeyword}
+							</if>
+							<if test="searchCondition == 1 and searchKeyword !='' ">
+								model like #{searchKeyword}
+							</if>
+						</where>
+					</if>
+				ORDER BY auction_no desc) inner_table
+			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
 	</select>
-
-
+	
+	
 	<select id="auctionInfo" parameterType="com.model2.mvc.service.domain.Auction"
 		resultMap="AuctionSelectMap">
 		select * from action;
 	</select>
-
 
 
 	<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
