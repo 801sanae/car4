@@ -1,5 +1,6 @@
 package com.model2.mvc.service.car.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,6 @@ import com.model2.mvc.common.Search;
 import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.CarOption;
-import com.model2.mvc.service.domain.Product;
 
 
 
@@ -70,6 +70,24 @@ public class CarServiceImpl implements CarService{
 		
 		return map;
 	}
+
+	
+	//Auction 자동차 정보 가져오기
+	@Override
+	public List<Car> getAuction(int userNo) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return CarDao.getAuction(userNo);
+	}
+
+	@Override
+	public Car selectCar(int userNo) throws Exception {
+		// TODO Auto-generated method stub
+		return CarDao.selectCar(userNo);
+	}
+	
+	
+	
 
 	
 	

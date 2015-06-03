@@ -1,5 +1,6 @@
 package com.model2.mvc.service.car.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -69,5 +70,23 @@ public class CarDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("CarMapper.getTotalCount", search);
 	}
+	
+	
+	
+	//Auction 부분 자동차 정보 가져오기
+	public List<Car> getAuction(int userNo) {
+		// TODO Auto-generated method stub
+	List<Car> list = sqlSession.selectList("CarMapper.getAuction", userNo);
+		
+		
+		return list;
+	}
+	
+	public Car selectCar(int userNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("CarMapper.selectCar", userNo);
+	}
+	
+	
 	
 }

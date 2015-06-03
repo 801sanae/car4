@@ -1,5 +1,6 @@
 package com.model2.mvc.service.car;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
@@ -15,6 +16,9 @@ public interface CarService {
 	//지워도될부분
 	public Map<String,Object> getCarList(Search search) throws Exception;
 	
+	//Auction GetCar
+	public List<Car> getAuction(int userNo) throws Exception;
 	
-	
+	public Car selectCar(int userNo) throws Exception;
+
 }
