@@ -119,4 +119,18 @@
 			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
 	</select>
 
+	<select id="auctionInfo" parameterType="com.model2.mvc.service.domain.Auction"
+		resultMap="AuctionSelectMap">
+		select * from auction;
+	</select>
+
+
+	<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
+		SELECT *
+		FROM
+		auction
+		WHERE
+		auction_no = #{auctionNo}
+	</select>	
+
 </mapper>
