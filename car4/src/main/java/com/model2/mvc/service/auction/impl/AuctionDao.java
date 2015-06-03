@@ -39,5 +39,10 @@ public class AuctionDao{
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("AuctionMapper.getTotalCount", search);
 	}
+
+	//auctionNo로 1개 auction내역 겟
+	public Auction getAuction(int auctionNo) {
+		return sqlSession.selectOne("AuctionMapper.getAuction", auctionNo);
+	}
 	
 }	
