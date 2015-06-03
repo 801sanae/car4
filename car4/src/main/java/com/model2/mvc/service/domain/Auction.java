@@ -18,7 +18,7 @@ public class Auction {
 	private int auctionPrice;		//가격
 	private String carDetail;		//상세
 	private String title;			//제목
-	private int userNo;		//유저넘버
+	private User userNo;		//
 	private Date regDate;			//등록일자
 	private String tranCode; 			//경매진행상태코드
 	private String bid;				//입찰여부
@@ -152,12 +152,12 @@ public class Auction {
 	}
 
 
-	public int getUserNo() {
+	public User getUserNo() {
 		return userNo;
 	}
 
 
-	public void setUserNo(int userNo) {
+	public void setUserNo(User userNo) {
 		this.userNo = userNo;
 	}
 
