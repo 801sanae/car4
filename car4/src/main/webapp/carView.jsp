@@ -58,7 +58,7 @@ td, tr {
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<img src="${file.imgPath}" style="width: 100%;">
+				<img src="img/${auction.manuCo }/${auction.model }.jpg" style="width: 100%;">
 			</div>
 			<div class="col-md-8">
 			<button type="button" class="btn btn-success">차량정보</button>
@@ -69,25 +69,25 @@ td, tr {
 					
 						<tr>
 						<br>
-							<td width="15%">차량종류</td>
-							<td>${auction.model}</td> <!-- Action만 넣으삼 -->
+							<td width="15%">제조사</td>
+							<td>${auction.manuCountry}</td> <!-- Action만 넣으삼 -->
 						</tr>
 						<tr>
-							<td>제조사</td>
-							<td></td> <!-- Action 값만 넣으삼 -->
+							<td>모델</td>
+							<td>${auction.model }</td> <!-- Action 값만 넣으삼 -->
 						</tr>
 						<tr>
-							<td>모델명</td>
-							<td></td> <!-- Action 값만 넣으삼 -->
+							<td>연식</td>
+							<td>${auction.year }</td> <!-- Action 값만 넣으삼 -->
 						</tr>
 						<tr>
-							<td>주행거리</td>
-							<td></td> <!-- Action 값만 넣으삼 -->
+							<td>연료</td>
+							<td>${auction.fuel }</td> <!-- Action 값만 넣으삼 -->
 						</tr>
 						<tr>
 						
-							<td>연식</td>
-							<td></td> <!-- Action 값만 넣으삼 -->
+							<td>주행거리</td>
+							<td>${auction.mileage }</td> <!-- Action 값만 넣으삼 -->
 						</tr>
 				
 				</table>
@@ -267,6 +267,10 @@ td, tr {
 <!-- PageNavigation End... -->
 
 </form>
+<div class="row">
+		<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="joinAuctionView.do?auctionNo=${auction.auctionNo}">
+		경매 참여하기</a>
+</div>
 </div><!-- Container 끝 -->
 <br><br>
 
