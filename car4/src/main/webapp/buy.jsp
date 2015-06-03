@@ -406,16 +406,19 @@ function listValueSeparate(obj, id) {
 				<label> <input type="checkbox" id="mileage"> <span
 					class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
 				</label> <span id="inputmileage" style="color: gray;">
-					주행거리&nbsp;&nbsp; </span> <b>0km</b>
+					주행거리&nbsp;&nbsp; </span> 
 
-				<div class="tooltip top"
+
+
+				<input type="text" id="mileage" name="mileage"/>
+				<!-- <b>0km</b><div class="tooltip top"
 					style="top: -40px; left: 77.0454545454546px;">
 					<div class="tooltip-arrow"></div>
 					<div class="tooltip-inner">75 : 450</div>
 				</div>
 				<input type="text" class="span2" name="mileage" data-slider-min="0"
 					data-slider-max="300000" data-slider-step="10000"
-					data-slider-value="[250,450]" id="sl2"> <b>300,000km</b>
+					data-slider-value="[250,450]" id="sl2"> <b>300,000km</b> -->
 
 			</div>
 		</div>
