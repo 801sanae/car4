@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Auction;
@@ -48,18 +47,21 @@ public class AuctionController {
 	//=10;
 	
 	@RequestMapping("/addAuction.do")
-	public String addauction( @ModelAttribute("auction") Auction auction, Model model, HttpSession session ) throws Exception {
+	public String addauction(@ModelAttribute("auction") Auction auction, Model model, HttpSession session ) throws Exception {
 
 		System.out.println("/addAuction.do");
+		
+		User user = (User)session.getAttribute("user");
+		auction.setUserNo(user);
+		
 		//Business Logic
 		auctionService.addAuction(auction);
-		session.setAttribute("auction", auction);
+
 		return "redirect:/listAuction.do";
 	}
 
 	//리스트 뿌리기
 	@RequestMapping("/listAuction.do")
-//	public String listAuction( @ModelAttribute("search") Search search, Model model, @RequestParam("menu") String menu) throws Exception {
 	public String listAuction( @ModelAttribute("search") Search search, Model model) throws Exception {
 
 		System.out.println("listAuction.do");
@@ -85,54 +87,6 @@ public class AuctionController {
 	}
 	
 
-		@RequestMapping("/getAuctionView.do")
-		public String listCar(@ModelAttribute("serach") Search search, Model model , 
-													HttpServletRequest request, Auction auction)throws Exception{
-			System.out.println("/getAuctionView.do");
-			//**********Car 정보제공 
-			System.out.println("auction.getAuctionNo() :::::::: "+ auction.getAuctionNo() );
-			
-			Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //auctionNo 가져와서 쿼리
-			
-			System.out.println("dbAuction ::::" + dbAuction);
-//			auctionService.getAuction();
-//			carService.carView("가222");
-//			carService.carViewOption(43001);
-			
-			
-//			fileService.getFile(61001);
-			
-//			FileUpload file = fileService.getFile(61001);
-			
-//			System.out.println("Board"+file.getImgPath());
-			
-			model.addAttribute("auction", dbAuction);
-//			model.addAttribute( "file", file);
-			
-//			**********Car 정보제공  끝---------------
-			
-			
-			
-			
-//			//Page 나누기 부분 
-//			if(search.getCurrentPage() ==0 ){
-//				search.setCurrentPage(1);
-//			}
-//			search.setPageSize(pageSize);
-//			
-//			// Business logic ����
-//			Map<String , Object> map=carService.getCarList(search);
-//			
-//			Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-//			System.out.println(resultPage);
-//			
-//			// Model �� View ����
-//			model.addAttribute("list", map.get("list"));
-//			model.addAttribute("resultPage", resultPage);
-//			model.addAttribute("search", search);
-//			
-			
-			return "forward:carView.jsp";
-		}
+
 	
 }
