@@ -4,13 +4,11 @@
 	pageEncoding="EUC-KR" trimDirectiveWhitespaces="true"%>
 <%@ page import="com.model2.mvc.service.user.*"%>
 <%@ page import="com.model2.mvc.service.user.impl.*"%>
-<%@ page import="sun.misc.BASE64Encoder"%>
 <%
 	WebApplicationContext wac = WebApplicationContextUtils
 			.getWebApplicationContext(((HttpServletRequest) request)
 					.getSession().getServletContext());
 	UserDao userDao = (UserDao) wac.getBean("userDao");
-	BASE64Encoder base64Encoder = new BASE64Encoder();
 %>
 <%
 	System.out.println("EMAIL  " + request.getParameter("email"));
@@ -28,7 +26,7 @@
 				.equals(request.getParameter("email"))
 				&& userDao.getUser(request.getParameter("email"))
 						.getPassword()
-						.equals(base64Encoder.encode(request.getParameter("pwd").getBytes()))//base64 algorithm Àû
+						.equals(request.getParameter("pwd"))//base64 algorithm Àû
 						) {
 			out.println("OK");
 		} else {
