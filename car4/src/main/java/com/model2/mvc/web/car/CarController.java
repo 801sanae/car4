@@ -2,6 +2,7 @@ package com.model2.mvc.web.car;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.FileUpload;
+import com.model2.mvc.common.Page;
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.CarOption;
@@ -138,9 +142,6 @@ public class CarController {
 			}
 		}
 		
-		
-		
-		
 		return "redirect:user/welcome.jsp";
 	}
 
@@ -158,6 +159,61 @@ public class CarController {
 		
 		return "redirect:user/welcome.jsp";
 	}
+	
+
+	
+	//지워도될부분
+	@RequestMapping("/carView.do")
+	public String listCar(@ModelAttribute("serach") Search search, Model model , 
+												HttpServletRequest request)throws Exception{
+		System.out.println("/carView.do");
+		//**********Car 정보제공 
+		carService.carView("가222");
+		carService.carViewOption(43001);
+		
+		
+		fileService.getFile(58001);
+		
+		FileUpload file = fileService.getFile(58001);
+				
+		System.out.println("Board"+file.getImgPath());
+		
+		model.addAttribute("car",car);
+		model.addAttribute( "file", file);
+		
+		//**********Car 정보제공  끝---------------
+		
+		//Page 나누기 부분 
+		if(search.getCurrentPage() ==0 ){
+			search.setCurrentPage(1);
+		}
+		search.setPageSize(pageSize);
+		
+		// Business logic ����
+		Map<String , Object> map=carService.getCarList(search);
+		
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		System.out.println(resultPage);
+		
+		// Model �� View ����
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
+		
+		
+		return "forward:carView.jsp";
+	}
+	//지워도될부분
+	
+	
+	
+	
+	private FileService FileServiceImpl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 	@RequestMapping("/check.do")
 	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request) throws Exception {
