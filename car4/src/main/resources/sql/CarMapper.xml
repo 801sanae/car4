@@ -113,11 +113,11 @@
 	driverairbag,driverFriendAirBag ,sideAirBag ,
 	turbochaser,superchaser,airrowFigher)
 	VALUES(
-	#{car.carNo}, #{powerWindow}, #{airCorn}, #{fullAutoAircorn},
-	#{sunRoof},#{pnrmSunRoof}, #{hidRam},
-	#{navi}, #{hipass},#{blackBox},
-	#{driverAirBag},#{driverFriendAirBag}, #{sideAirBag},
-	#{turboChaser}, #{superChaser},#{airrowFigher})
+	#{car.carNo}, #{powerWindow:VARCHAR}, #{airCorn:VARCHAR}, #{fullAutoAircorn:VARCHAR},
+	#{sunRoof:VARCHAR},#{pnrmSunRoof:VARCHAR}, #{hidRam:VARCHAR},
+	#{navi:VARCHAR}, #{hipass:VARCHAR},#{blackBox:VARCHAR},
+	#{driverAirBag:VARCHAR},#{driverFriendAirBag:VARCHAR}, #{sideAirBag:VARCHAR},
+	#{turboChaser:VARCHAR}, #{superChaser:VARCHAR},#{airrowFigher:VARCHAR})
 	</insert>
 	
 	
