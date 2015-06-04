@@ -68,7 +68,7 @@
 
 				<!-- <button type="button" class="btn btn-hot text-uppercase btn-lg">hot button</button>
             <button type="button" class="btn btn-sunny text-uppercase btn-lg">Sunny button</button> -->
-				<a href="main2.jsp"><button type="button"
+				<a href="user/buy.jsp"><button type="button"
 						class="btn btn-fresh text-uppercase btn-lg" onclick="">사러갑시다</button></a>
 				<!-- <button type="button" class="btn btn-sky text-uppercase btn-lg">Sky button</button> -->
 
