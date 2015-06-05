@@ -227,6 +227,7 @@ create table auction(
 reg_date date,
 cnt integer,
 bid_cnt integer,
+success_car integer,
 car_no integer REFERENCES car(car_no),
 user_no integer REFERENCES users(user_no),
 PRIMARY KEY(auction_no)
