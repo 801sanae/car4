@@ -71,8 +71,7 @@
       INTO
       Auction(auction_no, manu_country, manu_co, model, fuel,
       		transmission, year, mileage, professor, auction_price,
-      		car_detail, title, user_no, reg_date, tran_Code,
-      	 cnt, bid_Cnt)
+      		car_detail, title, user_no, reg_date, cnt, bid_Cnt, car_no)
     VALUES(auction_no.nextval,
             #{manuCountry},
             #{manuCo},
@@ -89,10 +88,11 @@
            'title',
             #{userNo.userNo},
             sysdate,
-            '0',
-            
+        	0,
+        	
             0,
-            0)
+           	0
+            )
    </insert>
 	
 	<!-- 총 게시물  -->
@@ -117,7 +117,7 @@
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="com.model2.mvc.common.Search"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, a.tran_code, a.bid, a.cnt, a.bid_cnt from 
+		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, a.tran_code, a.car_no, a.cnt, a.bid_cnt from 
 			( SELECT inner_table.* , ROWNUM AS row_seq FROM
 				 ( SELECT * FROM auction
 					<if test="searchCondition != null">
