@@ -18,6 +18,7 @@ public class Car {
 	private String sell;			//판매구분
 	private String accident;		//사고여부	
 	private User user;			//User값
+	private String tranCode;	//낙찰진행상태
 	
 	//default Constructor
 	public Car() {
@@ -139,6 +140,14 @@ public class Car {
 	}
 
 
+	public String getTranCode() {
+		return tranCode;
+	}
+
+
+	public void setTranCode(String tranCode) {
+		this.tranCode = tranCode;
+	}
 
 
 	public User getUser() {
@@ -159,8 +168,11 @@ public class Car {
 				+ ", color=" + color + ", year=" + year + ", carYear="
 				+ carYear + ", transmission=" + transmission + ", fuel=" + fuel
 				+ ", cc=" + cc + ", mileage=" + mileage + ", sell=" + sell
-				+ ", accident=" + accident + ",  user=" + user + "]";
+				+ ", accident=" + accident + ", user=" + user + ", tranCode="
+				+ tranCode + "]";
 	}
+
+
 
 
 }

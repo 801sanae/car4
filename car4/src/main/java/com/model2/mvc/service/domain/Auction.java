@@ -18,10 +18,9 @@ public class Auction {
 	private int auctionPrice;		//가격
 	private String carDetail;		//상세
 	private String title;			//제목
-	private User userNo;		//
+	private User userNo;			//유저 
 	private Date regDate;			//등록일자
-	private String tranCode; 			//경매진행상태코드
-	private String bid;				//입찰여부
+	private Car carNo;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
 	
@@ -172,23 +171,13 @@ public class Auction {
 	}
 
 
-	public String getTranCode() {
-		return tranCode;
+	public Car getCarNo() {
+		return carNo;
 	}
 
 
-	public void setTranCode(String tranCode) {
-		this.tranCode = tranCode;
-	}
-
-
-	public String getBid() {
-		return bid;
-	}
-
-
-	public void setBid(String bid) {
-		this.bid = bid;
+	public void setCarNo(Car carNo) {
+		this.carNo = carNo;
 	}
 
 
@@ -220,8 +209,7 @@ public class Auction {
 				+ ", year=" + year + ", mileage=" + mileage + ", professor="
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
 				+ carDetail + ", title=" + title + ", userNo=" + userNo
-				+ ", regDate=" + regDate + ", tranCode=" + tranCode + ", bid="
-				+ bid + ", cnt=" + cnt + ", bidCnt=" + bidCnt + "]";
+				+ ", regDate=" + regDate + ", carNo=" + carNo + ", cnt=" + cnt + ", bidCnt=" + bidCnt + "]";
 	}
 
 }
