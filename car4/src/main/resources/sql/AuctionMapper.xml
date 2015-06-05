@@ -107,7 +107,7 @@
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="com.model2.mvc.common.Search"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, c.tran_code, success_car, a.cnt, a.bid_cnt from 
+		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, c.tran_code, a.success_car, a.cnt, a.bid_cnt from 
 			( SELECT inner_table.* , ROWNUM AS row_seq FROM
 				 ( SELECT * FROM auction
 					<if test="searchCondition != null">
