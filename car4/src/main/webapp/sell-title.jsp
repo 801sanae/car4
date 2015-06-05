@@ -1264,19 +1264,19 @@ $(document).ready(function() {
 	            </thead>   
                 <tbody>
                 <tr align="center">
-                    <td align="left"><input type="text" name="p_carNum" id="p_carNum" size="2"></td>
-                    <td align="left"><input type="text" name="p_manuCountry"  id="p_manuCountry" size="2"></td>
-                    <td align="left"><input type="text" name="p_manuCo"  id="p_manuCo" size="2"></td>
-                    <td align="left"><input type="text" name="p_model"   id="p_model" size="2"></td>
-                    <td align="left"><input type="text" name="p_color"   id="p_color" size="1"></td>
-                    <td align="left"><input type="text" name="p_year"   id="p_year" size="1"></td>
-                    <td align="left"><input type="text" name="p_carYear"   id="p_carYear" size="1"></td>
-                    <td align="left"><input type="text" name="p_transmission"   id="p_transmission" size="2"></td>
-                    <td align="left"><input type="text" name="p_fuel"   id="p_fuel" size="1"></td>
-                    <td align="left"><input type="text" name="p_cc"   id="p_cc" size="2"></td>
-                    <td align="left"><input type="text" name="p_mileage"   id="p_mileage" size="1"></td>
-                    <td align="left"><input type="text" name="p_sell"   id="p_sell" size="8"></td>
-                    <td align="left"><input type="text" name="p_accident"   id="p_accident" size="2"></td>                                      
+                    <td align="left"><input type="text" name="carNum" id="p_carNum" size="2"></td>
+                    <td align="left"><input type="text" name="manuCountry"  id="p_manuCountry" size="2"></td>
+                    <td align="left"><input type="text" name="manuCo"  id="p_manuCo" size="2"></td>
+                    <td align="left"><input type="text" name="model"   id="p_model" size="2"></td>
+                    <td align="left"><input type="text" name="color"   id="p_color" size="1"></td>
+                    <td align="left"><input type="text" name="year"   id="p_year" size="1"></td>
+                    <td align="left"><input type="text" name="carYear"   id="p_carYear" size="1"></td>
+                    <td align="left"><input type="text" name="transmission"   id="p_transmission" size="2"></td>
+                    <td align="left"><input type="text" name="fuel"   id="p_fuel" size="1"></td>
+                    <td align="left"><input type="text" name="cc"   id="p_cc" size="2"></td>
+                    <td align="left"><input type="text" name="mileage"   id="p_mileage" size="1"></td>
+                    <td align="left"><input type="text" name="sell"   id="p_sell" size="8"></td>
+                    <td align="left"><input type="text" name="accident"   id="p_accident" size="2"></td>                                      
                 </tr>
                 <thead>
                 <tr>
@@ -1301,9 +1301,9 @@ $(document).ready(function() {
                                   [내|외장] 옵션    : &nbsp;&nbsp;                    
                               </div>
                               <div class="col-xs-6">
-                                 <input type="text" name="p_powerWindow" id="p_powerWindow" size="11">
+                                 <input type="text" name="powerWindow" id="p_powerWindow" size="11">
                                  <input type="text" name="aircorn" id="p_aircorn" size="11">
-                                 <input type="text" name="p_fullAutoAircorn" id="p_fullAutoAircorn" size="11">
+                                 <input type="text" name="fullAutoAircorn" id="p_fullAutoAircorn" size="11">
                                        
                               </div>
                           </div>
@@ -1376,7 +1376,7 @@ $(document).ready(function() {
  
   
   <div id="pp_file" style="display: none;">
-   <input type="text" name="p_file" id="p_file" size="11">
+   <input type="text" name="file" id="p_file" size="11">
   </div>
   </div> 
              </div>
