@@ -117,7 +117,7 @@
 										<tr>
 											<td >${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
 											<td>${auction.model}</td>
-											<td>${auction.title}</td>
+											<td><a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a></td>
 											<td>${auction.userNo.userName}</td>
 											<%-- <td>${userName}</td> --%>
 											<td>${auction.regDate}</td>
