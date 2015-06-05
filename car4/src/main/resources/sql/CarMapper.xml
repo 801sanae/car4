@@ -26,13 +26,14 @@
 		<result property="sell"  	 	column="sell" 			jdbcType="VARCHAR" />
 		<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
 		<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
+		<result property="tranCode"		column="tran_code" 	    jdbcType="VARCHAR" />
+		
 	</resultMap>
 
-
 	<resultMap id="carOption" type="com.model2.mvc.service.domain.CarOption">
-		<result property="Car" 		column="carNo" 			jdbcType="INTEGER" />
+		<result property="carNo" 		column="carNo" 			jdbcType="INTEGER" />
 		<result property="powerWindow" 	column="powerWindow"    jdbcType="VARCHAR" />
-		<result property="airCorn" 		column="aircorn" 	    jdbcType="VARCHAR" />
+		<result property="aircorn" 		column="aircorn" 	    jdbcType="VARCHAR" />
 		<result property="fullAutoAircorn" 		column="fullAutoAircorn" 			jdbcType="VARCHAR" />
 		<result property="leftRightAircorn" 		column="leftRightAircorn" 			jdbcType="VARCHAR" />
 		<result property="gajukSheet" column="gajukSheet" 	jdbcType="VARCHAR" />
@@ -113,11 +114,11 @@
 	driverairbag,driverFriendAirBag ,sideAirBag ,
 	turbochaser,superchaser,airrowFigher)
 	VALUES(
-	#{car.carNo}, #{powerWindow:VARCHAR}, #{airCorn:VARCHAR}, #{fullAutoAircorn:VARCHAR},
-	#{sunRoof:VARCHAR},#{pnrmSunRoof:VARCHAR}, #{hidRam:VARCHAR},
-	#{navi:VARCHAR}, #{hipass:VARCHAR},#{blackBox:VARCHAR},
-	#{driverAirBag:VARCHAR},#{driverFriendAirBag:VARCHAR}, #{sideAirBag:VARCHAR},
-	#{turboChaser:VARCHAR}, #{superChaser:VARCHAR},#{airrowFigher:VARCHAR})
+	#{car.carNo}, #{powerWindow}, #{airCorn}, #{fullAutoAircorn},
+	#{sunRoof},#{pnrmSunRoof}, #{hidRam},
+	#{navi}, #{hipass},#{blackBox},
+	#{driverAirBag},#{driverFriendAirBag}, #{sideAirBag},
+	#{turboChaser}, #{superChaser},#{airrowFigher})
 	</insert>
 	
 	
@@ -128,77 +129,7 @@
 		WHERE car_Num = #{value}
 	</select>
 	
-	<select id="carView" parameterType="String" resultMap="carSelectMap">
-		SELECT
-		*
-		FROM car
-		WHERE car_Num = #{value}
-	</select>
-	<select id="carViewOption" parameterType="Integer" resultMap="carOption">
-		SELECT
-		*
-		FROM carOption
-		WHERE car_No = #{value}
-	</select>
-	
-	<!-- 지워도될부분 -->
-	 <select 	id="getCarList" resultMap="carSelectMap" parameterType="com.model2.mvc.common.Search">
-		
-		SELECT *
-	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT car_No, model, manu_co, car_year
-											FROM car
-											<if test="searchCondition != null">
-												<where>
-													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				car_No = #{searchKeyword}
-													</if>
-													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				model LIKE #{searchKeyword}
-													</if>
-													<if test="searchCondition == 2 and searchKeyword !='' ">
-														manu_co = #{searchKeyword}
-													</if>
-												</where>
-											</if>
-											ORDER BY car_No ) inner_table WHERE ROWNUM <![CDATA[<=]]>
-						#{currentPage}*#{pageSize} ) 
-		WHERE row_seq BETWEEN ((#{currentPage}-1)*#{pageSize}+1)  AND 
-		#{currentPage}*#{pageSize}
-	 </select>
-	
-	<select 	id="getTotalCount" resultType="int" parameterType="com.model2.mvc.common.Search">
-		
-		SELECT COUNT(*)
-	  	FROM(	SELECT car_No, model, manu_co, car_year
-					FROM car
-						<if test="searchCondition != null">
-							<where>
-								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			car_No = #{searchKeyword}
-								</if>
-								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 			model LIKE #{searchKeyword}
-								</if>
-								<if test="searchCondition == 2 and searchKeyword !='' ">
-									manu_co = #{searchKeyword}
-								</if>
-							</where>
-						</if> ) countTable						
-	 </select>
-	
-	<!-- 지워도될부분 -->
 	
 	
-	<!-- Auction에서 Car정보 가져가기 -->
-	
-	<select id="getAuction" parameterType="integer" resultMap="carSelectMap">
-		select*from car where user_no = #{value}
-	</select>
-	
-	
-	<select id="selectCar" parameterType="integer" resultMap="carSelectMap">
-		select*from car where user_no = #{value}
-	</select>
 	
 </mapper>
