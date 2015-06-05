@@ -233,14 +233,12 @@ PRIMARY KEY(auction_no)
 );
 
 create table auctionList(
-          auctionList_no integer,
+auctionList_no integer,
+price integer,
 car_no integer REFERENCES car(car_no),
-auction_no integer REFERENCES auction(auction_no),regDate date,
+auction_no integer REFERENCES auction(auction_no),
           PRIMARY KEY(auctionList_no)
 );
-
-
-
 create sequence auction_no increment by 1 start with 1;
 
 CREATE sequence user_no increment by 1 start with 1;
