@@ -26,12 +26,9 @@
       <result property="carDetail"         column="car_detail"       jdbcType="VARCHAR" />
       <result property="title"            column="title"             jdbcType="VARCHAR" />
       <result property="regDate"         column="reg_date"          jdbcType="DATE" />
-      <result property="tranCode"         column="tran_Code"          jdbcType="VARCHAR" />
-      <result property="bid"            column="bid"             jdbcType="VARCHAR" />
-      
       <result property="cnt"            column="cnt"             jdbcType="NUMERIC" />
       <result property="bidCnt"            column="bid_cnt"             jdbcType="NUMERIC" />
-      
+           
       <association property="userNo" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
 			<result property="userNo"	column="user_no" 	    jdbcType="INTEGER" />
@@ -43,6 +40,26 @@
 			<result property="role"   	column="role" 			jdbcType="VARCHAR" />
 			<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />
 		</association>
+		
+	  <association property="carNo" javaType="com.model2.mvc.service.domain.Car">	
+			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
+			<result property="carNo" 		column="car_No" 		jdbcType="INTEGER" />
+			<result property="manuCountry" 	column="manu_country"    jdbcType="VARCHAR" />
+			<result property="manuCo" 		column="manu_co" 	    jdbcType="VARCHAR" />
+			<result property="model" 		column="model" 			jdbcType="VARCHAR" />
+			<result property="color" 		column="color" 			jdbcType="VARCHAR" />
+			<result property="year" 		column="year"		 	jdbcType="INTEGER" />
+			<result property="carYear"   	column="car_Year" 		jdbcType="INTEGER" />
+			<result property="transmission" column="transmission" 	jdbcType="VARCHAR" />
+			<result property="cc"   		column="cc" 			jdbcType="INTEGER" />
+			<result property="fuel"   		column="fuel" 			jdbcType="VARCHAR" />
+			<result property="mileage"   	column="mileage" 		jdbcType="INTEGER" />
+			<result property="sell"  	 	column="sell" 			jdbcType="VARCHAR" />
+			<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
+			<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
+		</association>
+			
+		
       
       
       
@@ -55,7 +72,7 @@
       Auction(auction_no, manu_country, manu_co, model, fuel,
       		transmission, year, mileage, professor, auction_price,
       		car_detail, title, user_no, reg_date, tran_Code,
-      		bid, cnt, bid_Cnt)
+      	 cnt, bid_Cnt)
     VALUES(auction_no.nextval,
             #{manuCountry},
             #{manuCo},
@@ -70,12 +87,10 @@
                
             #{carDetail},
            'title',
-           <!-- 1, -->
             #{userNo.userNo},
             sysdate,
             '0',
             
-            '0',
             0,
             0)
    </insert>
@@ -118,19 +133,5 @@
 				ORDER BY auction_no desc) inner_table
 			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
 	</select>
-
-	<select id="auctionInfo" parameterType="com.model2.mvc.service.domain.Auction"
-		resultMap="AuctionSelectMap">
-		select * from auction;
-	</select>
-
-
-	<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
-		SELECT *
-		FROM
-		auction
-		WHERE
-		auction_no = #{auctionNo}
-	</select>	
 
 </mapper>
