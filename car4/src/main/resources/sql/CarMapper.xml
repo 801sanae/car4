@@ -12,8 +12,8 @@
 
 	<resultMap id="carSelectMap" type="com.model2.mvc.service.domain.Car">
 		<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
-		<result property="carNo" 		column="car_No" 			jdbcType="INTEGER" />
-		<result property="manuCountry" 	column="manu_country"    jdbcType="VARCHAR" />
+		<result property="carNo" 		column="car_No" 		jdbcType="INTEGER" />
+		<result property="manuCountry" 	column="manu_country"   jdbcType="VARCHAR" />
 		<result property="manuCo" 		column="manu_co" 	    jdbcType="VARCHAR" />
 		<result property="model" 		column="model" 			jdbcType="VARCHAR" />
 		<result property="color" 		column="color" 			jdbcType="VARCHAR" />
@@ -100,7 +100,7 @@
 		fuel, mileage, 
 		sell, accident, user_no)
 		VALUES(
-		car_No.NEXTVAL ,#{carNum}, #{manuCountry}, #{manuCo}, #{model}, #{color}, #{year}, #{carYear}, #{transmission},#{cc},#{fuel}, #{mileage}, #{sell}, #{accident},#{user.userNo})
+		car_No.NEXTVAL ,#{carNum:VARCHAR}, #{manuCountry:VARCHAR}, #{manuCo:VARCHAR}, #{model:VARCHAR}, #{color:VARCHAR}, #{year:INTEGER}, #{carYear:INTEGER}, #{transmission:VARCHAR},#{cc:INTEGER},#{fuel:VARCHAR}, #{mileage:INTEGER}, #{sell:VARCHAR}, #{accident:VARCHAR},#{user.userNo})
 	</insert>
 	
 	
