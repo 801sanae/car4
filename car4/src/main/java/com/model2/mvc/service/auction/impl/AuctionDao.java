@@ -1,6 +1,7 @@
 package com.model2.mvc.service.auction.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Auction;
+import com.model2.mvc.service.domain.Car;
 
 @Repository("auctionDao")
 public class AuctionDao{
@@ -42,13 +44,18 @@ public class AuctionDao{
 
 	//auctionNo로 1개 auction내역 겟
 	public Auction getAuction(int auctionNo) {
+		System.out.println("4번"+auctionNo);
 		return sqlSession.selectOne("AuctionMapper.getAuction", auctionNo);
 	}
 	
 	public void auctionInfo(Auction auction) throws Exception {
 		sqlSession.insert("AuctionMapper.auctionInfo", auction);
 	}
-	
-	
-	
+
+	public void addAuctionCar(Map<String, Object> add) {
+		System.out.println("1리"+add.get("car"));
+		System.out.println("2리"+add.get("auction"));
+		
+		sqlSession.insert("AuctionListMapper.auctionCar", add);
+	}
 }	

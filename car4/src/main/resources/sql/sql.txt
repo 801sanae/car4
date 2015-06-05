@@ -147,7 +147,6 @@ cc integer not null,
 mileage integer not null,
 sell  varchar2(50) not null,
 accident  varchar2(50) not null,
-professor  varchar2(50) not null,
 price integer,
 tran_code char(3),
 user_no integer references users(user_no), 
@@ -157,55 +156,53 @@ primary key(car_no)
 
 drop table carOption;
 
-/* 내/외장옵션 */
 CREATE TABLE carOption (
-carOption_no NUMBER(10) NOT NULL, /* 자동차옵션일련번호 */
-car_no NUMBER(10) not null references car(car_no), /* 자동차일련번호 */
-powerWindow VARCHAR(10), /* 파워윈도우 */
-aircorn VARCHAR(10), /* 에어컨 */
-fullAutoAircorn VARCHAR(10), /* 풀오토에어컨 */
-leftRightAircorn VARCHAR(10), /* 좌/우독립에어컨 */
-gajukSheet VARCHAR(10), /* 가죽시트 */
-warmSheet VARCHAR(10), /* 열선시트 */
-windSheet VARCHAR(10), /* 통풍시트 */
-msgSheet VARCHAR(10), /* 마사지시트 */
-sunRoof  VARCHAR(10), /* 썬루프 */
-pnrmSunRoof VARCHAR(10), /* 파로라마썬루프 */
-hidRam VARCHAR(10), /* HID/제논램프 */
-autoRight VARCHAR(10), /* 오토라이트 */
-ecmRoomMirror VARCHAR(10), /* ECM룸미러 */
-smartKey VARCHAR(10), /* 스마트키 */
-egStartButton VARCHAR(10), /* 엔진스타트버튼 */
-rigthClean VARCHAR(10), /* 라이트세척장치 */
-jkSubSystem VARCHAR(10), /* 주차조향보조시스템 */
-navi VARCHAR(10), /* 네비게이션 */
-hipass VARCHAR(10), /* 하이패스 */
-blackBox VARCHAR(10), /* 블랙박스 */
-handFreeze VARCHAR(10), /* 핸즈프리즈 */
-blueTooth VARCHAR(10), /* 블루투스 */
-dvdPlayer VARCHAR(10), /* DVD플레이어 */
-dmb VARCHAR(10), /* DMB */
-mp3 VARCHAR(10), /* mp3 */
-iPotAdapter VARCHAR(10), /* 아이팟단자 */
-driverFriendAirBag VARCHAR(10), /* 동승석에어백 */
-sideAirBag VARCHAR(10), /* 측면에어백 */
-ctAirBag VARCHAR(10), /* 커튼에어 */
-passengerDetectAirBag VARCHAR(10), /* 승객감지에어 */
-mrProtectAirBag VARCHAR(10), /* 무릎보호에어 */
-activeHeadRest VARCHAR(10), /* 액티브헤드레스트 */
-abs VARCHAR(10), /* ABS */
-driverAirBag VARCHAR(10), /* 운전선에어백 */
-airrowFigher VARCHAR(10), /* 에어로파이터 */
-superChaser VARCHAR(10), /* 슈퍼차져 */
-mission VARCHAR(10), /* 미션 */
-handle VARCHAR(10), /* 핸들 */
-spoiler VARCHAR(10), /* 스포일러 */
-ggFan VARCHAR(10), /* 계기판 */
-audio VARCHAR(10), /* 오디오 */
-wheelTiger VARCHAR(10), /* 휠/타이어 */
-turboChaser VARCHAR(10), /* 터보차저 */
-burcketSheet  VARCHAR(10), /* 버켓시트 */
-primary key(carOption_no)
+	car_no NUMBER(20) not null, /* 자동차일련번호 */
+	powerWindow VARCHAR(20), /* 파워윈도우 */
+	aircorn VARCHAR(20), /* 에어컨 */
+	fullAutoAircorn VARCHAR(20), /* 풀오토에어컨 */
+	leftRightAircorn VARCHAR(20), /* 좌/우독립에어컨 */
+	gajukSheet VARCHAR(20), /* 가죽시트 */
+	warmSheet VARCHAR(20), /* 열선시트 */
+	windSheet VARCHAR(20), /* 통풍시트 */
+	msgSheet VARCHAR(20), /* 마사지시트 */
+	sunRoof  VARCHAR(20), /* 썬루프 */
+	pnrmSunRoof VARCHAR(20), /* 파로라마썬루프 */
+	hidRam VARCHAR(20), /* HID/제논램프 */
+	autoRight VARCHAR(20), /* 오토라이트 */
+	ecmRoomMirror VARCHAR(20), /* ECM룸미러 */
+	smartKey VARCHAR(20), /* 스마트키 */
+	egStartButton VARCHAR(20), /* 엔진스타트버튼 */
+	rigthClean VARCHAR(20), /* 라이트세척장치 */
+	jkSubSystem VARCHAR(20), /* 주차조향보조시스템 */
+	navi VARCHAR(20), /* 네비게이션 */
+	hipass VARCHAR(20), /* 하이패스 */
+	blackBox VARCHAR(20), /* 블랙박스 */
+	handFreeze VARCHAR(20), /* 핸즈프리즈 */
+	blueTooth VARCHAR(20), /* 블루투스 */
+	dvdPlayer VARCHAR(20), /* DVD플레이어 */
+	dmb VARCHAR(20), /* DMB */
+	mp3 VARCHAR(20), /* mp3 */
+	iPotAdapter VARCHAR(20), /* 아이팟단자 */
+	driverFriendAirBag VARCHAR(20), /* 동승석에어백 */
+	sideAirBag VARCHAR(20), /* 측면에어백 */
+	ctAirBag VARCHAR(20), /* 커튼에어 */
+	passengerDetectAirBag VARCHAR(20), /* 승객감지에어 */
+	mrProtectAirBag VARCHAR(20), /* 무릎보호에어 */
+	activeHeadRest VARCHAR(20), /* 액티브헤드레스트 */
+	abs VARCHAR(20), /* ABS */
+	driverAirBag VARCHAR(20), /* 운전선에어백 */
+	airrowFigher VARCHAR(20), /* 에어로파이터 */
+	superChaser VARCHAR(20), /* 슈퍼차져 */
+	mission VARCHAR(20), /* 미션 */
+	handle VARCHAR(20), /* 핸들 */
+	spoiler VARCHAR(20), /* 스포일러 */
+	ggFan VARCHAR(20), /* 계기판 */
+	audio VARCHAR(20), /* 오디오 */
+	wheelTiger VARCHAR(20), /* 휠/타이어 */
+	turboChaser VARCHAR(20), /* 터보차저 */
+	burcketSheet  VARCHAR(20), /* 버켓시트 */
+	constraint fk_car_no foreign key(car_no)references car(car_no)
 );
 
 CREATE TABLE IMAGE(
@@ -238,7 +235,7 @@ PRIMARY KEY(auction_no)
 create table auctionList(
           auctionList_no integer,
 car_no integer REFERENCES car(car_no),
-auction_no integer REFERENCES auction(auction_no),
+auction_no integer REFERENCES auction(auction_no),regDate date,
           PRIMARY KEY(auctionList_no)
 );
 

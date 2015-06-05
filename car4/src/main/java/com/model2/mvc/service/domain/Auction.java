@@ -20,7 +20,7 @@ public class Auction {
 	private String title;			//제목
 	private User userNo;			//유저 
 	private Date regDate;			//등록일자
-	private Car carNo;				//낙찰차량
+	private int successCar;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
 	
@@ -171,13 +171,13 @@ public class Auction {
 	}
 
 
-	public Car getCarNo() {
-		return carNo;
+	public int getSuccessCar() {
+		return successCar;
 	}
 
 
-	public void setCarNo(Car carNo) {
-		this.carNo = carNo;
+	public void setSuccessCar(int successCar) {
+		this.successCar = successCar;
 	}
 
 
@@ -209,9 +209,7 @@ public class Auction {
 				+ ", year=" + year + ", mileage=" + mileage + ", professor="
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
 				+ carDetail + ", title=" + title + ", userNo=" + userNo
-				+ ", regDate=" + regDate + ", carNo=" + carNo + ", cnt=" + cnt + ", bidCnt=" + bidCnt + "]";
+				+ ", regDate=" + regDate + ", successCar=" + successCar + ", cnt=" + cnt + ", bidCnt=" + bidCnt + "]";
 	}
 
 }
-
-	

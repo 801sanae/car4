@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.auction.AuctionService;
 import com.model2.mvc.service.domain.Auction;
-import com.model2.mvc.service.auction.impl.AuctionDao;
+import com.model2.mvc.service.domain.Car;
 
 @Service("auctionServiceImpl")
 public class AuctionServiceImpl implements AuctionService {
@@ -62,4 +62,12 @@ public class AuctionServiceImpl implements AuctionService {
 		return auctionDao.getAuction(auctionNo);
 	}
 
+	
+	
+	//AuctionListMapper 값 넣기
+	@Override
+	public void addAuctionCar(Map<String, Object> add) throws Exception {
+		auctionDao.addAuctionCar(add);
+	}
+	
 }

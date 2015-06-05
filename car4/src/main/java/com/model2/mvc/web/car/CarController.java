@@ -73,14 +73,14 @@ public class CarController {
 		car.setUser((User)session.getAttribute("user"));
 		System.out.println("나와?"+car.getUser());
 		
-		
+		System.out.println("car"+car);
 		carService.addCar(car);
 		
 		//CarOption
 
 		
 		carOption.setCar(carService.getCar(car.getCarNum()));
-		
+		System.out.println("CarOption"+carOption.getCar());
 		carService.addOption(carOption);
 		
 		

@@ -13,8 +13,9 @@
    <resultMap id="AuctionListSelectMap" type="com.model2.mvc.service.domain.AuctionList">
      
       <result property="auctionListNo"		column="auctionList_no"		jdbcType="INTEGER" />
+      <result property="regDate"		column="regDate"		jdbcType="DATE" />
       
-	  <association property="carNo" javaType="com.model2.mvc.service.domain.Car">	
+	  <association property="carNo1" javaType="com.model2.mvc.service.domain.Car">	
 			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
 			<result property="carNo" 		column="car_No" 		jdbcType="INTEGER" />
 			<result property="manuCountry" 	column="manu_country"    jdbcType="VARCHAR" />
@@ -32,7 +33,7 @@
 			<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
 		</association>
 		
-		<association property="auctionNo" javaType="com.model2.mvc.service.domain.Auction">	
+		<association property="auctionNo1" javaType="com.model2.mvc.service.domain.Auction">	
 			  <result property="auctionNo"		column="auction_no"			jdbcType="INTEGER"/>
 		      <result property="manuCountry"    column="manu_country"		jdbcType="VARCHAR" />
 		      <result property="manuCo"			column="manu_co"			jdbcType="VARCHAR" />
@@ -53,8 +54,15 @@
 		 	  <result property="user.userNo" 	column="user_no"			jdbcType="NUMERIC"/>   
 		      <result property="car.carNo"		column="car_no"				jdbcType="NUMERIC" />
 		</association>
-		
    </resultMap>
 
+ <insert id="auctionCar"   parameterType="java.util.Map" >
+ 	INSERT
+      INTO
+      auctionlist(auctionList_no, car_no, auction_no,regDate)
+    VALUES(auctionList_no.nextval,
+            #{car.carNo},
+            #{auction.auctionNo},sysdate)     
+ </insert>
 
 </mapper>

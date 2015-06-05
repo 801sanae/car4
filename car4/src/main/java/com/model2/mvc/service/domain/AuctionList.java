@@ -1,10 +1,13 @@
 package com.model2.mvc.service.domain;
 
+import java.util.Date;
+
 public class AuctionList {
 	
 	private int auctionListNo;	//입찰현황리스트
 	private Car carNo;			//입찰차량
 	private Auction auctionNo;	//옥션글
+	private Date regDate;
 	
 	//default Constructor
 	public AuctionList() {
@@ -30,6 +33,14 @@ public class AuctionList {
 		this.auctionNo = auctionNo;
 	}
 	
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
 		return "AuctionList [auctionListNo=" + auctionListNo + ", carNo="

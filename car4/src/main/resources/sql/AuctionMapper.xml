@@ -28,6 +28,8 @@
       <result property="regDate"         column="reg_date"          jdbcType="DATE" />
       <result property="cnt"            column="cnt"             jdbcType="NUMERIC" />
       <result property="bidCnt"            column="bid_cnt"             jdbcType="NUMERIC" />
+      <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
+      
            
       <association property="userNo" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
@@ -39,30 +41,9 @@
 			<result property="regDate" 	column="reg_date"		jdbcType="DATE" />
 			<result property="role"   	column="role" 			jdbcType="VARCHAR" />
 			<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />
-		</association>
-		
-	  <association property="carNo" javaType="com.model2.mvc.service.domain.Car">	
-			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
-			<result property="carNo" 		column="car_No" 		jdbcType="INTEGER" />
-			<result property="manuCountry" 	column="manu_country"    jdbcType="VARCHAR" />
-			<result property="manuCo" 		column="manu_co" 	    jdbcType="VARCHAR" />
-			<result property="model" 		column="model" 			jdbcType="VARCHAR" />
-			<result property="color" 		column="color" 			jdbcType="VARCHAR" />
-			<result property="year" 		column="year"		 	jdbcType="INTEGER" />
-			<result property="carYear"   	column="car_Year" 		jdbcType="INTEGER" />
-			<result property="transmission" column="transmission" 	jdbcType="VARCHAR" />
-			<result property="cc"   		column="cc" 			jdbcType="INTEGER" />
-			<result property="fuel"   		column="fuel" 			jdbcType="VARCHAR" />
-			<result property="mileage"   	column="mileage" 		jdbcType="INTEGER" />
-			<result property="sell"  	 	column="sell" 			jdbcType="VARCHAR" />
-			<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
-			<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
-		</association>
 			
-		
-      
-      
-      
+		</association>
+	
    </resultMap>
 
 
@@ -71,7 +52,7 @@
       INTO
       Auction(auction_no, manu_country, manu_co, model, fuel,
       		transmission, year, mileage, professor, auction_price,
-      		car_detail, title, user_no, reg_date, cnt, bid_Cnt, car_no)
+      		car_detail, title, user_no, reg_date, cnt, bid_Cnt, success_car)
     VALUES(auction_no.nextval,
             #{manuCountry},
             #{manuCo},
@@ -86,12 +67,12 @@
                
             #{carDetail},
            'title',
-            #{userNo.userNo},
+            1,
             sysdate,
         	0,
         	
             0,
-           	0
+           	0 
             )
    </insert>
 	
@@ -113,11 +94,20 @@
 		</if>
 		) countTable
 	</select>
+<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
+		SELECT *
+		FROM
+		auction
+		WHERE
+		auction_no = #{auctionNo}
+	</select>
+
+
 
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="com.model2.mvc.common.Search"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, a.tran_code, a.car_no, a.cnt, a.bid_cnt from 
+		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, c.tran_code, success_car, a.cnt, a.bid_cnt from 
 			( SELECT inner_table.* , ROWNUM AS row_seq FROM
 				 ( SELECT * FROM auction
 					<if test="searchCondition != null">
@@ -131,7 +121,7 @@
 						</where>
 					</if>
 				ORDER BY auction_no desc) inner_table
-			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u, car c where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
 	</select>
 
 </mapper>

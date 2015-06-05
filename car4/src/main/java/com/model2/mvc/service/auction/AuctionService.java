@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Auction;
+import com.model2.mvc.service.domain.Car;
 
 
 public interface AuctionService {
@@ -18,5 +19,5 @@ public interface AuctionService {
 	//where AuctionNo 로 getAuction!
 	public Auction getAuction(int auctionNo) throws Exception;
 	
-
+	public void addAuctionCar(Map<String, Object> add) throws Exception;
 }
