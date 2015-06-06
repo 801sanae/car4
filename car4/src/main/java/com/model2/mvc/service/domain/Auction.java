@@ -23,8 +23,19 @@ public class Auction {
 	private int successCar;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
+	private String temp;
 	
 	
+	public String getTemp() {
+		return temp;
+	}
+
+
+	public void setTemp(String temp) {
+		this.temp = temp;
+	}
+
+
 	//default constructor
 	public Auction() {
 		System.out.println(this.getClass());
@@ -209,7 +220,13 @@ public class Auction {
 				+ ", year=" + year + ", mileage=" + mileage + ", professor="
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
 				+ carDetail + ", title=" + title + ", userNo=" + userNo
-				+ ", regDate=" + regDate + ", successCar=" + successCar + ", cnt=" + cnt + ", bidCnt=" + bidCnt + "]";
+				+ ", regDate=" + regDate + ", successCar=" + successCar
+				+ ", cnt=" + cnt + ", bidCnt=" + bidCnt + ", temp=" + temp
+				+ "]";
 	}
 
+
+
 }
+
+	
