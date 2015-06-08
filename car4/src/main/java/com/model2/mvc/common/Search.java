@@ -14,6 +14,9 @@ public class Search {
 	private int endRowNum;
 	private int startRowNum;
 	
+	//경매현황게시판에서 전체/경매중/경매완료를 나뉘기위해
+	private int tabs;
+	
 	///Constructor
 	public Search() {
 	}
@@ -55,12 +58,22 @@ public class Search {
 	public int getStartRowNum() {
 		return (getCurrentPage()-1)*getPageSize()+1;
 	}
+	
+
+	public int getTabs() {
+		return tabs;
+	}
+
+	public void setTabs(int tabs) {
+		this.tabs = tabs;
+	}
 
 	@Override
 	public String toString() {
 		return "Search [currentPage=" + currentPage + ", searchCondition="
 				+ searchCondition + ", searchKeyword=" + searchKeyword
-				+ ", pageSize=" + pageSize + ", endRowNum=" + currentPage*pageSize
-				+ ", startRowNum=" +((currentPage-1)*pageSize+1) + "]";
+				+ ", pageSize=" + pageSize + ", endRowNum=" + endRowNum
+				+ ", startRowNum=" + startRowNum + ", tabs=" + tabs + "]";
 	}
+
 }
