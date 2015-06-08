@@ -11,7 +11,7 @@ public interface AuctionService {
 	public void addAuction(Auction auction) throws Exception;
 	
 	//리스트 뿌리기
-	public Map<String, Object> getAuctionList(Search search) throws Exception;
+	public Map<String, Object> getAuctionList(int userNo, Search search) throws Exception;
 
 	public void auctionInfo(Auction auction) throws Exception;
 
