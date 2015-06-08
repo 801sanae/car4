@@ -1,12 +1,13 @@
 package com.model2.mvc.service.file.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.FileUpload;
-import com.model2.mvc.service.domain.Car;
 
 @Repository("fileDao")
 public class FileDao{
@@ -30,5 +31,9 @@ public class FileDao{
 	}
 	public FileUpload getFile(int carNo) throws Exception {
 		return sqlSession.selectOne("FileMapper.getFile", carNo);
+	}
+	
+	public List<FileUpload> getFileList(int carNo) throws Exception {
+		return sqlSession.selectList("FileMapper.getFileList",carNo);
 	}
 }
