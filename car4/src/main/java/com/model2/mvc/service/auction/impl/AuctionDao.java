@@ -1,5 +1,6 @@
 package com.model2.mvc.service.auction.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +35,10 @@ public class AuctionDao{
 	}
 	
 	//리스트 뿌리기
-	public List<Auction> getAuctionList(Search search) throws Exception {
-		return sqlSession.selectList("AuctionMapper.getAuctionList", search);
+	public List<Auction> getAuctionList(Map<String, Object> hashMap) throws Exception {
+		List<Auction> aaa = sqlSession.selectList("AuctionMapper.getAuctionList", hashMap);
+		System.out.println("AuctionDao : "+aaa);
+		return aaa;
 	}
 	//총 게시물 수
 	public int getTotalCount(Search search) throws Exception {
