@@ -77,11 +77,11 @@ public class FileUploadController {
 					System.out.println("파일네임 ::::::::: " + fileName);
 					
 //					String fileUrl= "http://"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+ctx.getContextPath()+"/image/"+fileName;
-					String fileUrl= "/image/"+fileName;
+					String fileUrl= "image/"+fileName;
 					
 					System.out.println("fileUrl :::::::::::: " + fileUrl);
 								
-					String path = (String)ctx.getRealPath("image") + "/" + fileName;
+					String path = (String)ctx.getRealPath("/image") + "/" + fileName;
 					
 					File newFile = new File(path);
 					
