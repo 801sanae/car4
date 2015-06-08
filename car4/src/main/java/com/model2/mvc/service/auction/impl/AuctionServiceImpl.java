@@ -39,9 +39,19 @@ public class AuctionServiceImpl implements AuctionService {
 	
 
 	@Override
-	public Map<String, Object> getAuctionList(Search search) throws Exception {
+	public Map<String, Object> getAuctionList(int userNo, Search search) throws Exception {
 		// TODO Auto-generated method stub
-		List<Auction> list = auctionDao.getAuctionList(search);
+		
+		Map<String, Object> hashMap = new HashMap<String, Object>();
+		hashMap.put("userNo", userNo);
+		hashMap.put("search", search);
+		
+		System.out.println("AuctionServiceImpl : "+hashMap);
+//		System.out.println("AuctionServiceImpl : "+has);
+
+		
+		
+		List<Auction> list = auctionDao.getAuctionList(hashMap);
 		int totalCount = auctionDao.getTotalCount(search);
 
 		Map<String, Object> map = new HashMap<String, Object>();
