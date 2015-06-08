@@ -73,18 +73,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Password:</td>
-						<td>
-							<div class="col-md-4">${user.password }</div>
-						</td>
-					</tr>
-					<tr>
-						<td>PasswordCheck:</td>
-						<td>
-							<div class="col-md-4">${user.password }</div>
-						</td>
-					</tr>
-					<tr>
 						<td>Phone:</td>
 						<td>
 							<div class="col-md-1">${user.phone}</div>
