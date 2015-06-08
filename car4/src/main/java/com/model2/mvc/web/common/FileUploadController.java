@@ -81,7 +81,7 @@ public class FileUploadController {
 					
 					System.out.println("fileUrl :::::::::::: " + fileUrl);
 								
-					String path = (String)ctx.getRealPath("/image") + "/" + fileName;
+					String path = (String)ctx.getRealPath("image") + "/" + fileName;
 					
 					File newFile = new File(path);
 					
