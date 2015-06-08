@@ -28,10 +28,12 @@
       <result property="regDate"         column="reg_date"          jdbcType="DATE" />
       <result property="cnt"            column="cnt"             jdbcType="NUMERIC" />
       <result property="bidCnt"            column="bid_cnt"             jdbcType="NUMERIC" />
-      <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
       
-           
-      <association property="userNo" javaType="com.model2.mvc.service.domain.User">
+      <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
+      <result property="temp"   		column="temp" 				jdbcType="NUMERIC" />
+      	
+             
+      <association property="user" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
 			<result property="userNo"	column="user_no" 	    jdbcType="INTEGER" />
 			<result property="userName" column="user_name"     	jdbcType="VARCHAR" />
@@ -40,8 +42,7 @@
 			<result property="sex"  	column="sex" 			jdbcType="VARCHAR" />
 			<result property="regDate" 	column="reg_date"		jdbcType="DATE" />
 			<result property="role"   	column="role" 			jdbcType="VARCHAR" />
-			<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />
-			
+			<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />	
 		</association>
 	
    </resultMap>
@@ -67,7 +68,7 @@
                
             #{carDetail},
            'title',
-            1,
+            #{user.userNo},
             sysdate,
         	0,
         	
@@ -90,10 +91,12 @@
 				<if test="searchCondition == 1 and searchKeyword !='' ">
 					model LIKE '%'||#{searchKeyword}||'%'
 				</if>
+				
 			</where>
 		</if>
 		) countTable
 	</select>
+	
 <select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
 		SELECT *
 		FROM
@@ -105,23 +108,46 @@
 
 
 	<!-- 리스트 뿌리기 -->
-	<select id="getAuctionList" parameterType="com.model2.mvc.common.Search"
+	<select id="getAuctionList" parameterType="hashMap"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name , a.reg_date, c.tran_code, a.success_car, a.cnt, a.bid_cnt from 
-			( SELECT inner_table.* , ROWNUM AS row_seq FROM
-				 ( SELECT * FROM auction
-					<if test="searchCondition != null">
+		SELECT a.auction_no, a.model, a.title, u.user_name,  bid.temp, a.reg_date, a.success_car, a.cnt, a.bid_cnt
+			
+		from ( SELECT inner_table.* , ROWNUM AS row_seq 
+			FROM	( SELECT * 
+						FROM ( SELECT * FROM auction
+						<if test="search.tabs != 0">
+							<where>
+								<if test="search.tabs == 1 and search.tabs !='' ">
+									success_car = 0
+								</if>
+								<if test="search.tabs == 2 and search.tabs !='' ">
+									NOT success_car = 0
+								</if>
+							</where>
+						</if>
+							
+						) auction
+					<if test="search.searchCondition != -1">
 						<where>
-							<if test="searchCondition == 0 and searchKeyword !='' ">
-								auction_no = #{searchKeyword}
+							<if test="search.searchCondition == 0 and search.searchKeyword !='' ">
+								auction_no = #{search.searchKeyword}
 							</if>
-							<if test="searchCondition == 1 and searchKeyword !='' ">
-								model like #{searchKeyword}
+							<if test="search.searchCondition == 1 and search.searchKeyword !='' ">
+								model like #{search.searchKeyword}
 							</if>
 						</where>
 					</if>
-				ORDER BY auction_no desc) inner_table
-			WHERE ROWNUM &lt;= #{endRowNum} ) a, users u, car c where u.user_no = a.user_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+				ORDER BY auction_no DESC) inner_table
+			WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u, (SELECT al.auction_no AS auction_no, c.car_no AS temp FROM auctionlist al, car c
+															WHERE al.car_no = c.car_no 
+															AND c.user_no =  #{userNo}) bid	
+															
+															
+															
+			where u.user_no = a.user_no(+)
+			AND bid.auction_no(+) = a.auction_no
+			AND row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+			ORDER BY a.auction_no DESC
 	</select>
 
 </mapper>
