@@ -18,20 +18,20 @@ public class Auction {
 	private int auctionPrice;		//가격
 	private String carDetail;		//상세
 	private String title;			//제목
-	private User userNo;			//유저 
+	private User user;			//유저 
 	private Date regDate;			//등록일자
 	private int successCar;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
-	private String temp;
+	private int temp;
 	
 	
-	public String getTemp() {
+	public int getTemp() {
 		return temp;
 	}
 
 
-	public void setTemp(String temp) {
+	public void setTemp(int temp) {
 		this.temp = temp;
 	}
 
@@ -162,13 +162,13 @@ public class Auction {
 	}
 
 
-	public User getUserNo() {
-		return userNo;
+	public User getUser() {
+		return user;
 	}
 
 
-	public void setUserNo(User userNo) {
-		this.userNo = userNo;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
@@ -219,7 +219,7 @@ public class Auction {
 				+ ", fuel=" + fuel + ", transmission=" + transmission
 				+ ", year=" + year + ", mileage=" + mileage + ", professor="
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
-				+ carDetail + ", title=" + title + ", userNo=" + userNo
+				+ carDetail + ", title=" + title + ", user=" + user
 				+ ", regDate=" + regDate + ", successCar=" + successCar
 				+ ", cnt=" + cnt + ", bidCnt=" + bidCnt + ", temp=" + temp
 				+ "]";
