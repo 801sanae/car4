@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
@@ -66,11 +67,10 @@ public class AuctionController {
 	System.out.println("/addAuction.do");
 
 	User user = (User)session.getAttribute("user");
-	auction.setUserNo(user);
+	auction.setUser(user);
 
 	//Business Logic
 	auctionService.addAuction(auction);
-	session.setAttribute("auction", auction);
 	return "redirect:/listAuction.do";
 	}
 
@@ -78,18 +78,32 @@ public class AuctionController {
 	
 	//리스트 뿌리기
 	@RequestMapping("/listAuction.do")
-	public String listAuction( @ModelAttribute("search") Search search, Model model) throws Exception {
+	public String listAuction( @ModelAttribute("search") Search search, Model model, HttpSession session) throws Exception {
 
 	System.out.println("listAuction.do");
 
-	if(search.getCurrentPage()==0 ) {
-	search.setCurrentPage(1);
+	if(search.getCurrentPage()==0) {
+		search.setCurrentPage(1);
 	}
 
+	System.out.println("1");
 	search.setPageSize(pageSize);
+	
+	System.out.println("2");
+	//auctionlist에서 로그인한 userNo와같은 userNo를 찾기위해
+
+	//int라서 null, nullstring은 안되므로 로그인 안했을떈 userNo를 0으로 셋팅
+	int userNo = 0;
+	
+	if( session.getAttribute("user") != null) {
+		userNo = ((User)session.getAttribute("user")).getUserNo();
+	}
+	
+	System.out.println("3");
 
 	//목록들을 전달하기 위해
-	Map<String, Object> map = auctionService.getAuctionList(search);
+	Map<String, Object> map = auctionService.getAuctionList(userNo, search);
+	System.out.println("4");
 
 	Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 	System.out.println(resultPage);
@@ -97,7 +111,7 @@ public class AuctionController {
 	model.addAttribute("list", map.get("list"));
 	model.addAttribute("resultPage", resultPage);
 	model.addAttribute("search", search);
-	//model.addAttribute("menu", menu);
+	
 
 	return "forward:/listAuction.jsp";
 	}
