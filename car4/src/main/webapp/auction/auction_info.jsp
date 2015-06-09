@@ -43,7 +43,7 @@ $(document).ready(function() {
 	alert(cc);
 	
 	//alert("${list[0].carNum}");
-	/*   $("#selectBox").append("<option value='1'>${list[0].carNum}</option>");
+	$("#selectBox").append("<option value='${list[0].carNum}'>${list[0].carNum}</option>");
 	$("#selectBox").append("<option value='2'>${list[1].carNum}</option>");
 	$("#selectBox").append("<option value='3'>${list[2].carNum}</option>");  
 	$("#selectBox").append("<option value='4'>${list[3].carNum}</option>");  
@@ -53,7 +53,7 @@ $(document).ready(function() {
 	$("#selectBox").append("<option value='8'>${list[7].carNum}</option>");  
 	$("#selectBox").append("<option value='9'>${list[8].carNum}</option>");  
 	$("#selectBox").append("<option value='10'>${list[9].carNum}</option>");  
-      */   
+         
       $.ajax({
             url : 'auctionInfo.do',
             type : 'post',
@@ -71,16 +71,15 @@ $(document).ready(function() {
 <body>
 <div class="container">
 <div class="row">
-
         <div class="col-sm-offset-2 col-sm-7">
-            <form method="post">
+            <form method="post" action="addAuctionList.do">
 				
 				<div class="form-group">
 					<br>
 				<!--  경매번호 시작 -->
         		<label for="validate-optional">경매번호</label>
 					<div class="input-group">
-						<input type="text" class="form-control" name="validate-optional" id="validate-optional" value="${auction.auctionNo }">
+						<input type="text" class="form-control" name="auctionNo" id="validate-optional" value="${auction.auctionNo }">
 						<span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
 					</div>
 				<!-- 경매번호 끝  -->	
@@ -91,7 +90,7 @@ $(document).ready(function() {
 				<!--  2번 table 시작 -->
 				<label for="validate-optional">구매자 차량 정보</label>
 					
-					<img src="${file.imgPath}" style="width: 100%;">
+					<img src="img/${auction.manuCo }/${auction.model }.jpg" style="width: 100%;">
 					<br>
 					
 						<table class="table table-hover" style="text-align:center; height: 235px">
@@ -166,9 +165,9 @@ $(document).ready(function() {
 							<tr>
 									<td width="15%">대표사진</td>
 									<td>
-									<img src="${file.imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${file.imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${file.imgPath}" style="width: 30%;"></td>
+									<img src="${file[0].imgPath}" style="width: 30%;">&nbsp;&nbsp;
+									<img src="${file[1].imgPath}" style="width: 30%;">&nbsp;&nbsp;
+									<img src="${file[2].imgPath}" style="width: 30%;"></td>
 							<!-- Action만 넣으삼 -->
 							</tr>
 							<!-- 대표 IMG END-->	
@@ -176,32 +175,32 @@ $(document).ready(function() {
 								<br>
 								<tr>
 									<td>제조사</td>
-									<td>${car.manuCo}</td> <!-- Action 값만 넣으삼 -->
+									<td>${auction.manuCo}</td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 									<td>모델명</td>
-									<td>${car.model}</td> <!-- Action 값만 넣으삼 -->
+									<td>${auction.model}</td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 									<td>주행거리</td>
-									<td>${car.mileage}</td> <!-- Action 값만 넣으삼 -->
+									<td>${list[0].mileage}</td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 								
 									<td>연식</td>
-									<td>${car.year}</td> <!-- Action 값만 넣으삼 -->
+									<td>${file[0].imgPath}</td> <!-- Action 값만 넣으삼 -->
 								</tr>
 						</table>
 					<!--  입찰가격 -->	
 					<label for="validate-optional">입찰가격</label>
 					<div class="input-group">
-						<input type="text" class="form-control" name="validate-text" id="validate-text" placeholder="금액을 입력하시오">
+						<input type="text" class="form-control" name="bidPrice" id="validate-text" placeholder="금액을 입력하시오">
 						<span class="input-group-addon danger"><span class="glyphicon glyphicon-hand-right"></span></span>	
 					</div>
 					<!--  입찰가격 -->
 					<br><br><br>
 				</div>
-    			
+    			<input type="hidden" name="carNo" value="${list[0].carNo }">
                 <button type="submit" class="btn btn-primary col-xs-12">Submit</button>
             </form>
             <br><br><br><br><br><br>
