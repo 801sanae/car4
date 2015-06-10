@@ -1,5 +1,7 @@
 package com.model2.mvc.service.file.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -32,5 +34,9 @@ public class FileServiceImpl implements FileService{
 	public FileUpload getFile(int carNo) throws Exception {
 		System.out.println("Servlce"+carNo);
 		return fileDao.getFile(carNo);
+	}
+	
+	public List<FileUpload> getFileList(int carNo) throws Exception {
+	return fileDao.getFileList(carNo);
 	}
 }
