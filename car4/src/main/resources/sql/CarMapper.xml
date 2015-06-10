@@ -98,9 +98,9 @@
 		year, car_Year, 
 		transmission, cc, 
 		fuel, mileage, 
-		sell, accident, user_no)
+		sell, accident, user_no, tran_code)
 		VALUES(
-		car_No.NEXTVAL ,#{carNum:VARCHAR}, #{manuCountry:VARCHAR}, #{manuCo:VARCHAR}, #{model:VARCHAR}, #{color:VARCHAR}, #{year:INTEGER}, #{carYear:INTEGER}, #{transmission:VARCHAR},#{cc:INTEGER},#{fuel:VARCHAR}, #{mileage:INTEGER}, #{sell:VARCHAR}, #{accident:VARCHAR},#{user.userNo})
+		car_No.NEXTVAL ,#{carNum:VARCHAR}, #{manuCountry:VARCHAR}, #{manuCo:VARCHAR}, #{model:VARCHAR}, #{color:VARCHAR}, #{year:INTEGER}, #{carYear:INTEGER}, #{transmission:VARCHAR},#{cc:INTEGER},#{fuel:VARCHAR}, #{mileage:INTEGER}, #{sell:VARCHAR}, #{accident:VARCHAR},#{user.userNo}, 0)
 	</insert>
 	
 	
@@ -199,7 +199,20 @@
 	
 	
 	<select id="selectCar" parameterType="integer" resultMap="carSelectMap">
-		select*from car where user_no = #{value}
+		select*from car where car_no = #{value}
+	</select>
+	
+	<update id="updateCar" parameterType="integer" >
+		UPDATE car
+		<set>
+			tran_code = 1
+		</set>
+		WHERE car_no = #{carNo}
+	
+	</update>
+	
+	<select id="getCar2" parameterType="integer" resultMap="carSelectMap">
+		SELECT * FROM car WHERE car_no = #{value}
 	</select>
 	
 </mapper>
