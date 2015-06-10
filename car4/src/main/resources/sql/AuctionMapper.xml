@@ -76,6 +76,24 @@
            	0 
             )
    </insert>
+		
+	<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
+		SELECT *
+		FROM
+		auction
+		WHERE
+		auction_no = #{auctionNo}
+	</select>
+	
+	<update id="updateAuction" parameterType="hashMap">
+		Update auction
+		<set>
+			<if test="carNo != null">success_car = #{carNo}</if>
+		WHERE auction_no = #{auctionNo}
+		</set>
+	</update>
+
+		
 	
 	<!-- 총 게시물  -->
 	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
@@ -96,15 +114,6 @@
 		</if>
 		) countTable
 	</select>
-	
-<select id="getAuction" parameterType="int" resultMap="AuctionSelectMap">
-		SELECT *
-		FROM
-		auction
-		WHERE
-		auction_no = #{auctionNo}
-	</select>
-
 
 
 	<!-- 리스트 뿌리기 -->
@@ -115,39 +124,46 @@
 		from ( SELECT inner_table.* , ROWNUM AS row_seq 
 			FROM	( SELECT * 
 						FROM ( SELECT * FROM auction
-						<if test="search.tabs != 0">
-							<where>
-								<if test="search.tabs == 1 and search.tabs !='' ">
-									success_car = 0
-								</if>
-								<if test="search.tabs == 2 and search.tabs !='' ">
-									NOT success_car = 0
-								</if>
-							</where>
-						</if>
-							
-						) auction
-					<if test="search.searchCondition != -1">
-						<where>
-							<if test="search.searchCondition == 0 and search.searchKeyword !='' ">
-								auction_no = #{search.searchKeyword}
-							</if>
-							<if test="search.searchCondition == 1 and search.searchKeyword !='' ">
-								model like #{search.searchKeyword}
-							</if>
-						</where>
-					</if>
-				ORDER BY auction_no DESC) inner_table
-			WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u, (SELECT al.auction_no AS auction_no, c.car_no AS temp FROM auctionlist al, car c
-															WHERE al.car_no = c.car_no 
-															AND c.user_no =  #{userNo}) bid	
-															
-															
-															
-			where u.user_no = a.user_no(+)
-			AND bid.auction_no(+) = a.auction_no
-			AND row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
-			ORDER BY a.auction_no DESC
+							<if test="search.tabs != 0">
+								<where>
+									<if test="search.tabs == 1 and search.tabs !='' ">
+										success_car = 0
+									</if>
+									<if test="search.tabs == 2 and search.tabs !='' ">
+										NOT success_car = 0
+									</if>
+								</where>
+							</if>  ) auction
+										<if test="search.searchCondition != -1 and search.searchKeyword !='' ">
+											<where>
+												<if test="search.searchCondition == 0 and search.searchKeyword !='' ">
+													auction_no = #{search.searchKeyword}
+												</if>
+												<if test="search.searchCondition == 1 and search.searchKeyword !='' ">
+													model like #{search.searchKeyword}
+												</if>
+											</where>
+										</if>  ORDER BY 
+												 <choose>
+												    <when test=" search.orderby == 1 and search.orderby !='' ">
+														bid_cnt DESC
+												    </when>
+												    <when test=" search.orderby == 2 and search.orderby !='' ">
+														cnt DESC
+												    </when>
+												    <otherwise>
+														auction_no DESC
+												    </otherwise>
+												  </choose> ) inner_table
+														WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u,(SELECT al.auction_no AS auction_no, c.car_no AS temp 
+																												FROM auctionlist al, car c
+																												WHERE al.car_no = c.car_no 
+																												AND c.user_no =  #{userNo}) bid	
+																					
+				where u.user_no = a.user_no(+)
+				AND bid.auction_no(+) = a.auction_no
+				AND row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+				ORDER BY a.auction_no DESC
 	</select>
 
 </mapper>
