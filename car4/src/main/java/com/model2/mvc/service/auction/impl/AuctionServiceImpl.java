@@ -80,4 +80,9 @@ public class AuctionServiceImpl implements AuctionService {
 		auctionDao.addAuctionCar(add);
 	}
 	
+	//낙찰 후 auction테이블의 success_car 변경
+	public void updateAuction(int carNo, int auctionNo) throws Exception {
+		auctionDao.updateAuction(carNo, auctionNo);
+	}
+	
 }
