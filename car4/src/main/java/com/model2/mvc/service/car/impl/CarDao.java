@@ -87,7 +87,15 @@ public class CarDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("CarMapper.selectCar", userNo);
 	}
+
+	//낙찰 후 car테이블의 tran_code 변경
+	public void updateCar(int carNo) throws Exception {
+		sqlSession.update("CarMapper.updateCar", carNo);
+	}
 	
+	public Car getCar2(int carNo){
+		return sqlSession.selectOne("CarMapper.getCar2",carNo);
+	}
 	
 	
 }
