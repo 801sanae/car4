@@ -237,6 +237,7 @@ create table auctionList(
           auctionList_no integer,
 car_no integer REFERENCES car(car_no),
 auction_no integer REFERENCES auction(auction_no),regDate date,
+bid_price integer,
           PRIMARY KEY(auctionList_no)
 );
 
