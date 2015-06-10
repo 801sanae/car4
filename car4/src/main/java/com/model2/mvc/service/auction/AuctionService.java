@@ -20,4 +20,7 @@ public interface AuctionService {
 	public Auction getAuction(int auctionNo) throws Exception;
 	
 	public void addAuctionCar(Map<String, Object> add) throws Exception;
+	
+	//낙찰 후 auction테이블의 success_car 변경
+	public void updateAuction(int carNo, int auctionNo) throws Exception;
 }
