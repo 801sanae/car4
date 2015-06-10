@@ -1,6 +1,8 @@
 package com.model2.mvc.service.file.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,4 +40,13 @@ public class FileServiceImpl implements FileService{
 	public List<FileUpload> getFileList(int carNo) throws Exception {
 		return fileDao.getFileList(carNo);
 	}
+	//상훈이형님 부분 
+	public Map<String, Object> getFile2(int carNo) throws Exception {
+	      List<FileUpload> list = fileDao.getFile2(carNo);
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      map.put("list", list );
+	      return map;
+	   }
+	
+	
 }

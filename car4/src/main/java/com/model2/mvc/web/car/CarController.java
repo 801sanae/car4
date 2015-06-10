@@ -233,6 +233,32 @@ public class CarController {
 		return "redirect:user/welcome.jsp";
 	}
 	
+	@RequestMapping("/getCars.do")
+	   public String getCars( @ModelAttribute("car") Car car,@ModelAttribute("carOption") CarOption carOption, 
+	         @ModelAttribute("fileUpload") FileUpload fileUpload ,HttpSession session, HttpServletRequest request, 
+	         Model model) throws Exception {
+
+	      System.out.println("/getCars.do");
+	      System.out.println(car.getCarNo());
+	      //int carNo = Integer.parseInt(request.getParameter(carNo+""));
+	      
+	      //Business Logic
+	      //User user = userService.getUser(userId);
+	      Car cars = carService.getCarInfo2(car.getCarNo());
+	      CarOption carOptions = carService.getCarInfo3(car.getCarNo());
+	      Map<String , Object> map =fileService.getFile2(car.getCarNo());
+	      
+	   
+	      // Model 과 View 연결
+	      model.addAttribute("car", cars);
+	      model.addAttribute("carOption", carOptions);
+	      model.addAttribute("list", map.get("list"));
+
+	      return "forward:/my_sell2.jsp";
+	   }
+	
+	
+	
 
 	synchronized private int getCountNo() {
 		if (countNo > 1000)
@@ -245,5 +271,8 @@ public class CarController {
 			indexNo = 0;
 		return ++indexNo;
 	}
+	
+	
+	
 	
 }

@@ -36,4 +36,9 @@ public class FileDao{
 	public List<FileUpload> getFileList(int carNo) throws Exception {
 		return sqlSession.selectList("FileMapper.getFileList",carNo);
 	}
+	
+	//상훈이형님 부분 
+	public List<FileUpload> getFile2(int carNo) throws Exception {
+	      return sqlSession.selectList("FileMapper.getFile2", carNo);
+	   }
 }

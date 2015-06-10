@@ -97,5 +97,15 @@ public class CarDao{
 	public Car getCar2(int carNo) throws Exception {
 		return sqlSession.selectOne("CarMapper.getCar2", carNo);
 	}
-
+	/* 상훈이형님 부분 */
+	public List<Car> getCarInfo(int userNo)throws Exception{
+	      return sqlSession.selectList("CarMapper.getCarInfo", userNo);
+	   }
+	public Car getCarInfo2(int carNo)throws Exception{
+	      return sqlSession.selectOne("CarMapper.getCarInfo2", carNo);
+	   }
+	   public CarOption getCarInfo3(int carNo)throws Exception{
+	      return sqlSession.selectOne("CarMapper.getCarInfo3", carNo);
+	   }
+	
 }

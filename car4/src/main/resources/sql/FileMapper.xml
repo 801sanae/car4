@@ -13,7 +13,7 @@
 	<resultMap id="fileSelectMap" type="com.model2.mvc.common.FileUpload">
 		<result property="imgNum" 	column="img_num"	jdbcType="INTEGER"/>
 		<result property="imgPath" 	column="img_path"	jdbcType="VARCHAR"/>
-		<result property="Car" 		column="car_No" 			jdbcType="INTEGER" />
+		<result property="carNo" 	column="car_No" 			jdbcType="INTEGER" />
 	</resultMap>
 
 
@@ -37,6 +37,14 @@
 		From image
 		WHERE car_No = #{value}
 	</select>
+	
+	
+	<select id="getFile2" parameterType="int" resultMap="fileSelectMap">
+    SELECT
+    *
+    FROM image
+    WHERE car_No = #{value}
+  </select>
 	
 
 </mapper>

@@ -24,6 +24,8 @@ import com.google.gson.Gson;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.common.SendEmail;
+import com.model2.mvc.service.car.CarService;
+import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
@@ -37,6 +39,11 @@ public class UserController {
 	private UserService userService;
 	public User user;
 
+	@Autowired
+	@Qualifier("carServiceImpl")
+
+	   private CarService carService;
+	   public Car car;
 
 	public UserController(){
 		System.out.println(this.getClass());
@@ -256,5 +263,33 @@ public class UserController {
 		System.out.println("들어와?2");
 		return "forward:/sell-title.jsp";
 	}
+	
+	
+	@RequestMapping("/listUserSell.do")
+	   public String getUserCarInfo( @ModelAttribute("user") User user ,Model model , HttpSession session,
+	         @ModelAttribute("search") Search search   ) throws Exception{
+	      
+	      System.out.println("/listUserSell.do");
+	      if(search.getCurrentPage() ==0 ){
+	         search.setCurrentPage(1);
+	      }
+	      search.setPageSize(pageSize);
+	      
+	      User users = (User)session.getAttribute("user");
+	      int userNo = users.getUserNo();
+	      
+	      
+	      Map<String , Object> map=carService.getCarInfo(search,userNo);
+	      Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+	      System.out.println(resultPage);
+	      System.out.println(search);
+	      
+	      
+	      model.addAttribute("list", map.get("list"));
+	      model.addAttribute("resultPage", resultPage);
+	      model.addAttribute("search", search);
+	      
+	      return "forward:/my_sell.jsp";
+	   }
 	
 }

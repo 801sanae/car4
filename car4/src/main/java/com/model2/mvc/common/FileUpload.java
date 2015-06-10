@@ -12,7 +12,8 @@ public class FileUpload {
 	private String imgPath;
 	private int imgNum;
 	private Car car;
-
+	private int carNo;
+	
 	public FileUpload(){
 		System.out.println(this.getClass());
 	}
@@ -42,6 +43,14 @@ public class FileUpload {
 
 	public void setCar(Car car) {
 		this.car = car;
+	}
+
+	public int getCarNo() {
+		return carNo;
+	}
+
+	public void setCarNo(int carNo) {
+		this.carNo = carNo;
 	}
 	
 	

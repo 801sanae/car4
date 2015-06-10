@@ -221,5 +221,28 @@
 		WHERE car_no = #{value}
 	</select>
 	
+	<!--  상훈형님 부분  -->
+	<select id="getCarInfo" parameterType="int" resultMap="carSelectMap">
+    SELECT
+    *
+    FROM car
+    WHERE user_no = #{value}
+  </select>
+	
+	<select id="getCarInfo2" parameterType="int" resultMap="carSelectMap">
+    SELECT
+    *
+    FROM car
+    WHERE car_No = #{value}
+  </select>
+  
+    <select id="getCarInfo3" parameterType="int" resultMap="carOption">
+    SELECT
+    *
+    FROM carOption
+    WHERE car_No = #{value}
+  </select>
+	
+	
 	
 </mapper>

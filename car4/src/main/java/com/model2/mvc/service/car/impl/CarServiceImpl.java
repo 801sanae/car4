@@ -93,4 +93,27 @@ public class CarServiceImpl implements CarService{
 	public Car getCar2(int carNo) throws Exception {
 		return CarDao.getCar2(carNo);
 	}
+	/* 상훈이형님 부분 */
+	public Map<String, Object> getCarInfo(Search search,int userNo)throws Exception{
+	      
+	      List<Car> list = CarDao.getCarInfo(userNo);
+	      int totalCount = CarDao.getTotalCount( search );
+	      
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      map.put("list", list );
+	      map.put("totalCount", new Integer(totalCount));
+	      
+	      return map;
+	   }
+	
+	
+	public Car getCarInfo2(int carNo)throws Exception{
+	      return CarDao.getCarInfo2(carNo);
+	   }
+	   
+	   public CarOption getCarInfo3(int carNo)throws Exception{
+	      return CarDao.getCarInfo3(carNo);
+	   }
+	
+	
 }
