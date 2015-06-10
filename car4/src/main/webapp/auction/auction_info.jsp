@@ -37,23 +37,45 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script>
-$(document).ready(function() {
+$(document).ready(function() {	 
 	var option = "${auction.model}";
-	var cc = "${car2}"
-	alert(cc);
+	var car = "${list}";
+	if("${auction.model}"=="${list[0].model}"){
+		$("#selectBox").append("<option value='${list[0].carNum}'>${list[0].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[1].model}"){
+		$("#selectBox").append("<option value='${list[1].carNum}'>${list[1].carNum}</option>");
 	
-	//alert("${list[0].carNum}");
-	$("#selectBox").append("<option value='${list[0].carNum}'>${list[0].carNum}</option>");
-	$("#selectBox").append("<option value='2'>${list[1].carNum}</option>");
-	$("#selectBox").append("<option value='3'>${list[2].carNum}</option>");  
-	$("#selectBox").append("<option value='4'>${list[3].carNum}</option>");  
-	$("#selectBox").append("<option value='5'>${list[4].carNum}</option>");  
-	$("#selectBox").append("<option value='6'>${list[5].carNum}</option>");  
-	$("#selectBox").append("<option value='7'>${list[6].carNum}</option>");  
-	$("#selectBox").append("<option value='8'>${list[7].carNum}</option>");  
-	$("#selectBox").append("<option value='9'>${list[8].carNum}</option>");  
-	$("#selectBox").append("<option value='10'>${list[9].carNum}</option>");  
-         
+	}
+	if("${auction.model}"=="${list[2].model}"){
+		$("#selectBox").append("<option value='${list[2].carNum}'>${list[2].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[3].model}"){
+		$("#selectBox").append("<option value='${list[3].carNum}'>${list[3].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[4].model}"){
+		$("#selectBox").append("<option value='${list[4].carNum}'>${list[4].carNum}</option>");
+		
+	}
+	if("${auction.model}"=="${list[5].model}"){
+		$("#selectBox").append("<option value='${list[5].carNum}'>${list[5].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[6].model}"){
+		$("#selectBox").append("<option value='${list[6].carNum}'>${list[6].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[7].model}"){
+		$("#selectBox").append("<option value='${list[7].carNum}'>${list[7].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[8].model}"){
+		$("#selectBox").append("<option value='${list[8].carNum}'>${list[8].carNum}</option>");
+	}
+	if("${auction.model}"=="${list[9].model}"){
+		$("#selectBox").append("<option value='${list[9].carNum}'>${list[9].carNum}</option>");
+	}
+	 if("${auction.model}"=="${list[10].model}"){
+		$("#selectBox").append("<option value='${list[10].carNum}'>${list[10].carNum}</option>");
+	 }
+
       $.ajax({
             url : 'auctionInfo.do',
             type : 'post',
@@ -67,11 +89,134 @@ $(document).ready(function() {
         });
 });
 </script>
+
+<script>
+$(document).ready(function() {
+	$('#selectBox').on('change', function() {
+		 var value = $(this).val();
+	 	if(value=="${list[0].carNum}"){
+	 		$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+	 		$("#c1 tr td:eq(14)").append("${list[0].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[0].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[0].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[0].year}");
+		}else if(value=="${list[1].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[1].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[1].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[1].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[1].year}");
+		}else if(value=="${list[2].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[2].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[2].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[2].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[2].year}");
+		}else if(value=="${list[3].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[3].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[3].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[3].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[3].year}");
+		}else if(value=="${list[4].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[4].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[4].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[4].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[4].year}");
+		}else if(value=="${list[5].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[5].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[5].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[5].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[5].year}");
+		}else if(value=="${list[6].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[6].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[6].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[6].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[6].year}");
+		}else if(value=="${list[7].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[7].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[7].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[7].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[7].year}");
+		}else if(value=="${list[8].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",
+				});
+			$("#c1 tr td:eq(14)").append("${list[8].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[8].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[8].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[8].year}");
+		}else if(value=="${list[9].carNum}"){
+			$( "#c1 tr td:eq(11) img" ).attr({
+				  src: "${file[0].imgPath}",
+				  
+				  
+				});
+			$( "#c1 tr td:eq(12) img" ).attr({
+				  src: "${file[1].imgPath}",	  
+				});
+			$("#c1 tr td:eq(14)").append("${list[9].manuCo}");
+	    	$("#c1 tr td:eq(16)").append("${list[9].model}");
+	    	$("#c1 tr td:eq(18)").append("${list[9].mileage}");
+	    	$("#c1 tr td:eq(20)").append("${list[9].year}");
+		}
+	});    
+});
+
+</script>
 </head>
 <body>
 <div class="container">
 <div class="row">
         <div class="col-sm-offset-2 col-sm-7">
+         
             <form method="post" action="addAuctionList.do">
 				
 				<div class="form-group">
@@ -124,19 +269,19 @@ $(document).ready(function() {
 				
 
 			      <label for="sel1">Select list (select one):</label>
-			      <select class="form-control" id="selectBox">
-			       
+			      <select class="form-control" id="selectBox" name="carNum">
+
 			      </select>
 				
 				
 						<!--  2번 table 끝 -->
 				<br><br>
 				<label for="validate-optional">판매자 차량 정보</label>
-					<table class="table table-hover" style="text-align:left; height: 235px">
+					<table class="table table-hover" style="text-align:left; height: 235px"  id="c1">
 								<tr>
 								 	<td width="15%" data-toggle="collapse" data-target="#demo">회원정보</td>
 
-								 	<td>박흥열<div id="demo" class="collapse">
+								 	<td colspan="2">박흥열<div id="demo" class="collapse">
 								 	<br>
 									    <table class="table table-hover">
 									    	<tr>
@@ -165,9 +310,10 @@ $(document).ready(function() {
 							<tr>
 									<td width="15%">대표사진</td>
 									<td>
-									<img src="${file[0].imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${file[1].imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${file[2].imgPath}" style="width: 30%;"></td>
+									<img src="" style="width: 100%;" id="d">&nbsp;&nbsp;
+									<td>
+									<img src="" style="width: 100%;">&nbsp;&nbsp;
+									</td>
 							<!-- Action만 넣으삼 -->
 							</tr>
 							<!-- 대표 IMG END-->	
@@ -175,7 +321,7 @@ $(document).ready(function() {
 								<br>
 								<tr>
 									<td>제조사</td>
-									<td>${auction.manuCo}</td> <!-- Action 값만 넣으삼 -->
+											<td>${auction.manuCo}</td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 									<td>모델명</td>

@@ -50,8 +50,7 @@ $(document).ready(function() {
 			
 			if (ok) {					
 				$('form').attr({
-					/* action : 'mypage.do?carNo=${car.carNo}&auctionNo=${auction.auctionNo}', */
-					action : 'mypage.do?carNo=${car.carNo}&auctionNo=113',
+					action : 'mypage.do?carNo=${car.carNo}&auctionNo=${auction}',
 					method : 'post'
 			}).submit();
 			} else {	

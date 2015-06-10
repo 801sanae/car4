@@ -83,9 +83,10 @@ public class CarDao{
 		return list;
 	}
 	
-	public Car selectCar(int userNo) {
+	public List<Car> selectCar(int userNo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("CarMapper.selectCar", userNo);
+		System.out.println("s나오재?"+userNo);
+		return sqlSession.selectList("CarMapper.selectCar", userNo);
 	}
 
 	//낙찰 후 car테이블의 tran_code 변경
@@ -93,9 +94,8 @@ public class CarDao{
 		sqlSession.update("CarMapper.updateCar", carNo);
 	}
 	
-	public Car getCar2(int carNo){
-		return sqlSession.selectOne("CarMapper.getCar2",carNo);
+	public Car getCar2(int carNo) throws Exception {
+		return sqlSession.selectOne("CarMapper.getCar2", carNo);
 	}
-	
-	
+
 }

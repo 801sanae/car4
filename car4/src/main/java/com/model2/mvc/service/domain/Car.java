@@ -19,7 +19,7 @@ public class Car {
 	private String accident;		//사고여부	
 	private User user;			//User값
 	private String tranCode;	//낙찰진행상태
-	
+	private String info;
 	//default Constructor
 	public Car() {
 		System.out.println(this.getClass());
@@ -157,6 +157,18 @@ public class Car {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+
+	public String getInfo() {
+		return info;
+	}
+
+
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 

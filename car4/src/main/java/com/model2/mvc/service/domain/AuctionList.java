@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class AuctionList {
 	
-	private int auctionListNo;	//입찰현황리스트
-	private Car carNo;			//입찰차량
-	private Auction auctionNo;	//옥션글
-	private Date regDate;
+	private int auctionListNo;		//입찰현황리스트
+	private int bidPrice;			//제시가
+	private Car bidCarNo;			//입찰차량
+	private Auction bidAuctionNo;	//옥션글
+	private Date bidRegDate;
 	
 	//default Constructor
 	public AuctionList() {
@@ -20,36 +21,42 @@ public class AuctionList {
 	public void setAuctionListNo(int auctionListNo) {
 		this.auctionListNo = auctionListNo;
 	}
-	public Car getCarNo() {
-		return carNo;
+	public Car getBidCarNo() {
+		return bidCarNo;
 	}
-	public void setCarNo(Car carNo) {
-		this.carNo = carNo;
+	public void setBidCarNo(Car bidCarNo) {
+		this.bidCarNo = bidCarNo;
 	}
-	public Auction getAuctionNo() {
-		return auctionNo;
+	public Auction getBidAuctionNo() {
+		return bidAuctionNo;
 	}
-	public void setAuctionNo(Auction auctionNo) {
-		this.auctionNo = auctionNo;
+	public void setBidAuctionNo(Auction bidAuctionNo) {
+		this.bidAuctionNo = bidAuctionNo;
 	}
 	
-	public Date getRegDate() {
-		return regDate;
+	public Date getBidRegDate() {
+		return bidRegDate;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setBidRegDate(Date bidRegDate) {
+		this.bidRegDate = bidRegDate;
+	}
+
+	public int getBidPrice() {
+		return bidPrice;
+	}
+
+	public void setBidPrice(int bidPrice) {
+		this.bidPrice = bidPrice;
 	}
 
 	@Override
 	public String toString() {
 		return "AuctionList [auctionListNo=" + auctionListNo + ", carNo="
-				+ carNo + ", auctionNo=" + auctionNo + "]";
+				+ bidCarNo + ", auctionNo=" + bidAuctionNo + "]";
 	}
-	
-	
-	
 
+	
 }
 
 	

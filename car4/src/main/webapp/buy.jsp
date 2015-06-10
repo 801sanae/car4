@@ -395,7 +395,7 @@ function listValueSeparate(obj, id) {
 						년, 월 4자리 숫자 형식</span>으로 적어주세요.
 				</span>
 
-
+			<br>
 			</div>
 			<!-- 주행거리 -->
 			<div class="checkbox">

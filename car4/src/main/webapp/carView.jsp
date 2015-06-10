@@ -51,7 +51,7 @@ td, tr {
 <title>Insert title here</title>
 </head>
 <body>
-<!--  1번 Table 시작  -->
+${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 <div class="container" id="#container-info">
 		<div class="row">
 			<div class="col-lg-12 toggle-header" align="center">구매상세정보</div>
@@ -140,7 +140,7 @@ td, tr {
 		</td>
 	</tr>
 </table>
-
+</div>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
@@ -152,7 +152,7 @@ td, tr {
 	
 	</tr>
 	<tr>
-		<td class="ct_list_b" width="100">No</td>
+		<td class="ct_list_b" width="100" align="center">No</td>
 		<td class="ct_line02"></td>
 		<td class="ct_list_b" width="150">상품명</td>
 		<td class="ct_line02"></td>
@@ -199,19 +199,19 @@ td, tr {
 	<% } %>
 	--%>
 	<c:set var="i" value="0" />
-	<c:forEach var="car" items="${list}">
-		<c:set var="i" value="${ i+1 }" />
+	<c:forEach var="auctionList" items="${auctionList}">
+		<c:set var="i" value="${i+1}" />
 		<tr class="ct_list_pop">
 			<td align="center">${ i }</td>
-			<td></td>
-			<td align="left">
-			<a href="/getProduct.do?prodNo=${product.prodNo }&menu=manage">${car.model }</a></td>		
-			<td></td>
+			<td align="center"></td>
+			<td><a href="getSeller.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}&carNo=${auctionList.bidCarNo.carNo}">
+			${auctionList.bidCarNo.model}</a></td>	
 			<td align="left"></td>
-			<td></td>
-			<td align="left">${ car.carYear }</td>		
-			<td></td>
-			<td align="left">
+			<td align="left">${auctionList.bidPrice}</td>
+			<td align="left"></td>
+			<td align="left">${auctionList.bidRegDate}</td>		
+			<td align="left"></td>
+			<td align="left">${empty auctionList.bidCarNo.tranCode ? "안팔림" : "팔림"  }</td>
 		
 		</td>
 		</tr>
@@ -268,7 +268,7 @@ td, tr {
 
 </form>
 <div class="row">
-		<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="joinAuctionView.do?auctionNo=${auction.auctionNo}">
+		<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
 		경매 참여하기</a>
 </div>
 </div><!-- Container 끝 -->

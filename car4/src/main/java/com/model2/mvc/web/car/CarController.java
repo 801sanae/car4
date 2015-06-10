@@ -112,7 +112,7 @@ public class CarController {
 					System.out.println("파일네임 ::::::::: " + fileName);
 					
 //					String fileUrl= "http://"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+ctx.getContextPath()+"/image/"+fileName;
-					String fileUrl= "/image/"+fileName;
+					String fileUrl= "image/"+fileName;
 					
 					System.out.println("fileUrl :::::::::::: " + fileUrl);
 								

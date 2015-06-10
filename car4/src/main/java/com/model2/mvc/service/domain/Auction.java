@@ -225,8 +225,4 @@ public class Auction {
 				+ "]";
 	}
 
-
-
 }
-
-	

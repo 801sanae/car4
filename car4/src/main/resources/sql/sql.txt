@@ -101,8 +101,8 @@ CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
 
 CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
 
-//----------------------------------------------------------------------------------------//
-6/5---------------------------------------------------------------------------------------//
+
+6/5-------------------------------------------------------------
 drop table auctionList;
 drop table carOption;
 drop table image;
@@ -147,6 +147,7 @@ cc integer not null,
 mileage integer not null,
 sell  varchar2(50) not null,
 accident  varchar2(50) not null,
+price integer,
 tran_code char(3),
 user_no integer references users(user_no), 
 primary key(car_no)
@@ -155,8 +156,6 @@ primary key(car_no)
 
 drop table carOption;
 
-
-/* 내/외장옵션 */
 CREATE TABLE carOption (
 	car_no NUMBER(20) not null, /* 자동차일련번호 */
 	powerWindow VARCHAR(20), /* 파워윈도우 */
@@ -229,16 +228,15 @@ create table auction(
 reg_date date,
 cnt integer,
 bid_cnt integer,
-success_car integer,
+car_no integer REFERENCES car(car_no),
 user_no integer REFERENCES users(user_no),
 PRIMARY KEY(auction_no)
 );
 
 create table auctionList(
-auctionList_no integer,
-price integer,
+          auctionList_no integer,
 car_no integer REFERENCES car(car_no),
-auction_no integer REFERENCES auction(auction_no),
+auction_no integer REFERENCES auction(auction_no),regDate date,
           PRIMARY KEY(auctionList_no)
 );
 
@@ -253,5 +251,6 @@ CREATE sequence car_no increment by 1000 start with 1;
 CREATE sequence carOption_no increment by 1 start with 1;
 
 CREATE sequence auctionList_no increment by 1 start with 1;
+
 
 

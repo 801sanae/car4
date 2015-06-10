@@ -63,7 +63,6 @@ public class AuctionServiceImpl implements AuctionService {
 
 	public void auctionInfo(Auction auction) throws Exception {
 		// TODO Auto-generated method stub
-		auctionDao.addAuction(auction);
 	}
 
 

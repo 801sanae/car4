@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.model2.mvc.common.FileUpload;
-import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.file.FileService;
 
 
@@ -35,8 +34,8 @@ public class FileServiceImpl implements FileService{
 		System.out.println("Servlce"+carNo);
 		return fileDao.getFile(carNo);
 	}
-	
+	@Override
 	public List<FileUpload> getFileList(int carNo) throws Exception {
-	return fileDao.getFileList(carNo);
+		return fileDao.getFileList(carNo);
 	}
 }

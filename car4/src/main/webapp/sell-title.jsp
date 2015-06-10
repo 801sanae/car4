@@ -84,6 +84,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#next3').click(function() {
     	var qu = $("form[name=form3]").serialize();
+    	var q = $("#info-text").val();
+    	$("#info").val(q);
         $.ajax({
             url : 'duplicate2.jsp',
             type : 'post',
@@ -653,7 +655,7 @@ $(document).ready(function() {
 							<input id="powerWindow" type="checkbox" name="powerWindow">
 							<label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
-							<input id="aircorn" type="checkbox" name="aircorn"> 
+							<input id="aircorn" type="checkbox" name="airCorn"> 
 							<label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp;
 							
 							<input id="fullAutoAircorn" type="checkbox" name="fullAutoAircorn">
@@ -1347,7 +1349,7 @@ $(document).ready(function() {
                                  </div>
                                   <div class="col-xs-6">
                                    
-                                 <input type="text" name="driverairbag" id="p_driverairbag" size="11">
+                                 <input type="text" name="driver airbag" id="p_driverairbag" size="11">
                                  <input type="text" name="driverFriendAirBag" id="p_driverFriendAirBag" size="11">
                                  <input type="text" name="sideAirBag" id="p_sideAirBag" size="11">
                                  
@@ -1361,13 +1363,28 @@ $(document).ready(function() {
                                                       [튜 닝 사 항]                          
                                  </div>
                                   <div class="col-xs-6">
-                                 <input type="text" name="turbochaser" id="p_turbochaser" size="11">
-                                 <input type="text" name="superchaser" id="p_superchaser" size="11">
+                                 <input type="text" name="turbo chaser" id="p_turbochaser" size="11">
+                                 <input type="text" name="super chaser" id="p_superchaser" size="11">
                                  <input type="text" name="airrowFigher" id="p_airrowFigher" size="11">        
                               </div>
                          </div>
                          <!--  편의 장치   -->
-                         </div><!-- /collapse -->
+                         </div>
+                         
+                         
+                         <!--  INFO -->
+                          <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-xs-2">
+                                                      [상 세 설 명]                          
+                                 </div>
+                                  <div class="col-xs-6">
+                                 <textarea class="form-control" name ="info" id="info" rows="15"
+										style="border-radius: 0px;"></textarea>     
+                              </div>
+                         </div>
+                         <!--  편의 장치   -->
+                         </div>
                          
 	
   <div id="formtest" style="display: ">
@@ -1380,7 +1397,7 @@ $(document).ready(function() {
   </div>
   </div> 
              </div>
-          	 </td><!-- Claryfy End -->
+          	 </td>
 			</tr>
             </thead>                          
            	</tbody>
@@ -1401,25 +1418,22 @@ $(document).ready(function() {
 									</button>						
 								</div><br>
 			
-</div><!-- Container End -->
-</div><!-- row / end -->
-</div><!-- List Group -->
+</div>
+</div>
+</div>
 
 
-</div><!-- row / end -->
+</div>
 </form>
 
-</div><!-- Container End -->
+</div>
 </div><!--  다섯번째 끝     -->
-</div><!-- Tab Content End -->
-</div><!--  Board End -->
-</div><!-- Row End -->
-</div><!--  Container Fluid End -->
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- script start -->
-	
-<!--  script end -->
 
 </body>
 </html>

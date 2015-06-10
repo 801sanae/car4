@@ -34,7 +34,7 @@
 	<select id="getFileList" parameterType="Integer" resultMap="fileSelectMap">
 		SELECT
 		img_path
-		FROM image
+		From image
 		WHERE car_No = #{value}
 	</select>
 	

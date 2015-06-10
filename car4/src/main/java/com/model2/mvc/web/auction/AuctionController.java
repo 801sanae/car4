@@ -2,7 +2,6 @@ package com.model2.mvc.web.auction;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +23,10 @@ import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.auction.AuctionService;
+import com.model2.mvc.service.auctionlist.AuctionListService;
 import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Auction;
+import com.model2.mvc.service.domain.AuctionList;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.file.FileService;
@@ -56,11 +57,15 @@ public class AuctionController {
 	public User user;
 
 	@Autowired
+	@Qualifier("auctionListServiceImpl")
+	private AuctionListService auctionListService;
+	public AuctionList auctionList;
+	
+	@Autowired
 	ServletContext ctx;
 	
 	int countNo;
 	int indexNo;
-	
 	
 	//default Constructor
 	public AuctionController(){
@@ -85,230 +90,230 @@ public class AuctionController {
 
 	//Business Logic
 	auctionService.addAuction(auction);
+	session.setAttribute("auction", auction);
 	return "redirect:/listAuction.do";
 	}
 
 	
 	
 	//리스트 뿌리기
-	@RequestMapping("/listAuction.do")
-	public String listAuction( @ModelAttribute("search") Search search, Model model, HttpSession session) throws Exception {
+		@RequestMapping("/listAuction.do")
+		public String listAuction( @ModelAttribute("search") Search search, Model model, HttpSession session) throws Exception {
 
-	System.out.println("listAuction.do");
+		System.out.println("listAuction.do");
 
-	if(search.getCurrentPage()==0) {
-		search.setCurrentPage(1);
-	}
-
-
-	System.out.println("1");
-	search.setPageSize(pageSize);
-	
-	System.out.println("2");
-	//auctionlist에서 로그인한 userNo와같은 userNo를 찾기위해
-
-	//int라서 null, nullstring은 안되므로 로그인 안했을떈 userNo를 0으로 셋팅
-	int userNo = 0;
-	
-	if( session.getAttribute("user") != null) {
-		userNo = ((User)session.getAttribute("user")).getUserNo();
-	}
-	
-	System.out.println("3");
-
-	//목록들을 전달하기 위해
-	Map<String, Object> map = auctionService.getAuctionList(userNo, search);
-	System.out.println("4");
-
-	Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-	System.out.println(resultPage);
-
-	model.addAttribute("list", map.get("list"));
-	model.addAttribute("resultPage", resultPage);
-	model.addAttribute("search", search);
-	
-
-	return "forward:/listAuction.jsp";
-	}
-	
-	
-	@RequestMapping("/auctionInfo.do")
-	public String auctionInfo( @ModelAttribute("auction") Auction auction, Model model, HttpSession session,HttpServletRequest request ) throws Exception {
-
-
-		System.out.println("/auctionInfo.do");
-		//접속된 유저정보를 통해 판매자 정보를 불러온다.
-		User user = (User)session.getAttribute("user");
-		
-		//판매자정보 불러오는  부분 
-		carService.getAuction(user.getUserNo());
-		
-		List<Car> list = carService.getAuction(user.getUserNo());
-
-		fileService.getFile(4001);
-		
-		FileUpload file = fileService.getFile(4001);
-		
-		System.out.println("Board"+file.getImgPath());
-		
-		
-		model.addAttribute( "file", file);
-		
-		
-		//auction클릭시 발생하는 부분 
-		auction = auctionService.getAuction(auction.getAuctionNo());
-		auctionService.auctionInfo(auction);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("auction", auction);
-		
-		return "forward:/auction/auction_info.jsp";
-	}
-	
-	@RequestMapping("/bidAdd.do")
-	public String bidAdd( @ModelAttribute("auction") Auction auction, Model model, HttpServletRequest request) throws Exception {
-		
-		
-		//접속된 유저정보를 통해 판매자 정보를 불러온다.
-		/*carService.getCar(request.getParameter("carNum"));
-		System.out.println("Car정보"+carService.getCar(request.getParameter("carNum")));
-		auctionService.getAuction(auction.getAuctionNo());
-		System.out.println("Auction정보"+auctionService.getAuction(auction.getAuctionNo()));
-		*/
-		 
-		Map<String, Object> add = new HashMap<String,Object>();
-			add.put("car", carService.getCar(request.getParameter("carNum")));
-			add.put("auction", auctionService.getAuction(auction.getAuctionNo()));
-		auctionService.addAuctionCar(add);
-		//auctionListMapper값 넣기.
-		
-		return "forward:/auction/auction_info.jsp";
-	}
-	
-
-	
-
-		@RequestMapping("/getAuctionView.do")
-		public String listCar(@ModelAttribute("serach") Search search, Model model , 
-													HttpServletRequest request, Auction auction)throws Exception{
-			System.out.println("/getAuctionView.do");
-			//**********Car 정보제공 
-			System.out.println("auction.getAuctionNo() :::::::: "+ auction.getAuctionNo() );
-			
-			Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //auctionNo 가져와서 쿼리
-			
-			System.out.println("dbAuction ::::" + dbAuction);
-//			auctionService.getAuction();
-//			carService.carView("가222");
-//			carService.carViewOption(43001);
-			
-			
-//			fileService.getFile(61001);
-			
-//			FileUpload file = fileService.getFile(61001);
-			
-//			System.out.println("Board"+file.getImgPath());
-			
-			model.addAttribute("auction", dbAuction);
-//			model.addAttribute( "file", file);
-			
-//			**********Car 정보제공  끝---------------
-			
-			
-			
-			
-//			//Page 나누기 부분 
-//			if(search.getCurrentPage() ==0 ){
-//				search.setCurrentPage(1);
-//			}
-//			search.setPageSize(pageSize);
-//			
-//			// Business logic ����
-//			Map<String , Object> map=carService.getCarList(search);
-//			
-//			Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-//			System.out.println(resultPage);
-//			
-//			// Model �� View ����
-//			model.addAttribute("list", map.get("list"));
-//			model.addAttribute("resultPage", resultPage);
-//			model.addAttribute("search", search);
-//			
-			
-			return "forward:carView.jsp";
-		}
-		
-		
-		@RequestMapping("/joinAuctionView.do")
-		public String joinAuctionView(Model model , 
-				HttpServletRequest request, Auction auction) throws Exception{
-			
-			System.out.println("/getAuctionView.do");
-
-			System.out.println("auction.getAuctionNo() ::::::::: "+ auction.getAuctionNo() );
-			
-			Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //auctionNo 가져와서 쿼리
-			
-			model.addAttribute("auction", dbAuction); //모델 dbAuction 연결
-
-			return "forward:auctionInfo.jsp";
-		}
-		
-		@RequestMapping("/getSeller.do")
-		public String getSeller(
-				@RequestParam("carNo") int carNo, 
-				HttpServletRequest request, HttpSession session, Model model) throws Exception{
-			System.out.println("/test.do");
-
-			//login user = 산다는놈 user 
-			User user =(User)session.getAttribute("user");
-
-			System.out.println("::user = "+user);
-
-			//파는놈 카넘버
-			Car car = carService.getCar2(carNo);
-
-			System.out.println("::car"+car);
-
-			//seller = 파는놈의 각정보가 담 seller
-			User seller =userService.getUserForNo(car.getUser().getUserNo());
-
-			System.out.println("::seller="+seller);
-
-
-			//TODO
-
-			//여기까진 잘나옴
-			//SelectCar
-			//바구니에 담기
-			model.addAttribute("user", user);
-
-			model.addAttribute("seller", seller);
-
-			model.addAttribute("car",car);
-
-			//model.addAttribute("fileUpload", fileUpload1);
-
-			return "forward:getSeller.jsp";
-		}
-		
-		
-
-		//getSeller.jsp에서 사는사람이 [낙찰]을 누르면~
-		@RequestMapping("mypage.do")
-		public String Mypage(@RequestParam("carNo") int carNo, @RequestParam("auctionNo") int auctionNo) throws Exception {
-
-		System.out.println("/mypage.do");
-		
-		//낙찰 후 auction테이블의 success_car 변경
-		auctionService.updateAuction(carNo, auctionNo);
-		//낙찰 후 car테이블의 tran_code 변경
-		carService.updateCar(carNo);
-		
-		return "redirect:/mypage.jsp";
+		if(search.getCurrentPage()==0) {
+			search.setCurrentPage(1);
 		}
 
 
-}
+		System.out.println("1");
+		search.setPageSize(pageSize);
 		
+		System.out.println("2");
+		//auctionlist에서 로그인한 userNo와같은 userNo를 찾기위해
+
+		//int라서 null, nullstring은 안되므로 로그인 안했을떈 userNo를 0으로 셋팅
+		int userNo = 0;
 		
+		if( session.getAttribute("user") != null) {
+			userNo = ((User)session.getAttribute("user")).getUserNo();
+		}
+		
+		System.out.println("3");
+
+		//목록들을 전달하기 위해
+		Map<String, Object> map = auctionService.getAuctionList(userNo, search);
+		System.out.println("4");
+
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		System.out.println(resultPage);
+
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
+		
+
+		return "forward:/listAuction.jsp";
+		}
+	
+	
+		@RequestMapping("/auctionInfo.do")
+		public String auctionInfo( @ModelAttribute("auction") Auction auction, Model model, HttpSession session,HttpServletRequest request ) throws Exception {
+
+
+			System.out.println("/auctionInfo.do");
+			//접속된 유저정보를 통해 판매자 정보를 불러온다.
+			User user = (User)session.getAttribute("user");
+			
+			//판매자정보 불러오는  부분 
+			carService.getAuction(user.getUserNo());
+			
+			List<Car> list = carService.getAuction(user.getUserNo());
+			
+			System.out.println("3번"+list);
+			//CarNo가져오기
+			System.out.println("CarNNOOOOO"+carService.selectCar(user.getUserNo()));
+			
+			
+			
+			//selectCar method에 session User정보를 주고 User가 가지고 있는 Car다 가져오는 method
+			System.out.println("CarNo"+carService.selectCar(user.getUserNo()));
+			List<Car> carNo = carService.selectCar(user.getUserNo());
+			
+			
+			
+			List<FileUpload> fileUpload = new ArrayList<FileUpload>();
+			//CarNo List에서 뽑아온놈 0번째 놈
+			System.out.println("fileSize"+fileUpload.size());
+			System.out.println("carSize"+carNo.size());
+			
+			//System.out.println("fdsafas"+fileService.getFileList(carNo.get(0).getCarNo()).get(0));
+			
+			for(int i=0; i<2; i++) {
+					fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
+					System.out.println("dㅑ야야야야야"+fileService.getFileList(carNo.get(i).getCarNo()));
+					System.out.println("fileSize1"+fileUpload.size());
+					System.out.println("carSize1"+carNo.size());
+			}
+			/*
+			fileService.getFile(CarNo);
+			
+			FileUpload file = fileService.getFile(CarNo);
+			
+			System.out.println("Board"+file.getImgPath());
+			
+			
+			model.addAttribute( "file", file);
+			*/
+			
+			//auction클릭시 발생하는 부분 
+			
+			System.out.println("auctionNo:::: "+ auction.getAuctionNo());
+			auction = auctionService.getAuction(auction.getAuctionNo());
+//			auctionService.auctionInfo(auction);
+			
+			model.addAttribute("list", list);
+			model.addAttribute("auction", auction);
+			model.addAttribute("file", fileUpload);
+			return "forward:/auction/auction_info.jsp";
+		}
+	/*		
+		@RequestMapping("/bidAdd.do")
+		public String bidAdd( @ModelAttribute("auction") Auction auction, Model model, HttpServletRequest request) throws Exception {
+			
+			
+			//접속된 유저정보를 통해 판매자 정보를 불러온다.
+			/*carService.getCar(request.getParameter("carNum"));
+			System.out.println("Car정보"+carService.getCar(request.getParameter("carNum")));
+			auctionService.getAuction(auction.getAuctionNo());
+			System.out.println("Auction정보"+auctionService.getAuction(auction.getAuctionNo()));
+			*/
+	/*		 
+			Map<String, Object> add = new HashMap<String,Object>();
+				add.put("car", carService.getCar(request.getParameter("carNum")));
+				add.put("auction", auctionService.getAuction(auction.getAuctionNo()));
+			auctionService.addAuctionCar(add);
+			//auctionListMapper값 넣기.
+			
+			return "forward:/auction/auction_info.jsp";
+		}
+	*/	
+
+		
+
+			
+			
+			@RequestMapping("/getAuctionView.do")
+			public String listCar(@ModelAttribute("serach") Search search, Model model , 
+														HttpServletRequest request, Auction auction)throws Exception{
+				
+				Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
+				
+				model.addAttribute("auction", dbAuction); //옥션 정보 연결
+				System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
+				List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
+				
+				//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
+				//list.get(0).getBidCarNo().getCarNo()
+				model.addAttribute("auctionList", list);
+				
+				return "forward:carView.jsp";
+			}
+			
+			
+				@RequestMapping("/getSeller.do")
+				public String getSeller(
+						@RequestParam("carNo") int carNo,
+						HttpServletRequest request, HttpSession session, Model model, Auction auction) throws Exception{
+					System.out.println("/test.do");
+
+					//login user = 산다는놈 user 
+					User user =(User)session.getAttribute("user");
+
+					System.out.println("::user = "+user);
+
+					//파는놈 카넘버
+					Car car = carService.getCar2(carNo);
+
+					System.out.println("::car"+car);
+
+					//seller = 파는놈의 각정보가 담 seller
+					User seller =userService.getUserForNo(car.getUser().getUserNo());
+
+					System.out.println("::seller="+seller);
+					
+					auction.setAuctionNo(Integer.parseInt(request.getParameter("auctionNo")));
+					
+					//TODO
+
+					//여기까진 잘나옴
+					//SelectCar
+					//바구니에 담기
+					model.addAttribute("user", user);
+					
+					//model.addAttribute("auction" auctionNo);
+					
+					model.addAttribute("seller", seller);
+
+					model.addAttribute("car",car);
+
+					//model.addAttribute("fileUpload", fileUpload1);
+
+					return "forward:getSeller.jsp";
+				}
+				
+				
+
+				//getSeller.jsp에서 사는사람이 [낙찰]을 누르면~
+				@RequestMapping("mypage.do")
+				public String Mypage(@RequestParam("carNo") int carNo, @RequestParam("auctionNo") int auctionNo) throws Exception {
+
+				System.out.println("/mypage.do");
+				
+				//낙찰 후 auction테이블의 success_car 변경
+				auctionService.updateAuction(carNo, auctionNo);
+				//낙찰 후 car테이블의 tran_code 변경
+				carService.updateCar(carNo);
+				
+				return "redirect:/mypage.jsp";
+				}
+
+				
+				@RequestMapping("/joinAuctionView.do")
+				public String joinAuctionView(Model model , 
+						HttpServletRequest request, Auction auction) throws Exception{
+					
+					System.out.println("/getAuctionView.do");
+
+					System.out.println("auction.getAuctionNo() ::::::::: "+ auction.getAuctionNo() );
+					
+					Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //auctionNo 가져와서 쿼리
+					
+					model.addAttribute("auction", dbAuction); //모델 dbAuction 연결
+
+					return "forward:auctionInfo.jsp";
+				}
+
+			
+	}

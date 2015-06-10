@@ -24,7 +24,7 @@ public interface CarService {
 	//Auction GetCar
 	public List<Car> getAuction(int userNo) throws Exception;
 	
-	public Car selectCar(int userNo) throws Exception;
+	public List<Car> selectCar(int userNo) throws Exception;
 	
 	//낙찰 후 car테이블의 tran_code 변경
 	public void updateCar(int carNo) throws Exception;

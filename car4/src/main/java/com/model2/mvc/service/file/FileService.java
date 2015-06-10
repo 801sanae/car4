@@ -10,7 +10,5 @@ public interface FileService {
 	public void addFile(FileUpload file) throws Exception;
 
 	public FileUpload getFile(int carNo) throws Exception;
-
 	public List<FileUpload> getFileList(int carNo) throws Exception;
-	
 }

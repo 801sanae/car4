@@ -296,7 +296,7 @@
 												<c:if test="${!empty auction.temp && (auction.temp) eq 0}">
 													-
 												</c:if>
-												<c:if test="${!empty auction.temp && (auction.temp) eq 1}">
+												<c:if test="${!empty auction.temp && (auction.temp) != 0}">
 													<button type="button" class="btn btn-primary">입찰</button>
 												</c:if>
 												</td>
