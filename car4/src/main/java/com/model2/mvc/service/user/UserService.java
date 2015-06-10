@@ -30,5 +30,7 @@ public interface UserService {
 	public void updatePassword(User user)throws Exception;
 	
 	//판매등록넘어갈때 받아오는 유저정보
-	public User getUserInfo(User user) throws Exception;	
+	public User getUserInfo(User user) throws Exception;
+	
+	public User getUserForNo(int userNo) throws Exception;
 }
