@@ -19,8 +19,9 @@
 <script type="text/javascript">
 
 	function fncGetList(currentPage) {
-		
+		//받아온 currentPage를 현재페이지로.
 		document.getElementById("currentPage").value = currentPage;
+		//currentPage를 변경해도 tab는 유지되어야 한다.
 		document.getElementById("tabs").value = ${search.tabs};
 	   	document.detailForm.submit();		
 	}
@@ -29,22 +30,24 @@
 		alert(event.target.id);
 		//$("#tabs").val(event.target.id);
 		document.getElementById("tabs").value = event.target.id;
+		$('#event.target.id').trigger('click');
 		
+		//tabs가 변하면 검색값들이 변경되어야한다.
 		document.getElementById("currentPage").value = 1;
 		document.getElementById("searchCondition").value = -1;
 		$("#searchKeyword").val('');
 	
 		
-		$('#event.target.id').trigger('click');
 		document.detailForm.submit();		
 	}
 
+
+	
 	function fncSearch() {
 		$("#hideSearch").css('display', 'block');
 	}
 	
 	function fncOrderby() {
-//		document.getElementById("hideSearch").css('dispaly', 'block');	
 		$("#hideOrderby").css('display', 'block');
 	}
 
@@ -173,8 +176,8 @@
 			<!-- orderby -->
 			<div class="col-md-8" style="text-align:right;">
 				<div id="hideOrderby" style="display:none;">		   
-					<input type="radio" id="manyBid" name="orderby" name="manyBid"> 입찰자 많은 순 
-					<input type="radio" id="manyCnt" name="orderby" name="manyCnt"> 조회수 많은 순
+					<input type="radio" id="manyBid" name="orderby" value="1" onClick="javascript:fncGetList('1');"> 입찰자 많은 순 
+					<input type="radio" id="manyCnt" name="orderby" value="2" onClick="javascript:fncGetList('1');"> 조회수 많은 순
 				</div>
 			</div>
 			<!-- /orderby -->
@@ -206,13 +209,13 @@
 				<div class="tabbable-line">
 					<c:if test="${ !empty search.tabs }">
 						<ul class="nav nav-tabs"  onclick="javascript:fncTabs();">
-							<li class=" ${ search.tabs eq '0' ? "active" : '' }">
+							<li class="active">
 								<a href="#tab_default_1" data-toggle="tab" style="font-size:15pt" id="0">전체</a>
 							</li>
-							<li class=" ${ search.tabs eq '1' ? "active" : '' }">
+							<li>
 								<a href="#tab_default_2" data-toggle="tab" style="font-size:15pt" id="1">경매중</a>
 							</li>
-							<li class=" ${ search.tabs eq '2' ? "active" : '' }">
+							<li>
 								<a href="#tab_default_3" data-toggle="tab" style="font-size:15pt" id="2">경매종료</a>
 							</li>
 						</ul>
