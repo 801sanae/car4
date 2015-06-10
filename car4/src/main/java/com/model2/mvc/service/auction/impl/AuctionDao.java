@@ -61,4 +61,14 @@ public class AuctionDao{
 		
 		sqlSession.insert("AuctionListMapper.auctionCar", add);
 	}
+	
+	//낙찰 후 auction테이블의 success_car 변경
+	public void updateAuction(int carNo, int auctionNo) throws Exception {
+	
+		Map<String, Integer> hashMap = new HashMap<String, Integer>();
+		hashMap.put("carNo", carNo);
+		hashMap.put("auctionNo", auctionNo);
+		
+		sqlSession.update("AuctionMapper.updateAuction", hashMap);
+	}
 }	
