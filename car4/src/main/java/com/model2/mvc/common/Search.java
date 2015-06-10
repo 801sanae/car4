@@ -16,7 +16,17 @@ public class Search {
 	
 	//경매현황게시판에서 전체/경매중/경매완료를 나뉘기위해
 	private int tabs;
+	//경매현황게시판에서 정렬주기
+	private int orderby;
 	
+	public int getOrderby() {
+		return orderby;
+	}
+
+	public void setOrderby(int orderby) {
+		this.orderby = orderby;
+	}
+
 	///Constructor
 	public Search() {
 	}
@@ -68,12 +78,5 @@ public class Search {
 		this.tabs = tabs;
 	}
 
-	@Override
-	public String toString() {
-		return "Search [currentPage=" + currentPage + ", searchCondition="
-				+ searchCondition + ", searchKeyword=" + searchKeyword
-				+ ", pageSize=" + pageSize + ", endRowNum=" + endRowNum
-				+ ", startRowNum=" + startRowNum + ", tabs=" + tabs + "]";
-	}
-
+	
 }
