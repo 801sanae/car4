@@ -130,5 +130,12 @@
     FROM users
     WHERE user_id = #{userId}
   </select>
+  
+ <select id="getUserForNo" parameterType="Integer" resultMap="userSelectMap">
+	SELECT
+	*
+	FROM users
+	WHERE user_no = #{userNo}
+	</select>
 
 </mapper>

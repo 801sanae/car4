@@ -80,4 +80,11 @@ public class UserServiceImpl implements UserService{
 	public User getUserInfo(User user) throws Exception{
 		return UserDao.getUserInfo(user);
 	}
+	
+	
+	@Override
+	public User getUserForNo(int userNo) throws Exception {
+	// TODO Auto-generated method stub
+	return UserDao.getUserForNo(userNo);
+	}
 }

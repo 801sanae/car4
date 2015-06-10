@@ -68,4 +68,9 @@ public class UserDao{
 		System.out.println("DAO sㅏ와라");
 		return sqlSession.selectOne("UserMapper.getUserInfo", user);
 	}
+	
+	public User getUserForNo(int userNo) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUserForNo", userNo);
+		}
+	
 }
