@@ -1,9 +1,12 @@
 package com.model2.mvc.web.auction;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
@@ -25,6 +29,7 @@ import com.model2.mvc.service.domain.Auction;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.file.FileService;
+import com.model2.mvc.service.user.UserService;
 
 //
 @Controller
@@ -44,8 +49,17 @@ public class AuctionController {
 	@Autowired
 	@Qualifier("fileServiceImpl")
 	private FileService fileService;
-	public FileUpload fileupload;
+	
+	@Autowired
+	@Qualifier("userServiceImpl")
+	private UserService userService;
+	public User user;
 
+	@Autowired
+	ServletContext ctx;
+	
+	int countNo;
+	int indexNo;
 	
 	
 	//default Constructor
@@ -85,6 +99,7 @@ public class AuctionController {
 	if(search.getCurrentPage()==0) {
 		search.setCurrentPage(1);
 	}
+
 
 	System.out.println("1");
 	search.setPageSize(pageSize);
@@ -238,9 +253,62 @@ public class AuctionController {
 
 			return "forward:auctionInfo.jsp";
 		}
+		
+		@RequestMapping("/getSeller.do")
+		public String getSeller(
+				@RequestParam("carNo") int carNo, 
+				HttpServletRequest request, HttpSession session, Model model) throws Exception{
+			System.out.println("/test.do");
 
-		// asdfasdflaksjdflksjdf
+			//login user = 산다는놈 user 
+			User user =(User)session.getAttribute("user");
+
+			System.out.println("::user = "+user);
+
+			//파는놈 카넘버
+			Car car = carService.getCar2(carNo);
+
+			System.out.println("::car"+car);
+
+			//seller = 파는놈의 각정보가 담 seller
+			User seller =userService.getUserForNo(car.getUser().getUserNo());
+
+			System.out.println("::seller="+seller);
+
+
+			//TODO
+
+			//여기까진 잘나옴
+			//SelectCar
+			//바구니에 담기
+			model.addAttribute("user", user);
+
+			model.addAttribute("seller", seller);
+
+			model.addAttribute("car",car);
+
+			//model.addAttribute("fileUpload", fileUpload1);
+
+			return "forward:getSeller.jsp";
+		}
 		
 		
+
+		//getSeller.jsp에서 사는사람이 [낙찰]을 누르면~
+		@RequestMapping("mypage.do")
+		public String Mypage(@RequestParam("carNo") int carNo, @RequestParam("auctionNo") int auctionNo) throws Exception {
+
+		System.out.println("/mypage.do");
 		
+		//낙찰 후 auction테이블의 success_car 변경
+		auctionService.updateAuction(carNo, auctionNo);
+		//낙찰 후 car테이블의 tran_code 변경
+		carService.updateCar(carNo);
+		
+		return "redirect:/mypage.jsp";
+		}
+
+
 }
+		
+		
