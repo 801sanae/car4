@@ -86,9 +86,14 @@ public class CarServiceImpl implements CarService{
 		return CarDao.selectCar(userNo);
 	}
 	
+	//낙찰 후 car테이블의 tran_code 변경
+	public void updateCar(int carNo) throws Exception {
+		CarDao.updateCar(carNo);
+	}
 	
-	
-
-	
+	@Override
+	public Car getCar2(int carNo) throws Exception {
+	return CarDao.getCar2(carNo);
+	}
 	
 }
