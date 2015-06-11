@@ -45,6 +45,17 @@
     FROM image
     WHERE car_No = #{value}
   </select>
+  
+  
+  <update id="updateFile" parameterType="com.model2.mvc.common.FileUpload" >
+      UPDATE image
+      <set>
+    
+      img_path   = #{imgPath:VARCHAR}
+      </set>
+      WHERE car_No = #{car.carNo}
+      and img_num = #{imgNum}
+  </update>
 	
 
 </mapper>

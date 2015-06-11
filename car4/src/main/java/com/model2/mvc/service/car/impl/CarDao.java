@@ -107,5 +107,13 @@ public class CarDao{
 	   public CarOption getCarInfo3(int carNo)throws Exception{
 	      return sqlSession.selectOne("CarMapper.getCarInfo3", carNo);
 	   }
+	   public void updateCar2(Car car)throws Exception{
+		      sqlSession.update("CarMapper.updateCar2", car);
+		   }
+		   public void updateOption(CarOption carOption)throws Exception{
+		      sqlSession.update("CarMapper.updateOption", carOption);
+		   }   
+	   
+	   
 	
 }

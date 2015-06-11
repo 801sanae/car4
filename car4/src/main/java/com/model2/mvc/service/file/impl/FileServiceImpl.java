@@ -48,5 +48,9 @@ public class FileServiceImpl implements FileService{
 	      return map;
 	   }
 	
+	public void updateFile(FileUpload file)throws Exception{
+	      fileDao.updateFile(file);
+	   }
+	
 	
 }

@@ -14,4 +14,5 @@ public interface FileService {
 	
 	//상훈이형님 부분 
 	public Map<String, Object> getFile2(int carNo) throws Exception;
+	public void updateFile(FileUpload file)throws Exception;
 }

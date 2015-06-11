@@ -233,6 +233,10 @@ public class CarController {
 		return "redirect:user/welcome.jsp";
 	}
 	
+	
+	
+	
+//상훈형님	
 	@RequestMapping("/getCars.do")
 	   public String getCars( @ModelAttribute("car") Car car,@ModelAttribute("carOption") CarOption carOption, 
 	         @ModelAttribute("fileUpload") FileUpload fileUpload ,HttpSession session, HttpServletRequest request, 
@@ -257,7 +261,80 @@ public class CarController {
 	      return "forward:/my_sell2.jsp";
 	   }
 	
-	
+	@RequestMapping("/updateCar.do")
+	   public String updateCar( @ModelAttribute("car") Car car,@ModelAttribute("carOption") CarOption carOption, 
+	          FileUpload fileUpload ,HttpSession session, HttpServletRequest request, 
+	         Model model) throws Exception {
+	      System.out.println("/updateCar.do");
+	      System.out.println(car);
+	      System.out.println(carOption);
+	      System.out.println(fileUpload);
+	      
+	      carService.updateCar2(car);
+	      
+	      carOption.setCar(carService.getCar(car.getCarNum()));
+
+	      carService.updateOption(carOption);
+	      
+	      fileUpload.setCar(carService.getCar(car.getCarNum()));
+	      //fileUpLoad
+	      List<MultipartFile> list = fileUpload.getUpfile();
+	      
+	      System.out.println("List : " + list);
+	      
+	      for(MultipartFile file : list){
+	         System.out.println("돌아간다신난닼ㅋ");
+	         if(! file.isEmpty()){
+	            String originalFileName = file.getOriginalFilename();
+	            
+	            if (originalFileName != null) {
+	               
+	               System.out.println("--->");
+	               System.out.println(file.getOriginalFilename());
+	               System.out.println(file.getName());
+	               
+	               String originalFilename = file.getOriginalFilename();
+	               
+	               int lastIndex = originalFilename.lastIndexOf('.');
+	               
+	               String fileName = System.currentTimeMillis()
+	                     + "_" + getCountNo()
+	                     + originalFilename.substring(lastIndex);
+	               
+	               System.out.println("파일네임 ::::::::: " + fileName);
+	               
+	               String fileUrl= "image/"+fileName;
+	               
+	               System.out.println("fileUrl :::::::::::: " + fileUrl);
+	                        
+	               String path = (String)ctx.getRealPath("/image") + "/" + fileName;
+	               
+	               File newFile = new File(path);
+	               
+	               if(! newFile.isDirectory()){
+	                  newFile.mkdirs();
+	               }
+	               
+	               System.out.println("패스 : " + path);
+	               
+	               fileUpload.setImgPath(fileUrl);
+	               fileUpload.setImgNum(getCountIndex());
+	               
+	               try {
+	                  file.transferTo(new File(path));
+	               } catch (Exception e) {
+	                  e.printStackTrace();
+	               } 
+	               System.out.println("디비가기전이당"+fileUpload.getImgNum());
+	               fileService.updateFile(fileUpload);
+	            
+	      
+	            }
+	         }
+	      }
+	      
+	      return "forward:/my_sell2.jsp";
+	   }
 	
 
 	synchronized private int getCountNo() {

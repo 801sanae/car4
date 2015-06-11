@@ -34,7 +34,7 @@
 	<resultMap id="carOption" type="com.model2.mvc.service.domain.CarOption">
 		<result property="carNo" 		column="carNo" 			jdbcType="INTEGER" />
 		<result property="powerWindow" 	column="powerWindow"    jdbcType="VARCHAR" />
-		<result property="aircorn" 		column="aircorn" 	    jdbcType="VARCHAR" />
+		<result property="airCorn" 		column="aircorn" 	    jdbcType="VARCHAR" />
 		<result property="fullAutoAircorn" 		column="fullAutoAircorn" 			jdbcType="VARCHAR" />
 		<result property="leftRightAircorn" 		column="leftRightAircorn" 			jdbcType="VARCHAR" />
 		<result property="gajukSheet" column="gajukSheet" 	jdbcType="VARCHAR" />
@@ -242,6 +242,51 @@
     FROM carOption
     WHERE car_No = #{value}
   </select>
+  
+  
+  <update id="updateCar2" parameterType="com.model2.mvc.service.domain.Car" >
+      UPDATE car
+      <set>
+      car_Num   = #{carNum:VARCHAR},
+      manu_country    = #{manuCountry:VARCHAR},
+      manu_co   = #{manuCo:VARCHAR},
+      model   = #{model:VARCHAR},
+      color   = #{color:VARCHAR},
+      year   = #{year:INTEGER},
+      car_Year   = #{carYear:INTEGER},
+      transmission   = #{transmission:VARCHAR},
+      cc   = #{cc:INTEGER},
+      fuel   = #{fuel:VARCHAR},
+      mileage   = #{mileage:INTEGER},
+      sell   = #{sell:VARCHAR},
+      accident   = #{accident:VARCHAR}
+      </set>
+      WHERE car_No = #{carNo}
+  </update>
+  
+  <update id="updateOption" parameterType="com.model2.mvc.service.domain.CarOption" >
+      UPDATE caroption
+      <set>
+      powerWindow   = #{powerWindow:VARCHAR},
+      aircorn   = #{airCorn:VARCHAR},
+      fullAutoAircorn   = #{fullAutoAircorn:VARCHAR},
+      sunRoof   = #{sunRoof:VARCHAR},
+      pnrmSunRoof   = #{pnrmSunRoof:VARCHAR},
+      hidRam   = #{hidRam:VARCHAR},
+      navi   = #{navi:VARCHAR},
+      hipass   = #{hipass:VARCHAR},
+      blackBox   = #{blackBox:VARCHAR},
+      driverAirBag   = #{driverAirBag:VARCHAR},
+      driverFriendAirBag   = #{driverFriendAirBag:VARCHAR},
+      sideAirBag   = #{sideAirBag:VARCHAR},
+      turboChaser   = #{turboChaser:VARCHAR},
+      superChaser   = #{superChaser:VARCHAR},
+      mission   = #{mission:VARCHAR}
+      
+      </set>
+      WHERE car_No = #{car.carNo}
+  </update>
+  
 	
 	
 	

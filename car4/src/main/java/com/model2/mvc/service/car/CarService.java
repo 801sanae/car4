@@ -25,6 +25,8 @@ public interface CarService {
 	public Map<String,Object> getCarInfo(Search search,int userNo) throws Exception;
 	public Car getCarInfo2(int carNo)throws Exception;
 	public CarOption getCarInfo3(int carNo)throws Exception;
+	public void updateCar2(Car car)throws Exception;
+	public void updateOption(CarOption carOption)throws Exception;
 	//상훈이형님 부분
 	
 	

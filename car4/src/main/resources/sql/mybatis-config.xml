@@ -21,6 +21,7 @@
 		<mapper resource="sql/FileMapper.xml"/>
 		<mapper resource="sql/AuctionMapper.xml"/>
 		<mapper resource="sql/AuctionListMapper.xml"/>
+		<mapper resource="sql/MessageMapper.xml"/>
 	</mappers>
 
 </configuration>

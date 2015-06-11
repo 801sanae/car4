@@ -41,4 +41,8 @@ public class FileDao{
 	public List<FileUpload> getFile2(int carNo) throws Exception {
 	      return sqlSession.selectList("FileMapper.getFile2", carNo);
 	   }
+	
+	public void updateFile(FileUpload file)throws Exception{
+	      sqlSession.update("FileMapper.updateFile", file);
+	   }
 }

@@ -105,6 +105,13 @@ public class CarServiceImpl implements CarService{
 	      
 	      return map;
 	   }
+	public void updateCar2(Car car)throws Exception{
+	      CarDao.updateCar2(car);
+	   }
+	   public void updateOption(CarOption carOption)throws Exception{
+	      CarDao.updateOption(carOption);
+	   }
+	//상훈형님
 	
 	
 	public Car getCarInfo2(int carNo)throws Exception{
@@ -114,6 +121,9 @@ public class CarServiceImpl implements CarService{
 	   public CarOption getCarInfo3(int carNo)throws Exception{
 	      return CarDao.getCarInfo3(carNo);
 	   }
+	   
+	   
+	   
 	
 	
 }

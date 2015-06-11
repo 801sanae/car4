@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml :: SQL 를 갖는 MetaData - MyBatis Framework 은 XML MetaData 
+	를 사용 SQL구문을 관리 (SQL은 xml 을 통해 적절히 캡슐화 되어 애플리케이선 외부로 분리함) - SQL문의 입력(?) / 
+	출력(?)을 매핑한다. <== 아래의 select element 참조 -->
+
+<mapper namespace="AuctionMapper">
+
+   <resultMap id="MessageSelectMap" type="com.model2.mvc.service.domain.Message">
+      <result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
+      <result property="contents"       column="contents"       jdbcType="VARCHAR"/>
+      <result property="regDate"       column="reg_date"       jdbcType="DATE"/>
+               
+      <association property="user" javaType="com.model2.mvc.service.domain.User">
+			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
+			<result property="userNo"	column="user_no" 	    jdbcType="INTEGER" />
+			<result property="userName" column="user_name"     	jdbcType="VARCHAR" />
+			<result property="password" column="password" 	    jdbcType="VARCHAR" />
+			<result property="phone" 	column="phone"		 	jdbcType="VARCHAR" />
+			<result property="sex"  	column="sex" 			jdbcType="VARCHAR" />
+			<result property="regDate" 	column="reg_date"		jdbcType="DATE" />
+			<result property="role"   	column="role" 			jdbcType="VARCHAR" />
+			<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />	
+		</association>
+   </resultMap>
+
+
+ <!--   <insert id="addMessage" parameterType="com.model2.mvc.service.domain.Message" >
+      INSERT
+      INTO
+      MESSAGE(user_no, contents, reg_date)
+      VALUES()
+   </insert> -->
+		
+</mapper>

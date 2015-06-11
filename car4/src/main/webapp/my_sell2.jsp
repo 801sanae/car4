@@ -460,7 +460,7 @@
                            <c:if test="${carOption.powerWindow=='powerWindow'}"> checked="checked" </c:if> />
                         <label for="powerWindow">파워윈도우</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
                            id="aircorn" type="checkbox" name="airCorn" value="airCorn"
-                           <c:if test="${carOption.airCorn=='aircorn'}"> checked="checked" </c:if> />
+                           <c:if test="${carOption.airCorn=='airCorn'}"> checked="checked" </c:if> />
                         <label for="aircorn">에어콘</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
                            id="fullAutoAircorn" type="checkbox" name="fullAutoAircorn" value="fullAutoAircorn"
                            <c:if test="${carOption.fullAutoAircorn=='fullAutoAircorn'}"> checked="checked" </c:if> />
@@ -694,7 +694,7 @@
                         <img data-src="holder.js/100x100%" alt="">
                         <div class='text-right'>
                            <small class='text-muted'><img
-                              src="/car6/${list[0].imgPath }"
+                              src="${list[0].imgPath }"
                               style="height: 100%; width: 100%"></small>
                         </div>
                         <!-- text-right / end -->
@@ -717,7 +717,7 @@
                      id="upfile2">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img src="/car6/${list[1].imgPath }" alt="">
+                        <img src="${list[1].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>실내</small>
                         </div>
@@ -741,7 +741,7 @@
                      id="upfile3">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[2].imgPath }" alt="">
+                        <img data-src="${list[2].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>전면</small>
                         </div>
@@ -765,7 +765,7 @@
                      id="upfile1">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[3].imgPath }" alt="">
+                        <img data-src="${list[3].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>후면</small>
                         </div>
@@ -788,7 +788,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[4].imgPath }" alt="">
+                        <img data-src="${list[4].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>측면</small>
                         </div>
@@ -811,7 +811,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[5].imgPath }" alt="">
+                        <img data-src="${list[5].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>Engine</small>
                         </div>
@@ -835,7 +835,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 100%; height: 100%;">
-                        <img data-src="/car6/${list[6].imgPath }" alt="">
+                        <img data-src="${list[6].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'><img
                               src="http://placehold.it/320x320"
@@ -860,7 +860,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[7].imgPath }" alt="">
+                        <img data-src="${list[7].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>실내</small>
                         </div>
@@ -883,7 +883,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[8].imgPath }" alt="">
+                        <img data-src="${list[8].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>전면</small>
                         </div>
@@ -906,7 +906,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[9].imgPath }" alt="">
+                        <img data-src="${list[9].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>후면</small>
                         </div>
@@ -929,7 +929,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 170px; height: 160px;">
-                        <img data-src="/car6/${list[10].imgPath }" alt="">
+                        <img data-src="${list[10].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'>측면</small>
                         </div>
@@ -952,7 +952,7 @@
                   <div class="fileinput fileinput-new" data-provides="fileinput">
                      <div class="fileinput-new thumbnail"
                         style="width: 100%; height: 100%;">
-                        <img data-src="/car6/${list[11].imgPath }" alt="">
+                        <img data-src="${list[11].imgPath }" alt="">
                         <div class='text-right'>
                            <small class='text-muted'><img
                               src="http://placehold.it/320x320"
