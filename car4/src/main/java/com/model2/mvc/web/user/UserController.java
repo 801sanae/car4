@@ -75,7 +75,6 @@ public class UserController {
 		//Business Logic
 		user.setPhone(user.getPhone1()+user.getPhone2()+user.getPhone3());
 		userService.addUser(user);
-		session.setAttribute("user", user);
 
 		return "redirect:user/welcome.jsp";
 	}
