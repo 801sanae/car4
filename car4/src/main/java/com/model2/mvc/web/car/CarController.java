@@ -205,16 +205,8 @@ public class CarController {
 	}
 	//지워도될부분
 	
-	
-	
-	
-	private FileService FileServiceImpl() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
-
 	@RequestMapping("/check.do")
 	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request) throws Exception {
 
