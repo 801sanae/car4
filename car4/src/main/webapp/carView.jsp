@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <%--날짜 포맷 라이브러리 --%>
+
+
 <%-- <%@ page import="java.util.List"  %>
 
 
@@ -101,6 +104,7 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 
 <hr/>
 
+
 <div class="container">
 
 
@@ -181,9 +185,9 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 			
 				
 			<td align="left"></td>
-			<td align="left">${auctionList.bidPrice}</td>
+			<td align="left"><input readonly="readonly" type="password" value="${auctionList.bidPrice}"></td>
 			<td align="left"></td>
-			<td align="left">${auctionList.bidRegDate}</td>		
+			<td align="left"><fmt:formatDate value="${auctionList.bidRegDate}" pattern="MM월 dd일 hh:mm"></fmt:formatDate></td>		
 			<td align="left"></td>
 			<td align="left">${empty auctionList.bidCarNo.tranCode ? "안팔림" : "팔림"  }</td>
 		
@@ -240,7 +244,6 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 </table>
 <!-- PageNavigation End... -->
 
-</form>
 <div class="row">
 <c:if test="${user.userNo eq auction.user.userNo}">	
 </c:if>
