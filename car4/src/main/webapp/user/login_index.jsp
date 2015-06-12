@@ -42,7 +42,7 @@
             </c:if>
             <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
                <a style="color: gray" href="user/getUser.jsp"> ${user.userName}님
-                  환영합니다.||</a>
+                  환영합니다.|</a>
                <a style="color: gray" href="../logout.do">로그아웃</a>
             </c:if>
             <!-- Login 클릭 -->
