@@ -33,4 +33,10 @@ public class AuctionListDao{
 		System.out.println("asdffffffff" + auctionNo);
 		return sqlSession.selectList("AuctionListMapper.getBidList", auctionNo);
 	}
+
+	public AuctionList getAuctionList(AuctionList auctionList) {
+		System.out.println("************"+auctionList);
+		
+		return sqlSession.selectOne("AuctionListMapper.getAuctionList", auctionList);
+	}
 }	

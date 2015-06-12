@@ -36,5 +36,10 @@ public class AuctionListServiceImpl implements AuctionListService {
 		return auctionListDao.getBidList(auctionNo);
 	}
 
+	@Override
+	public AuctionList getAuction(AuctionList auctionList) {
+		return auctionListDao.getAuctionList(auctionList);
+	}
+
 	
 }
