@@ -104,45 +104,6 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 
 <hr/>
 
-
-<div class="container">
-
-
-<form name="detailForm" action="/carView.do" method="post">
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-<tr height="20px">
-<td align="left"><button type="button" class="btn btn-primary">입찰현황</button></td>
-		<td align="right" width="87%">
-		
-			<select name="searchCondition" class="ct_input_g" style="width:80px">
-			<%--	<option value="0" <%= (searchCondition.equals("0") ? "selected" : "")%>>상품번호</option>
-				<option value="1" <%= (searchCondition.equals("1") ? "selected" : "")%>>상품명</option>
-				<option value="2" <%= (searchCondition.equals("2") ? "selected" : "")%>>상품가격</option>--%>
-				<option value="0"  ${ ! empty search.searchCondition && search.searchCondition==0 ? "selected" : "" }>상품번호</option>
-				<option value="1"  ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" }>상품명</option>
-				<option value="2"  ${ ! empty search.searchCondition && search.searchCondition==2 ? "selected" : "" }>상품가격</option>
-			</select>
-			<%--<input 	type="text" name="searchKeyword" value="<%= searchKeyword %>"  class="ct_input_g" 
-							style="width:200px; height:20px" >--%>
-			<input type="text" name="searchKeyword" 
-						value="${! empty search.searchKeyword ? search.searchKeyword : ""}" 
-						class="ct_input_g" style="width:200px; height:20px" >
-		</td>
-		
-		<td align="right" width="70">
-			<table border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td>
-						<a href="javascript:fncGetProductList('1');">검색</a>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-</div>
-
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
 		<%--
