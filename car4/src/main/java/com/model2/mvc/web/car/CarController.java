@@ -142,7 +142,7 @@ public class CarController {
 			}
 		}
 		
-		return "redirect:user/welcome.jsp";
+		return "redirect:listUserSell.do";
 	}
 
 	

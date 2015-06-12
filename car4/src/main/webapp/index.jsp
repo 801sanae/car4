@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <title>Insert title here</title>
 <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
+<link rel="icon" type="image/ico" href="favicon.ico"/>
 
 </head>
 <body>

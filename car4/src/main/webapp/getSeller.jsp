@@ -50,7 +50,7 @@ $(document).ready(function() {
 			
 			if (ok) {					
 				$('form').attr({
-					action : 'mypage.do?carNo=${car.carNo}&auctionNo=${auction}',
+					action : 'mypage.do?carNo=${car.carNo}&auctionNo=${auction.auctionNo}',
 					method : 'post'
 			}).submit();
 			} else {	
@@ -148,7 +148,7 @@ $(document).ready(function() {
 						</table>
 					</div>
 					<button type="button" class="btn btn-primary col-xs-6">Back</button>
-					<button type="submit" id="success" class="btn btn-primary col-xs-6">Submit</button>	
+					<button type="button" id="success" class="btn btn-primary col-xs-6">Submit</button>	
 				</form>
 				<br> <br> <br> <br> <br> <br>
 			</div>

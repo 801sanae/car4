@@ -64,9 +64,6 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 			<button type="button" class="btn btn-success">차량정보</button>
 			<br>
 				<table class="table table-hover" style="text-align:center; height: 235px">
-					
-					
-					
 						<tr>
 						<br>
 							<td width="15%">제조사</td>
@@ -106,8 +103,8 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 
 <div class="container">
 
-<form name="detailForm" action="/carView.do" method="post">
 
+<form name="detailForm" action="/carView.do" method="post">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 <tr height="20px">
@@ -166,46 +163,23 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 	<tr>
 		<td colspan="11" bgcolor="808285" height="1"></td>
 	</tr>
-	<%--<% 	
-		
-		for(int i=0; i<list.size(); i++) {
-			ProductVO vo = list.get(i);
-	%>
-	<tr class="ct_list_pop">
-		<td align="center"><%= i + 1 %></td>
-		<td></td>
-		<td align="left">
-			<a href="/getProduct.do?prodNo=<%=vo.getProdNo() %>&menu=manage"><%= vo.getProdName() %></a>
-		</td>
-		<td></td>
-		<td align="left"><%= vo.getPrice() %></td>
-		<td></td>
-		<td align="left"><%= vo.getRegDate() %> </td>		
-		<td></td>
-		<td align="left"><%if(vo.getProTranCode()== null){ %>
-		판매중
-		<%}else if(vo.getProTranCode().trim().equals("1")){ %>
-		구매완료 <a href="/updateTranCodeByProd.do?prodNo=<%=vo.getProdNo() %>&menu=manage&tran_status_code=<%=vo.getProTranCode()%>">배송하기</a>
-		<%}else if(vo.getProTranCode().trim().equals("2")){ %>
-		배송중
-		<%}else if(vo.getProTranCode().trim().equals("3")){ %>
-		배송완료
-		<%} %>
-		</td>	
-	</tr>
-	<tr>
-		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-	</tr>
-	<% } %>
-	--%>
+
+
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
 		<c:set var="i" value="${i+1}" />
 		<tr class="ct_list_pop">
 			<td align="center">${ i }</td>
 			<td align="center"></td>
-			<td><a href="getSeller.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}&carNo=${auctionList.bidCarNo.carNo}">
-			${auctionList.bidCarNo.model}</a></td>	
+			<c:if test="${user.userNo eq auction.user.userNo}">
+				<td><a href="getSeller.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}&carNo=${auctionList.bidCarNo.carNo}">
+					${auctionList.bidCarNo.model}</a></td>	
+			</c:if>
+			<c:if test="${user.userNo != auction.user.userNo}">
+				<td>${auctionList.bidCarNo.model}</td>	
+			</c:if>
+			
+				
 			<td align="left"></td>
 			<td align="left">${auctionList.bidPrice}</td>
 			<td align="left"></td>
@@ -268,8 +242,12 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 
 </form>
 <div class="row">
-		<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
-		경매 참여하기</a>
+<c:if test="${user.userNo eq auction.user.userNo}">	
+</c:if>
+			<c:if test="${user.userNo != auction.user.userNo}">
+			<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
+		경매 참여하기</a>	
+			</c:if>
 </div>
 </div><!-- Container 끝 -->
 <br><br>

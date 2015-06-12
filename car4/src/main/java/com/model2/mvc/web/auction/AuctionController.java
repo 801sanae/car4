@@ -170,7 +170,7 @@ public class AuctionController {
 			
 			//System.out.println("fdsafas"+fileService.getFileList(carNo.get(0).getCarNo()).get(0));
 			
-			for(int i=0; i<2; i++) {
+			for(int i=0; i<1; i++) {
 					fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
 					System.out.println("dㅑ야야야야야"+fileService.getFileList(carNo.get(i).getCarNo()));
 					System.out.println("fileSize1"+fileUpload.size());
@@ -226,10 +226,13 @@ public class AuctionController {
 			
 			@RequestMapping("/getAuctionView.do")
 			public String listCar(@ModelAttribute("serach") Search search, Model model , 
-														HttpServletRequest request, Auction auction)throws Exception{
+														HttpServletRequest request, Auction auction, HttpSession session)throws Exception{
+				
+				User user = (User)session.getAttribute("user");
 				
 				Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
 				
+				dbAuction.getUser().getUserNo();
 				model.addAttribute("auction", dbAuction); //옥션 정보 연결
 				System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 				List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
@@ -237,7 +240,7 @@ public class AuctionController {
 				//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 				//list.get(0).getBidCarNo().getCarNo()
 				model.addAttribute("auctionList", list);
-				
+				model.addAttribute("user", user);
 				return "forward:carView.jsp";
 			}
 			

@@ -43,25 +43,25 @@
         style="margin-top: 10px; padding-left: 100px; color: pink">
             
             
-        <!-- Login 클릭 -->   
+        <!-- Login í´ë¦­ -->   
         <c:if test="${ empty user }">
                     <a style="color: gray" data-toggle="modal" data-target="#modalLogin">
             Login</a>
-        <!--  회원가입 창 띄우기 -->
+        <!--  íìê°ì ì°½ ëì°ê¸° -->
           <jsp:include page="/user/register.jsp"></jsp:include>
-        <!--  회원가입 창 띄우기 -->
+        <!--  íìê°ì ì°½ ëì°ê¸° -->
         </c:if>
          <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-          <a style="color: gray" href="user/getUser.jsp"> ${user.userName}님
-            환영합니다.||</a>
-          <a style="color: gray" href="../logout.do">로그아웃</a>
+          <a style="color: gray" href="user/getUser.jsp"> ${user.userName}ë
+            íìí©ëë¤.||</a>
+          <a style="color: gray" href="../logout.do">ë¡ê·¸ìì</a>
         </c:if>
-        <!-- Login 클릭 -->
+        <!-- Login í´ë¦­ -->
           
                 
-        <!--  Login 창 띄우기 -->
+        <!--  Login ì°½ ëì°ê¸° -->
         <jsp:include page="/user/login.jsp"></jsp:include>
-        <!--  Login 창 띄우기 -->
+        <!--  Login ì°½ ëì°ê¸° -->
         
         
       </div>
@@ -74,7 +74,7 @@
     <jsp:include page="nav.jsp"></jsp:include>
   <!--  nav end -->
   
-  <!-- 역경매 게시글 리스트 -->
+  <!-- ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
   <div class="container">
     <div class="col-md-12">
       <form name="detailForm" action="" method="post">
@@ -91,10 +91,9 @@
                   <th id="id">제조사</th>
                   <th id="regDate">모델명</th>
                   
-                  <th id="cnt">조회수</th> 
+                  
                   <th id="tranCode">경매진행상태</th>
                   <th id="bid">입찰여부</th>
-                  <th id="bidcnt">입찰수</th>
                 </thead>
   
                 <tbody id="table">
@@ -109,14 +108,14 @@
                       <td>${car.manuCo}</td>
                       <td>${car.model}</td>
                       
-                      <td>cnt</td>
+                   
                       
                        <%-- <td>
                         <c:if test="${!empty auction.tranCode && auction.tranCode eq '0'}">
-                          <button type="button" class="btn btn-primary">경매중</button>
+                          <button type="button" class="btn btn-primary">ê²½ë§¤ì¤</button>
                         </c:if>
                         <c:if test="${!empty auction.tranCode && auction.tranCode eq '1'}">
-                          <button type="button" class="btn btn-danger">경매종료</button>
+                          <button type="button" class="btn btn-danger">ê²½ë§¤ì¢ë£</button>
                         </c:if>
                       </td>
                       <td>
@@ -124,7 +123,7 @@
                           -
                         </c:if>
                         <c:if test="${!empty auction.bid && auction.bid eq '1'}">
-                          <button type="button" class="btn btn-primary">입찰</button>
+                          <button type="button" class="btn btn-primary">ìì°°</button>
                         </c:if>
                         </td>
                       <td>bidcnt</td> --%>
@@ -139,19 +138,19 @@
               </table>
   
   
-          <!-- 페이지네이션 -->
+          <!-- íì´ì§ë¤ì´ì -->
                  <input type="hidden" id="currentPage" name="currentPage" value=""/>
           
               <div class="clearfix"></div>
                  <ul class="pagination pull-right">
-            <!-- 아무기능없는 이전버튼 -->
+            <!-- ìë¬´ê¸°ë¥ìë ì´ì ë²í¼ -->
                 <c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
                   <li class="disabled">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                   </li>
                 </c:if> 
-            <!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
+            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ì´ì ë²í¼ -->
                  
                 <c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
                   <li class="disabled">
@@ -162,14 +161,14 @@
                   </li>
                 </c:if>
                 
-            <!-- 가운데 보여질 페이지들 -->
+            <!-- ê°ì´ë° ë³´ì¬ì§ íì´ì§ë¤ -->
                 <c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
                   <li>
                     <a href="javascript:fncGetList('${ i }');">${ i }
                     </a>
                   </li>
                 </c:forEach>
-            <!-- 아무기능없는 다음버튼 -->
+            <!-- ìë¬´ê¸°ë¥ìë ë¤ìë²í¼ -->
                 <c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
                   <li>
                       <span class="glyphicon glyphicon-chevron-right">
@@ -178,7 +177,7 @@
                   </li>
                 </c:if>
                 
-            <!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
+            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ë¤ìë²í¼ -->
                 <c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
                   <li>
                     <a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
@@ -187,7 +186,7 @@
                   </li>
                 </c:if>
               </ul> 
-          <!-- /페이지네이션 -->
+          <!-- /íì´ì§ë¤ì´ì -->
               
             </div>
           </div>
@@ -197,7 +196,7 @@
         </div>
       </div>
   
-  <!-- /역경매 게시글 리스트 -->
+  <!-- /ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
   
   
   
