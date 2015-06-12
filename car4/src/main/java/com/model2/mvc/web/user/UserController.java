@@ -139,7 +139,7 @@ public class UserController {
 
 		System.out.println("/loginView.do");
 
-		return "redirect:login_index.jsp";
+		return "redirect:index.jsp";
 	}
 
 	@RequestMapping("/login.do")
@@ -153,7 +153,7 @@ public class UserController {
 			session.setAttribute("user", dbUser);
 		}
 
-		return "redirect:/user/login_index.jsp";
+		return "redirect:index.jsp";
 	}
 
 	@RequestMapping("/logout.do")
