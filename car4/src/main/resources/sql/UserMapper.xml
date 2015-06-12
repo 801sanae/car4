@@ -137,5 +137,11 @@
 	FROM users
 	WHERE user_no = #{userNo}
 	</select>
-
+	
+	<select id="getUserNoForAuctionNo" parameterType="Integer" resultType="int">
+		select user_no
+		from auction
+		where auction_no = ${value}
+	</select>
+	
 </mapper>
