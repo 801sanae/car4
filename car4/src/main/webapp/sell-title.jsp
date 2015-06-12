@@ -181,6 +181,7 @@ $(document).ready(function() {
 
 </head>
 <body>
+<jsp:include page="nav.jsp"></jsp:include>
 	<section style="background: #ffffff;">
 		<div class="container-fluid">
 			<div class="row">
@@ -234,7 +235,7 @@ $(document).ready(function() {
 					<div class="tab-content">
 						<div class="tab-pane fade in active" id="first">
 							<div class="row">
-								<div class="col-md-9 col-md-offset-2">
+								<div class="col-md-8 col-md-offset-2">
 									<form class="form-horizontal" role="form" id="form1" action="addCar.do" method="post">
 										<fieldset>
 
@@ -276,31 +277,6 @@ $(document).ready(function() {
 														class="form-control" id="email"  value="${userInfo.userId}">
 												</div>
 											</div>
-
-											<!-- 지역 -->
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="textinput">지역</label>
-												<div class="col-sm-10">
-													<div class="dropdown">
-														<a id="dLabel" role="button" data-toggle="dropdown"
-															class="btn btn-primary" data-target="#" href="/page.html">
-															지역 <span class="caret"></span>
-														</a>
-														<ul class="dropdown-menu multi-level" role="menu"
-															aria-labelledby="dropdownMenu" id="region">
-															<li><a href="#">서울</a></li>
-															<li><a href="#">부산</a></li>
-															<li><a href="#">대구</a></li>
-															<li><a href="#">대전</a></li>
-															<li><a href="#">제주</a></li>
-															<li><a href="#">광주</a></li>
-															<li><a href="#">경기</a></li>
-														</ul>
-													</div>
-													<!-- Drop down 끝-->
-												</div>
-											</div>
-											<!-- 지역 끝-->
 
 											<br> <br> <br> <br> <br>
 											<div class="form-group">
@@ -590,25 +566,6 @@ $(document).ready(function() {
 														value="사고" />&nbsp;사고
 												</div>
 											</div>
-
-
-
-											<div class="form-group">
-												<label class="control-label col-md-1">성능상태점검기록부 |</label>
-												<div class="col-md-4">
-													<button type="button" class="btn btn-default" name="perfor"
-														style="margin-top: 2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
-												</div>
-
-												<!-- <label class="control-label col-md-1 col-md-offset-2"
-													for="phone">전문평가사 |</label>
-												<div class="col-md-2">
-													<input type="radio" name="professor" value="yes" checked />&nbsp;요청
-													&nbsp;&nbsp; <input type="radio" name="professor"
-														value="no" />&nbsp;미요청
-												</div> -->
-											</div>
-
 
 										</div>
 										<br>
