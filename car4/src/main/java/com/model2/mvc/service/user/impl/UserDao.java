@@ -72,5 +72,13 @@ public class UserDao{
 	public User getUserForNo(int userNo) throws Exception {
 		return sqlSession.selectOne("UserMapper.getUserForNo", userNo);
 		}
+
+	//옥션넘버로 유저 찾아오기
+	public int getUserNoForAuctionNo(int auctionNo) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUserNoForAuctionNo", auctionNo);
+	}
+	
+	
+	
 	
 }

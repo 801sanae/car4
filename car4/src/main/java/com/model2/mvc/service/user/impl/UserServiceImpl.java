@@ -87,4 +87,10 @@ public class UserServiceImpl implements UserService{
 	// TODO Auto-generated method stub
 	return UserDao.getUserForNo(userNo);
 	}
+	
+	//옥션넘버로 유저 찾아오기
+	public int getUserNoForAuctionNo(int auctionNo) throws Exception {
+		return UserDao.getUserNoForAuctionNo(auctionNo);
+	}
+	
 }
