@@ -61,6 +61,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+${fileUpload }
+${auctionList }
 	<div class="container">
 		<div class="row">
 
@@ -104,7 +106,11 @@ $(document).ready(function() {
 								<td>${seller.addr }</td>
 								<!-- Action만 넣으삼 -->
 							</tr>
-
+							<tr>
+								<td>연락처</td>
+								<td>${seller.phone }</td>
+								<!-- Action만 넣으삼 -->
+							</tr>
 						</table>
 
 
@@ -112,13 +118,13 @@ $(document).ready(function() {
 						<br> <br> <label for="validate-optional">판매자 차량
 							정보</label>
 						<table class="table table-hover"
-							style="text-align: left; height: 235px">
+							style="text-align: center; height: 235px">
 							<!-- 대표 IMG -->
 							<tr>
 								<td width="15%">대표사진</td>
-								<td><img src="${fileUpload1.imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${fileUpload1.imgPath}" style="width: 30%;">&nbsp;&nbsp;
-									<img src="${fileUpload1.imgPath}" style="width: 30%;"></td>
+								<td><img src="${fileUpload[0].imgPath}" style="width: 30%;">&nbsp;&nbsp;
+									<img src="${fileUpload[1].imgPath}" style="width: 30%;">&nbsp;&nbsp;
+									<img src="${fileUpload[2].imgPath}" style="width: 30%;"></td>
 								<!-- Action만 넣으삼 -->
 							</tr>
 							<!-- 대표 IMG END-->
@@ -145,10 +151,15 @@ $(document).ready(function() {
 								<td>${car.year}</td>
 								<!-- Action 값만 넣으삼 -->
 							</tr>
+							<tr>
+								<td>입찰가</td>
+								<td>${auctionList.bidPrice }</td>
+								<!-- Action 값만 넣으삼 -->
+							</tr>
 						</table>
 					</div>
-					<button type="button" class="btn btn-primary col-xs-6">Back</button>
-					<button type="button" id="success" class="btn btn-primary col-xs-6">Submit</button>	
+					<button type="button" class="btn btn-primary col-xs-6">뒤로가기</button>
+					<button type="button" id="success" class="btn btn-primary col-xs-6">낙찰하기</button>	
 				</form>
 				<br> <br> <br> <br> <br> <br>
 			</div>
