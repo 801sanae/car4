@@ -9,17 +9,23 @@ public class AuctionList {
 	private Car bidCarNo;			//입찰차량
 	private Auction bidAuctionNo;	//옥션글
 	private Date bidRegDate;
-	
-	//default Constructor
-	public AuctionList() {
-		System.out.println(this.getClass());
-	}
-	
 	public int getAuctionListNo() {
 		return auctionListNo;
 	}
 	public void setAuctionListNo(int auctionListNo) {
 		this.auctionListNo = auctionListNo;
+	}
+	public int getBidPrice() {
+		return bidPrice;
+	}
+	public void setBidPrice(int bidPrice) {
+		this.bidPrice = bidPrice;
+	}
+	public Date getBidRegDate() {
+		return bidRegDate;
+	}
+	public void setBidRegDate(Date bidRegDate) {
+		this.bidRegDate = bidRegDate;
 	}
 	public Car getBidCarNo() {
 		return bidCarNo;
@@ -33,28 +39,13 @@ public class AuctionList {
 	public void setBidAuctionNo(Auction bidAuctionNo) {
 		this.bidAuctionNo = bidAuctionNo;
 	}
-	
-	public Date getBidRegDate() {
-		return bidRegDate;
-	}
-
-	public void setBidRegDate(Date bidRegDate) {
-		this.bidRegDate = bidRegDate;
-	}
-
-	public int getBidPrice() {
-		return bidPrice;
-	}
-
-	public void setBidPrice(int bidPrice) {
-		this.bidPrice = bidPrice;
-	}
-
 	@Override
 	public String toString() {
-		return "AuctionList [auctionListNo=" + auctionListNo + ", carNo="
-				+ bidCarNo + ", auctionNo=" + bidAuctionNo + "]";
+		return "AuctionList [auctionListNo=" + auctionListNo + ", bidPrice="
+				+ bidPrice + ", bidCarNo=" + bidCarNo + ", bidAuctionNo="
+				+ bidAuctionNo + ", bidRegDate=" + bidRegDate + "]";
 	}
+	
 
 	
 }
