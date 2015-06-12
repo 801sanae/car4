@@ -5,47 +5,57 @@ import java.sql.Date;
 public class Message {
 
 	//Field
-	private User userNo;				//차사진이랑
-	private String contents;			//차량번호
-	private Date regDate;		//제조국 
+	private User user;			//받는사람		
+	private String contents;	//쪽지내용
+	private Date regDate;		//날짜			
+	private int messageNo;		//메세지넘버
+	private String tranCode;	//읽음여부
+	private int sendUser;		//보내는사람
+
 	
-	//default Constructor
-	public Message() {
-		System.out.println(this.getClass());
+	public User getUser() {
+		return user;
 	}
-
-	public User getUserNo() {
-		return userNo;
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-	public void setUserNo(User userNo) {
-		this.userNo = userNo;
-	}
-
 	public String getContents() {
 		return contents;
 	}
-
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-
 	public Date getRegDate() {
 		return regDate;
 	}
-
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
+	public int getMessageNo() {
+		return messageNo;
+	}
+	public void setMessageNo(int messageNo) {
+		this.messageNo = messageNo;
+	}
+	public String getTranCode() {
+		return tranCode;
+	}
+	public void setTranCode(String tranCode) {
+		this.tranCode = tranCode;
+	}
+	public int getSendUser() {
+		return sendUser;
+	}
+	public void setSendUser(int sendUser) {
+		this.sendUser = sendUser;
+	}
 	@Override
 	public String toString() {
-		return "Message [userNo=" + userNo + ", contents=" + contents
-				+ ", regDate=" + regDate + "]";
+		return "Message [user=" + user + ", contents=" + contents
+				+ ", regDate=" + regDate + ", messageNo=" + messageNo
+				+ ", tranCode=" + tranCode + ", sendUser=" + sendUser + "]";
 	}
 	
 	
-
-
-
 }
