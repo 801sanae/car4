@@ -1,5 +1,6 @@
 package com.model2.mvc.service.auction;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
@@ -23,4 +24,7 @@ public interface AuctionService {
 	
 	//낙찰 후 auction테이블의 success_car 변경
 	public void updateAuction(int carNo, int auctionNo) throws Exception;
+
+	//내 옥션 리스트
+	public List<Auction> listUserBuy(Auction auction) throws Exception;
 }
