@@ -42,11 +42,11 @@ $("[data-toggle=tooltip]").tooltip();
           <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" style="display: none;">
-                      <li><a href="../user/getUser.jsp">회원정보 수정</a></li>
-                      <li><a href="#">구매리스트</a></li>
-                      <li><a href="../listUserSell.do">판매리스트</a></li>
+                      <li><a href="getUser.do">회원정보 수정</a></li>
+                      <li><a href="listUserBuy.do">구매리스트</a></li>
+                      <li><a href="listUserSell.do">판매리스트</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">Example</a></li>
                     </ul>
                 </li>
         </ul>
