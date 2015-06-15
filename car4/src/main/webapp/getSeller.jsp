@@ -61,8 +61,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-${fileUpload }
-${auctionList }
 	<div class="container">
 		<div class="row">
 
