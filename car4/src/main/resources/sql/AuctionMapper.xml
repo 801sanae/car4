@@ -166,4 +166,12 @@
 				ORDER BY a.auction_no DESC
 	</select>
 
+	<select id="listUserBuy" parameterType="com.model2.mvc.service.domain.Auction"
+		resultMap="AuctionSelectMap">
+		SELECT
+		*
+		FROM
+		auction
+		WHERE user_no = #{user.userNo}
+	</select>
 </mapper>
