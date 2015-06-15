@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.auction.AuctionService;
 import com.model2.mvc.service.domain.Auction;
-import com.model2.mvc.service.domain.Car;
 
 @Service("auctionServiceImpl")
 public class AuctionServiceImpl implements AuctionService {
@@ -82,6 +81,11 @@ public class AuctionServiceImpl implements AuctionService {
 	//낙찰 후 auction테이블의 success_car 변경
 	public void updateAuction(int carNo, int auctionNo) throws Exception {
 		auctionDao.updateAuction(carNo, auctionNo);
+	}
+
+	@Override
+	public List<Auction> listUserBuy(Auction auction) throws Exception {
+		return auctionDao.listUserBuy(auction);
 	}
 	
 }
