@@ -160,7 +160,7 @@ $(document).ready(function() {
 </head>
 <body>
 				<!-- 회원가입 클릭 -->
-        &nbsp; <a style="margin-top: 15px;">|</a> <a style="color: gray"
+        <a style="margin-top: 15px;">|</a> <a style="color: gray"
           data-toggle="modal" data-target="#myModal"> Sign</a>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
