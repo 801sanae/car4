@@ -40,24 +40,17 @@
 </style>
 
 </head>
-<body onload="setTimeout('window.close()', 2000);"> 
-<div class="container">
-	<div class="row">
-		<div class="error-notice">
-<!--           <div class="oaerror danger">
-            <strong>Error</strong> - You provided a wrong username/password
-          </div>
-          <div class="oaerror warning">
-            <strong>Error</strong> - You left a field Blank
-          </div>
-          <div class="oaerror info">
-            <strong>Error</strong> - Please Select a Different Username
-          </div> -->
-          <div class="oaerror success" style="width:370px;height:200px;">
-            <strong><h1>Success!</h1></strong>  메세지가 성공적으로 발송되었습니다.
-          </div>
-        </div>
+<body onload="setTimeout('window.close()', 2000);">
+<form name="form" action="" >
+	<div class="container">
+		<div class="row">
+			<div class="error-notice">
+	          <div class="oaerror success" style="width:370px;height:200px;">
+	            <strong><h1>Success!</h1></strong>  메세지가 성공적으로 발송되었습니다.
+	          </div>
+	        </div>
+		</div>
 	</div>
-</div>
+</form>
 </body>
 </html>
