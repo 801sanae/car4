@@ -24,26 +24,26 @@
 		bar for categories -->
 		<div class="row">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
+			<div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
 
 				<a href="#" style="font-size: 50px; padding-left: 20px;">Car4</a>
 			</div>
 
-			<div class="col-md-3"
+			<div class="col-md-4"
 				style="margin-top: 10px; padding-left: 100px; color: pink">
 						
 						
 				<!-- Login 클릭 -->		
 				<c:if test="${ empty user }">
-			              <a style="color: gray" data-toggle="modal" data-target="#modalLogin">
-						Login</a>
+			        <a style="color: gray" data-toggle="modal" data-target="#modalLogin">Login</a>
 				<!--  회원가입 창 띄우기 -->
 					<jsp:include page="/user/register.jsp"></jsp:include>
 				<!--  회원가입 창 띄우기 -->
 				</c:if>
 			   <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
 					<a style="color: gray" href="user/getUser.jsp"> ${user.userName}님
-						환영합니다 :)</a>
+						환영합니다 :)</a>| 
+					<a style="color: gray" href="logout.do">Logout</a>
 						
 				</c:if>
 				<!-- Login 클릭 -->
