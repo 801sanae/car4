@@ -80,42 +80,9 @@
 	<!--/header -->
 
 
-	<!-- navigation var -->
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid" style="margin-left: 48px">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"></a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-				<ul class="nav navbar-nav">
-					<li><a href="#">MyList</a></li>
-					<li class="dropdown mega-dropdown active"><a href="#"
-						style="background-color: #f8f8f8;" class="dropdown-toggle"
-						data-toggle="dropdown">등록하기</a> <!-- Sub menu -->
-						<div class="dropdown-menu mega-dropdown-menu">
-							<div align="center">
-								<span> <a href="#" style="color: gray;" data-toggle="tab">국산차</a>&nbsp;&nbsp;
-								</span> <span> <a href="#" style="color: gray;"
-									data-toggle="tab">수입차</a></span>
-							</div>
-						</div> <!-- /.Sub menu --></li>
-				</ul>
-
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	<!-- /navigation var -->
+	<!-- nav bar -->
+	<jsp:include page="nav.jsp"></jsp:include>
+	<!-- nav bar -->
 	
 
 	
@@ -125,6 +92,7 @@
 		<form name="detailForm" action="listAuction.do" method="post">
 		
 	
+
 		<!-- search/orderby -->
 			<div class="row">
 			   			
