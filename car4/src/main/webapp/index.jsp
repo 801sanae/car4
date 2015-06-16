@@ -70,8 +70,12 @@
                     </li>
 				</c:if>
 			   <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a  href="user/getUser.jsp" > ${user.userName}님
-						환영합니다.</a></li>
+			   <li>
+			 		<a href="listMessage.do"><span class="glyphicon glyphicon-envelope" ></span></a>
+			   </li>
+					<li>
+						<a  href="user/getUser.jsp" > ${user.userName}님 	환영합니다.</a>
+					</li>
 					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
 				</c:if>
 				<!-- Login 클릭 -->
