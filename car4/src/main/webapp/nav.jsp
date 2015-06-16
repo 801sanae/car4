@@ -69,7 +69,10 @@ $("[data-toggle=tooltip]").tooltip();
                     <li>
                     
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a  href="user/getUser.jsp" > ${user.userName} 님 접속중</a></li>
+						<li><a href="listMessage.do">
+						<span class="glyphicon glyphicon-envelope"></span>
+						</a></li>
+						<li><a  href="user/getUser.jsp" > ${user.userName} 님 접속중</a></li>
 				</c:if>
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
