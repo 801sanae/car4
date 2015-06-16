@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+	
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
 <jsp:include page="/common/attribute.jsp"></jsp:include>
+
 <link href="../css/sell.css" rel="stylesheet">
 <!-- image upload -->
 <link href="../css/jasny-bootstrap.css" rel="stylesheet">
@@ -69,10 +72,6 @@ $(document).ready(function() {
 </script>
 
 
-
-
-
-
 <script>
 $(document).ready(function() {
     $('#next3').click(function() {
@@ -87,31 +86,33 @@ $(document).ready(function() {
             },
             dataType:'json',
             success : function(result) {
-            	$("#p_powerWindow").val(result.powerWindow);
-            	$("#p_aircorn").val(result.aircorn);
-            	$("#p_fullAutoAircorn").val(result.fullAutoAircorn);
+            	alert(result.powerWindow);
+            	$("#p_powerWindow").append(result.powerWindow);
+            	$("#p_aircorn").append(result.aircorn);
+            	$("#p_fullAutoAircorn").append(result.fullAutoAircorn);
             	
-            	$("#p_sunRoof").val(result.sunRoof);
-            	$("#p_pnrmSunRoof").val(result.pnrmSunRoof);
-            	$("#p_hidRam").val(result.hidRam);
+            	$("#p_sunRoof").append(result.sunRoof);
+            	$("#p_pnrmSunRoof").append(result.pnrmSunRoof);
+            	$("#p_hidRam").append(result.hidRam);
             	
-            	$("#p_navi").val(result.navi);
-            	$("#p_hipass").val(result.hipass);
-            	$("#p_blackBox").val(result.blackBox);
+            	$("#p_navi").append(result.navi);
+            	$("#p_hipass").append(result.hipass);
+            	$("#p_blackBox").append(result.blackBox);
             	
-            	$("#p_driverairbag").val(result.driverAirBag);
-            	$("#p_driverFriendAirBag").val(result.driverFriendAirBag);
-            	$("#p_sideAirBag").val(result.sideAirBag);
+            	$("#p_driverairbag").append(result.driverAirBag);
+            	$("#p_driverFriendAirBag").append(result.driverFriendAirBag);
+            	$("#p_sideAirBag").append(result.sideAirBag);
             	
-            	$("#p_turbochaser").val(result.turboChaser);
-            	$("#p_superchaser").val(result.superChaser);
-            	$("#p_airrowFigher").val(result.airrowFigher);
-
-            }
+            	$("#p_turbochaser").append(result.turboChaser);
+            	$("#p_superchaser").append(result.superChaser);
+            	$("#p_airrowFigher").append(result.airrowFigher);
+            	
+         	}
         });
     });
 });
 </script>
+
 
 
 <script>
@@ -124,28 +125,25 @@ $(document).ready(function() {
             data : queryString,
             dataType:'json',
             success : function(jsonString) {
+            	$("#tbody tr td:eq(0)").append(jsonString.carNum);
+            	$("#tbody tr td:eq(1)").append(jsonString.manuCountry);
+            	$("#tbody tr td:eq(2)").append(jsonString.manuCo);
+            	$("#tbody tr td:eq(3)").append(jsonString.model);
+            	$("#tbody tr td:eq(4)").append(jsonString.color);
+            	$("#tbody tr td:eq(5)").append(jsonString.year);
+            	$("#tbody tr td:eq(6)").append(jsonString.carYear);
+            	$("#tbody tr td:eq(7)").append(jsonString.transmission);
+            	$("#tbody tr td:eq(8)").append(jsonString.fuel);
+            	$("#tbody tr td:eq(9)").append(jsonString.cc);
+            	$("#tbody tr td:eq(10)").append(jsonString.mileage);
+            	$("#tbody tr td:eq(11)").append(jsonString.sell);
+            	$("#tbody tr td:eq(12)").append(jsonString.accident);
             	
-            	$("#p_carNum").val(jsonString.carNum);
-            	$("#p_manuCountry").val(jsonString.manuCountry);
-            	$("#p_manuCo").val(jsonString.manuCo);
-            	$("#p_model").val(jsonString.model);
-            	$("#p_color").val(jsonString.color);
-            	$("#p_year").val(jsonString.year);
-            	$("#p_carYear").val(jsonString.carYear);
-            	$("#p_transmission").val(jsonString.transmission);
-            	$("#p_fuel").val(jsonString.fuel);
-            	$("#p_cc").val(jsonString.cc);
-            	$("#p_mileage").val(jsonString.mileage);
-            	$("#p_sell").val(jsonString.sell);
-            	$("#p_accident").val(jsonString.accident);
             }
         });
     });
 });
 </script>
-
-
-
 
 
 <script>
@@ -173,13 +171,102 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #222;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function() {
+   $(".dropdown").hover(function() {
+      $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+      $(this).toggleClass('open');
+   }, function() {
+      $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+      $(this).toggleClass('open');
+   });
+   
+});
+
+$("[data-toggle=tooltip]").tooltip();
+</script>
+
+
 </head>
 <body>
 
+<!--  Nav End -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container-fluid" style="margin-left: 48px">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.jsp">Car4</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li><a href="getUserInfo.do">Sell</a></li>
+               		<li><a href="buy.jsp">Buy</a></li>
+                    <li>
+                        <a></a>
+                    </li>
+                    <li>
+                        <a></a>
+                    </li>
+                    <li>
+                    
+			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
+					<li><a  href="user/getUser.jsp" > ${user.userName} 님 접속중</a></li>
+				</c:if>
+					<li class="dropdown">
+	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu" style="display: none;">
+	                      <li><a href="getUser.do">회원정보 수정</a></li>
+	                      <li><a href="listUserBuy.do">구매리스트</a></li>
+	                      <li><a href="listUserSell.do">판매리스트</a></li>
+	                    </ul>
+	                </li>	
+			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
+					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
+				</c:if>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<!--  nav -->
 	<section style="background: #ffffff;">
 	
 		<div class="container-fluid">
 			<div class="row">
+			
 				<div class="board">
 					<!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
 					<div class="board-inner">
@@ -199,7 +286,7 @@ $(document).ready(function() {
 								</span>
 							</a></li>
 							<!-- 두번째 li 끝  -->
-
+							
 							<!-- 세번째 li -->
 							<li><a href="#third" data-toggle="tab" title="ppp" id="change3"> <span
 									class="round-tabs three"> <i
@@ -235,7 +322,8 @@ $(document).ready(function() {
 										<fieldset>
 
 											<!-- Form Name -->
-											<legend style="margin-left: 50px; margin-top: 10px">판매자 정보입력</legend>
+											<br><br>
+											<legend align="bottom"><h3>판매자 정보입력</h3><br></legend>
 
 											<!-- 이름 -->
 											<div class="form-group" align="left">
@@ -301,7 +389,8 @@ $(document).ready(function() {
 						<div class="tab-pane fade " id="second">
 							<!-- carinfo start -->
 							<div class="col-md-9 col-md-offset-2">
-
+							<legend align="bottom"><h3>차량 정보 입력</h3><br></legend>
+							<br>
 								<form class="form-horizontal"  id="form2" name="form2" role="form"
 									action="addCar.do" method="post">
 									<div class="row">
@@ -588,7 +677,7 @@ $(document).ready(function() {
 			<div class="col-md-8 col-md-offset-2">
 				<div class="row">
 				<div class="col-md-12">
-					<h3>차량옵션 선택</h3>
+					<legend align="bottom"><h3>차량 옵션 선택</h3><br></legend><br>
 				</div>
 				</div>
 					<div class="row">
@@ -834,6 +923,7 @@ $(document).ready(function() {
 						<!-- 네번째 동그라미 클릭시 div -->
 						<div class="tab-pane fade" id="fourth">
 						<div class="container">
+						<legend align="bottom"><h3>차량 사진 등록</h3><br></legend><br>
 						<form id="formFileUpload" method="post" action="addFile.do" enctype="multipart/form-data" name="formFileUpload">
 						<div class="row">
 						<div class='list-group gallery form-group'>
@@ -841,12 +931,11 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput" id="upfile1">
 						<div class="fileinput-new thumbnail"
-						style="width: 100%; height: 100%;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
+						
 						<div class='text-right'>
-						<small class='text-muted'><img
-						src="http://placehold.it/320x320"
-						style="height: 100%; width: 100%"></small>
+						<small class='text-muted'>전면</small>
 						</div>
 						<!-- text-right / end -->
 						</div>
@@ -854,7 +943,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[0]" id="upfile0"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -866,7 +955,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile2">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px;  border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>실내</small>
@@ -877,7 +966,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[1]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -889,7 +978,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile3">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px;  border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>전면</small>
@@ -900,7 +989,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[2]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -912,7 +1001,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile4">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>후면</small>
@@ -923,7 +1012,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[3]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -935,7 +1024,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>측면</small>
@@ -946,7 +1035,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[4]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -958,7 +1047,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>Engine</small>
@@ -969,7 +1058,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[5]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -980,14 +1069,15 @@ $(document).ready(function() {
 						</div>
 						<div class="row">
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
+						
+						
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 100%; height: 100%;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
+						
 						<div class='text-right'>
-						<small class='text-muted'><img
-						src="http://placehold.it/320x320"
-						style="height: 100%; width: 100%"></small>
+						<small class='text-muted'>전면</small>
 						</div>
 						<!-- text-right / end -->
 						</div>
@@ -995,7 +1085,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[6]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1007,7 +1097,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>옵션1</small>
@@ -1018,7 +1108,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[7]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1030,7 +1120,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>옵션2</small>
@@ -1041,7 +1131,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[8]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1053,7 +1143,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>옵션3</small>
@@ -1064,7 +1154,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[9]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1076,7 +1166,7 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 170px; height: 160px;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
 						<div class='text-right'>
 						<small class='text-muted'>옵션4</small>
@@ -1087,7 +1177,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[10]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1099,12 +1189,11 @@ $(document).ready(function() {
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail"
-						style="width: 100%; height: 100%;">
+						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
+						
 						<div class='text-right'>
-						<small class='text-muted'><img
-						src="http://placehold.it/320x320"
-						style="height: 100%; width: 100%"></small>
+						<small class='text-muted'>전면</small>
 						</div>
 						<!-- text-right / end -->
 						</div>
@@ -1112,7 +1201,7 @@ $(document).ready(function() {
 						style="max-width: 220px; max-height: 220px;" align="center"></div>
 						<div align="center">
 						<span class="btn btn-default btn-file"><span
-						class="fileinput-new">Select image</span><span
+						class="fileinput-new">사진 선택</span><span
 						class="fileinput-exists">Change</span><input type="file"
 						name="upfile[11]"></span> <a href="#"
 						class="btn btn-default fileinput-exists"
@@ -1143,7 +1232,9 @@ $(document).ready(function() {
                                  style="width: 40%;">
                                  <span class="glyphicon glyphicon-ok-sign"></span>다음
                               </button></a>
+                            
 						</div>
+						  <br>  <br>  <br><br>  <br><br>  <br><br>  <br>
 						</div>
 						</div>
 						</div>
@@ -1162,7 +1253,7 @@ $(document).ready(function() {
 <div class="container-fluid">
     <hgroup class="mb20">
 		<h1>판매자 등록</h1>
-		<h2 class="lead"><strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong class="text-danger">상세정보</strong></h2>								
+		<h2 class="lead"><strong class="text-danger">!</strong>최종 확인 페이지 <strong class="text-danger">상세정보</strong></h2>								
 	</hgroup>
 		
 		<section class="col-xs-12 col-sm-6 col-md-12">
@@ -1170,7 +1261,7 @@ $(document).ready(function() {
 						
 				<div class="col-xs-12 col-sm-12 col-md-12 excerpet"><h3><a href="#" title="">회원 상세 정보</a></h3>
 				<div class="span5">
-	            <table class="table table-striped table-condensed">
+	            <table class="table table-condensed">
                   <thead>
                   <tr>
                       <th>이  름</th>
@@ -1180,12 +1271,12 @@ $(document).ready(function() {
                       <th>비  고</th>                                    
                   </tr>
 	              </thead>   
-		          <tbody>
+		          <tbody style="color: black">
 	                <tr>
-	                <td>${userInfo.userName}</td>
-	                <td>${userInfo.addr}</td>
-	                <td>${userInfo.phone}</td>
-	                <td>${userInfo.userId}</td>
+	                <td><h3>${userInfo.userName}</h3></td>
+	                <td><h3>${userInfo.addr}</h3></td>
+	                <td><h3>${userInfo.phone}</h3></td>
+	                <td><h3>${userInfo.userId}</h3></td>
 	                <td></td>                                  
 		            </tr>
 	           	  </tbody>
@@ -1198,7 +1289,7 @@ $(document).ready(function() {
 		
 			<div class="col-xs-12 col-sm-12 col-md-12"><h3><a href="#" title="">차량 세부 사항</a></h3>
 				<div class="span5">
-			    <table class="table table-striped table-condensed">
+			    <table class="table table-condensed">
                 <thead>
                 <tr>
                     <th>차량번호</th>
@@ -1216,21 +1307,21 @@ $(document).ready(function() {
                     <th>사고유무</th>                       
 	            </tr>
 	            </thead>   
-                <tbody>
+                <tbody id="tbody">
                 <tr align="center">
-                    <td align="left"><input type="text" name="carNum" id="p_carNum" size="2"></td>
-                    <td align="left"><input type="text" name="manuCountry"  id="p_manuCountry" size="2"></td>
-                    <td align="left"><input type="text" name="manuCo"  id="p_manuCo" size="2"></td>
-                    <td align="left"><input type="text" name="model"   id="p_model" size="2"></td>
-                    <td align="left"><input type="text" name="color"   id="p_color" size="1"></td>
-                    <td align="left"><input type="text" name="year"   id="p_year" size="1"></td>
-                    <td align="left"><input type="text" name="carYear"   id="p_carYear" size="1"></td>
-                    <td align="left"><input type="text" name="transmission"   id="p_transmission" size="2"></td>
-                    <td align="left"><input type="text" name="fuel"   id="p_fuel" size="1"></td>
-                    <td align="left"><input type="text" name="cc"   id="p_cc" size="2"></td>
-                    <td align="left"><input type="text" name="mileage"   id="p_mileage" size="1"></td>
-                    <td align="left"><input type="text" name="sell"   id="p_sell" size="8"></td>
-                    <td align="left"><input type="text" name="accident"   id="p_accident" size="2"></td>                                      
+                    <td align="left" id="p_carNum"><h3><b></b></h3></td>
+                    <td align="left" id="p_manuCountry"><h3><b></b></h3></td>
+                    <td align="left" id="p_manuCo"><h3><b></b></h3></td>
+                    <td align="left" id="p_model"><h3><b></b></h3></td>
+                    <td align="left"id="p_color"><h3><b></b></h3></td>
+                    <td align="left"id="p_year"><h3><b></b></h3></td>
+                    <td align="left"id="p_carYear"><h3><b></b></h3></td>
+                    <td align="left"id="p_transmission"><h3><b></b></h3></td>
+                    <td align="left"id="p_fuel"><h3><b></b></h3></td>
+                    <td align="left" id="p_cc"><h3><b></b></h3></td>
+                    <td align="left" id="p_mileage"><h3><b></b></h3></td>
+                    <td align="left" id="p_sell"><h3><b></b></h3></td>
+                    <td align="left" id="p_accident"><h3><b></b></h3></td>                                      
                 </tr>
                 <thead>
                 <tr>
@@ -1252,13 +1343,12 @@ $(document).ready(function() {
                       <div class="panel-body">
                           <div class="row">
                               <div class="col-xs-2">
-                                  [내|외장 옵션]    &nbsp;&nbsp;                    
+                                 <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> 내/외장 옵션</span>                  
                               </div>
                               <div class="col-xs-6">
-                                 <input type="text" name="powerWindow" id="p_powerWindow" size="21">
-                                 <input type="text" name="aircorn" id="p_aircorn" size="21">
-                                 <input type="text" name="fullAutoAircorn" id="p_fullAutoAircorn" size="21">
-                                       
+                              	<div id="p_powerWindow"></div><br>
+                                <div id="p_aircorn" ></div><br>
+                                <div id="p_fullAutoAircorn"></div>     
                               </div>
                           </div>
                       </div>
@@ -1267,13 +1357,14 @@ $(document).ready(function() {
                           <div class="panel-body">
                              <div class="row">
                                  <div class="col-xs-2">
-                                     [편 의 장 치]                                           
+                                 <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  편 의 장 치</span>
+                                                                         
                                  </div>
                                  <div class="col-xs-6">
-                                 <input type="text" name="sunRoof" id="p_sunRoof" size="21">
-                                 <input type="text" name="pnrmSunRoof" id="p_pnrmSunRoof" size="21">
-                                 <input type="text" name="hidRam" id="p_hidRam" size="21">
-                                        
+	                                <div id="p_sunRoof"></div>
+	                                <div id="p_pnrmSunRoof" ></div>
+	                                <div id="p_hidRam"></div>
+	                                     
                               </div>
                                 </div>
                          </div>
@@ -1282,12 +1373,12 @@ $(document).ready(function() {
                           <div class="panel-body">
                              <div class="row">
                                  <div class="col-xs-2">
-                                     [안 전 장 치]                                           
+                                  <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  안 전 장 치</span>                                      
                                  </div>
                                   <div class="col-xs-6">
-                                <input type="text" name="navi" id="p_navi" size="21">
-                                 <input type="text" name="hipass" id="p_hipass" size="21">
-                                 <input type="text" name="blackBox" id="p_blackBox" size="21">
+	                                  <div id="p_navi"></div>
+		                                <div id="p_hipass" ></div>
+		                                <div id="p_blackBox"></div>
                                      
                               </div>
                                  </div>
@@ -1297,27 +1388,30 @@ $(document).ready(function() {
                           <div class="panel-body">
                              <div class="row">
                                  <div class="col-xs-2">
-                                 	[AV/오디오/항범]                                             
+                                 	<span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  AV/오디오</span>                                            
                                  </div>
                                   <div class="col-xs-6">
-                                   
-                                 <input type="text" name="driver airbag" id="p_driverairbag" size="21">
-                                 <input type="text" name="driverFriendAirBag" id="p_driverFriendAirBag" size="21">
-                                 <input type="text" name="sideAirBag" id="p_sideAirBag" size="21">
+                                      <div id="p_driverairbag"></div>
+		                                <div id="p_driverFriendAirBag" ></div>
+		                                <div id="p_sideAirBag"></div>
+                                 
                                  
                               </div>
+                         </div>
                          </div>
                          <!--  튜닝사항   -->
                           <!--  AV/오디오/항범  시작  -->
                           <div class="panel-body">
                              <div class="row">
                                  <div class="col-xs-2">
-                                                      [튜 닝 사 항]                          
+                                  <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  튜 닝 사 항</span>                              
                                  </div>
                                   <div class="col-xs-6">
-                                 <input type="text" name="turbo chaser" id="p_turbochaser" size="21">
-                                 <input type="text" name="super chaser" id="p_superchaser" size="21">
-                                 <input type="text" name="airrowFigher" id="p_airrowFigher" size="21">        
+                                       <div id="p_turbochaser"></div>
+		                                <div id="p_superchaser" ></div>
+		                                <div id="p_airrowFigher"></div>
+                                 
+                                    
                               </div>
                          </div>
                          <!--  편의 장치   -->
@@ -1328,7 +1422,7 @@ $(document).ready(function() {
                           <div class="panel-body">
                              <div class="row">
                                  <div class="col-xs-2">
-                                                      [상 세 설 명]                          
+                                           <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  상 세 설 명</span>      
                                  </div>
                                   <div class="col-xs-6" id="textArea">
                                  <textarea name ="info" id="info" rows="15"
@@ -1341,7 +1435,7 @@ $(document).ready(function() {
 	
   <div id="formtest" style="display: ">
  <div class="col-xs-2">
-   [이  미  지]                          
+   <span class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>                     
  </div>
  
  
@@ -1370,7 +1464,7 @@ $(document).ready(function() {
 										style="width: 40%;" type="submit">
 										<span class="glyphicon glyphicon-ok-sign"></span>최종확인
 									</button>						
-								</div><br>
+								</div><br><br>  <br>
 			
 </div>
 </div>
