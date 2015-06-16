@@ -93,8 +93,6 @@
 		</set>
 	</update>
 
-		
-	
 	<!-- 총 게시물  -->
 	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
 		resultType="int">
@@ -119,7 +117,7 @@
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="hashMap"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name,  bid.temp, a.reg_date, a.success_car, a.cnt, a.bid_cnt
+		SELECT a.auction_no, a.model, a.title, u.user_name, u.user_id, u.user_no, u.user_id, bid.temp, a.reg_date, a.success_car, a.cnt, (select count(*) from auctionlist where auction_no = a.auction_no) AS bid_cnt
 			
 		from ( SELECT inner_table.* , ROWNUM AS row_seq 
 			FROM	( SELECT * 
@@ -166,12 +164,5 @@
 				ORDER BY a.auction_no DESC
 	</select>
 
-<select id="listUserBuy" parameterType="com.model2.mvc.service.domain.Auction"
-		resultMap="AuctionSelectMap">
-		SELECT
-		*
-		FROM
-		auction
-		WHERE user_no = #{user.userNo}
-	</select>
+
 </mapper>
