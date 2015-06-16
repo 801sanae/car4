@@ -92,13 +92,13 @@
 		<input type="hidden" id="userId" name="userId">
 
 <!-- nav.jsp -->
+<jsp:include page="../nav.jsp"></jsp:include> 
 <!-- nav.jsp -->
-
+<br><br><br><br>
 
 
 		<div class="container">
 
-<jsp:include page="../nav.jsp"></jsp:include> 
 			<!-- search/orderby -->
 			<div class="row">
 
@@ -251,15 +251,18 @@
 										<td><a
 											href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
 										</td>
-										<td style="position: relative;">${auction.user.userName}(
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#"
-											id="drop1"> ${auction.user.userId} </a>
+										<td style="position: relative;"><span class="glyphicon glyphicon-user"></span>
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop1"> ${auction.user.userName}
+										</a>
 											<ul aria-labelledby="drop1" class="dropdown-menu"
 												style="margin-left: 60px; margin-top: -15px;" role="menu">
 												<li><a href="#">정보 보기</a></li>
 												<li><a href="#message"
-													onClick="OpenWindow( '${auction.user.userName}',${auction.user.userNo}, '${auction.user.userId}')">쪽지보내기</a></li>
-											</ul> )
+													onClick="OpenWindow( '${auction.user.userName}',${auction.user.userNo}, '${auction.user.userId}')"
+													style="background-color:while"
+													}"
+													>쪽지보내기</a></li>
+											</ul> 
 										</td>
 										<td>${auction.regDate}</td>
 
