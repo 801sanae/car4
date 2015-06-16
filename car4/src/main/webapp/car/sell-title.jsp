@@ -262,7 +262,7 @@ $("[data-toggle=tooltip]").tooltip();
         <!-- /.container-fluid -->
     </nav>
 <!--  nav -->
-	<section style="background: #ffffff;">
+<br>
 	
 		<div class="container-fluid">
 			<div class="row">
@@ -1480,7 +1480,6 @@ $("[data-toggle=tooltip]").tooltip();
 </div>
 </div>
 </div>
-</section>
 
 
 </body>
