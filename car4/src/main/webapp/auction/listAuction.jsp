@@ -63,7 +63,7 @@
 	function OpenWindow() {
 		window
 				.open("message/message.jsp", "_blank",
-						"top=250,left=600,width=470,height=240,resizable=1,scrollbars=no");
+						"top=250,left=600,width=470,height=250,resizable=1,scrollbars=no");
 	}
 </script>
 
@@ -76,7 +76,7 @@
 		$("#userId").val(userId);
 		
 		
-		window.open("쪽지 보내기", "value", "top=250,left=600,width=470,height=240");
+		window.open("쪽지 보내기", "value", "top=250,left=600,width=470,height=260");
 		document.detailForm.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
 		document.detailForm.action = "message/message.jsp";
 		/* ?userName="+userName+"&userNo="+userNo; //새창으로 띄울 jsp */
@@ -94,16 +94,11 @@
 		<input type="hidden" id="userId" name="userId">
 
 		<!-- header -->
-		<div class="container">
-			<!-- Second navbar for categories -->
+ 		<div class="container">
 			<div class="row">
-				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
-
-					<a href="#"
-						style="font-size: 50px; padding-left: 20px; color: gray;">Brand</a>
+					<a href="#" style="font-size: 50px; padding-left: 20px; color: gray;">Brand</a>
 				</div>
-
 				<div class="col-md-3" style="margin-top: 10px; padding-left: 100px;">
 					<a href="#" style="color: gray;">Logout</a> &nbsp; <a
 						style="margin-top: 15px;">|</a> &nbsp; <a href="#"
@@ -111,10 +106,9 @@
 					<a href="listMessage.do" >내 쪽지함보기</a>	
 				</div>
 			</div>
-
-		</div>
+		</div> 
 		<!--/header -->
-
+<%-- 		<jsp:include page="/nav.jsp"></jsp:include> --%>
 
 		<!-- navigation var -->
 		<nav class="navbar navbar-default" role="navigation">
