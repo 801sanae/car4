@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,10 @@
     <!-- Bootstrap Core CSS -->
    <jsp:include page="/common/attribute.jsp"></jsp:include>
 </head>
+<!-- 숫자 애니메이션 -->
+
+<script src="js/dynamicNum.js"></script>
+
 
 <body id="page-top" class="index">
     <!-- Navigation -->
@@ -39,7 +44,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services" >Service</a>
+                        <a class="page-scroll service" href="#services" >Service</a>
                     </li>
                     
                 
@@ -89,7 +94,7 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading" style="color:#fed136; font-size:9em" >Car4</div>
-                <a href="#services" class="page-scroll btn btn-xl">서비스    시작하기!</a>
+                <a href="#services" class="service page-scroll btn btn-xl">서비스 시작하기!</a>
             </div>
         </div>
     </header>
@@ -129,7 +134,7 @@
                         <i class="fa fa-lock fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">경매 현황</h4>
-                    <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
+                    <p class="text-muted">전체 매물 <b><span class="a" id="counter1"></span></b>대</p>
                 </div>
             </div>
         </div>
