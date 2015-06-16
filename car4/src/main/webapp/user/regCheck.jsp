@@ -12,8 +12,6 @@
 %>
 <%
 	System.out.println("EMAIL  " + request.getParameter("email"));
-%>
-<%
 	System.out.println("PWD    " + request.getParameter("pwd"));
 %>
 <%
