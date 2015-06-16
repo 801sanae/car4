@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<%--È¸¿ø°¡ÀÔ JSP --%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/common/attribute.jsp"></jsp:include>
+<%--íšŒì›ê°€ì… JSP --%>
 
 <title>Insert title here</title>
 
@@ -25,19 +22,19 @@ $(document).ready(function() {
         //$('#idmessage').show();
         //alert(data);
         //console.log(data);
-        if (jQuery.trim(data)=='YES'){  //alert('»ç¿ë°¡´É');
+        if (jQuery.trim(data)=='YES'){  //alert('ì‚¬ìš©ê°€ëŠ¥');
           
-          $('#idmessage').html("<font color=green>»ç¿ë °¡´ÉÇÕ´Ï´Ù.</font>");
+          $('#idmessage').html("<font color=green>ì‚¬ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.</font>");
           $('#idmessage').show();
         
-          // $('input[name=pwd]').focus();//ÆĞ½º¿öµå·Î ÀÚµ¿ÀÌµ¿
+          // $('input[name=pwd]').focus();//íŒ¨ìŠ¤ì›Œë“œë¡œ ìë™ì´ë™
         }else{
-        //alert('»ç¿ëºÒ°¡´É');
-          $('#idmessage').html("<font color=red>ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù.</font>");
+        //alert('ì‚¬ìš©ë¶ˆê°€ëŠ¥');
+          $('#idmessage').html("<font color=red>ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë””ì…ë‹ˆë‹¤.</font>");
           $('#idmessage').show();
-          //$("input[name=pwd]").val(""); //ÀÔ·ÂÇß´ø ¾ÆÀÌµğ ÃÊ±âÈ­
+          //$("input[name=pwd]").val(""); //ì…ë ¥í–ˆë˜ ì•„ì´ë”” ì´ˆê¸°í™”
           
-          //$('input[name=pwd]').focus();//¾ÆÀÌµğ ÇÊµå·Î ÀÚµ¿ÀÌµ¿
+          //$('input[name=pwd]').focus();//ì•„ì´ë”” í•„ë“œë¡œ ìë™ì´ë™
 
           }
         
@@ -51,10 +48,10 @@ $(document).ready(function() {
           userpwd:$("#input[id=userpwd]").val()
         })  ,
         success:function(data){
-          if ( data =='YES'){  //alert('»ç¿ë°¡´É');               
-                alert("¾î¼­¿É¼î");                          
+          if ( data =='YES'){  //alert('ì‚¬ìš©ê°€ëŠ¥');               
+                alert("ì–´ì„œì˜µì‡¼");                          
               }else{            
-                $('#userPwdmessage').html("<font color=red>¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Àß¸øµÇ¾ú½À´Ï´Ù.</font>");
+                $('#userPwdmessage').html("<font color=red>ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.</font>");
                 $('#userPwdmessage').show();            
               }
         }
@@ -63,15 +60,15 @@ $(document).ready(function() {
     }); */
     $('#loginclick').click(function() {
         if($('#userid').val()==""&&$('#userpwd').val()==""){
-          $('#userPwdmessage').html("<font color=red>¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</font>");
+          $('#userPwdmessage').html("<font color=red>ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</font>");
           $('#userPwdmessage').show();
           $('input[name=userId]').focus();
         }else if($('#userid').val()==""){
-          $('#userPwdmessage').html("<font color=red>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</font>");
+          $('#userPwdmessage').html("<font color=red>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</font>");
           $('#userPwdmessage').show();
           $('input[name=password]').focus();
         }else if($('#userpwd').val()==""){
-          $('#userPwdmessage').html("<font color=red>ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</font>");
+          $('#userPwdmessage').html("<font color=red>ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</font>");
           $('#userPwdmessage').show();
           $('input[name=password]').focus();
         }else{
@@ -84,15 +81,15 @@ $(document).ready(function() {
         var pwd = $("#pwdcheck").val()
         
         if(6 > pwd.length || pwd.length > 12){
-          $('#pwdmessage').html("<font color=red>ºñ¹Ğ¹øÈ£´Â ¹®ÀÚ, ¼ıÀÚ, Æ¯¼ö¹®ÀÚÀÇ Á¶ÇÕÀ¸·Î 6~12ÀÚ¸®·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.</font>");
+          $('#pwdmessage').html("<font color=red>ë¹„ë°€ë²ˆí˜¸ëŠ” ë¬¸ì, ìˆ«ì, íŠ¹ìˆ˜ë¬¸ìì˜ ì¡°í•©ìœ¼ë¡œ 6~12ìë¦¬ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.</font>");
           $('#pwdmessage').show();
         }
         else if(! pwd.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/)){
-          $('#pwdmessage').html("<font color=red>ºñ¹Ğ¹øÈ£´Â ¹®ÀÚ, ¼ıÀÚ, Æ¯¼ö¹®ÀÚÀÇ Á¶ÇÕÀ¸·Î 6~12ÀÚ¸®·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.</font>");
+          $('#pwdmessage').html("<font color=red>ë¹„ë°€ë²ˆí˜¸ëŠ” ë¬¸ì, ìˆ«ì, íŠ¹ìˆ˜ë¬¸ìì˜ ì¡°í•©ìœ¼ë¡œ 6~12ìë¦¬ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.</font>");
           $('#pwdmessage').show();
         }
         else{
-          $('#pwdmessage').html("<font color=green>»ç¿ë°¡´É ÇÕ´Ï´Ù.</font>");
+          $('#pwdmessage').html("<font color=green>ì‚¬ìš©ê°€ëŠ¥ í•©ë‹ˆë‹¤.</font>");
           $('#pwdmessage').show();
         }
       });
@@ -102,10 +99,10 @@ $(document).ready(function() {
         var pwds = $("#pwdchecks").val()
         
         if( pwd == pwds){
-          $('#pwdsmessage').html("<font color=green>ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÕ´Ï´Ù.</font>");
+          $('#pwdsmessage').html("<font color=green>ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•©ë‹ˆë‹¤.</font>");
           $('#pwdsmessage').show();
         }else{
-          $('#pwdsmessage').html("<font color=red>ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.</font>");
+          $('#pwdsmessage').html("<font color=red>ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</font>");
           $('#pwdsmessage').show();
         }
       });
@@ -115,7 +112,7 @@ $(document).ready(function() {
         var check = $.isNumeric(phone2);
         
         if( check == false){
-          alert("¼ıÀÚ¸¸ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+          alert("ìˆ«ìë§Œì…ë ¥í•´ì£¼ì„¸ìš”.");
         }
         
       });
@@ -125,31 +122,31 @@ $(document).ready(function() {
         var check = $.isNumeric(phone3);
         
         if( check == false){
-          alert("¼ıÀÚ¸¸ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+          alert("ìˆ«ìë§Œì…ë ¥í•´ì£¼ì„¸ìš”.");
         }
         
       });
       $("#rclick").click(function(){
         if( $("#id_check").val() == "" ){
-          $('#idmessage').html("<font color=red>ÇÊ¼ö ÀÔ·Â»çÇ×ÀÔ´Ï´Ù.</font>");
+          $('#idmessage').html("<font color=red>í•„ìˆ˜ ì…ë ¥ì‚¬í•­ì…ë‹ˆë‹¤.</font>");
           $('#idmessage').show();
           $('input[name=userId]').focus();
           return false;
         }
         else if( $("#name").val() == ""){
-          $('#namemessage').html("<font color=red>ÇÊ¼ö ÀÔ·Â»çÇ×ÀÔ´Ï´Ù.</font>");
+          $('#namemessage').html("<font color=red>í•„ìˆ˜ ì…ë ¥ì‚¬í•­ì…ë‹ˆë‹¤.</font>");
           $('#namemessage').show();
           $('input[name=userName]').focus();
           return false;
         }
         else if( $("#pwdcheck").val() =="" ){
-          $('#pwdmessage').html("<font color=red>ÇÊ¼ö ÀÔ·Â»çÇ×ÀÔ´Ï´Ù.</font>");
+          $('#pwdmessage').html("<font color=red>í•„ìˆ˜ ì…ë ¥ì‚¬í•­ì…ë‹ˆë‹¤.</font>");
           $('#pwdmessage').show();
           $('input[name=password]').focus();
           return false;
         }
         else if( $("#addr").val() =="" ){
-          $('#addrmessage').html("<font color=red>ÇÊ¼ö ÀÔ·Â»çÇ×ÀÔ´Ï´Ù.</font>");
+          $('#addrmessage').html("<font color=red>í•„ìˆ˜ ì…ë ¥ì‚¬í•­ì…ë‹ˆë‹¤.</font>");
           $('#addrmessage').show();
           $('input[name=addr]').focus();
           return false;
@@ -159,9 +156,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-				<!-- È¸¿ø°¡ÀÔ Å¬¸¯ -->
-        <a style="margin-top: 15px;">|</a> <a style="color: gray"
-          data-toggle="modal" data-target="#myModal"> Sign</a>
+				<!-- íšŒì›ê°€ì… í´ë¦­ -->
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
           aria-labelledby="myModalLabel" aria-hidden="true">
@@ -177,7 +173,7 @@ $(document).ready(function() {
               <div class="modal-body">
                 <div class="container">
 
-                  <h2>È¯¿µÇÕ´Ï´Ù!!</h2>
+                  <h2>í™˜ì˜í•©ë‹ˆë‹¤!!</h2>
 
                   <form class="form-horizontal" role="form" name="registerForm"
                     method="post" action="addUser.do">
@@ -188,7 +184,7 @@ $(document).ready(function() {
                         <input type="email" class="form-control" id="id_check"
                           name="userId" placeholder="Enter email">
                         
-                        <!-- <button type="button" id="id_check">Áßº¹Ã¼Å©</button><br/> -->
+                        <!-- <button type="button" id="id_check">ì¤‘ë³µì²´í¬</button><br/> -->
                         <div id="idmessage" style="display: none;"></div>
                       </div>
                     </div>
@@ -226,7 +222,7 @@ $(document).ready(function() {
                         name="phone">Phone:</label>
                       <div class="col-sm-2" name="phone1">
                         <select class="form-control" name="phone1">
-                          <option>¼±ÅÃ</option>
+                          <option>ì„ íƒ</option>
                           <option value="010">010</option>
                           <option value="011">011</option>
                           <option value="018">018</option>
@@ -234,12 +230,12 @@ $(document).ready(function() {
                         </select>
                       </div>
                       <div class="col-md-1" name="phone2">
-                        <input class="form-control" id="phone2" placeholder="ÀÔ·Â"
+                        <input class="form-control" id="phone2" placeholder="ì…ë ¥"
                           name="phone2">
                         <div id="phone2message" style="display: none;"></div>
                       </div>
                       <div class="col-md-1" name="phone3">
-                        <input class="form-control" id="phone3" placeholder="ÀÔ·Â"
+                        <input class="form-control" id="phone3" placeholder="ì…ë ¥"
                           name="phone3">
                         <div id="phone3message" style="display: none;"></div> 
                       </div>
@@ -262,12 +258,12 @@ $(document).ready(function() {
                         </div>
                         <div class="col-md-5">
                             <input class="form-control btn btn-primary" type="button"
-                              onclick="sample4_execDaumPostcode()" value="¿ìÆí¹øÈ£ Ã£±â"><br>
+                              onclick="sample4_execDaumPostcode()" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°"><br>
                         </div>
                        </div>  
                         
-                          <input class="form-control" type="text" id="sample4_roadAddress" placeholder="µµ·Î¸íÁÖ¼Ò">
-                          <input class="form-control" type="text" id="sample4_jibunAddress" placeholder="Áö¹øÁÖ¼Ò">
+                          <input class="form-control" type="text" id="sample4_roadAddress" placeholder="ë„ë¡œëª…ì£¼ì†Œ">
+                          <input class="form-control" type="text" id="sample4_jibunAddress" placeholder="ì§€ë²ˆì£¼ì†Œ">
                           <span id="guide" style="color:#999"></span>-->
                         <div id="addrmessage" style="display: none;"></div>    
                       </div>
@@ -277,7 +273,7 @@ $(document).ready(function() {
                       <label class="control-label col-sm-1" for="gender" name="sex">Gender:</label>
                       <div class="col-sm-4" name="sex">
                         <select class="form-control" name="sex">
-                          <option>¼±ÅÃ</option>
+                          <option>ì„ íƒ</option>
                           <option value="male">male</option>
                           <option value="female">female</option>
                         </select>
@@ -289,12 +285,12 @@ $(document).ready(function() {
                 <button type="button" class="btn btn-default"
                   data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" id="rclick" name="btn_is_alert"
-                onclick="btn_is_alert_click();" value="¾Ë¸²Ã¢">µî·Ï</button>
+                onclick="btn_is_alert_click();" value="ì•Œë¦¼ì°½">ë“±ë¡</button>
               </div>
             </div>
           </div>
         </div>
         </form>
-        <!-- È¸¿ø°¡ÀÔ ³¡ -->
+        <!-- íšŒì›ê°€ì… ë -->
 </body>
 </html>

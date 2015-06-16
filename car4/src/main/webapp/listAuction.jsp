@@ -80,9 +80,6 @@
 	<!--/header -->
 
 
-	<!-- nav bar -->
-	<jsp:include page="nav.jsp"></jsp:include>
-	<!-- nav bar -->
 	
 
 	

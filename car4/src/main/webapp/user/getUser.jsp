@@ -44,7 +44,7 @@
 	<!--/header -->
 
  <!-- nav bar  -->
-    <jsp:include page="../nav.jsp"></jsp:include>
+    
   <!--  nav end -->
 
 	<h3 style="margin-left: 100px">내 정보 수정</h3>

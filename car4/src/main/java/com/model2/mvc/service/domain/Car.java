@@ -181,8 +181,10 @@ public class Car {
 				+ carYear + ", transmission=" + transmission + ", fuel=" + fuel
 				+ ", cc=" + cc + ", mileage=" + mileage + ", sell=" + sell
 				+ ", accident=" + accident + ", user=" + user + ", tranCode="
-				+ tranCode + "]";
+				+ tranCode + ", info=" + info + "]";
 	}
+
+
 
 
 

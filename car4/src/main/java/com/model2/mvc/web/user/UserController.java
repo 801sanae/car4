@@ -260,7 +260,7 @@ public class UserController {
 		// Model 과 View 연결
 		model.addAttribute("userInfo", userInfo);
 		System.out.println("들어와?2");
-		return "forward:/sell-title.jsp";
+		return "forward:/car/sell-title.jsp";
 	}
 	
 	
@@ -288,7 +288,7 @@ public class UserController {
 	      model.addAttribute("resultPage", resultPage);
 	      model.addAttribute("search", search);
 	      
-	      return "forward:/my_sell.jsp";
+	      return "forward:/car/my_sell.jsp";
 	   }
 	
 }

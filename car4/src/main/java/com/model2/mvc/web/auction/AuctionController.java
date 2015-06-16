@@ -89,7 +89,7 @@ public class AuctionController {
 		//Business Logic
 		auctionService.addAuction(auction);
 		session.setAttribute("auction", auction);
-		return "redirect:/listAuction.do";
+		return "redirect:/auction/listAuction.do";
 	}
 
 
@@ -131,8 +131,7 @@ public class AuctionController {
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
 
-
-		return "forward:/listAuction.jsp";
+		return "forward:/auction/listAuction.jsp";
 	}
 
 
@@ -239,7 +238,7 @@ public class AuctionController {
 		//list.get(0).getBidCarNo().getCarNo()
 		model.addAttribute("auctionList", list);
 		model.addAttribute("user", user);
-		return "forward:carView.jsp";
+		return "forward:/auction/carView.jsp";
 	}
 
 
@@ -288,7 +287,7 @@ public class AuctionController {
 
 		model.addAttribute("fileUpload", fileUpload);
 
-		return "forward:getSeller.jsp";
+		return "forward:/auction/getSeller.jsp";
 	}
 
 
@@ -304,7 +303,7 @@ public class AuctionController {
 		//낙찰 후 car테이블의 tran_code 변경
 		carService.updateCar(carNo);
 
-		return "redirect:/mypage.jsp";
+		return "forward:/listUserBuy.do";
 	}
 
 
@@ -336,7 +335,7 @@ public class AuctionController {
 		model.addAttribute("user", user);
 		model.addAttribute("auction", dbAuction);
 		
-		return "forward:mypage.jsp";
+		return "forward:/auction/mypage.jsp";
 	}
 	
 }

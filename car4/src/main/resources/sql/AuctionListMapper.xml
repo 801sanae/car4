@@ -66,7 +66,7 @@
  </insert>
  
  <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
-	 SELECT
+  SELECT
 	 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
 	 FROM
 	 auctionlist a , car c
@@ -75,8 +75,7 @@
 	 and c.car_no = a.car_no
 	 ORDER BY a.bid_price
  </select>
-
-<select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
+ <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
 		resultMap="AuctionListSelectMap">
 	SELECT
 	*

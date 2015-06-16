@@ -59,7 +59,7 @@
    <!--/header End  -->
   
   <!-- nav bar  -->
-    <jsp:include page="../nav.jsp"></jsp:include>
+   
   <!--  nav end -->
    <div class="container-fluid"
       style="padding-left: 500px; padding-right: 500px; margin-top: 150px;">

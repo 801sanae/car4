@@ -41,5 +41,4 @@ public class AuctionListServiceImpl implements AuctionListService {
 		return auctionListDao.getAuctionList(auctionList);
 	}
 
-	
 }

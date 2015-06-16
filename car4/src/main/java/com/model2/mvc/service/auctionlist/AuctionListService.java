@@ -12,5 +12,4 @@ public interface AuctionListService {
 	public List<AuctionList> getBidList(int auctionNo);
 
 	public AuctionList getAuction(AuctionList auctionList);
-
 }

@@ -12,12 +12,11 @@
 
 	<resultMap id="MessageSelectMap" type="com.model2.mvc.service.domain.Message">
 		<result property="messageNo" column="message_no" jdbcType="INTEGER" />
-		<result property="sendUser" column="SEND_USER_NO" jdbcType="INTEGER" />
+		<result property="user.userNo" column="user_no" jdbcType="INTEGER" />
 		<result property="contents" column="contents" jdbcType="VARCHAR" />
 		<result property="regDate" column="reg_date" jdbcType="DATE" />
 		<result property="tranCode" column="tran_code" jdbcType="VARCHAR" />
-		<result property="temp" column="temp" jdbcType="VARCHAR" />
-
+		
 		<association property="user" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" column="user_id" jdbcType="VARCHAR" />
 			<result property="userNo" column="user_no" jdbcType="INTEGER" />
@@ -37,56 +36,75 @@
 	<insert id="addMessage" parameterType="com.model2.mvc.service.domain.Message">
 		INSERT
 		INTO
-		MESSAGE(message_no,
-		send_user_no, contents, reg_date,
-		user_no,
-		tran_code)
+		MESSAGE(message_no, user_no, contents, reg_date)
 		VALUES(
 		message_no.nextval,
-		#{sendUser:INTEGER},
-		#{contents:VARCHAR},
-		SYSDATE,
-		#{user.userNo:INTEGER},
-		1
+		#{user.userNo},
+		#{contents},
+		SYSDATE
 		)
 	</insert>
-
+	
 	<!-- 총 게시물  -->
-	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
+	<select id="getTotalCount" 
 		resultType="int">
 		SELECT COUNT(*)
 		FROM( SELECT message_no 
-		FROM message
-		<if test="searchCondition != null">
-			<where>
-				<if test="searchCondition == 0 and searchKeyword !='' ">
-					send_user_no = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1 and searchKeyword !='' ">
-					model LIKE '%'||#{searchKeyword}||'%'
-				</if>
-			</where>
-		</if>
-		) countTable
+		FROM Message
+				) countTable
 	</select>
-
- <!-- <select 	id="getMessageList" resultMap="MessageSelectMap" parameterType="com.model2.mvc.common.Search">
- select*from message;
- </select> -->
- 
-   
-
-  	 <select 	id="getMessageList" resultMap="MessageSelectMap" parameterType="hashMap">
-		SELECT  message_no,  contents,  reg_date,  tran_code, 	(select u.user_name from users  u where u.user_no = send_user_no ) AS temp	
-	  	FROM  (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT *
-											FROM message
-											ORDER BY reg_date DESC ) inner_table WHERE ROWNUM &lt;= #{search.endRowNum} )  
-		WHERE user_no=#{userNo:INTEGER}
-						AND  row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
-	 </select>
-
-	<select id="getMessage" parameterType="int" resultMap="MessageSelectMap">
+		
+	<!-- 리스트 뿌리기 -->
+<!-- 	<select id="getMessageList" parameterType="hashMap"
+		resultMap="MessageSelectMap">
+		SELECT a.auction_no, a.model, a.title, u.user_name,  bid.temp, a.reg_date, a.success_car, a.cnt, a.bid_cnt
+		from ( SELECT inner_table.* , ROWNUM AS row_seq 
+			FROM	( SELECT * 
+						FROM ( SELECT * FROM message
+							<if test="search.tabs != 0">
+								<where>
+									<if test="search.tabs == 1 and search.tabs !='' ">
+										success_car = 0
+									</if>
+									<if test="search.tabs == 2 and search.tabs !='' ">
+										NOT success_car = 0
+									</if>
+								</where>
+							</if>  ) message
+										<if test="search.searchCondition != -1 and search.searchKeyword !='' ">
+											<where>
+												<if test="search.searchCondition == 0 and search.searchKeyword !='' ">
+													auction_no = #{search.searchKeyword}
+												</if>
+												<if test="search.searchCondition == 1 and search.searchKeyword !='' ">
+													model like #{search.searchKeyword}
+												</if>
+											</where>
+										</if>  ORDER BY 
+												 <choose>
+												    <when test=" search.orderby == 1 and search.orderby !='' ">
+														bid_cnt DESC
+												    </when>
+												    <when test=" search.orderby == 2 and search.orderby !='' ">
+														cnt DESC
+												    </when>
+												    <otherwise>
+														auction_no DESC
+												    </otherwise>
+												  </choose> ) inner_table
+														WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u,(SELECT al.auction_no AS auction_no, c.car_no AS temp 
+																												FROM auctionlist al, car c
+																												WHERE al.car_no = c.car_no 
+																												AND c.user_no =  #{userNo}) bid	
+																					
+				where u.user_no = a.user_no(+)
+				AND bid.auction_no(+) = a.auction_no
+				AND row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+				ORDER BY a.auction_no DESC
+	</select>
+ -->
+	<select id="getMessage" parameterType="int"
+		resultMap="MessageSelectMap">
 		SELECT *
 		FROM
 		message
@@ -94,18 +112,12 @@
 		message_no = #{messageNo}
 	</select>
 
-	<update id="updateTranCode" parameterType="int">
+	<update id="updateTranCode" parameterType="com.model2.mvc.service.domain.Message">
 		UPDATE message
 		<set>
-			tran_code = 2
+			tranCode = #{tranCode:VARCHAR}
 		</set>
-		WHERE message_no = #{messageNo}
+		WHERE tran_code = #{tranCode}
 	</update>
-
-	<delete  id="deleteMessage" parameterType="int">
-	  DELETE FROM message 
-	  WHERE 
-	  message_no = #{messageNo}
-	  </delete>
 
 </mapper>

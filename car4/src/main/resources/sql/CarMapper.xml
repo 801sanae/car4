@@ -259,7 +259,8 @@
       fuel   = #{fuel:VARCHAR},
       mileage   = #{mileage:INTEGER},
       sell   = #{sell:VARCHAR},
-      accident   = #{accident:VARCHAR}
+      accident   = #{accident:VARCHAR},
+      info = #{info:VARCHAR}
       </set>
       WHERE car_No = #{carNo}
   </update>

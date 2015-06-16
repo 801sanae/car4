@@ -207,6 +207,7 @@ public class CarController {
 	
 
 	
+
 	@RequestMapping("/check.do")
 	public String check( @ModelAttribute("car") Car car, HttpSession session, HttpServletRequest request) throws Exception {
 
@@ -250,7 +251,7 @@ public class CarController {
 	      model.addAttribute("carOption", carOptions);
 	      model.addAttribute("list", map.get("list"));
 
-	      return "forward:/my_sell2.jsp";
+	      return "forward:/car/my_sell2.jsp";
 	   }
 	
 	@RequestMapping("/updateCar.do")
@@ -325,7 +326,7 @@ public class CarController {
 	         }
 	      }
 	      
-	      return "forward:/my_sell2.jsp";
+	      return "forward:/car/my_sell2.jsp";
 	   }
 	
 

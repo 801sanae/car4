@@ -31,7 +31,6 @@ CREATE TABLE car(
 	user_no integer references users(user_no),
 	bid char(3),
 	auction_no integer,
-	info varchar2(255),
 	primary key(car_no)
 );
 
@@ -150,7 +149,6 @@ sell  varchar2(50) not null,
 accident  varchar2(50) not null,
 price integer,
 tran_code char(3),
-info varchar2(255),
 user_no integer references users(user_no), 
 primary key(car_no)
 );
@@ -239,21 +237,18 @@ create table auctionList(
           auctionList_no integer,
 car_no integer REFERENCES car(car_no),
 auction_no integer REFERENCES auction(auction_no),regDate date,
-bid_reg_date date,
-bid_price integer,
           PRIMARY KEY(auctionList_no)
 );
 
 
 create table message(
-message_no integer,
-user_no integer REFERENCES users(user_no),
-send_user_no integer,
-contents varchar2(255),
-reg_date date,
-tran_code varchar2(20),
-PRIMARY KEY(message_no)
-);
+user_no integer,
+contents varchar(200)
+reg_date date);
+
+
+
+
 
 create sequence auction_no increment by 1 start with 1;
 
@@ -264,8 +259,6 @@ CREATE sequence car_no increment by 1000 start with 1;
 CREATE sequence carOption_no increment by 1 start with 1;
 
 CREATE sequence auctionList_no increment by 1 start with 1;
-
-CREATE sequence message_no increment by 1 start with 1;
 
 
 

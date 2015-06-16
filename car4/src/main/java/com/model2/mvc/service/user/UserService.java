@@ -33,8 +33,7 @@ public interface UserService {
 	public User getUserInfo(User user) throws Exception;
 	
 	public User getUserForNo(int userNo) throws Exception;
-	
 	//옥션넘버로 유저 찾아오기
-	public int getUserNoForAuctionNo(int auctionNo) throws Exception;
-	
+		public int getUserNoForAuctionNo(int auctionNo) throws Exception;
+		
 }

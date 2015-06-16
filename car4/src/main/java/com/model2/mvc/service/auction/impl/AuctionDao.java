@@ -71,7 +71,6 @@ public class AuctionDao{
 		
 		sqlSession.update("AuctionMapper.updateAuction", hashMap);
 	}
-
 	//내 옥션 리스트
 	public List<Auction> listUserBuy(Auction auction) {
 		return sqlSession.selectList("AuctionMapper.listUserBuy", auction);

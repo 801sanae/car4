@@ -96,7 +96,6 @@ public class AuctionListController {
 		
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
 		
-		
 		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 		List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????

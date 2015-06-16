@@ -321,20 +321,20 @@ $(document).ready(function() {
 								<br>
 								<tr>
 									<td>제조사</td>
-											<td>${auction.manuCo}</td> <!-- Action 값만 넣으삼 -->
+											<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 									<td>모델명</td>
-									<td>${auction.model}</td> <!-- Action 값만 넣으삼 -->
+									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 									<td>주행거리</td>
-									<td>${list[0].mileage}</td> <!-- Action 값만 넣으삼 -->
+									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 								
 									<td>연식</td>
-									<td>${file[0].imgPath}</td> <!-- Action 값만 넣으삼 -->
+									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 						</table>
 					<!--  입찰가격 -->	
