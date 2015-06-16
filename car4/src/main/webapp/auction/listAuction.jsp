@@ -6,8 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css\bootstrap.css" rel="stylesheet">
-<link href="css\bootstrap-theme.min.css" rel="stylesheet">
 <link href="css\tabs.css" rel="stylesheet">
 
 
@@ -93,67 +91,14 @@
 		<input type="hidden" id="userNo" name="userNo"> 
 		<input type="hidden" id="userId" name="userId">
 
-		<!-- header -->
- 		<div class="container">
-			<div class="row">
-				<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
-					<a href="#" style="font-size: 50px; padding-left: 20px; color: gray;">Brand</a>
-				</div>
-				<div class="col-md-3" style="margin-top: 10px; padding-left: 100px;">
-					<a href="#" style="color: gray;">Logout</a> &nbsp; <a
-						style="margin-top: 15px;">|</a> &nbsp; <a href="#"
-						style="color: gray;"> 고객센터</a>
-					<a href="listMessage.do" >내 쪽지함보기</a>	
-				</div>
-			</div>
-		</div> 
-		<!--/header -->
-<%-- 		<jsp:include page="/nav.jsp"></jsp:include> --%>
-
-		<!-- navigation var -->
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid" style="margin-left: 48px">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#"></a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav">
-						<li><a href="#">MyList</a></li>
-						<li class="dropdown mega-dropdown active"><a href="#"
-							style="background-color: #f8f8f8;" class="dropdown-toggle"
-							data-toggle="dropdown">등록하기</a> <!-- Sub menu -->
-							<div class="dropdown-menu mega-dropdown-menu">
-								<div align="center">
-									<span> <a href="#" style="color: gray;"
-										data-toggle="tab">국산차</a>&nbsp;&nbsp;
-									</span> <span> <a href="#" style="color: gray;"
-										data-toggle="tab">수입차</a></span>
-								</div>
-							</div> <!-- /.Sub menu --></li>
-					</ul>
-
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-		<!-- /navigation var -->
-
-
+<!-- nav.jsp -->
+<!-- nav.jsp -->
 
 
 
 		<div class="container">
 
+<jsp:include page="../nav.jsp"></jsp:include> 
 			<!-- search/orderby -->
 			<div class="row">
 
@@ -400,14 +345,7 @@
 
 
 
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<!--  <script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-	<script src="js/title.js"></script>
 	<script src="js/bootstrap-slider.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </body>
 </html>
