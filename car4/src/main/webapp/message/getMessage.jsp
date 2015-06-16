@@ -19,9 +19,9 @@
                     
                     <p>${message.contents}</p>
                  
-                    <a href="listMessage.do" class="btn">뒤로</a>
-                    <a href="deleteMessage.do?messageNo=${message.messageNo }" class="btn">삭제</a>
-                    <a href="message/message.jsp?userName=<%=request.getParameter("userName")%>&userNo=<%=request.getParameter("userNo")%>" class="btn">답장하기</a>
+                    <a href="listMessage.do" class="btn"><span class="glyphicon glyphicon-arrow-left"></span> 뒤로</a>
+                    <a href="deleteMessage.do?messageNo=${message.messageNo }" class="btn"><span class="glyphicon glyphicon-trash"></span>삭제</a>
+                    <a href="message/message.jsp?userName=<%=request.getParameter("userName")%>&userNo=<%=request.getParameter("userNo")%>" class="btn">답장하기 <span class="glyphicon glyphicon-arrow-right" ></span> </a>
                 </div>
             </div>
         </div>
