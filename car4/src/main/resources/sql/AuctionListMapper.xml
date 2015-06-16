@@ -14,7 +14,7 @@
      
       <result property="auctionListNo"		column="auctionList_no"		jdbcType="INTEGER" />
       <result property="bidPrice"			column="bid_price"			jdbcType="INTEGER" />
-      <result property="bidRegDate"			column="bid_reg_date"		jdbcType="DATE" />
+      <result property="bidRegDate"			column="bid_reg_date"		jdbcType="VARCHAR" />
       
 	  <association property="bidCarNo" javaType="com.model2.mvc.service.domain.Car">	
 			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
@@ -59,7 +59,7 @@
  <insert id="addAuctionList"   parameterType="com.model2.mvc.service.domain.AuctionList" >
  	INSERT
     INTO
-    auctionlist(auctionList_no, bid_price, car_no, auction_no, bid_reg_date)
+    auctionlist(auctionList_no, bid_price, car_no, auction_no)
     VALUES(auctionList_no.nextval, #{bidPrice},
     #{bidCarNo.carNo},
     #{bidAuctionNo.auctionNo}, sysdate)     
@@ -67,7 +67,8 @@
  
  <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
   SELECT
-	 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
+	 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, TO_CHAR
+    (a.bid_reg_date, 'YYYY-MM-DD HH24:MI:SS') bid_reg_date, c.model, c.tran_code
 	 FROM
 	 auctionlist a , car c
 	 WHERE
@@ -75,7 +76,8 @@
 	 and c.car_no = a.car_no
 	 ORDER BY a.bid_price
  </select>
- <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
+
+<select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
 		resultMap="AuctionListSelectMap">
 	SELECT
 	*
