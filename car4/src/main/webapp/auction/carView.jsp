@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <%--날짜 포맷 라이브러리 --%>
+<jsp:useBean id="toDay" class="java.util.Date" />
 
 
 <%-- <%@ page import="java.util.List"  %>
@@ -37,7 +38,6 @@ function fncGetProductList(currentPage){
 </script>
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style>
 th {
     border: 1px solid black;
@@ -54,8 +54,12 @@ td, tr {
 <title>Insert title here</title>
 </head>
 <body>
+<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" var="toDay"/> <%--${toDay} 값에 toDay 세팅 var 지우면 toDay확인가능 --%>
+<jsp:include page="../nav.jsp"></jsp:include>
+<br><br><br><br>
+<div class="container">
 ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
-<div class="container" id="#container-info">
+<div class="container-fluid" id="#container-info">
 		<div class="row">
 			<div class="col-lg-12 toggle-header" align="center">구매상세정보</div>
 		</div>
@@ -133,6 +137,7 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
 		<c:set var="i" value="${i+1}" />
+		<fmt:formatDate value="${auctionList.bidRegDate}" pattern="yyyy-MM-dd" var="auctionDay"/>
 		<tr class="ct_list_pop">
 			<td align="center">${ i }</td>
 			<td align="center"></td>
@@ -148,7 +153,16 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 			<td align="left"></td>
 			<td align="left"><fmt:formatNumber type="currency" currencySymbol="￦" value="${auctionList.bidPrice }"/></td>
 			<td align="left"></td>
-			<td align="left"><fmt:formatDate value="${auctionList.bidRegDate}" pattern="MM월 dd일 hh:mm"></fmt:formatDate></td>		
+			<td align="left">
+				<c:choose>
+					<c:when test="${toDay < auctionDay}">
+ 						<fmt:formatDate value="${auctionList.bidRegDate}" pattern="MM-dd hh:mm"/>
+     				</c:when>
+					<c:otherwise>
+        				<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd"/>
+    				</c:otherwise>
+				</c:choose>
+			</td>		
 			<td align="left"></td>
 			<td align="left">${empty auctionList.bidCarNo.tranCode ? "안팔림" : "팔림"  }</td>
 		
@@ -216,6 +230,6 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 </div><!-- Container 끝 -->
 <br><br>
 
-
+</div>
 </body>
 </html>
