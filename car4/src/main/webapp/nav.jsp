@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <jsp:include page="/common/attribute.jsp"></jsp:include>
 <style>
-.dropdown-menu {
+.navDropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -40,6 +40,8 @@ $(document).ready(function() {
 
 $("[data-toggle=tooltip]").tooltip();
 </script>
+<div class="container-fulid">
+<div class="row">
 <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
         <div class="container-fluid" style="margin-left: 48px">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,7 +59,7 @@ $("[data-toggle=tooltip]").tooltip();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                 	<li><a href="getUserInfo.do">Sell</a></li>
-               		<li><a href="buy.jsp">Buy</a></li>
+               		<li><a href="buy/buy.jsp">Buy</a></li>
                     <li>
                         <a></a>
                     </li>
@@ -71,7 +73,7 @@ $("[data-toggle=tooltip]").tooltip();
 				</c:if>
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
-	                    <ul class="dropdown-menu" role="menu" style="display: none;">
+	                    <ul class="dropdown-menu navDropdown-menu" role="menu" style="display: none;">
 	                      <li><a href="getUser.do">회원정보 수정</a></li>
 	                      <li><a href="listUserBuy.do">구매리스트</a></li>
 	                      <li><a href="listUserSell.do">판매리스트</a></li>
@@ -86,3 +88,5 @@ $("[data-toggle=tooltip]").tooltip();
         </div>
         <!-- /.container-fluid -->
     </nav>
+</div>
+</div>
