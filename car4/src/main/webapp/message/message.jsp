@@ -147,7 +147,7 @@
 	<div class="panel-body" style="margin-top: 0px;">
 		                                   
 		<form accept-charset="UTF-8" method="post"
-			action="/car6/addMessageContents.do?userNo=<%=request.getParameter("userNo")%>">
+			action="/addMessageContents.do?userNo=<%=request.getParameter("userNo")%>">
 			                    받는 사람 :   <%=request.getParameter("userName")%>
 			                            
 			<textarea class="form-control counted" name="contents"
