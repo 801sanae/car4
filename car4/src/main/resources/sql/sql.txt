@@ -241,10 +241,16 @@ auction_no integer REFERENCES auction(auction_no),regDate date,
 );
 
 
-create table message(
-user_no integer,
-contents varchar(200)
-reg_date date);
+CREATE TABLE MESSAGE
+(
+   MESSAGE_NO     NUMBER NOT NULL,
+   USER_NO        NUMBER REFERENCES USERS(user_no),
+   SEND_USER_NO   NUMBER,
+   CONTENTS       VARCHAR2(400) NOT NULL,
+   REG_DATE       DATE,
+   TRAN_CODE      VARCHAR2 (20),
+   PRIMARY KEY(MESSAGE_NO)
+)
 
 
 
@@ -260,5 +266,5 @@ CREATE sequence carOption_no increment by 1 start with 1;
 
 CREATE sequence auctionList_no increment by 1 start with 1;
 
-
+CREATE sequence message_no increment by 1 start with 1;
 
