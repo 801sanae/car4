@@ -77,7 +77,8 @@
    
 
   	 <select 	id="getMessageList" resultMap="MessageSelectMap" parameterType="hashMap">
-		SELECT  message_no,  contents,  reg_date,  tran_code, 	(select u.user_name from users  u where u.user_no = send_user_no ) AS temp	
+		SELECT  message_no,  contents,  reg_date,  tran_code, 	send_user_no,
+						 (select u.user_name from users  u where u.user_no = send_user_no ) AS temp	
 	  	FROM  (	SELECT inner_table.* , ROWNUM AS row_seq
 	  					FROM		(	
 	  										SELECT *
