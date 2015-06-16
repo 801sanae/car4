@@ -241,11 +241,12 @@ auction_no integer REFERENCES auction(auction_no),regDate date,
 );
 
 
+
 CREATE TABLE MESSAGE
 (
    MESSAGE_NO     NUMBER NOT NULL,
-   USER_NO        NUMBER REFERENCES USERS(user_no),
-   SEND_USER_NO   NUMBER,
+   USER_NO        NUMBER REFERENCES USERS(user_no) NOT NULL,
+   SEND_USER_NO   NUMBER NOT NULL,
    CONTENTS       VARCHAR2(400) NOT NULL,
    REG_DATE       DATE,
    TRAN_CODE      VARCHAR2 (20),
