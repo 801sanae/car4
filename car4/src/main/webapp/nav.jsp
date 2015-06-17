@@ -83,7 +83,7 @@ $("[data-toggle=tooltip]").tooltip();
 	                    </ul>
 	                </li>	
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
+					<li><a style="cursor: pointer;" href="logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
 				</c:if>
                 </ul>
             </div>
