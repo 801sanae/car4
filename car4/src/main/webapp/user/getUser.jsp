@@ -30,7 +30,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
 
-				<a href="../index.jsp"
+				<a href="/index.jsp"
 					style="font-size: 50px; padding-left: 20px; color: gray;">Car4</a>
 			</div>
 
