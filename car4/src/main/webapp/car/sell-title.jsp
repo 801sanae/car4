@@ -12,6 +12,8 @@
 <!-- image upload -->
 <link href="../css/jasny-bootstrap.css" rel="stylesheet">
 <link href="../css/jasny-bootstrap.css.map" rel="stylesheet">
+<script src="https://code.jquery.com/jquery.js"></script>
+
 <script src="../js/sell-title2.js"></script>
 
 <meta charset="utf-8">
@@ -32,7 +34,6 @@
 }
 </style>
 
-<script src="../js/jasny-bootstrap.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -74,43 +75,119 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
+	
     $('#next3').click(function() {
     	var qu = $("form[name=form3]").serialize();
-    	var q = $("#info-text").val();
-    	$("#info").val(q);
-        $.ajax({
+    	var q = $("#info").val();
+    	$.ajax({
             url : 'car/duplicate2.jsp',
             type : 'post',
             data : {
                 qu : qu
             },
             dataType:'json',
+            
             success : function(result) {
-            	alert(result.powerWindow);
-            	$("#p_powerWindow").append(result.powerWindow);
-            	$("#p_aircorn").append(result.aircorn);
-            	$("#p_fullAutoAircorn").append(result.fullAutoAircorn);
+            	if(result.powerWindow == 'powerWindow'){
+            		$("#p_powerWindow").append('파워윈도우');	
+            	}else{
+            		$("#p_powerWindow").hide();
+            	}
+            	if(result.airCorn == 'airCorn'){
+            		$("#p_airCorn").append('에어콘');	
+            	}else{
+            		$("#p_airCorn").hide();
+            	}
+            	if(result.fullAutoAircorn == 'fullAutoAircorn'){
+            		$("#p_fullAutoAircorn").append('풀오토 에어콘');	
+            	}else{
+            		$("#p_fullAutoAircorn").hide();
+            	}
             	
-            	$("#p_sunRoof").append(result.sunRoof);
-            	$("#p_pnrmSunRoof").append(result.pnrmSunRoof);
-            	$("#p_hidRam").append(result.hidRam);
+            	//--------------------------------------------
             	
-            	$("#p_navi").append(result.navi);
-            	$("#p_hipass").append(result.hipass);
-            	$("#p_blackBox").append(result.blackBox);
+            	if(result.sunRoof == 'sunRoof'){
+            		$("#p_sunRoof").append('썬루프');	
+            	}else{
+            		$("#p_sunRoof").hide();
+            	}
             	
-            	$("#p_driverairbag").append(result.driverAirBag);
-            	$("#p_driverFriendAirBag").append(result.driverFriendAirBag);
-            	$("#p_sideAirBag").append(result.sideAirBag);
+            	if(result.pnrmSunRoof == 'pnrmSunRoof'){
+            		$("#p_pnrmSunRoof").append('파노라마썬루프');	
+            	}else{
+            		$("#p_pnrmSunRoof").hide();
+            	}
             	
-            	$("#p_turbochaser").append(result.turboChaser);
-            	$("#p_superchaser").append(result.superChaser);
-            	$("#p_airrowFigher").append(result.airrowFigher);
+            	if(result.hidRam == 'hidRam'){
+            		$("#p_hidRam").append('하이드램');	
+            	}else{
+            		$("#p_hidRam").hide();
+            	}
             	
+            	
+            	//---------------------------------------------
+            	if(result.navi == 'navi'){
+            		$("#p_navi").append('네비게이션');	
+            	}else{
+            		$("#p_navi").hide();
+            	}
+            	
+            	if(result.hipass == 'hipass'){
+            		$("#p_hipass").append('하이패스');	
+            	}else{
+            		$("#p_hipass").hide();
+            	}
+            	
+            	if(result.blackBox == 'blackBox'){
+            		$("#p_blackBox").append('블랙박스');	
+            	}else{
+            		$("#p_blackBox").hide();
+            	}
+            	
+            	//--------------------------------------------
+            	if(result.driverAirBag == 'driverAirBag'){
+            		$("#p_driverairbag").append('운전석에어백');	
+            	}else{
+            		$("#p_driverairbag").hide();
+            	}
+            	
+            	if(result.driverFriendAirBag == 'driverFriendAirBag'){
+            		$("#p_driverFriendAirBag").append('조수석에이백');	
+            	}else{
+            		$("#p_driverFriendAirBag").hide();
+            	}
+            	
+            	if(result.sideAirBag == 'sideAirBag'){
+            		$("#p_sideAirBag").append('사이드에어백');	
+            	}else{
+            		$("#p_sideAirBag").hide();
+            	}
+            	//---------------------------------------------
+            	
+            	if(result.turboChaser == 'turboChaser'){
+            		$("#p_turbochaser").append('터보의자');	
+            	}else{
+            		$("#p_turbochaser").hide();
+            	}
+            	
+            	if(result.superChaser == 'superChaser'){
+            		$("#p_superchaser").append('오토좌석');	
+            	}else{
+            		$("#p_superchaser").hide();
+            	}
+            	
+            	if(result.airrowFigher == 'airrowFigher'){
+            		$("#p_airrowFigher").append('에어로피거');	
+            	}else{
+            		$("#p_airrowFigher").hide();
+            	}
+            	$("#info1").append(q);
          	}
         });
     });
+    
 });
+
 </script>
 
 
@@ -139,6 +216,22 @@ $(document).ready(function() {
             	$("#tbody tr td:eq(11)").append(jsonString.sell);
             	$("#tbody tr td:eq(12)").append(jsonString.accident);
             	
+            	
+            	
+            	
+            	$("#p_carNum1").val(jsonString.carNum);
+            	$("#p_manuCountry1").val(jsonString.manuCountry);
+            	$("#p_manuCo1").val(jsonString.manuCo);
+            	$("#p_model1").val(jsonString.model);
+            	$("#p_color1").val(jsonString.color);
+            	$("#p_year1").val(jsonString.year);
+            	$("#p_carYear1").val(jsonString.carYear);
+            	$("#p_transmission1").val(jsonString.transmission);
+            	$("#p_fuel1").val(jsonString.fuel);
+            	$("#p_cc1").val(jsonString.cc);
+            	$("#p_mileage1").val(jsonString.mileage);
+            	$("#p_sell1").val(jsonString.sell);
+            	$("#p_accident1").val(jsonString.accident);
             }
         });
     });
@@ -157,8 +250,8 @@ $(document).ready(function() {
     	$("#upfile2").appendTo("#formtest");
     	$("#upfile3").appendTo("#formtest");
     	$("#upfile4").appendTo("#formtest");
-    	
     	var arr = [$("#formFileUpload input[name='upfile[0]']").val()];
+    	console.log("Image"+arr);
     	$("#p_file").val(arr);
     });
 });
@@ -262,7 +355,7 @@ $("[data-toggle=tooltip]").tooltip();
         <!-- /.container-fluid -->
     </nav>
 <!--  nav -->
-<br>
+	<section style="background: #ffffff;">
 	
 		<div class="container-fluid">
 			<div class="row">
@@ -893,7 +986,7 @@ $("[data-toggle=tooltip]").tooltip();
 										<span class="glyphicon glyphicon-refresh" id="reset">
 											다시쓰기</span>
 									</div>
-									<textarea class="form-control" name ="info-text" id="info-text" rows="15"
+									<textarea class="form-control" name ="info" id="info" rows="15"
 										style="border-radius: 0px; width:100%;"></textarea>
 								</div>
 							</div>
@@ -1022,7 +1115,7 @@ $("[data-toggle=tooltip]").tooltip();
 						</div>
 						<!-- col-6 / end -->
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput" id="upfile5">
 						<div class="fileinput-new thumbnail"
 						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1045,7 +1138,7 @@ $("[data-toggle=tooltip]").tooltip();
 						</div>
 						<!-- col-6 / end -->
 						<div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-						<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput fileinput-new" data-provides="fileinput" id="upfile6">
 						<div class="fileinput-new thumbnail"
 						style="width: 170px; height: 160px; border-color: black;">
 						<img data-src="holder.js/100x100%" alt="">
@@ -1309,25 +1402,25 @@ $("[data-toggle=tooltip]").tooltip();
 	            </thead>   
                 <tbody id="tbody">
                 <tr align="center">
-                    <td align="left" id="p_carNum"><h3><b></b></h3></td>
-                    <td align="left" id="p_manuCountry"><h3><b></b></h3></td>
-                    <td align="left" id="p_manuCo"><h3><b></b></h3></td>
-                    <td align="left" id="p_model"><h3><b></b></h3></td>
-                    <td align="left"id="p_color"><h3><b></b></h3></td>
-                    <td align="left"id="p_year"><h3><b></b></h3></td>
-                    <td align="left"id="p_carYear"><h3><b></b></h3></td>
-                    <td align="left"id="p_transmission"><h3><b></b></h3></td>
-                    <td align="left"id="p_fuel"><h3><b></b></h3></td>
-                    <td align="left" id="p_cc"><h3><b></b></h3></td>
-                    <td align="left" id="p_mileage"><h3><b></b></h3></td>
-                    <td align="left" id="p_sell"><h3><b></b></h3></td>
-                    <td align="left" id="p_accident"><h3><b></b></h3></td>                                      
+                    <td align="left" id="p_carNum"><input type="hidden" name="carNum" id="p_carNum1"><h3><b></b></h3></td>
+                    <td align="left" id="p_manuCountry"><input type="hidden" name="manuCountry" id="p_manuCountry1"><h3><b></b></h3></td>
+                    <td align="left"id="p_manuCo"><input type="hidden" name="manuCo" id="p_manuCo1"><h3><b></b></h3></td>
+                    <td align="left" id="p_model"><input type="hidden" name="model" id="p_model1"><h3><b></b></h3></td>
+                    <td align="left"id="p_color"><input type="hidden" name="color" id="p_color1"><h3><b></b></h3></td>
+                    <td align="left"id="p_year"><input type="hidden" name="year" id="p_year1"><h3><b></b></h3></td>
+                    <td align="left"id="p_carYear"><input type="hidden" name="carYear" id="p_carYear1"><h3><b></b></h3></td>
+                    <td align="left"id="p_transmission"><input type="hidden" name="transmission" id="p_transmission1"><h3><b></b></h3></td>
+                    <td align="left"id="p_fuel"><input type="hidden" name="fuel" id="p_fuel1"><h3><b></b></h3></td>
+                    <td align="left" id="p_cc"><input type="hidden" name="cc" id="p_cc1"><h3><b></b></h3></td>
+                    <td align="left" id="p_mileage"><input type="hidden" name="mileage" id="p_mileage1"><h3><b></b></h3></td>
+                    <td align="left" id="p_sell"><input type="hidden" name="sell" id="p_sell1"><h3><b></b></h3></td>
+                    <td align="left" id="p_accident"><input type="hidden" name="accident" id="p_accident1"><h3><b></b></h3></td>                                      
                 </tr>
                 <thead>
                 <tr>
 			    <td colspan="13" align="center" data-toggle="collapse" data-target="#car-info">
 			  						
-				<div class="panel panel-default clearfix">
+				
 					<!-- header -->
 	              <div class="col-xs-12 toggle-header">
 	                  <div class="col-xs-12">
@@ -1339,113 +1432,128 @@ $("[data-toggle=tooltip]").tooltip();
 	              <!-- /header -->
 	              <br><br><br>
 	              <!--  collapse -->
-	                  <div id="demo" class="collapse">
+	                  <div id="demo" class="collapse" style="width: 60%; border-style:solid; border-width: 1px; border-color: gray;">
                       <div class="panel-body">
                           <div class="row">
-                              <div class="col-xs-2">
+                              <br>
+                              <div class="col-xs-3">
+                              
                                  <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> 내/외장 옵션</span>                  
                               </div>
-                              <div class="col-xs-6">
-                              	<div id="p_powerWindow"></div><br>
-                                <div id="p_aircorn" ></div><br>
-                                <div id="p_fullAutoAircorn"></div>     
+                              <div class="col-xs-5">
+                             
+                             	
+                              	<h4 align="left"><span class="btn btn-md btn-hover btn-primary" id="p_powerWindow"></span></h4>
+                                <h4 align="left"><span class="btn btn-md btn-hover btn-primary"id="p_airCorn"></span></h4>
+                                <h4 align="left"><span class="btn btn-md btn-hover btn-primary"id="p_fullAutoAircorn"></span></h4>
                               </div>
                           </div>
                       </div>
-                                        
+                      <hr>               
                           <!--  편의 장치  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-2">
+                                 <div class="col-xs-3">
                                  <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  편 의 장 치</span>
                                                                          
                                  </div>
-                                 <div class="col-xs-6">
-	                                <div id="p_sunRoof"></div>
-	                                <div id="p_pnrmSunRoof" ></div>
-	                                <div id="p_hidRam"></div>
+                                 <div class="col-xs-5">
+	                                <h4 align="left"><span id="p_sunRoof" class="btn btn-md btn-hover btn-primary" ></span></h4> 
+	                                <h4 align="left"><span id="p_pnrmSunRoof" class="btn btn-md btn-hover btn-primary"  ></span></h4>  
+	                                <h4 align="left"><span id="p_hidRam" class="btn btn-md btn-hover btn-primary" ></span></h4> 
 	                                     
                               </div>
                                 </div>
                          </div>
                          <!--  편의 장치   -->
+                         <hr>
                           <!--  안전 장치  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-2">
+                                 <div class="col-xs-3">
                                   <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  안 전 장 치</span>                                      
                                  </div>
-                                  <div class="col-xs-6">
-	                                  <div id="p_navi"></div>
-		                                <div id="p_hipass" ></div>
-		                                <div id="p_blackBox"></div>
+                                  <div class="col-xs-5">
+	                                  <h4 align="left"><span id="p_navi" class="btn btn-md btn-hover btn-primary" ></span></h4>  
+		                                <h4 align="left"><span id="p_hipass"  class="btn btn-md btn-hover btn-primary" ></span></h4>  
+		                                <h4 align="left"><span id="p_blackBox" class="btn btn-md btn-hover btn-primary" ></span></h4>  
                                      
                               </div>
                                  </div>
                          </div>
                          <!--  안전 장치   -->
+                         <hr>
                         <!--  튜닝  사항 시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-2">
+                                 <div class="col-xs-3">
                                  	<span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  AV/오디오</span>                                            
                                  </div>
-                                  <div class="col-xs-6">
-                                      <div id="p_driverairbag"></div>
-		                                <div id="p_driverFriendAirBag" ></div>
-		                                <div id="p_sideAirBag"></div>
+                                  <div class="col-xs-5">
+                                      <h4 align="left"><span id="p_driverairbag" class="btn btn-md btn-hover btn-primary" ></span></h4>
+		                                <h4 align="left"><span id="p_driverFriendAirBag"  class="btn btn-md btn-hover btn-primary" ></span></h4>
+		                                <h4 align="left"><span id="p_sideAirBag" class="btn btn-md btn-hover btn-primary" ></span></h4>
                                  
                                  
                               </div>
                          </div>
                          </div>
                          <!--  튜닝사항   -->
+                         <hr>
                           <!--  AV/오디오/항범  시작  -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-2">
+                                 <div class="col-xs-3">
                                   <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  튜 닝 사 항</span>                              
                                  </div>
-                                  <div class="col-xs-6">
-                                       <div id="p_turbochaser"></div>
-		                                <div id="p_superchaser" ></div>
-		                                <div id="p_airrowFigher"></div>
+                                  <div class="col-xs-5">
+                                       <h4 align="left"><span id="p_turbochaser" class="btn btn-md btn-hover btn-primary"></span></h4>
+		                                <h4 align="left"><span id="p_superchaser"  class="btn btn-md btn-hover btn-primary"></span></h4>
+		                                <h4 align="left"><span id="p_airrowFigher" class="btn btn-md btn-hover btn-primary"></span></h4>
                                  
                                     
                               </div>
                          </div>
-                         <!--  편의 장치   -->
+                        
                          </div>
-                         
+                         <hr>
                          
                          <!--  INFO -->
                           <div class="panel-body">
                              <div class="row">
-                                 <div class="col-xs-2">
+                                 <div class="col-xs-3">
                                            <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i>  상 세 설 명</span>      
                                  </div>
-                                  <div class="col-xs-6" id="textArea">
-                                 <textarea name ="info" id="info" rows="15"
+                                  <div class="col-xs-5" id="textArea" align="left">
+                                 <textarea name ="info1" id="info1" rows="15"
 										style="border-radius: 0px; margin-left: 0px; margin-right: 0px; width: 558px;"></textarea>     
                               </div>
                          </div>
                          <!--  편의 장치   -->
                          </div>
                          
-	
-  <div id="formtest" style="display: ">
- <div class="col-xs-2">
-   <span class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>                     
- </div>
- 
- 
-  
-  <div id="pp_file" style="display: none;">
-   <input type="text" name="file" id="p_file" size="21">
-  </div>
-  </div> 
-             </div>
-          	 </td>
+	<div class="panel-body">
+		<div class="row">
+		<div class="col-xs-3">
+		<span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> 대표 사진 </span> 
+		</div>
+		<div class="col-xs-6" align="left">
+			<div id="formtest" style="display: ">
+				<span id="f1"></span>
+				<span id="f2"></span><br>
+				<span id="f3"></span>
+				<span id="f4"></span>
+			</div>
+	 	<div id="pp_file" style="display: none;">
+	   		<input type="text" name="file" id="p_file" size="21">
+	  	</div>
+	  	
+	  	</div> <!--  col-xs-5 끝 -->
+	  	
+		</div><!--  Row 끝  -->
+	</div><!--  테두리 끝  -->
+</div>
+</td>
 			</tr>
             </thead>                          
            	</tbody>
@@ -1480,6 +1588,7 @@ $("[data-toggle=tooltip]").tooltip();
 </div>
 </div>
 </div>
+</section>
 
 
 </body>
