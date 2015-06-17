@@ -77,7 +77,7 @@ $("[data-toggle=tooltip]").tooltip();
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
 	                    <ul class="dropdown-menu navDropdown-menu" role="menu" style="display: none;">
-	                      <li><a href="getUser.do">회원정보 수정</a></li>
+	                      <li><a href="/user/getUser.jsp">회원정보 수정</a></li>
 	                      <li><a href="listUserBuy.do">구매리스트</a></li>
 	                      <li><a href="listUserSell.do">판매리스트</a></li>
 	                    </ul>
