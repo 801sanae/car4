@@ -5,17 +5,21 @@
 <html lang="en">
 
 <head>
-	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Agency - Start Bootstrap Theme</title>
-
-    <!-- Bootstrap Core CSS -->
    <jsp:include page="/common/attribute.jsp"></jsp:include>
+<script>
+function openMsgList(){
+		window.open("listMessage.do", "value", "top=250,left=600,width=500,height=300");
+		document.msgList.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
+		document.msgList.action = "listMessage.do";
+		document.msgList.submit();
+}
+</script>
 </head>
 <!-- 숫자 애니메이션 -->
 
@@ -71,12 +75,12 @@
 				</c:if>
 			   <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
 			   <li>
-			 		<a href="listMessage.do"><span class="glyphicon glyphicon-envelope" ></span></a>
+			 		<a href="#none" onclick="openMsgList()"><span class="glyphicon glyphicon-envelope" ></span></a>
 			   </li>
 					<li>
-						<a  href="user/getUser.jsp" > ${user.userName}님 	환영합니다.</a>
+						<a  href="auction/mypage.jsp" > ${user.userName}님 	환영합니다.</a>
 					</li>
-					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
+					<li><a style="cursor: pointer;" href="logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
 				</c:if>
 				<!-- Login 클릭 -->
                     </li>
