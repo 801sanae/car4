@@ -9,21 +9,14 @@
 <!-- updateuserView.do -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.min.js"></script>
 
 <title>UpdateUserView</title>
 </head>
 
 <body>
-
-
-	<!-- header -->
+<jsp:include page="/nav.jsp"></jsp:include>
+<br><br><br><br>
+	<%-- <!-- header -->
 	<div class="container">
 		<!-- Second navbar for categories -->
 		<div class="row">
@@ -41,7 +34,7 @@
 		</div>
 
 	</div>
-	<!--/header -->
+	<!--/header --> --%>
 
  <!-- nav bar  -->
     
