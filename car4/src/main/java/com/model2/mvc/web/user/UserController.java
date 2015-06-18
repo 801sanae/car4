@@ -46,7 +46,7 @@ public class UserController {
 	   public Car car;
 
 	public UserController(){
-		System.out.println(this.getClass());
+		System.out.println("그렇죠" + this.getClass());
 	}
 
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ���� �Ұ�
@@ -158,7 +158,7 @@ public class UserController {
 
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session ) throws Exception{
-
+		
 		System.out.println("logout.do");
 		session.invalidate();
 		
@@ -258,8 +258,8 @@ public class UserController {
 		User userInfo = userService.getUserInfo(users);
 		
 		// Model 과 View 연결
+		model.addAttribute("user", users);
 		model.addAttribute("userInfo", userInfo);
-		System.out.println("들어와?2");
 		return "forward:/car/sell-title.jsp";
 	}
 	
@@ -290,5 +290,13 @@ public class UserController {
 	      
 	      return "forward:/car/my_sell.jsp";
 	   }
+
+	@RequestMapping("/index.do")
+		public String index() throws Exception{
+			
+			System.out.println("/index.do");
+			
+			return "redirect:index.jsp";
+		}
 	
 }
