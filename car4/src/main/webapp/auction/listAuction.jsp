@@ -1,21 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <link href="css\tabs.css" rel="stylesheet">
-
-
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <script type="text/javascript">
-	
 	function fncGetList(currentPage) {
 		//받아온 currentPage를 현재페이지로.
 		document.getElementById("currentPage").value = currentPage;
@@ -23,7 +16,6 @@
 		document.getElementById("tabs").value = ${search.tabs};
 	   	document.detailForm.submit();		
 	}
-	
 	function fncTabs() {
 		alert(event.target.id);
 		//$("#tabs").val(event.target.id);
@@ -34,37 +26,25 @@
 		document.getElementById("currentPage").value = 1;
 		document.getElementById("searchCondition").value = -1;
 		$("#searchKeyword").val('');
-	
-		
 		document.detailForm.submit();		
 	}
-
-
-	
 	function fncSearch() {
 		$("#hideSearch").css('display', 'block');
 	}
-	
 	function fncOrderby() {
 		$("#hideOrderby").css('display', 'block');
 	}
-	
-	
-
 </script>
-
 <script>
 	$('.dropdown-toggle').dropdown();
 </script>
-
-<script language="javascript">
+<!-- <script language="javascript">
 	function OpenWindow() {
 		window
 				.open("message/message.jsp", "_blank",
-						"top=250,left=600,width=470,height=250,resizable=1,scrollbars=no");
+						"top=250,left=600,width=500,height=300,resizable=1,scrollbars=no");
 	}
-</script>
-
+</script> -->
 <script language="javascript">
 	function OpenWindow(userName,userNo,userId) {
 		/*  window.open("value","_blank","top=250,left=600,width=470,height=240,resizable=1,scrollbars=no");  */
@@ -74,7 +54,7 @@
 		$("#userId").val(userId);
 		
 		
-		window.open("쪽지 보내기", "value", "top=250,left=600,width=470,height=260");
+		window.open("쪽지 보내기", "value", "top=250,left=600,width=500,height=300");
 		document.detailForm.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
 		document.detailForm.action = "message/message.jsp";
 		/* ?userName="+userName+"&userNo="+userNo; //새창으로 띄울 jsp */
@@ -87,14 +67,17 @@
 
 <body>
 	<form name="detailForm" action="listAuction.do" method="post">
-		<input type="hidden" id="userName" name="userName"> 
-		<input type="hidden" id="userNo" name="userNo"> 
-		<input type="hidden" id="userId" name="userId">
+		<input type="hidden" id="userName" name="userName"> <input
+			type="hidden" id="userNo" name="userNo"> <input type="hidden"
+			id="userId" name="userId">
 
-<!-- nav.jsp -->
-<jsp:include page="../nav.jsp"></jsp:include> 
-<!-- nav.jsp -->
-<br><br><br><br>
+		<!-- nav.jsp -->
+		<jsp:include page="../nav.jsp"></jsp:include>
+		<!-- nav.jsp -->
+		<br>
+		<br>
+		<br>
+		<br>
 
 
 		<div class="container">
@@ -251,19 +234,18 @@
 										<td><a
 											href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
 										</td>
-										<td style="position: relative;"><span class="glyphicon glyphicon-user"></span>
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop1"> ${auction.user.userName}
-										</a>
+										<td style="position: relative;"><span
+											class="glyphicon glyphicon-user"></span> <a
+											class="dropdown-toggle" data-toggle="dropdown" href="#"
+											id="drop1"> ${auction.user.userName} </a>
 											<ul aria-labelledby="drop1" class="dropdown-menu"
 												style="margin-left: 60px; margin-top: -15px;" role="menu">
-												<li><a href="#">정보 보기</a></li>
 												<li><a href="#message"
 													onClick="OpenWindow( '${auction.user.userName}',${auction.user.userNo}, '${auction.user.userId}')"
-													style="background-color:while"
-													}"
-													>쪽지보내기</a></li>
-											</ul> 
-										</td>
+													style="background-color: while"}"
+													><span
+														class="glyphicon glyphicon-pencil"></span> 쪽지쓰기</a></li>
+											</ul></td>
 										<td>${auction.regDate}</td>
 
 
