@@ -78,11 +78,9 @@ $("[data-toggle=tooltip]").tooltip();
                     <li>
                     
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-						<form name="msgList">
 						<li><a href="#none" onclick="openMsgList()">
 						<span class="glyphicon glyphicon-envelope"></span>
 						</a></li>
-						</form>
 						<li><a  href="auction/mypage.jsp" > ${user.userName} 님 접속중</a></li>
 				</c:if>
 					<li class="dropdown">
