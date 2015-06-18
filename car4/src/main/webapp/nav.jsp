@@ -61,14 +61,16 @@ $("[data-toggle=tooltip]").tooltip();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.jsp">Car4</a>
+                <a class="navbar-brand page-scroll" href="index.do">Car4</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                							<form name="msgList">
+                
                 <ul class="nav navbar-nav navbar-right">
-                	<li><a href="getUserInfo.do">Sell</a></li>
-               		<li><a href="buy/buy.jsp">Buy</a></li>
+                	<li><a href="../getUserInfo.do">Sell</a></li>
+               		<li><a href="../buy/buy.jsp">Buy</a></li>
                     <li>
                         <a></a>
                     </li>
@@ -77,22 +79,28 @@ $("[data-toggle=tooltip]").tooltip();
                     </li>
                     <li>
                     
-			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-						<li><a href="#none" onclick="openMsgList()">
-						<span class="glyphicon glyphicon-envelope"></span>
-						</a></li>
-						<li><a  href="auction/mypage.jsp" > ${user.userName} 님 접속중</a></li>
-				</c:if>
+				    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
+					<li>
+						<a href="#none" onclick="openMsgList()">
+							<span class="glyphicon glyphicon-envelope"></span>
+						</a>
+					</li>
+					<li>
+						<a  href="../auction/mypage.jsp" > ${user.userName} 님 접속중중중중중중</a>
+					</li>
+					</c:if>
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
 	                    <ul class="dropdown-menu navDropdown-menu" role="menu" style="display: none;">
-	                      <li><a href="/user/getUser.jsp">회원정보 수정</a></li>
-	                      <li><a href="listUserBuy.do">구매리스트</a></li>
-	                      <li><a href="listUserSell.do">판매리스트</a></li>
+	                      <li><a href="../user/getUser.jsp">회원정보 수정</a></li>
+	                      <li><a href="../listUserBuy.do">구매리스트</a></li>
+	                      <li><a href="../listUserSell.do">판매리스트</a></li>
 	                    </ul>
+	                    							</form>
+	                    
 	                </li>	
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a style="cursor: pointer;" href="logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
+					<li><a style="cursor: pointer;" href="../logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
 				</c:if>
                 </ul>
             </div>
