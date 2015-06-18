@@ -61,7 +61,7 @@ $("[data-toggle=tooltip]").tooltip();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.do">Car4</a>
+                <a class="navbar-brand page-scroll" href="../index.do">Car4</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
