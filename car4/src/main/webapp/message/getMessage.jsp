@@ -23,17 +23,16 @@ function test(){
 				<p>
 				<center>${message.contents}</center>
 				</p>
-				<center>
+				<center><form name="deleteMsg">
 					<a href="listMessage.do" class="btn btn-info"> <span
 						class="glyphicon glyphicon-arrow-left"></span> 뒤로
 					</a> 
-					<form name="deleteMsg">
 						 <a href="deleteMessage.do?messageNo=${message.messageNo }" class="btn btn-info confrim" onclick="test()"> 
 						<span class="glyphicon glyphicon-trash"></span>삭제</a>
-					</form>
 					<a href="message/message.jsp?userName=<%=request.getParameter("userName")%>&userNo=<%=request.getParameter("userNo")%>"
 						class="btn btn-info">답장하기 <span class="glyphicon glyphicon-arrow-right"></span>
 					</a>
+					</form>
 				</center>
 			</div>
 		</div>
