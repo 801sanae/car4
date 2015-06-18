@@ -86,7 +86,7 @@ $("[data-toggle=tooltip]").tooltip();
 						</a>
 					</li>
 					<li>
-						<a  href="../auction/mypage.jsp" > ${user.userName} 님 접속중중중중중중</a>
+						<a  href="../auction/mypage.jsp" > ${user.userName} 님 접속중</a>
 					</li>
 					</c:if>
 					<li class="dropdown">
