@@ -27,6 +27,15 @@
 }
 </style>
 <script>
+function openMsgList(){
+		window.open("listMessage.do", "value", "top=250,left=600,width=500,height=300");
+		document.msgList.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
+		document.msgList.action = "listMessage.do";
+		document.msgList.submit();
+}
+</script>
+
+<script>
 $(document).ready(function() {
    $(".dropdown").hover(function() {
       $('.dropdown-menu', this).stop(true, true).slideDown("fast");
@@ -69,10 +78,12 @@ $("[data-toggle=tooltip]").tooltip();
                     <li>
                     
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-						<li><a href="listMessage.do">
+						<form name="msgList">
+						<li><a href="#none" onclick="openMsgList()">
 						<span class="glyphicon glyphicon-envelope"></span>
 						</a></li>
-						<li><a  href="user/getUser.jsp" > ${user.userName} 님 접속중</a></li>
+						</form>
+						<li><a  href="auction/mypage.jsp" > ${user.userName} 님 접속중</a></li>
 				</c:if>
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
