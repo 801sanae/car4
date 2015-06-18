@@ -47,8 +47,8 @@
 			<div class="error-notice">
 	          <div class="oaerror success" style="width:370px;height:200px;">
 	            <strong><h1>Success!</h1></strong>  메세지가 성공적으로 발송되었습니다.
-	            <button class="btn btn-info" type="button">확인</button>
-							<button class="btn btn-info" type="submit">내 쪽지함 보기</button>
+	            <button class="btn btn-info" type="button" onclick="window.close()">확인</button>
+				<button class="btn btn-info" type="submit">내 쪽지함 보기</button>
 	          </div>
 	        </div>
 		</div>

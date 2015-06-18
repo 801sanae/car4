@@ -140,13 +140,15 @@
 <body>
 
 <%-- <c:if test="${messageNo eq 0}"> --%>
-	<input type="hidden" name="userName" value="<%=request.getParameter("userName")%>" />
+
+	<div class="panel-body">
+		<input type="hidden" name="userName" value="<%=request.getParameter("userName")%>" />
 	<input type="hidden" name="userNo" value="<%=request.getParameter("userNo")%>" />                 
-	<div class="panel-body" style="margin-top: 0px;">
-		                                   
 		<form accept-charset="UTF-8" method="post" action="/addMessageContents.do?userNo=<%=request.getParameter("userNo")%>">
-			 받는 사람 :   <%=request.getParameter("userName")%> (<%=request.getParameter("userId") %>)
-			                            
+			 받는 사람 :   <%=request.getParameter("userName")%>
+			<c:if test="${!empty request.userId}">  
+			(<%=request.getParameter("userId") %>)
+			</c:if>
 			<textarea class="form-control counted" name="contents"
 				placeholder="Type in your message" rows="5"
 				style="margin-bottom: 10px;"></textarea>
