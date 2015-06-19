@@ -1,6 +1,7 @@
 package com.model2.mvc.web.user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,9 @@ import com.google.gson.Gson;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.common.SendEmail;
+import com.model2.mvc.service.auctionlist.AuctionListService;
 import com.model2.mvc.service.car.CarService;
+import com.model2.mvc.service.domain.AuctionList;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
@@ -41,12 +44,16 @@ public class UserController {
 
 	@Autowired
 	@Qualifier("carServiceImpl")
-
 	   private CarService carService;
 	   public Car car;
+	   
+	@Autowired
+	@Qualifier("auctionListServiceImpl")
+	   private AuctionListService auctionListService;
+	   public AuctionList auctionList;
 
 	public UserController(){
-		System.out.println("그렇죠" + this.getClass());
+		System.out.println(this.getClass());
 	}
 
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ���� �Ұ�
@@ -158,7 +165,7 @@ public class UserController {
 
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session ) throws Exception{
-		
+
 		System.out.println("logout.do");
 		session.invalidate();
 		
@@ -265,7 +272,7 @@ public class UserController {
 	
 	
 	@RequestMapping("/listUserSell.do")
-	   public String getUserCarInfo( @ModelAttribute("user") User user ,Model model , HttpSession session,
+	   public String getUserCarInfo(Model model , HttpSession session,
 	         @ModelAttribute("search") Search search   ) throws Exception{
 	      
 	      System.out.println("/listUserSell.do");
@@ -274,29 +281,44 @@ public class UserController {
 	      }
 	      search.setPageSize(pageSize);
 	      
-	      User users = (User)session.getAttribute("user");
-	      int userNo = users.getUserNo();
+	      int userNo = ((User)session.getAttribute("user")).getUserNo();
 	      
-	      
-	      Map<String , Object> map=carService.getCarInfo(search,userNo);
-	      Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+	      Map<String , Object> myCarMap = carService.getCarListByUserNo(userNo, search);
+	      Page resultPage = new Page( search.getCurrentPage(), ((Integer)myCarMap.get("totalCount")).intValue(), pageUnit, pageSize);
+	      System.out.println("####1. UserController - listUserSell.do : "+myCarMap);
 	      System.out.println(resultPage);
 	      System.out.println(search);
+	     
+	      List<Car> carList = (List<Car>) myCarMap.get("myCarList");
 	      
+	      System.out.println("####2. UserController - carList : "+carList);
+	    
+	      Map<String , Object> bidMapAll = new HashMap<String, Object>();
+	      int carNo;
+	      for(int i=0; i < carList.size() ; i++) {
+	    	  carNo = carList.get(i).getCarNo();
+		      System.out.println("####3. UserController - carNo: "+carNo);
+
+		      List<AuctionList> bidList = auctionListService.getBidListByCarNo(carNo);
+		      
+		      System.out.println("####4. UserController - bidList : "+bidList);
+
+		      String aaa = Integer.toString(i);
+		      bidMapAll.put(aaa, bidList);
+		      System.out.println("####5. UserController - carNo : "+carList.get(i).getCarNo());
+		      
+		      
+		      System.out.println("BIDMAPALL " + bidMapAll.get("2") );
+	      }
 	      
-	      model.addAttribute("list", map.get("list"));
+	      System.out.println("####6. UserController - bidMapAll : "+bidMapAll);
+
+	      model.addAttribute("myCarList", myCarMap.get("myCarList"));
+	      model.addAttribute("bidMapAll", bidMapAll);
 	      model.addAttribute("resultPage", resultPage);
 	      model.addAttribute("search", search);
 	      
 	      return "forward:/car/my_sell.jsp";
 	   }
-
-	@RequestMapping("/index.do")
-		public String index() throws Exception{
-			
-			System.out.println("/index.do");
-			
-			return "redirect:index.jsp";
-		}
 	
 }
