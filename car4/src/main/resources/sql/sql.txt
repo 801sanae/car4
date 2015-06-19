@@ -1,108 +1,3 @@
-CREATE TABLE users (
-	user_no integer not null,
-	user_id varchar2(50) NOT NULL, 
-	user_name varchar2(50) NOT NULL, 
-	password varchar2(30) NOT NULL,
-	sex varchar2(20) NOT NULL,	
-	role varchar2(30),	
-	phone varchar2(200),
-	addr varchar2(50) NOT NULL,  
-	reg_date DATE NOT NULL,
-	constraint pk_user_no primary key(user_no)
-);
-
-
-
-CREATE TABLE car(
-	car_no integer not null,
-	car_num varchar2(50) not null,
-	manu_country varchar2(50) not null,
-	manu_co varchar2(50) not null,
-	model varchar2(50) not null,
-	color varchar2(50) not null,
-	year integer not null,
-	car_year integer not null,
-	transmission varchar2(50) not null,
-	fuel varchar2(50) not null,
-	cc integer not null,
-	mileage integer not null,
-	sell  varchar2(50) not null,
-	accident  varchar2(50) not null,
-	user_no integer references users(user_no),
-	bid char(3),
-	auction_no integer,
-	primary key(car_no)
-);
-
-
-drop table carOption;
-
-/* 내/외장옵션 */
-CREATE TABLE carOption (
-	car_no NUMBER(20) not null, /* 자동차일련번호 */
-	powerWindow VARCHAR(20), /* 파워윈도우 */
-	aircorn VARCHAR(20), /* 에어컨 */
-	fullAutoAircorn VARCHAR(20), /* 풀오토에어컨 */
-	leftRightAircorn VARCHAR(20), /* 좌/우독립에어컨 */
-	gajukSheet VARCHAR(20), /* 가죽시트 */
-	warmSheet VARCHAR(20), /* 열선시트 */
-	windSheet VARCHAR(20), /* 통풍시트 */
-	msgSheet VARCHAR(20), /* 마사지시트 */
-	sunRoof  VARCHAR(20), /* 썬루프 */
-	pnrmSunRoof VARCHAR(20), /* 파로라마썬루프 */
-	hidRam VARCHAR(20), /* HID/제논램프 */
-	autoRight VARCHAR(20), /* 오토라이트 */
-	ecmRoomMirror VARCHAR(20), /* ECM룸미러 */
-	smartKey VARCHAR(20), /* 스마트키 */
-	egStartButton VARCHAR(20), /* 엔진스타트버튼 */
-	rigthClean VARCHAR(20), /* 라이트세척장치 */
-	jkSubSystem VARCHAR(20), /* 주차조향보조시스템 */
-	navi VARCHAR(20), /* 네비게이션 */
-	hipass VARCHAR(20), /* 하이패스 */
-	blackBox VARCHAR(20), /* 블랙박스 */
-	handFreeze VARCHAR(20), /* 핸즈프리즈 */
-	blueTooth VARCHAR(20), /* 블루투스 */
-	dvdPlayer VARCHAR(20), /* DVD플레이어 */
-	dmb VARCHAR(20), /* DMB */
-	mp3 VARCHAR(20), /* mp3 */
-	iPotAdapter VARCHAR(20), /* 아이팟단자 */
-	driverFriendAirBag VARCHAR(20), /* 동승석에어백 */
-	sideAirBag VARCHAR(20), /* 측면에어백 */
-	ctAirBag VARCHAR(20), /* 커튼에어 */
-	passengerDetectAirBag VARCHAR(20), /* 승객감지에어 */
-	mrProtectAirBag VARCHAR(20), /* 무릎보호에어 */
-	activeHeadRest VARCHAR(20), /* 액티브헤드레스트 */
-	abs VARCHAR(20), /* ABS */
-	driverAirBag VARCHAR(20), /* 운전선에어백 */
-	airrowFigher VARCHAR(20), /* 에어로파이터 */
-	superChaser VARCHAR(20), /* 슈퍼차져 */
-	mission VARCHAR(20), /* 미션 */
-	handle VARCHAR(20), /* 핸들 */
-	spoiler VARCHAR(20), /* 스포일러 */
-	ggFan VARCHAR(20), /* 계기판 */
-	audio VARCHAR(20), /* 오디오 */
-	wheelTiger VARCHAR(20), /* 휠/타이어 */
-	turboChaser VARCHAR(20), /* 터보차저 */
-	burcketSheet  VARCHAR(20), /* 버켓시트 */
-	constraint fk_car_no foreign key(car_no)references car(car_no)
-);
-
-CREATE TABLE IMAGE(
-	img_num integer not null,
-	img_path varchar2(255) not null,
-	car_no integer not null REFERENCES car(car_no)
-);
-
-
-
-CREATE sequence user_no increment by 1 start with 1;	//user_No sequence
-
-CREATE sequence car_no increment by 1000 start with 1;     // carNo sequence
-
-CREATE sequence carOption_no increment by 1 start with 1;     // carOption_no sequence
-
-
-6/5-------------------------------------------------------------
 drop table auctionList;
 drop table carOption;
 drop table image;
@@ -147,7 +42,6 @@ cc integer not null,
 mileage integer not null,
 sell  varchar2(50) not null,
 accident  varchar2(50) not null,
-price integer,
 tran_code char(3),
 user_no integer references users(user_no), 
 primary key(car_no)
@@ -228,33 +122,19 @@ create table auction(
 reg_date date,
 cnt integer,
 bid_cnt integer,
-car_no integer REFERENCES car(car_no),
+success_car integer,
 user_no integer REFERENCES users(user_no),
 PRIMARY KEY(auction_no)
 );
 
 create table auctionList(
-          auctionList_no integer,
+auctionlist_no integer,
 car_no integer REFERENCES car(car_no),
-auction_no integer REFERENCES auction(auction_no),regDate date,
-          PRIMARY KEY(auctionList_no)
+auction_no integer REFERENCES auction(auction_no),
+bid_reg_Date date,
+bid_price integer,
+PRIMARY KEY(auctionList_no)
 );
-
-
-<<<<<<< .mine
-=======
-
-CREATE TABLE MESSAGE
-(
-   MESSAGE_NO     NUMBER NOT NULL,
-   USER_NO        NUMBER REFERENCES USERS(user_no) NOT NULL,
-   SEND_USER_NO   NUMBER NOT NULL,
-   CONTENTS       VARCHAR2(400) NOT NULL,
-   REG_DATE       DATE,
-   TRAN_CODE      VARCHAR2 (20),
-   PRIMARY KEY(MESSAGE_NO)
-)
->>>>>>> .r315
 
 
 CREATE TABLE MESSAGE
@@ -270,6 +150,8 @@ CREATE TABLE MESSAGE
 
 
 
+
+
 create sequence auction_no increment by 1 start with 1;
 
 CREATE sequence user_no increment by 1 start with 1;
@@ -281,4 +163,3 @@ CREATE sequence carOption_no increment by 1 start with 1;
 CREATE sequence auctionList_no increment by 1 start with 1;
 
 CREATE sequence message_no increment by 1 start with 1;
-
