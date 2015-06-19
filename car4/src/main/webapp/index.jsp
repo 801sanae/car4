@@ -5,16 +5,12 @@
 <html lang="en">
 
 <head>
-	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Agency - Start Bootstrap Theme</title>
-
-    <!-- Bootstrap Core CSS -->
    <jsp:include page="/common/attribute.jsp"></jsp:include>
 <script>
 function openMsgList(){
@@ -30,7 +26,7 @@ function openMsgList(){
 <script src="js/dynamicNum.js"></script>
 
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" style="width:100%;height:100%;">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -82,7 +78,7 @@ function openMsgList(){
 			 		<a href="#none" onclick="openMsgList()"><span class="glyphicon glyphicon-envelope" ></span></a>
 			   </li>
 					<li>
-						<a  href="/listUserBuy.do" > ${user.userName}님 	환영합니다.</a>
+						<a  href="listUserBuy.do" > ${user.userName}님 	환영합니다.</a>
 					</li>
 					<li><a style="cursor: pointer;" href="logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
 				</c:if>
@@ -125,21 +121,15 @@ function openMsgList(){
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                     <span class="fa-stack fa-4x">
-                    	<c:if test="${!empty sessionScope.user}">
-                        <a href="buy/buy.jsp">
-                        </c:if>
-                        <c:if test="${empty sessionScope.user}">
-	                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalLogin" >
-                        </c:if>
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <span class="fa-stack fa-4x">
+                        <a href="buy/buy.jsp"><i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">내 차 사기</h4>
                     <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
                 </div>
                 <div class="col-md-4">
-                      <span class="fa-stack fa-4x">
+                                    <span class="fa-stack fa-4x">
                     	<c:if test="${!empty sessionScope.user}">
                         <a href="getUserInfo.do">
                         </c:if>
