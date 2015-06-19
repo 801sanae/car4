@@ -67,7 +67,7 @@
            1000,
                
             #{carDetail},
-           'title',
+           #{title},
             #{user.userNo},
             sysdate,
         	0,
