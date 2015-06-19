@@ -2,13 +2,11 @@
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-  
+ 
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css\bootstrap.css" rel="stylesheet">
-<link href="css\bootstrap-theme.min.css" rel="stylesheet">
-
+   <jsp:include page="/common/attribute.jsp"></jsp:include>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,16 +16,19 @@
 
   function fncGetList(currentPage) {
     document.getElementById("currentPage").value = currentPage;
-      document.detailForm.submit();   
+      document.detailForm.submit();  
   }
 
 </script>
 
+<script>
+if(	$("#180001").attr('class','in') )
+</script>
 </head>
 
 <body>
 
-  
+ 
   <!-- header -->
   <div class="container">
     <!-- Second nav
@@ -41,29 +42,31 @@
 
       <div class="col-md-4"
         style="margin-top: 10px; padding-left: 100px; color: pink">
-            
-            
-        <!-- Login í´ë¦­ -->   
+           
+           
+        <!-- Login í´ë¦­ --> 
         <c:if test="${ empty user }">
                     <a style="color: gray" data-toggle="modal" data-target="#modalLogin">
             Login</a>
-        <!--  íìê°ì ì°½ ëì°ê¸° -->
+        <!--  íìê°ì
+ ì°½ ëì°ê¸° -->
           <jsp:include page="/user/register.jsp"></jsp:include>
-        <!--  íìê°ì ì°½ ëì°ê¸° -->
+        <!--  íìê°ì
+ ì°½ ëì°ê¸° -->
         </c:if>
          <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-          <a style="color: gray" href="user/getUser.jsp"> ${user.userName}ë
-            íìí©ëë¤.||</a>
-          <a style="color: gray" href="../logout.do">ë¡ê·¸ìì</a>
+          <a style="color: gray" href="user/getUser.jsp"> ${user.userName}ë
+            íìí©ëë¤.||</a>
+          <a style="color: gray" href="../logout.do">ë¡ê·¸ìì</a>
         </c:if>
-        <!-- Login í´ë¦­ -->
-          
-                
-        <!--  Login ì°½ ëì°ê¸° -->
+        <!-- Login í´ë¦­ -->
+         
+               
+        <!--  Login ì°½ ëì°ê¸° -->
         <jsp:include page="/user/login.jsp"></jsp:include>
-        <!--  Login ì°½ ëì°ê¸° -->
-        
-        
+        <!--  Login ì°½ ëì°ê¸° -->
+       
+       
       </div>
     </div>
   </div>
@@ -71,87 +74,134 @@
 
 
  <!-- nav bar  -->
-    
+   
   <!--  nav end -->
-  
-  <!-- ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
+ 
+  <!-- ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
   <div class="container">
     <div class="col-md-12">
       <form name="detailForm" action="" method="post">
-      
-          
-          <h4>판매리스트</h4>
+     
+         
+          <h4>내 차 목록</h4>
           <div class="row">
             <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
+              <table id="mytable" class="table">
                 <thead>
-                  <th id="no">No</th>
-                  <th id="carNum">차량번호</th>
-                  <th id="title">제조국</th>
-                  <th id="id">제조사</th>
-                  <th id="regDate">모델명</th>
-                  
-                  
-                  <th id="tranCode">경매진행상태</th>
-                  <th id="bid">입찰여부</th>
+                  <th class="col-md-1" id="no">No</th>
+                  <th class="col-md-3" id="carNum">차량번호</th>
+                  <th class="col-md-2" id="title">제조국</th>
+                  <th class="col-md-2" id="id">제조사</th>
+                  <th class="col-md-2" id="regDate">모델명</th>
+                  <th class="col-md-2">낙찰여부</th>				
+
                 </thead>
-  
+ 
                 <tbody id="table">
                 <c:set var="i" value="0" />
-                  <c:forEach var="car" items="${list}">
-                    <c:set var="i" value="${i+1}" />                  
-                    <tr>
+                  <c:forEach var="car" items="${myCarList}">
+                    <c:set var="i" value="${i+1}"/>
+                  
+                    <tr style="background-color:#f9f9f9;">
                       <td>${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
                       <td><a href="getCars.do?carNo=${car.carNo}" >${car.carNum}</a></td>
-                                        
-                      <td>${car.manuCountry}</td>
+                                       
+                      <td><c:if test="${!empty (car.manuCountry) &&car.manuCountry eq '2-1'}">
+                      	  국산차
+                      	  </c:if>
+                      	  <c:if test="${!empty (car.manuCountry) &&car.manuCountry eq '2-2'}">
+                      	  수입차
+                      	  </c:if>
+                      	  </td>
                       <td>${car.manuCo}</td>
                       <td>${car.model}</td>
-                      
-                   
-                      
-                       <%-- <td>
-                        <c:if test="${!empty auction.tranCode && auction.tranCode eq '0'}">
-                          <button type="button" class="btn btn-primary">ê²½ë§¤ì¤</button>
-                        </c:if>
-                        <c:if test="${!empty auction.tranCode && auction.tranCode eq '1'}">
-                          <button type="button" class="btn btn-danger">ê²½ë§¤ì¢ë£</button>
-                        </c:if>
-                      </td>
                       <td>
-                        <c:if test="${!empty auction.bid && auction.bid eq '0'}">
-                          -
-                        </c:if>
-                        <c:if test="${!empty auction.bid && auction.bid eq '1'}">
-                          <button type="button" class="btn btn-primary">ìì°°</button>
-                        </c:if>
-                        </td>
-                      <td>bidcnt</td> --%>
-                      
-                    </tr>
+            			  <c:if test="${!empty (car.tranCode) && (car.tranCode).trim() != '0' }">
+                     	  <button type="button" class="btn btn-primary">낙찰</button>
+                     	  </c:if>
+                     	  <c:if test="${!empty (car.tranCode) && (car.tranCode).trim() eq '0' }">
+                     	 
+                     	  </c:if>
+                     	</td>
                     
-                  </c:forEach>
-  
-                  
+                    	<td>
+                        <button type="button" class="btn btn-primary btn-sm hidden-xs" data-toggle="collapse" id="${car.carNo}" data-target=".${car.carNo}">
+                                        <i class="glyphicon glyphicon-chevron-down"></i>
+                                        <!-- <i class="glyphicon glyphicon-chevron-up"></i> -->
+                                        
+                          </button>
+                        </td>
+           
+                    
+                    	</tr>
+						<c:set var="temp">${i-1}</c:set>
+						
+						<c:if test="${empty bidMapAll.get(temp)}">
+						</c:if>
+						<c:if test="${!empty bidMapAll.get(temp)}">
+	                 	<tr class="${car.carNo} collapse" id="th" >
+		                	<th class="col-md-1">No</th>
+		                	<th class="col-md-1">제목</th>
+		                	<th class="col-md-1">이름</th>
+		            		<th class="col-md-1">경매번호</th>
+		                	<th class="col-md-1">등록일</th>
+		                	<th class="col-md-1">입찰가격</th>
+	              		</tr>
+	              		</c:if>
+	              		
+						<c:set var="j" value="0"/>
+                   		<c:forEach var="auctionList" items="${bidMapAll.get(temp)}">
+                   		<c:set var="j" value="${j+1}"/>
+   
+	                 	<tr class="${car.carNo} collapse" id="bidList">
+	                 	
+	                 		<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
+	              			<th style="color:red;">${j}</th>
+	              			<th style="color:red;">${auctionList.bidAuctionNo.title}</th>
+		             		<th style="color:red;">${auctionList.bidAuctionNo.han}</th>	              	
+		                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
+		                	<th style="color:red;">${auctionList.bidRegDate}</th>
+		                	<th style="color:red;">${auctionList.bidPrice}</th> 
+		                	</c:if>
+		                	<c:if test="${auctionList.bidAuctionNo.successCar eq 0}">
+	              			<th>${j}</th>
+	              			<th>${auctionList.bidAuctionNo.title}</th>
+		             		<th>${auctionList.bidAuctionNo.han}</th>	              	
+		                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
+		                	<th>${auctionList.bidRegDate}</th>
+		                	<th>${auctionList.bidPrice}</th> 
+		                	</c:if>
+		                	
+		                	
+		                	
+	              		</tr>
+	              		
+	              		
+	              		</c:forEach>         	
+	              	
+	              	</c:forEach>
                 </tbody>
-  
+ 
               </table>
-  
-  
-          <!-- íì´ì§ë¤ì´ì -->
+              
+              
+ 
+ 
+          <!-- íì´ì§ë¤ì´ì
+ -->
                  <input type="hidden" id="currentPage" name="currentPage" value=""/>
-          
+         
               <div class="clearfix"></div>
                  <ul class="pagination pull-right">
-            <!-- ìë¬´ê¸°ë¥ìë ì´ì ë²í¼ -->
+            <!-- ìë¬´ê¸°ë¥ìë ì´ì ë²í¼ -->
                 <c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
                   <li class="disabled">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                   </li>
-                </c:if> 
-            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ì´ì ë²í¼ -->
-                 
+                </c:if>
+            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ì´ì ë²í¼ -->
+                
                 <c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
                   <li class="disabled">
                     <a href="javascript:fncGetList('${ resultPage.currentPage-1}')">
@@ -160,15 +210,15 @@
                     </a>
                   </li>
                 </c:if>
-                
-            <!-- ê°ì´ë° ë³´ì¬ì§ íì´ì§ë¤ -->
+               
+            <!-- ê°ì´ë° ë³´ì¬ì§ íì´ì§ë¤ -->
                 <c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
                   <li>
                     <a href="javascript:fncGetList('${ i }');">${ i }
                     </a>
                   </li>
                 </c:forEach>
-            <!-- ìë¬´ê¸°ë¥ìë ë¤ìë²í¼ -->
+            <!-- ìë¬´ê¸°ë¥ìë ë¤ìë²í¼ -->
                 <c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
                   <li>
                       <span class="glyphicon glyphicon-chevron-right">
@@ -176,8 +226,8 @@
                     </a>
                   </li>
                 </c:if>
-                
-            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ë¤ìë²í¼ -->
+               
+            <!-- íì´ì§ì ëìë¥¼ ëì´ê°ë ë§í¬ê¸°ë¥ì´ ìë ë¤ìë²í¼ -->
                 <c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
                   <li>
                     <a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
@@ -185,31 +235,23 @@
                     </span>
                   </li>
                 </c:if>
-              </ul> 
-          <!-- /íì´ì§ë¤ì´ì -->
-              
+              </ul>
+          <!-- /íì´ì§ë¤ì´ì
+ -->
+             
             </div>
           </div>
-          
+         
           </form>
-          
+         
         </div>
       </div>
-  
-  <!-- /ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
-  
-  
-  
-  
-
-  <script type="text/javascript"
-    src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <!--  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-  <script src="js/title.js"></script>
-  <script src="js/bootstrap-slider.js"></script>
-  <script
-    src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+ 
+  <!-- /ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
+ 
+ 
+ 
+ 
 
 </body>
 </html>
