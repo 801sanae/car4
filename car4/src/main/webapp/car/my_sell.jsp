@@ -158,7 +158,7 @@ if(	$("#180001").attr('class','in') )
 	                 		<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
 	              			<th style="color:red;">${j}</th>
 	              			<th style="color:red;">${auctionList.bidAuctionNo.title}</th>
-		             		<th style="color:red;">${auctionList.bidAuctionNo.han}</th>	              	
+		             		<th style="color:red;">${auctionList.bidAuctionNo.mon}</th>	              	
 		                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
 		                	<th style="color:red;">${auctionList.bidRegDate}</th>
 		                	<th style="color:red;">${auctionList.bidPrice}</th> 
@@ -166,7 +166,7 @@ if(	$("#180001").attr('class','in') )
 		                	<c:if test="${auctionList.bidAuctionNo.successCar eq 0}">
 	              			<th>${j}</th>
 	              			<th>${auctionList.bidAuctionNo.title}</th>
-		             		<th>${auctionList.bidAuctionNo.han}</th>	              	
+		             		<th>${auctionList.bidAuctionNo.mon}</th>	              	
 		                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
 		                	<th>${auctionList.bidRegDate}</th>
 		                	<th>${auctionList.bidPrice}</th> 
