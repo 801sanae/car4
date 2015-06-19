@@ -42,7 +42,6 @@ cc integer not null,
 mileage integer not null,
 sell  varchar2(50) not null,
 accident  varchar2(50) not null,
-price integer,
 tran_code char(3),
 user_no integer references users(user_no), 
 primary key(car_no)
@@ -129,7 +128,7 @@ PRIMARY KEY(auction_no)
 );
 
 create table auctionList(
-auctionList_no integer,
+auctionlist_no integer,
 car_no integer REFERENCES car(car_no),
 auction_no integer REFERENCES auction(auction_no),
 bid_reg_Date date,
@@ -147,7 +146,7 @@ CREATE TABLE MESSAGE
    REG_DATE       DATE,
    TRAN_CODE      VARCHAR2 (20),
    PRIMARY KEY(MESSAGE_NO)
-)
+);
 
 
 
