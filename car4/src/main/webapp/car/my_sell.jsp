@@ -21,9 +21,6 @@
 
 </script>
 
-<script>
-if(	$("#180001").attr('class','in') )
-</script>
 </head>
 
 <body>
