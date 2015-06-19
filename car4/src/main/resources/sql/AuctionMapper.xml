@@ -30,7 +30,7 @@
       <result property="bidCnt"            column="bid_cnt"             jdbcType="NUMERIC" />
       
       <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
-      <result property="temp"   		column="temp" 				jdbcType="NUMERIC" />
+      <result property="su"   		column="su" 				jdbcType="NUMERIC" />
       	
              
       <association property="user" javaType="com.model2.mvc.service.domain.User">
@@ -117,7 +117,7 @@
 	<!-- 리스트 뿌리기 -->
 	<select id="getAuctionList" parameterType="hashMap"
 		resultMap="AuctionSelectMap">
-		SELECT a.auction_no, a.model, a.title, u.user_name, u.user_id, u.user_no, u.user_id, bid.temp, a.reg_date, a.success_car, a.cnt, (select count(*) from auctionlist where auction_no = a.auction_no) AS bid_cnt
+		SELECT a.auction_no, a.model, a.title, u.user_name, u.user_id, u.user_no, u.user_id, bid.su, a.reg_date, a.success_car, a.cnt, (select count(*) from auctionlist where auction_no = a.auction_no) AS bid_cnt
 			
 		from ( SELECT inner_table.* , ROWNUM AS row_seq 
 			FROM	( SELECT * 
@@ -163,6 +163,7 @@
 				AND row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
 				ORDER BY a.auction_no DESC
 	</select>
+
 
 	<select id="listUserBuy" parameterType="com.model2.mvc.service.domain.Auction"
 		resultMap="AuctionSelectMap">
