@@ -125,17 +125,29 @@ function openMsgList(){
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <a href="buy/buy.jsp"><i class="fa fa-circle fa-stack-2x text-primary"></i>
+                     <span class="fa-stack fa-4x">
+                    	<c:if test="${!empty sessionScope.user}">
+                        <a href="buy/buy.jsp">
+                        </c:if>
+                        <c:if test="${empty sessionScope.user}">
+	                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalLogin" >
+                        </c:if>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">내 차 사기</h4>
                     <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <a href="getUserInfo.do"><i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i></a>
+                      <span class="fa-stack fa-4x">
+                    	<c:if test="${!empty sessionScope.user}">
+                        <a href="getUserInfo.do">
+                        </c:if>
+                        <c:if test="${empty sessionScope.user}">
+	                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalLogin" >
+                        </c:if>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-car fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">내 차 팔기</h4>
                     <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
