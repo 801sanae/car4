@@ -24,7 +24,6 @@ public class Car {
 	private User user;			//User값
 	private String tranCode;	//낙찰진행상태
 	private String info;
-
 	//default Constructor
 	public Car() {
 		System.out.println(this.getClass());
@@ -190,5 +189,8 @@ public class Car {
 	}
 
 
-	
+
+
+
+
 }

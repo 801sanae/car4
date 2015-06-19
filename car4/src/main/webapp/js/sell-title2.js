@@ -41,13 +41,9 @@ function init_list3() {
 
 
 // ready함수.
-$(document).ready(function() {
-	
-	
-	
+$(document).ready(function(){
 	init_all();
 
-	
 	/* 인풋박스 유효성 검사 (div) */
 	$("#carNum").blur(function() {
 
@@ -105,6 +101,7 @@ $(document).ready(function() {
 	});
 	
 });
+
 $(function() {
 	//제조국이 선택되었을때 -> 제조사리스트
 	$("#list1").change(function() {

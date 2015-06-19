@@ -76,7 +76,7 @@
  
    
 
-  	 <select id="getMessageList" resultMap="MessageSelectMap" parameterType="hashMap">
+  	<select 	id="getMessageList" resultMap="MessageSelectMap" parameterType="hashMap">
 		SELECT  message_no,  contents,  reg_date,  tran_code, 	send_user_no,
 						 (select u.user_name from users  u where u.user_no = send_user_no ) AS temp	
 	  	FROM  (	SELECT inner_table.* , ROWNUM AS row_seq
@@ -86,10 +86,11 @@
 											ORDER BY reg_date DESC 
 											) inner_table 
 						WHERE user_no=#{userNo:INTEGER}
-										AND ROWNUM &lt;= #{search.endRowNum} 
-					 )  
-		WHERE row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+										AND ROWNUM &lt;= #{search.endRowNum} )  
+		WHERE <!-- user_no=#{userNo:INTEGER}  -->
+						 <!-- AND -->   row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
 	 </select>
+
 
 	<select id="getMessage" parameterType="int" resultMap="MessageSelectMap">
 		SELECT *

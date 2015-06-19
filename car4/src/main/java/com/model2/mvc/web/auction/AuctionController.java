@@ -106,7 +106,6 @@ public class AuctionController {
 
 
 		System.out.println("1");
-		
 		search.setPageSize(pageSize);
 
 		System.out.println("2");
@@ -148,11 +147,6 @@ public class AuctionController {
 		carService.getAuction(user.getUserNo());
 
 		List<Car> list = carService.getAuction(user.getUserNo());
-
-		System.out.println("3번"+list);
-		//CarNo가져오기
-		System.out.println("CarNNOOOOO"+carService.selectCar(user.getUserNo()));
-
 
 
 		//selectCar method에 session User정보를 주고 User가 가지고 있는 Car다 가져오는 method
@@ -301,11 +295,8 @@ public class AuctionController {
 
 		//낙찰 후 auction테이블의 success_car 변경
 		auctionService.updateAuction(carNo, auctionNo);
-		System.out.println("2");
-
 		//낙찰 후 car테이블의 tran_code 변경
 		carService.updateCar(carNo);
-		System.out.println("3");
 
 		return "forward:/listUserBuy.do";
 	}

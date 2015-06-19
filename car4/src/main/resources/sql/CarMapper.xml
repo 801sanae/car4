@@ -101,7 +101,7 @@
 		fuel, mileage, 
 		sell, accident, user_no, info,tran_code)
 		VALUES(
-		car_No.NEXTVAL ,#{carNum:VARCHAR}, #{manuCountry:VARCHAR}, #{manuCo:VARCHAR}, #{model:VARCHAR}, #{color:VARCHAR}, #{year:INTEGER}, #{carYear:INTEGER}, #{transmission:VARCHAR},#{cc:INTEGER},#{fuel:VARCHAR}, #{mileage:INTEGER}, #{sell:VARCHAR}, #{accident:VARCHAR},#{user.userNo},#{info},0)
+		car_No.NEXTVAL ,#{carNum:VARCHAR}, #{manuCountry:VARCHAR}, #{manuCo:VARCHAR}, #{model:VARCHAR}, #{color:VARCHAR}, #{year:INTEGER}, #{carYear:INTEGER}, #{transmission:VARCHAR},#{cc:INTEGER},#{fuel:VARCHAR}, #{mileage:INTEGER}, #{sell:VARCHAR}, #{accident:VARCHAR},#{user.userNo},#{info:VARCHAR},0)
 	</insert>
 	
 	

@@ -16,7 +16,7 @@
 <body>
 <jsp:include page="/nav.jsp"></jsp:include>
 <br><br><br><br>
-	<%-- <!-- header -->
+ <!-- header -->
 	<div class="container">
 		<!-- Second navbar for categories -->
 		<div class="row">
@@ -34,7 +34,7 @@
 		</div>
 
 	</div>
-	<!--/header --> --%>
+	<!--/header -->
 
  <!-- nav bar  -->
     

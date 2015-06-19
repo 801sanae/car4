@@ -91,7 +91,7 @@
 		car_no = #{bidCarNo.carNo}
 	</select>
 
-	<!-- // 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보 -->
+ <!-- // 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보 -->
 	<select id="getBidListByCarNo" parameterType="Integer" resultMap="AuctionListSelectMap">
 
 		SELECT al.auction_no, u.user_name AS mon, a.title, a.success_car, al.bid_reg_date, al.bid_price
@@ -103,6 +103,5 @@
 		ORDER BY al.bid_reg_date desc
 		
 	</select>
- 
 
 </mapper>

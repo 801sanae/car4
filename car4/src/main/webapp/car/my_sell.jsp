@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <jsp:include page="/common/attribute.jsp"></jsp:include>
+   
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,56 +24,12 @@
 </head>
 
 <body>
-
+<jsp:include page="../nav.jsp"></jsp:include>
  
-  <!-- header -->
-  <div class="container">
-    <!-- Second nav
-    bar for categories -->
-    <div class="row">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
-
-        <a href="../index.jsp" style="font-size: 50px; padding-left: 20px;">Car4</a>
-      </div>
-
-      <div class="col-md-4"
-        style="margin-top: 10px; padding-left: 100px; color: pink">
-           
-           
-        <!-- Login í´ë¦­ --> 
-        <c:if test="${ empty user }">
-                    <a style="color: gray" data-toggle="modal" data-target="#modalLogin">
-            Login</a>
-        <!--  íìê°ì
- ì°½ ëì°ê¸° -->
-          <jsp:include page="/user/register.jsp"></jsp:include>
-        <!--  íìê°ì
- ì°½ ëì°ê¸° -->
-        </c:if>
-         <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-          <a style="color: gray" href="user/getUser.jsp"> ${user.userName}ë
-            íìí©ëë¤.||</a>
-          <a style="color: gray" href="../logout.do">ë¡ê·¸ìì</a>
-        </c:if>
-        <!-- Login í´ë¦­ -->
-         
-               
-        <!--  Login ì°½ ëì°ê¸° -->
-        <jsp:include page="/user/login.jsp"></jsp:include>
-        <!--  Login ì°½ ëì°ê¸° -->
-       
-       
-      </div>
-    </div>
-  </div>
-  <!--/header End  -->
+  <br><br><br><br>
 
 
- <!-- nav bar  -->
-   
-  <!--  nav end -->
- 
+
   <!-- ì­ê²½ë§¤ ê²ìê¸ ë¦¬ì¤í¸ -->
   <div class="container">
     <div class="col-md-12">

@@ -24,10 +24,11 @@ public class Auction {
 	private int cnt;
 	private int bidCnt;
 	
-	private int su;	//숫자 temp필드 
-	private String mon;//문자 temp필드
+	private int su; //리스트 뽑을 때 잠시 이용하는 int
+	private String mon;
 	
-
+	
+	
 	public int getSu() {
 		return su;
 	}

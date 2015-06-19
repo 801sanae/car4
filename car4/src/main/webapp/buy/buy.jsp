@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="../css\bootstrap.css" rel="stylesheet">
-<link href="../css\bootstrap-theme.min.css" rel="stylesheet">
-<link href="../css\listClick.css" rel="stylesheet">
-<link href="../css\test.css" rel="stylesheet">
+
+<link href="../css/listClick.css" rel="stylesheet">
+<link href="../css/test.css" rel="stylesheet">
 
 
 <meta charset="utf-8">
@@ -46,18 +45,7 @@ function listValueSeparate(obj, id) {
 	<div class="container">
 		<!-- Second navbar for categories -->
 		<div class="row">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="col-md-9" style="margin-top: 25px; margin-bottom: 25px;">
-
-				<a href="#"
-					style="font-size: 50px; padding-left: 20px; color: gray;">Brand</a>
-			</div>
-
-			<div class="col-md-3" style="margin-top: 10px; padding-left: 100px;">
-				<a href="#" style="color: gray;">Logout</a> &nbsp; <a
-					style="margin-top: 15px;">|</a> &nbsp; <a href="#"
-					style="color: gray;"> 고객센터</a>
-			</div>
+			<jsp:include page="/nav.jsp"></jsp:include>
 		</div>
 
 	</div>
@@ -103,27 +91,44 @@ function listValueSeparate(obj, id) {
 	
 	
 	
-	
+	<div class="container">
 	<form name="buy" mehtod="post" action="../addAuction.do">
 		<!-- category -->
-		<div class="container-fluid">
-
-			<div class="col-md-3" style="margin-left: 80px;">
-
-
-
+		
+		
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+        <hgroup>
+          
+          <h1 class="free">구매를 위한 제목 입력란</h1>
+         </hgroup>
+    	 <div class="well">
+              <div class="input-group" style="width: 100%;">
+                 <input class="btn btn-lg" name="title" id="title" placeholder="제목을 입력하시오." required>
+                 <button class="btn btn-primary btn-lg" type="button">등록</button>
+              </div>
+    	 </div>
+         
+		</div>
+	</div>
+<br><br>
+		
+		
+		
+<div class="container-fluid col-md-offset-1">
+			<div class="col-md-1" style="margin-left: 80px;">
 				<div class="panel-heading paneltitle"
-					style="background-color: gray; color: write;">
+					style="background-color: black; color: white; padding-left: 50px">
 					<h3 class="panel-title">제조국</h3>
 				</div>
 
 
-				<div class="list1 panel">
+				<div class="list1 panel"">
 
 					<div class="list-group group1" id="list1">
-						<a href="#" class="list-group-item" id="2-1" name="korea" onClick="listValueSeparate(this, 'manuCountry')">국산차</a>
-						<a href="#" class="list-group-item" id="2-2" name="foreign" onClick="listValueSeparate(this, 'manuCountry')">수입차</a>
-						<a href="#" class="list-group-item" id='2-3' name="etc" onClick="listValueSeparate(this, 'manuCountry')">기타</a>
+						<a href="#" class="list-group-item"   style="padding-left: 50px;" id="2-1" name="korea" onClick="listValueSeparate(this, 'manuCountry')">국산차</a>
+						<a href="#" class="list-group-item"    style="padding-left: 50px;" id="2-2" name="foreign" onClick="listValueSeparate(this, 'manuCountry')">수입차</a>
+						<a href="#" class="list-group-item"    style="padding-left: 50px;" id='2-3' name="etc" onClick="listValueSeparate(this, 'manuCountry')">기타</a>
 						
 						<input type="hidden" id="manuCountry" name="manuCountry" value="">
 					</div>
@@ -131,10 +136,10 @@ function listValueSeparate(obj, id) {
 				</div>
 
 			</div>
-			<div class="col-md-3" style="margin-left: 50px">
+			<div class="col-md-2" style="margin-left: 50px">
 
 				<div class="panel-heading paneltitle"
-					style="background-color: gray;">
+					style="background-color: black; color: white; padding-left: 100px">
 					<h3 class="panel-title">제조사</h3>
 				</div>
 
@@ -144,36 +149,36 @@ function listValueSeparate(obj, id) {
 						<br>
 						<br>
 						<b>
-							<p align="center">제조국을 클릭하면</p>
-							<p align="center">리스트가 열립니다.</p>
+							<p style="padding-left: 70px">제조국을 클릭하면</p>
+							<p style="padding-left: 70px" >리스트가 열립니다.</p>
 						</b><br>
 						<br>
 						<br>
 					</div>
 					<!-- 국내차 -->
 					<div class="list-group make-list group2" id="list2-1">
-						<a href="#" class="list-group-item" id="hyundai" onClick="listValueSeparate(this, 'manuCo')" ><b>현대</b></a> 
-						<a href="#" class="list-group-item" id="kia" onClick="listValueSeparate(this, 'manuCo')"><b>기아</b></a> 
-						<a href="#" class="list-group-item" id="chevolet" onClick="listValueSeparate(this, 'manuCo')"><b>쉐보레(GM대우)</b></a>
-						<a href="#" class="list-group-item" id="renault" onClick="listValueSeparate(this, 'manuCo')"><b>르노삼성</b></a> 
-						<a href="#" class="list-group-item" id="ssangyoung" onClick="listValueSeparate(this, 'manuCo')"><b>쌍용</b></a> 
-						<a href="#" class="list-group-item" id="etc" onClick="listValueSeparate(this, 'manuCo')"><b>기타제조사</b></a>
+						<a href="#" class="list-group-item"  style="padding-left: 100px;"  id="hyundai" onClick="listValueSeparate(this, 'manuCo')" ><b>현대</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;" id="kia" onClick="listValueSeparate(this, 'manuCo')"><b>기아</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="chevolet" onClick="listValueSeparate(this, 'manuCo')"><b>쉐보레</b></a>
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="renault" onClick="listValueSeparate(this, 'manuCo')"><b>르노삼성</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="ssangyoung" onClick="listValueSeparate(this, 'manuCo')"><b>쌍용</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="etc" onClick="listValueSeparate(this, 'manuCo')"><b>기타제조사</b></a>
 					</div>
 					<!-- 수입차 -->
 					<div class="list-group make-list group2" id="list2-2">
-						<a href="#" class="list-group-item" id="bmw" onClick="listValueSeparate(this, 'manuCo')"><b>BMW</b></a> 
-						<a href="#" class="list-group-item" id="audi" onClick="listValueSeparate(this, 'manuCo')"><b>아우디</b></a> 
-						<a href="#" class="list-group-item" id="volkswagen" onClick="listValueSeparate(this, 'manuCo')"><b>폭스바겐</b></a>
-						<a href="#" class="list-group-item" id="mini" onClick="listValueSeparate(this, 'manuCo')"><b>미니</b></a> 
-						<a href="#" class="list-group-item" id="gmc"  onClick="listValueSeparate(this, 'manuCo')"><b>GMC</b></a> 
-						<a href="#" class="list-group-item" id="nissan" onClick="listValueSeparate(this, 'manuCo')"><b>닛산</b></a> 
-						<a href="#" class="list-group-item" id="daigatsu" onClick="listValueSeparate(this, 'manuCo')"><b>다이하쯔</b></a> 
-						<a href="#" class="list-group-item" id="dodge"  onClick="listValueSeparate(this, 'manuCo')"><b>닷지</b></a>
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="bmw" onClick="listValueSeparate(this, 'manuCo')"><b>BMW</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="audi" onClick="listValueSeparate(this, 'manuCo')"><b>아우디</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="volkswagen" onClick="listValueSeparate(this, 'manuCo')"><b>폭스바겐</b></a>
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="mini" onClick="listValueSeparate(this, 'manuCo')"><b>미니</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="gmc"  onClick="listValueSeparate(this, 'manuCo')"><b>GMC</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="nissan" onClick="listValueSeparate(this, 'manuCo')"><b>닛산</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="daigatsu" onClick="listValueSeparate(this, 'manuCo')"><b>다이하쯔</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="dodge"  onClick="listValueSeparate(this, 'manuCo')"><b>닷지</b></a>
 					</div>
 					<!-- ETC -->
 					<div class="list-group make-list group2" id="list2-3">
-						<a href="#" class="list-group-item" id="etc1" onClick="listValueSeparate(this, 'manuCo')"><b>ETC1</b></a> 
-						<a href="#" class="list-group-item" id="etc2" onClick="listValueSeparate(this, 'manuCo')"><b>ETC2</b></a>
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="etc1" onClick="listValueSeparate(this, 'manuCo')"><b>ETC1</b></a> 
+						<a href="#" class="list-group-item" style="padding-left: 100px;"  id="etc2" onClick="listValueSeparate(this, 'manuCo')"><b>ETC2</b></a>
 					</div>
 					
 					<input type="hidden" id="manuCo" name="manuCo"/>
@@ -182,9 +187,10 @@ function listValueSeparate(obj, id) {
 			</div>
 
 			<!-- 3번째 리스트 -->
-			<div class="col-md-3" style="margin-left: 50px">
+			<div class="col-md-2" style="margin-left: 50px">
 
-				<div class="panel-heading paneltitle" style="background-color: gray;">
+				<div class="panel-heading paneltitle"
+					style="background-color: black; color: white; padding-left: 180px">
 					<h3 class="panel-title">모델</h3>
 				</div>
 
@@ -194,57 +200,57 @@ function listValueSeparate(obj, id) {
 						<br>
 						<br>
 						<b>
-							<p align="center">제조사를 클릭하면</p>
-							<p align="center">리스트가 열립니다.</p>
+							<p style="padding-left: 140px">제조사를 클릭하면</p>
+							<p style="padding-left: 140px">리스트가 열립니다.</p>
 						</b><br> <br> <br>
 					</div>
 
 
 					<!--  list2 에서 hyundai 클릭시  -->
-					<div class="list-group make-list group3" id="list3-hyundai">
-						<a href="#" class="list-group-item" id="sonata" onClick="listValueSeparate(this, 'model')">쏘나타</a> 
-						<a href="#" class="list-group-item" id="grandeur" onClick="listValueSeparate(this, 'model')">그랜저</a> 
-						<a href="#" class="list-group-item" id="avante" onClick="listValueSeparate(this, 'model')">아반떼</a> 
-						<a href="#" class="list-group-item" id="starex" onClick="listValueSeparate(this, 'model')">스타렉스</a> 
-						<a href="#" class="list-group-item" id="santafe" onClick="listValueSeparate(this, 'model')">싼타페</a> 
-						<a href="#" class="list-group-item" id="genesis" onClick="listValueSeparate(this, 'model')">제네시스</a> 
-						<a href="#" class="list-group-item" id="eqqus" onClick="listValueSeparate(this, 'model')">에쿠스</a> 
-						<a href="#" class="list-group-item" id="tucson" onClick="listValueSeparate(this, 'model')">투싼</a> 
-						<a href="#" class="list-group-item" id="trajetXG" onClick="listValueSeparate(this, 'model')">트라제 XG</a> 
-						<a href="#" class="list-group-item" id="veracruz" onClick="listValueSeparate(this, 'model')">베라크루즈</a> 
-						<a href="#" class="list-group-item" id="accent" onClick="listValueSeparate(this, 'model')">엑센트</a> 
-						<a href="#" class="list-group-item" id="tuscans" onClick="listValueSeparate(this, 'model')">투스카니</a> 
-						<a href="#" class="list-group-item" id="terracan" onClick="listValueSeparate(this, 'model')">테라칸</a> 
-						<a href="#" class="list-group-item" id="galloper" onClick="listValueSeparate(this, 'model')">갤로퍼</a> 
-						<a href="#" class="list-group-item" id="verna" onClick="listValueSeparate(this, 'model')">베르나</a>
+					<div class="list-group make-list group3" id="list3-hyundai" >
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sonata" onClick="listValueSeparate(this, 'model')">쏘나타</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="grandeur" onClick="listValueSeparate(this, 'model')">그랜저</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="avante" onClick="listValueSeparate(this, 'model')">아반떼</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="starex" onClick="listValueSeparate(this, 'model')">스타렉스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="santafe" onClick="listValueSeparate(this, 'model')">싼타페</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="genesis" onClick="listValueSeparate(this, 'model')">제네시스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="eqqus" onClick="listValueSeparate(this, 'model')">에쿠스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="tucson" onClick="listValueSeparate(this, 'model')">투싼</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="trajetXG" onClick="listValueSeparate(this, 'model')">트라제 XG</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="veracruz" onClick="listValueSeparate(this, 'model')">베라크루즈</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="accent" onClick="listValueSeparate(this, 'model')">엑센트</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="tuscans" onClick="listValueSeparate(this, 'model')">투스카니</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="terracan" onClick="listValueSeparate(this, 'model')">테라칸</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="galloper" onClick="listValueSeparate(this, 'model')">갤로퍼</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="verna" onClick="listValueSeparate(this, 'model')">베르나</a>
 					</div>
 
 					<!--  list2 에서 kia 클릭시  -->
 					<div class="list-group make-list group3" id="list3-kia">
-						<a href="#" class="list-group-item" id="carnival"  onClick="listValueSeparate(this, 'model')">카니발</a> 
-						<a href="#" class="list-group-item" id="morning" onClick="listValueSeparate(this, 'model')">모닝</a> 
-						<a href="#" class="list-group-item" id="sportage" onClick="listValueSeparate(this, 'model')">스포티지</a> 
-						<a href="#" class="list-group-item" id="k5" onClick="listValueSeparate(this, 'model')">K5</a> 
-						<a href="#" class="list-group-item" id="sorrento" onClick="listValueSeparate(this, 'model')">쏘렌토</a> 
-						<a href="#" class="list-group-item" id="pride" onClick="listValueSeparate(this, 'model')">프라이드</a> 
-						<a href="#" class="list-group-item" id="k7" onClick="listValueSeparate(this, 'model')">K7</a> 
-						<a href="#" class="list-group-item" id="opirus" onClick="listValueSeparate(this, 'model')">오피러스</a> 
-						<a href="#" class="list-group-item" id="carens" onClick="listValueSeparate(this, 'model')">카렌스</a> 
-						<a href="#" class="list-group-item" id="porte" onClick="listValueSeparate(this, 'model')">포르테</a>
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="carnival"  onClick="listValueSeparate(this, 'model')">카니발</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="morning" onClick="listValueSeparate(this, 'model')">모닝</a> 
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="sportage" onClick="listValueSeparate(this, 'model')">스포티지</a> 
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="k5" onClick="listValueSeparate(this, 'model')">K5</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sorrento" onClick="listValueSeparate(this, 'model')">쏘렌토</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="pride" onClick="listValueSeparate(this, 'model')">프라이드</a> 
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="k7" onClick="listValueSeparate(this, 'model')">K7</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="opirus" onClick="listValueSeparate(this, 'model')">오피러스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="carens" onClick="listValueSeparate(this, 'model')">카렌스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="porte" onClick="listValueSeparate(this, 'model')">포르테</a>
 					</div>
 
 					<!--  list2 에서 chevolet 클릭시  -->
 					<div class="list-group make-list group3" id="list3-chevolet">
-						<a href="#" class="list-group-item" id="sbr" onClick="listValueSeparate(this, 'model')">쉐보레</a> 
-						<a href="#" class="list-group-item" id="sbr1" onClick="listValueSeparate(this, 'model')">쉐보레모</a> 
-						<a href="#" class="list-group-item" id="sbrsportage" onClick="listValueSeparate(this, 'model')">쉐보레스포티지</a> 
-						<a href="#" class="list-group-item" id="sbr5" onClick="listValueSeparate(this, 'model')">쉐보레5</a> 
-						<a href="#" class="list-group-item" id="sbrrrento" onClick="listValueSeparate(this, 'model')">쉐보레렌토</a> 
-						<a href="#" class="list-group-item" id="sbrpride" onClick="listValueSeparate(this, 'model')">쉐보레프라이드</a> 
-						<a href="#" class="list-group-item" id="sbr7" onClick="listValueSeparate(this, 'model')">쉐보레7</a> 
-						<a href="#" class="list-group-item" id="sbrrus" onClick="listValueSeparate(this, 'model')">쉐보레러스</a> 
-						<a href="#" class="list-group-item" id="sbrcarens" onClick="listValueSeparate(this, 'model')">쉐보레렌스</a> 
-						<a href="#" class="list-group-item" id="sbrporte" onClick="listValueSeparate(this, 'model')">쉐르테</a>
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbr" onClick="listValueSeparate(this, 'model')">쉐보레</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbr1" onClick="listValueSeparate(this, 'model')">쉐보레모</a> 
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="sbrsportage" onClick="listValueSeparate(this, 'model')">쉐보레스포티지</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbr5" onClick="listValueSeparate(this, 'model')">쉐보레5</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbrrrento" onClick="listValueSeparate(this, 'model')">쉐보레렌토</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbrpride" onClick="listValueSeparate(this, 'model')">쉐보레프라이드</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbr7" onClick="listValueSeparate(this, 'model')">쉐보레7</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbrrus" onClick="listValueSeparate(this, 'model')">쉐보레러스</a> 
+						<a href="#" class="list-group-item"  style="padding-left: 170px;"  id="sbrcarens" onClick="listValueSeparate(this, 'model')">쉐보레렌스</a> 
+						<a href="#" class="list-group-item" style="padding-left: 170px;"   id="sbrporte" onClick="listValueSeparate(this, 'model')">쉐르테</a>
 					</div>
 
 					<!--  list2 에서 renault 클릭시  -->
@@ -343,7 +349,7 @@ function listValueSeparate(obj, id) {
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 
-		<div class="col-md-10 col-md-offset-4">
+		<div class="col-md-10 col-md-offset-2">
 
 
 
@@ -351,7 +357,7 @@ function listValueSeparate(obj, id) {
 			<div class="checkbox">
 
 
-				<span style="margin-left: 30px">연료&nbsp; | &nbsp;</span> <label>
+				<span>연&nbsp;&nbsp;&nbsp; 료&nbsp; | &nbsp;</span> <label>
 					<input type="checkbox" id="fuel" name="fuel" value="gasolin" checked> <span
 					class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span> <span
 					>가솔린</span>
@@ -368,7 +374,7 @@ function listValueSeparate(obj, id) {
 			<!--변속기 -->
 			<div class="checkbox">
 
-				<span style="margin-left: 16px">변속기&nbsp; | &nbsp;</span> <label>
+				<span>변속기&nbsp; | &nbsp;</span> <label>
 					<input type="checkbox" id="transmission" name="transmission" value="passive" checked> <span
 					class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span> <span>수동</span>
 				</label> <label style="margin-left: 14px"> <input type="checkbox"
@@ -383,7 +389,7 @@ function listValueSeparate(obj, id) {
 				<label> <input type="checkbox" id="modelyear"> <span
 					class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
 				</label> <span id="inputmodelyear" style="color: gray;">
-					연식&nbsp;&nbsp; </span> 
+					연식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> 
 					<input type="text" id="up" name="year" placeholder="ex)1000"
 					maxlength="4" style="width: 70px; text-align: center;" disabled>
 				<span id="to" style="color: gray;">~</span> 
@@ -419,7 +425,7 @@ function listValueSeparate(obj, id) {
 			</div>
 		</div>
 
-		<div class="col-md-8 col-md-offset-4">
+		<div class="col-md-8 col-md-offset-2">
 			<!-- Textarea -->
 			<div class=".col-md-2 .col-md-offset-2 panel1">
 				<div class="panel-heading">
@@ -443,7 +449,7 @@ function listValueSeparate(obj, id) {
 			</div>
 		</div>
 	</form>
-
+</div>
 
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

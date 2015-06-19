@@ -320,5 +320,13 @@ public class UserController {
 	      
 	      return "forward:/car/my_sell.jsp";
 	   }
+	@RequestMapping("/index.do")
+	public String index() throws Exception{
+		
+	
+		return "redirect:/index.jsp";
+	}
+	
+	
 	
 }

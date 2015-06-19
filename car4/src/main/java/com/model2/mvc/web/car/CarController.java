@@ -71,6 +71,7 @@ public class CarController {
 
 		//Business Logic
 		car.setUser((User)session.getAttribute("user"));
+		System.out.println("CCCAAARRR"+car);
 		System.out.println("나와?"+car.getUser());
 		
 		System.out.println("car"+car);
@@ -318,7 +319,7 @@ public class CarController {
 	               } catch (Exception e) {
 	                  e.printStackTrace();
 	               } 
-	               System.out.println("디비가기전이당"+fileUpload.getImgNum());
+	               
 	               fileService.updateFile(fileUpload);
 	            
 	      

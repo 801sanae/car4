@@ -13,7 +13,7 @@
 <link href="../css/jasny-bootstrap.css" rel="stylesheet">
 <link href="../css/jasny-bootstrap.css.map" rel="stylesheet">
 <script src="https://code.jquery.com/jquery.js"></script>
-
+<script src="../js/jasny-bootstrap.min.js"></script>
 <script src="../js/sell-title2.js"></script>
 
 <meta charset="utf-8">

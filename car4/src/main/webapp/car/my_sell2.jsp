@@ -7,26 +7,18 @@
 <html>
 <head>
 
-<link href="css\bootstrap.css" rel="stylesheet">
-<link href="css\bootstrap-theme.min.css" rel="stylesheet">
 <link href="css\sell.css" rel="stylesheet">
 <!-- image upload -->
-<link href="css\jasny-bootstrap.css" rel="stylesheet">
-<link href="css\jasny-bootstrap.css.map" rel="stylesheet">
+<link href="../css/jasny-bootstrap.css" rel="stylesheet">
+<link href="../css/jasny-bootstrap.css.map" rel="stylesheet">
 <script src="https://code.jquery.com/jquery.js"></script>
+
 <script src="js\sell-title2.js"></script>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<!--  <script src="js/sell.js"></script>-->
-<script src="js/jasny-bootstrap.min.js"></script>
-
+s
 
 <script type="text/javascript">
    function fncGetList(currentPage) {
@@ -39,47 +31,7 @@
 
 <body>
 
-   <!-- header -->
-   <div class="container">
-      <!-- Second nav
-    bar for categories -->
-      <div class="row">
-         <!-- Brand and toggle get grouped for better mobile display -->
-         <div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
-
-            <a href="../index.jsp" style="font-size: 50px; padding-left: 20px;">Car4</a>
-         </div>
-
-         <div class="col-md-4"
-            style="margin-top: 10px; padding-left: 100px; color: pink">
-
-
-            <!-- Login 클릭 -->
-            <c:if test="${ empty user }">
-               <a style="color: gray" data-toggle="modal"
-                  data-target="#modalLogin"> Login</a>
-               <!--  회원가입 창 띄우기 -->
-               <jsp:include page="/user/register.jsp"></jsp:include>
-               <!--  회원가입 창 띄우기 -->
-            </c:if>
-            <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-               <a style="color: gray" href="user/getUser.jsp">
-                  ${user.userName}님 환영합니다.||</a>
-               <a style="color: gray" href="../logout.do">로그아웃</a>
-            </c:if>
-            <!-- Login 클릭 -->
-
-
-            <!--  Login 창 띄우기 -->
-            <jsp:include page="/user/login.jsp"></jsp:include>
-            <!--  Login 창 띄우기 -->
-
-
-         </div>
-      </div>
-   </div>
-   <!--/header End  -->
-
+  <jsp:include page="/nav.jsp"></jsp:include>
 
    
    <!--  다섯번째 시작  -->
@@ -92,7 +44,7 @@
                   <div class="row">
 
                      <hgroup class="mb20">
-                        <h1>판매자 등록</h1>
+                       
                         <h2 class="lead">
                            <strong class="text-danger">!</strong> 판매자 등록페이지 확인 <strong
                               class="text-danger">상세정보</strong>
@@ -101,7 +53,7 @@
 
                   <div class="col-xs-12 col-sm-12 col-md-12">
                      <h3>
-                        <a href="#" title="">차량 세부 사항</a>
+                        <a href="#" title="">등록 차량 변경</a>
                      </h3>
 
 
@@ -409,24 +361,7 @@
                          </c:if>
                            </div>
                         </div>
-                        
 
-
-                        <div class="form-group">
-                           <label class="control-label col-md-1">성능상태점검기록부 |</label>
-                           <div class="col-md-4">
-                              <button type="button" class="btn btn-default" name="perfor"
-                                 style="margin-top: 2%;">&nbsp;&nbsp;&nbsp;첨부하기&nbsp;&nbsp;&nbsp;</button>
-                           </div>
-
-                           <!-- <label class="control-label col-md-1 col-md-offset-2"
-                          for="phone">전문평가사 |</label>
-                        <div class="col-md-2">
-                          <input type="radio" name="professor" value="yes" checked />&nbsp;요청
-                          &nbsp;&nbsp; <input type="radio" name="professor"
-                            value="no" />&nbsp;미요청
-                        </div> -->
-                        </div>
                      </div>
                   </div>
                </div>
@@ -685,291 +620,285 @@
          <div class='list-group gallery form-group'>
             <div class="row">
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput"
-                     id="upfile1">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 100%; height: 100%;">
-                        <img data-src="holder.js/100x100%" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'><img
-                              src="${list[0].imgPath }"
-                              style="height: 100%; width: 100%"></small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[0]" id="upfile0"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile1">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[0].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'></small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[0]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+						
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput"
-                     id="upfile2">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img src="${list[1].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>실내</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[1]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile2">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[1].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>실내</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[1]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
+               
+        
+               
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput"
-                     id="upfile3">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[2].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>전면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[2]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile3">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[2].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>전면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[2]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput"
-                     id="upfile1">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[3].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>후면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[3]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile4">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[3].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>후면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[3]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[4].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>측면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[4]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile5">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[4].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>측면</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[4]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[5].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>Engine</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[5]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile6">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[5].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>Engine</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[5]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
             </div>
             <div class="row">
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 100%; height: 100%;">
-                        <img data-src="${list[6].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'><img
-                              src="http://placehold.it/320x320"
-                              style="height: 100%; width: 100%"></small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[6]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile7">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[6].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>옵션</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[6]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[7].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>실내</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[7]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile8">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[7].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>옵션1</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[7]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[8].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>전면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[8]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile9">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[8].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>옵션2</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[8]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[9].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>후면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[9]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile10">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[9].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>옵션3</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[9]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 170px; height: 160px;">
-                        <img data-src="${list[10].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'>측면</small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[10]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile11">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[10].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'>옵션4</small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[10]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
                <div class='col-sm-4 col-xs-6 col-md-2 col-lg-2'>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail"
-                        style="width: 100%; height: 100%;">
-                        <img data-src="${list[11].imgPath }" alt="">
-                        <div class='text-right'>
-                           <small class='text-muted'><img
-                              src="http://placehold.it/320x320"
-                              style="height: 100%; width: 100%"></small>
-                        </div>
-                        <!-- text-right / end -->
-                     </div>
-                     <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 250px; max-height: 250px;" align="center"></div>
-                     <div align="center">
-                        <span class="btn btn-default btn-file"><span
-                           class="fileinput-new">Select image</span><span
-                           class="fileinput-exists">Change</span><input type="file"
-                           name="upfile[11]"></span> <a href="#"
-                           class="btn btn-default fileinput-exists"
-                           data-dismiss="fileinput">Remove</a>
-                     </div>
-                  </div>
-               </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput"  id="upfile12">
+						<div class="fileinput-new thumbnail"
+						style="width: 170px; height: 160px;  border-color: black;">
+						<img src="${list[11].imgPath }" alt="">
+						<div class='text-right'>
+						<small class='text-muted'></small>
+						</div>
+						<!-- text-right / end -->
+						</div>
+						<div class="fileinput-preview fileinput-exists thumbnail"
+						style="max-width: 220px; max-height: 220px;" align="center"></div>
+						<div align="center">
+						<span class="btn btn-default btn-file"><span
+						class="fileinput-new">사진 선택</span><span
+						class="fileinput-exists">Change</span><input type="file"
+						name="upfile[11]"></span> <a href="#"
+						class="btn btn-default fileinput-exists"
+						data-dismiss="fileinput">Remove</a>
+						</div>
+						</div>
+						</div>
                <!-- col-6 / end -->
             </div>
 

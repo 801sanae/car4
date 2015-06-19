@@ -30,9 +30,9 @@
       <result property="bidCnt"            column="bid_cnt"             jdbcType="NUMERIC" />
       
       <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
-      <result property="su"   		column="su" 				jdbcType="NUMERIC" />
-      <!-- su : 내가 입찰했는지에 대한 여부 ( auctionList에서 auction_no와 car_no를 비교한다) -->	
-             
+     <result property="su"   		column="su" 				jdbcType="NUMERIC" />
+      <!-- su : 내가 입찰했는지에 대한 여부 ( auctionList에서 auction_no와 car_no를 비교한다) -->
+      	             
       <association property="user" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
 			<result property="userNo"	column="user_no" 	    jdbcType="INTEGER" />

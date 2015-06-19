@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%--Login JSP --%>
 <head>
@@ -180,7 +180,7 @@
                                 <label class="control-label col-sm-1" for="email">Email:</label>
                                 <div class="col-sm-4">
                                     <input type="email" class="form-control" id="email"
-                                        name="userId" placeholder="Enter email" value="user01@nate.com">
+                                        name="userId" placeholder="Enter email">
                                 </div>
                             </div>
 
@@ -188,7 +188,7 @@
                                 <label class="control-label col-sm-1" for="pwd">Password:</label>
                                 <div class="col-sm-4">
                                     <input type="password" class="form-control" id="pwd"
-                                        name="password" placeholder="Enter password" value="123#123">
+                                        name="password" placeholder="Enter password">
                                 </div>
                             </div>
                         </form>
