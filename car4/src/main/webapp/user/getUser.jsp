@@ -45,9 +45,9 @@
 					<tr>
 						<td>Phone:</td>
 						<td>
-							<div class="col-md-1">${user.phone}</div>
-							<div class="col-md-1">${user.phone2 }</div>
-							<div class="col-md-1">${user.phone3}</div>
+							<div class="col-md-3">${user.phone}</div>
+							<div class="col-md-3">${user.phone2 }</div>
+							<div class="col-md-3">${user.phone3}</div>
 						</td>
 					</tr>
 					<tr>
