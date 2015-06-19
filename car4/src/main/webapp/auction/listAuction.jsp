@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="toDay" class="java.util.Date" />
+
 
 
 <!DOCTYPE html>
@@ -86,6 +88,7 @@
 </head>
 
 <body>
+	<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" var="toDay"/> <%--${toDay} 값에 toDay 세팅 var 지우면 toDay확인가능 --%>
 	<form name="detailForm" action="listAuction.do" method="post">
 		<input type="hidden" id="userName" name="userName"> 
 		<input type="hidden" id="userNo" name="userNo"> 
@@ -220,128 +223,141 @@
 
 
 
-			<!-- 역경매 게시글 리스트 -->
-			<div class="col-md-12">
-
-
-				<div class="row">
-					<div class="table-responsive">
-						<table id="mytable" class="table table-bordred table-striped">
-							<thead>
-								<tr>
-									<th class="col-md-1" id="no" align="center">No</th>
-									<th class="col-md-1" id="model">모델명</th>
-									<th class="col-md-3" id="title" align="center">제목</th>
-									<th class="col-md-2" id="id">이름</th>
-									<th class="col-md-1" id="regDate">등록일</th>
-
-									<th class="col-md-1" id="tranCode">경매진행상태</th>
-									<th class="col-md-1" id="bid">입찰여부</th>
-									<th class="col-md-1" id="bidcnt">입찰수</th>
-								</tr>
-							</thead>
-
-							<tbody id="table">
-								<c:set var="i" value="0" />
-								<c:forEach var="auction" items="${list}">
-									<c:set var="i" value="${i+1}" />
+	<!-- 역경매 게시글 리스트 -->
+		<div class="col-md-12">
+			
+					
+					<div class="row">
+						<div class="table-responsive">
+							<table id="mytable" class="table table-bordred table-striped">
+								<thead>
 									<tr>
-										<td>${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
-										<td>${auction.model}</td>
-										<td><a
-											href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
-										</td>
-										<td style="position: relative;"><span class="glyphicon glyphicon-user"></span>
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop1"> ${auction.user.userName}
-										</a>
-											<ul aria-labelledby="drop1" class="dropdown-menu"
-												style="margin-left: 60px; margin-top: -15px;" role="menu">
-												<li><a href="#">정보 보기</a></li>
-												<li><a href="#message"
-													onClick="OpenWindow( '${auction.user.userName}',${auction.user.userNo}, '${auction.user.userId}')"
-													style="background-color:while"
-													}"
-													>쪽지보내기</a></li>
-											</ul> 
-										</td>
-										<td>${auction.regDate}</td>
-
-
-										<td><c:if
-												test="${!empty auction.successCar && (auction.successCar) eq '0'}">
-												<button type="button" class="btn btn-primary">경매중</button>
-											</c:if> <c:if
-												test="${!empty auction.successCar && !( (auction.successCar) eq '0')}">
-												<button type="button" class="btn btn-danger">경매종료</button>
-											</c:if></td>
-										<td><c:if
-												test="${!empty auction.su && (auction.su) eq 0}">
-													-
-												</c:if> <c:if test="${!empty auction.su && (auction.su) != 0}">
-												<button type="button" class="btn btn-primary">입찰</button>
-											</c:if></td>
-										<td>${auction.bidCnt}</td>
-
+										<th class="col-md-1" id="no" align="center">No</th>
+										<th class="col-md-1" id="model">모델명</th>
+										<th class="col-md-3" id="title" align="center">제목</th>
+										<th class="col-md-1" id="id">이름</th>
+										<th class="col-md-1" id="regDate">등록일</th>
+										
+										<th class="col-md-1" id="tranCode">경매진행상태</th>
+									    <c:if test="${!empty sessionScope.user}">
+											<th class="col-md-1" id="bid">입찰여부</th>
+											<th class="col-md-1" id="bidcnt">입찰수</th>
+										</c:if>
 									</tr>
+								</thead>
+	
+								<tbody id="table">
+								<c:set var="i" value="0" />
+									<c:forEach var="auction" items="${list}">
+										<c:set var="i" value="${i+1}" />									
+										<tr>
+											<td >${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
+											<td>${auction.model}</td>
+											<td>
+											<a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
+											<c:choose>
+												<c:when test="${toDay > auction.regDate}">
+													&nbsp;&nbsp;
+													<span class="label label-danger">new</span>
+												</c:when>
+												<c:otherwise>
+											    </c:otherwise>
+											</c:choose>
+											</td>
+											<td>${auction.user.userName}</td>
+											<td>${auction.regDate}</td>
+																						
+											 <td>
+												<c:if test="${!empty auction.successCar && (auction.successCar) eq '0'}">
+													<button type="button" class="btn btn-primary">경매중</button>
+												</c:if>
+												<c:if test="${!empty auction.successCar && !( (auction.successCar) eq '0')}">
+													<button type="button" class="btn btn-danger">경매종료</button>
+												</c:if>
+											</td>
+										    <c:if test="${!empty sessionScope.user}">
+												<td>
+													<c:if test="${!empty auction.su && (auction.su) eq 0}">
+														
+													</c:if>
+													<c:if test="${!empty auction.su && (auction.su) != 0}">
+														<button type="button" class="btn btn-primary">입찰</button>
+													</c:if>
+													</td>
+												<td>${auction.bidCnt}</td>
+											</c:if>
+											
+										</tr>
+										
+									</c:forEach>
+	
+									
+								</tbody>
+	
+							</table>
+	
 
+	
+	
+					<!-- 페이지네이션 -->
+							<input type="hidden" id="currentPage" name="currentPage" value=""/>
+					
+							<div class="clearfix"></div>
+								 <ul class="pagination pull-right">
+				 		<!-- 아무기능없는 이전버튼 -->
+							 	<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
+									<li class="disabled">
+										<span class="glyphicon glyphicon-chevron-left">
+										</span>
+									</li>
+								</c:if> 
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
+								 
+								<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
+									<li class="disabled">
+										<a href="javascript:fncGetList('${ resultPage.currentPage-1}')">
+											<span class="glyphicon glyphicon-chevron-left">
+											</span>
+										</a>
+									</li>
+								</c:if>
+								
+						<!-- 가운데 보여질 페이지들 -->
+								<c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
+									<li>
+										<a href="javascript:fncGetList('${ i }');">${ i }
+										</a>
+									</li>
 								</c:forEach>
-
-
-							</tbody>
-
-						</table>
-
-
-
-
-						<!-- 페이지네이션 -->
-						<input type="hidden" id="currentPage" name="currentPage" value="" />
-
-						<div class="clearfix"></div>
-						<ul class="pagination pull-right">
-							<!-- 아무기능없는 이전버튼 -->
-							<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
-								<li class="disabled"><span
-									class="glyphicon glyphicon-chevron-left"> </span></li>
-							</c:if>
-							<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
-
-							<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
-								<li class="disabled"><a
-									href="javascript:fncGetList('${ resultPage.currentPage-1}')">
-										<span class="glyphicon glyphicon-chevron-left"> </span>
-								</a></li>
-							</c:if>
-
-							<!-- 가운데 보여질 페이지들 -->
-							<c:forEach var="i" begin="${resultPage.beginUnitPage}"
-								end="${resultPage.endUnitPage}" step="1">
-								<li><a href="javascript:fncGetList('${ i }');">${ i } </a>
-								</li>
-							</c:forEach>
-							<!-- 아무기능없는 다음버튼 -->
-							<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
-								<li><span class="glyphicon glyphicon-chevron-right">
-								</span></li>
-							</c:if>
-
-							<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
-							<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
-								<li><a
-									href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
-										<span class="glyphicon glyphicon-chevron-right"> </span>
-								</a></li>
-							</c:if>
-						</ul>
-						<!-- /페이지네이션 -->
-
+						<!-- 아무기능없는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
+									<li>
+											<span class="glyphicon glyphicon-chevron-right">
+											</span>
+									</li>
+								</c:if>
+								
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
+									<li>
+										<a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
+										<span class="glyphicon glyphicon-chevron-right">
+										</span>
+										</a>
+										
+									</li>
+								</c:if>
+							</ul> 
+					<!-- /페이지네이션 -->
+							
+						</div>
 					</div>
+					
+					</form>
+					
 				</div>
-	</form>
-
-	</div>
-	</div>
-
+			</div>
+	
 	<!-- /역경매 게시글 리스트 -->
 
 
