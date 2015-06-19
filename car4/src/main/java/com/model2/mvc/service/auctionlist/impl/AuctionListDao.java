@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.service.domain.AuctionList;
+import com.model2.mvc.service.domain.Car;
 
 @Repository("auctionListDao")
 public class AuctionListDao{
@@ -39,4 +40,13 @@ public class AuctionListDao{
 		
 		return sqlSession.selectOne("AuctionListMapper.getAuctionList", auctionList);
 	}
+	
+	// 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보
+	public List<AuctionList> getBidListByCarNo(int carNo) throws Exception {
+		System.out.println("AuctionListDao에서 찍은 carNo 값 : "+carNo);
+		List<AuctionList> bidList = sqlSession.selectList("AuctionListMapper.getBidListByCarNo", carNo);
+		System.out.println("AuctionListDao에서 찍은 bidList 값 : "+bidList);
+		return bidList;
+	}
+
 }	
