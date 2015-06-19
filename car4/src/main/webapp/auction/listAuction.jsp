@@ -235,9 +235,8 @@
 											href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
 										</td>
 										<td style="position: relative;"><span
-											class="glyphicon glyphicon-user"></span> <a
-											class="dropdown-toggle" data-toggle="dropdown" href="#"
-											id="drop1"> ${auction.user.userName} </a>
+											class="glyphicon glyphicon-user"></span> 
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop1"> ${auction.user.userName} </a>
 											<ul aria-labelledby="drop1" class="dropdown-menu"
 												style="margin-left: 60px; margin-top: -15px;" role="menu">
 												<li><a href="#message"
