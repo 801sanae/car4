@@ -16,29 +16,6 @@
 <body>
 <jsp:include page="/nav.jsp"></jsp:include>
 <br><br><br><br>
- <!-- header -->
-	<div class="container">
-		<!-- Second navbar for categories -->
-		<div class="row">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="col-md-8" style="margin-top: 25px; margin-bottom: 25px;">
-
-				<a href="/index.jsp"
-					style="font-size: 50px; padding-left: 20px; color: gray;">Car4</a>
-			</div>
-
-			<div class="col-md-4" style="margin-top: 10px; padding-left: 100px;">
-				<a href="#" style="color: gray;">${user.userName} 님 환영합니다.</a>
-			|| <a style="color: gray" href="../logout.do">로그아웃</a>		
-			</div>
-		</div>
-
-	</div>
-	<!--/header -->
-
- <!-- nav bar  -->
-    
-  <!--  nav end -->
 
 	<h3 style="margin-left: 100px">내 정보 수정</h3>
 
