@@ -104,7 +104,7 @@ function listValueSeparate(obj, id) {
          </hgroup>
     	 <div class="well">
               <div class="input-group" style="width: 100%;">
-                 <input class="btn btn-lg" name="title" id="title" placeholder="제목을 입력하시오." required>
+                 <input class="btn btn-lg" name="title" id="title" placeholder="제목을 입력하시오." required/>
                  <button class="btn btn-primary btn-lg" type="button">등록</button>
               </div>
     	 </div>
@@ -402,26 +402,6 @@ function listValueSeparate(obj, id) {
 				</span>
 
 			<br>
-			</div>
-			<!-- 주행거리 -->
-			<div class="checkbox">
-				<label> <input type="checkbox" id="mileage"> <span
-					class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-				</label> <span id="inputmileage" style="color: gray;">
-					주행거리&nbsp;&nbsp; </span> 
-
-
-
-				<input type="text" id="mileage" name="mileage"/>
-				<!-- <b>0km</b><div class="tooltip top"
-					style="top: -40px; left: 77.0454545454546px;">
-					<div class="tooltip-arrow"></div>
-					<div class="tooltip-inner">75 : 450</div>
-				</div>
-				<input type="text" class="span2" name="mileage" data-slider-min="0"
-					data-slider-max="300000" data-slider-step="10000"
-					data-slider-value="[250,450]" id="sl2"> <b>300,000km</b> -->
-
 			</div>
 		</div>
 
