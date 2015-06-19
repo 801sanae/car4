@@ -14,7 +14,7 @@
      
       <result property="auctionListNo"		column="auctionList_no"		jdbcType="INTEGER" />
       <result property="bidPrice"			column="bid_price"			jdbcType="INTEGER" />
-      <result property="bidRegDate"			column="bid_reg_date"		jdbcType="VARCHAR" />
+      <result property="bidRegDate"			column="bid_reg_date"		jdbcType="DATE" />
       
 	  <association property="bidCarNo" javaType="com.model2.mvc.service.domain.Car">	
 			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
@@ -52,41 +52,56 @@
 		      <result property="regDate"		column="reg_date"			jdbcType="DATE" />
 		      <result property="cnt"			column="cnt"				jdbcType="INTEGER" />
 		      <result property="bidCnt"			column="bid_cnt"			jdbcType="NUMERIC" />
-		 	  <result property="user.userNo" 	column="user_no"			jdbcType="NUMERIC"/>   
+		 	  <result property="user.userNo" 	column="user_no"			jdbcType="NUMERIC"/>  
+		 	  
+		 	  <result property="successCar" 	column="success_car"			jdbcType="NUMERIC"/>  
+		 	  <result property="han" 			column="han"				jdbcType="VARCHAR"/>  
 		</association>
    </resultMap>
+	
+	 <insert id="addAuctionList"   parameterType="com.model2.mvc.service.domain.AuctionList" >
+	 	INSERT
+	    INTO
+	    auctionlist(auctionList_no, bid_price, car_no, auction_no, bid_reg_date)
+	    VALUES(auctionList_no.nextval, #{bidPrice},
+	    #{bidCarNo.carNo},
+	    #{bidAuctionNo.auctionNo}, sysdate)     
+	 </insert>
+	 
+	 <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
+	  SELECT
+		 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
+		 FROM
+		 auctionlist a , car c
+		 WHERE
+		 auction_no = #{value}
+		 and c.car_no = a.car_no
+		 ORDER BY a.bid_price
+	 </select>
+	 <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
+			resultMap="AuctionListSelectMap">
+		SELECT
+		*
+		FROM
+		auctionlist
+		WHERE
+		auction_no = #{bidAuctionNo.auctionNo}
+		and
+		car_no = #{bidCarNo.carNo}
+	</select>
 
- <insert id="addAuctionList"   parameterType="com.model2.mvc.service.domain.AuctionList" >
- 	INSERT
-    INTO
-    auctionlist(auctionList_no, bid_price, car_no, auction_no)
-    VALUES(auctionList_no.nextval, #{bidPrice},
-    #{bidCarNo.carNo},
-    #{bidAuctionNo.auctionNo}, sysdate)     
- </insert>
+	<!-- // 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보 -->
+	<select id="getBidListByCarNo" parameterType="Integer" resultMap="AuctionListSelectMap">
+
+		SELECT al.auction_no, u.user_name AS han, a.title, a.success_car, al.bid_reg_date, al.bid_price
+		FROM auctionList al, auction a, users u, car c
+		WHERE c.car_no = #{value}
+		AND al.auction_no = a.auction_no
+		AND a.user_no = u.user_no
+		AND al.car_no = c.car_no
+		ORDER BY al.bid_reg_date desc
+		
+	</select>
  
- <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
-  SELECT
-	 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, TO_CHAR
-    (a.bid_reg_date, 'YYYY-MM-DD HH24:MI:SS') bid_reg_date, c.model, c.tran_code
-	 FROM
-	 auctionlist a , car c
-	 WHERE
-	 auction_no = #{value}
-	 and c.car_no = a.car_no
-	 ORDER BY a.bid_price
- </select>
-
-<select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
-		resultMap="AuctionListSelectMap">
-	SELECT
-	*
-	FROM
-	auctionlist
-	WHERE
-	auction_no = #{bidAuctionNo.auctionNo}
-	and
-	car_no = #{bidCarNo.carNo}
-</select>
 
 </mapper>
