@@ -5,30 +5,26 @@
 <html lang="en">
 
 <head>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <title>Agency - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
    <jsp:include page="/common/attribute.jsp"></jsp:include>
-<script>
-function openMsgList(){
-		window.open("listMessage.do", "value", "top=250,left=600,width=500,height=300");
-		document.msgList.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
-		document.msgList.action = "listMessage.do";
-		document.msgList.submit();
-}
-</script>
 </head>
 <!-- 숫자 애니메이션 -->
 
 <script src="js/dynamicNum.js"></script>
 
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" style="width:100%;heigth:100%;">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="position:absolute;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -74,13 +70,9 @@ function openMsgList(){
                     </li>
 				</c:if>
 			   <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-			   <li>
-			 		<a href="#none" onclick="openMsgList()"><span class="glyphicon glyphicon-envelope" ></span></a>
-			   </li>
-					<li>
-						<a  href="auction/mypage.jsp" > ${user.userName}님 	환영합니다.</a>
-					</li>
-					<li><a style="cursor: pointer;" href="logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
+					<li><a  href="user/getUser.jsp" > ${user.userName}님
+						환영합니다.</a></li>
+					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
 				</c:if>
 				<!-- Login 클릭 -->
                     </li>
@@ -122,16 +114,29 @@ function openMsgList(){
             <div class="row text-center">
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <a href="buy/buy.jsp"><i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    	<c:if test="${!empty sessionScope.user}">
+                        <a href="buy/buy.jsp">
+                        </c:if>
+                        <c:if test="${empty sessionScope.user}">
+	                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalLogin" >
+                        </c:if>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></a>
                     </span>
-                    <h4 class="service-heading">내 차 사기</h4>
+                    
+                    <h4 class="service-heading" id="buy">내 차 사기</h4>
                     <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <a href="getUserInfo.do"><i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i></a>
+                    	<c:if test="${!empty sessionScope.user}">
+                        <a href="getUserInfo.do">
+                        </c:if>
+                        <c:if test="${empty sessionScope.user}">
+	                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalLogin" >
+                        </c:if>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-car fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">내 차 팔기</h4>
                     <p class="text-muted">원하는 차를 저렴하게 차지하세요!<br>첫 차 구매는 Car4!<br>당신에게 아름다운 여행을..</p>
@@ -139,7 +144,7 @@ function openMsgList(){
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <a href="listAuction.do"><i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i></a>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i></a>
                     </span>
                     <h4 class="service-heading">경매 현황</h4>
                     <p class="text-muted">전체 매물 <b><span class="a" id="counter1"></span></b>대</p>
