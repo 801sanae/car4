@@ -92,6 +92,7 @@ public class AuctionListController {
 		auctionList.setBidCarNo(carService.getCar2(car.getCarNo()));
 		// carNo로 Car받기 selectOne
 				
+		// 입찰하기 버튼을 누르면 옥션리스트(입찰현황)에 추가된다.
 		auctionListService.addAuctionList(auctionList);
 		
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
