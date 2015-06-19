@@ -23,16 +23,28 @@ public class Auction {
 	private int successCar;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
-	private int temp;
+	private int su;
+	private String han;
 	
 	
-	public int getTemp() {
-		return temp;
+	
+	public int getSu() {
+		return su;
 	}
 
 
-	public void setTemp(int temp) {
-		this.temp = temp;
+	public void setSu(int su) {
+		this.su = su;
+	}
+
+
+	public String getHan() {
+		return han;
+	}
+
+
+	public void setHan(String han) {
+		this.han = han;
 	}
 
 
@@ -221,8 +233,10 @@ public class Auction {
 				+ professor + ", auctionPrice=" + auctionPrice + ", carDetail="
 				+ carDetail + ", title=" + title + ", user=" + user
 				+ ", regDate=" + regDate + ", successCar=" + successCar
-				+ ", cnt=" + cnt + ", bidCnt=" + bidCnt + ", temp=" + temp
-				+ "]";
+				+ ", cnt=" + cnt + ", bidCnt=" + bidCnt + ", su=" + su
+				+ ", han=" + han + "]";
 	}
+
+
 
 }
