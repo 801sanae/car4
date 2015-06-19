@@ -1,36 +1,51 @@
-<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
-<%@page import="org.springframework.web.context.WebApplicationContext"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" trimDirectiveWhitespaces="true"%>
-<%@ page import="com.model2.mvc.service.user.*" %>    
-<%@ page import="com.model2.mvc.service.user.impl.*" %>
-<%UserDao user = new UserDao();%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/welcome.css" />
-<link rel="stylesheet" type="text/css" href="../css/bootstrap1.min.css" />
 <title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<style type="text/css">
+body {
+  text-align: center;
+  color: #fff;
+  background-attachment: scroll;
+  background-image: url(../img/2.png);
+  background-position: center center;
+  background-repeat: none;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
 </head>
+
 <body>
+<jsp:include page="../common/attribute.jsp"></jsp:include>
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+         <div class="container-fluid" style="margin-left: 48px">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="../index.do">Car4</a>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<jsp:include page="/user/login.jsp"></jsp:include>
+<br><br><br><br><br><br><br>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    ${user.userName}´Ô Welcome!</h1>
-                <h2>È¯¿µÇÕ´Ï´Ù.</h2>
-                <div class="error-details">
-                    
-                </div>
-                <div class="error-actions">
-                    <a href="../index.jsp" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        HomeÀ¸·Î  </a><a href="http://www.jquery2dotnet.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> ³» Á¤º¸È®ÀÎ </a>
-                </div>
+        	<div class="intro-text">
+              <h1 style="color: navy">${user.userName}ë‹˜ Welcome!</h1>
+              <br>
+                <a href="../index.jsp" class="service page-scroll btn btn-xl"><span class="glyphicon glyphicon-home">&nbsp;</span>ì„œë¹„ìŠ¤ ì‹œìž‘í•˜ê¸°!</a>
             </div>
         </div>
     </div>
