@@ -123,16 +123,18 @@ create table auction(
 reg_date date,
 cnt integer,
 bid_cnt integer,
-car_no integer REFERENCES car(car_no),
+success_car integer,
 user_no integer REFERENCES users(user_no),
 PRIMARY KEY(auction_no)
 );
 
 create table auctionList(
-          auctionList_no integer,
+auctionList_no integer,
 car_no integer REFERENCES car(car_no),
-auction_no integer REFERENCES auction(auction_no),regDate date,
-          PRIMARY KEY(auctionList_no)
+auction_no integer REFERENCES auction(auction_no),
+bid_reg_Date date,
+bid_price integer,
+PRIMARY KEY(auctionList_no)
 );
 
 
