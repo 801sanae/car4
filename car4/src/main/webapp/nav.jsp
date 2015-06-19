@@ -28,10 +28,12 @@
 </style>
 <script>
 function openMsgList(){
+	
 		window.open("listMessage.do", "value", "top=250,left=600,width=500,height=300");
 		document.msgList.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
 		document.msgList.action = "listMessage.do";
 		document.msgList.submit();
+		
 }
 </script>
 
