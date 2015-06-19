@@ -375,6 +375,7 @@ $("[data-toggle=tooltip]").tooltip();
         <!-- /.container-fluid -->
     </nav>
 <!--  nav -->
+
 	<br><br>
 		<div class="container-fluid">
 			<div class="row">

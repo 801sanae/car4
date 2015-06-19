@@ -40,25 +40,28 @@
 $(document).ready(function() {	 
 	var option = "${auction.model}";
 	var car = "${list}";
+	
+	$("#selectBox").append("<option value=''></option>");
+	
 	if("${auction.model}"=="${list[0].model}"){
 		$("#selectBox").append("<option value='${list[0].carNum}'>${list[0].carNum}</option>");
 	}
 	if("${auction.model}"=="${list[1].model}"){
 		$("#selectBox").append("<option value='${list[1].carNum}'>${list[1].carNum}</option>");
-	
 	}
 	if("${auction.model}"=="${list[2].model}"){
 		$("#selectBox").append("<option value='${list[2].carNum}'>${list[2].carNum}</option>");
+	
 	}
 	if("${auction.model}"=="${list[3].model}"){
 		$("#selectBox").append("<option value='${list[3].carNum}'>${list[3].carNum}</option>");
 	}
 	if("${auction.model}"=="${list[4].model}"){
 		$("#selectBox").append("<option value='${list[4].carNum}'>${list[4].carNum}</option>");
-		
 	}
 	if("${auction.model}"=="${list[5].model}"){
 		$("#selectBox").append("<option value='${list[5].carNum}'>${list[5].carNum}</option>");
+		
 	}
 	if("${auction.model}"=="${list[6].model}"){
 		$("#selectBox").append("<option value='${list[6].carNum}'>${list[6].carNum}</option>");
@@ -72,8 +75,11 @@ $(document).ready(function() {
 	if("${auction.model}"=="${list[9].model}"){
 		$("#selectBox").append("<option value='${list[9].carNum}'>${list[9].carNum}</option>");
 	}
-	 if("${auction.model}"=="${list[10].model}"){
+	if("${auction.model}"=="${list[10].model}"){
 		$("#selectBox").append("<option value='${list[10].carNum}'>${list[10].carNum}</option>");
+	}
+	 if("${auction.model}"=="${list[11].model}"){
+		$("#selectBox").append("<option value='${list[11].carNum}'>${list[11].carNum}</option>");
 	 }
 
       $.ajax({
@@ -92,22 +98,24 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
+
 	$('#selectBox').on('change', function() {
 		 var value = $(this).val();
-	 	if(value=="${list[0].carNum}"){
+		 
+	 	if(value == "${file[0].carNum}"){
 	 		$( "#c1 tr td:eq(11) img" ).attr({
 				  src: "${file[0].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[1].imgPath}",
+				  src: "${file[0].imgPath}",
 				});
 	 		$("#c1 tr td:eq(14)").append("${list[0].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[0].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[0].mileage}");
 	    	$("#c1 tr td:eq(20)").append("${list[0].year}");
-		}else if(value=="${list[1].carNum}"){
+		}else if(value=="${file[1].carNum}"){
 			$( "#c1 tr td:eq(11) img" ).attr({
-				  src: "${file[0].imgPath}",
+				  src: "${file[1].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[1].imgPath}",
@@ -116,29 +124,29 @@ $(document).ready(function() {
 	    	$("#c1 tr td:eq(16)").append("${list[1].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[1].mileage}");
 	    	$("#c1 tr td:eq(20)").append("${list[1].year}");
-		}else if(value=="${list[2].carNum}"){
+		}else if(value=="${file[2].carNum}"){
 			$( "#c1 tr td:eq(11) img" ).attr({
-				  src: "${file[0].imgPath}",
+				  src: "${file[2].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[1].imgPath}",
+				  src: "${file[2].imgPath}",
 				});
 			$("#c1 tr td:eq(14)").append("${list[2].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[2].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[2].mileage}");
 	    	$("#c1 tr td:eq(20)").append("${list[2].year}");
-		}else if(value=="${list[3].carNum}"){
+		}else if(value=="${file[3].carNum}"){
 			$( "#c1 tr td:eq(11) img" ).attr({
-				  src: "${file[0].imgPath}",
+				  src: "${file[3].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[1].imgPath}",
+				  src: "${file[3].imgPath}",
 				});
 			$("#c1 tr td:eq(14)").append("${list[3].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[3].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[3].mileage}");
 	    	$("#c1 tr td:eq(20)").append("${list[3].year}");
-		}else if(value=="${list[4].carNum}"){
+		}else if(value=="${list[4].carNum}" && value=="${file[4].carNum}"){
 			$( "#c1 tr td:eq(11) img" ).attr({
 				  src: "${file[0].imgPath}",
 				});
@@ -149,12 +157,12 @@ $(document).ready(function() {
 	    	$("#c1 tr td:eq(16)").append("${list[4].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[4].mileage}");
 	    	$("#c1 tr td:eq(20)").append("${list[4].year}");
-		}else if(value=="${list[5].carNum}"){
+		}else if(value=="${file[5].carNum}"){
 			$( "#c1 tr td:eq(11) img" ).attr({
-				  src: "${file[0].imgPath}",
+				  src: "${file[5].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[1].imgPath}",
+				  src: "${file[5].imgPath}",
 				});
 			$("#c1 tr td:eq(14)").append("${list[5].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[5].model}");

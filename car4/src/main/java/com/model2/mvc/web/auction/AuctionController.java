@@ -157,28 +157,18 @@ public class AuctionController {
 
 		List<FileUpload> fileUpload = new ArrayList<FileUpload>();
 		//CarNo List에서 뽑아온놈 0번째 놈
-		System.out.println("fileSize"+fileUpload.size());
+		
 		System.out.println("carSize"+carNo.size());
 
 		//System.out.println("fdsafas"+fileService.getFileList(carNo.get(0).getCarNo()).get(0));
 
-		for(int i=0; i<1; i++) {
-			fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
-			System.out.println("dㅑ야야야야야"+fileService.getFileList(carNo.get(i).getCarNo()));
-			System.out.println("fileSize1"+fileUpload.size());
-			System.out.println("carSize1"+carNo.size());
+		
+		
+		for(int i=0; i<carNo.size(); i++) {
+				fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
+				System.out.println("CARNUM :::::"+fileService.getFileList(carNo.get(i).getCarNo()).get(i).getCarNum());
 		}
-		/*
-		fileService.getFile(CarNo);
-
-		FileUpload file = fileService.getFile(CarNo);
-
-		System.out.println("Board"+file.getImgPath());
-
-
-		model.addAttribute( "file", file);
-		 */
-
+		System.out.println("fileSize"+fileUpload.size());
 		//auction클릭시 발생하는 부분 
 
 		System.out.println("auctionNo:::: "+ auction.getAuctionNo());
@@ -190,29 +180,7 @@ public class AuctionController {
 		model.addAttribute("file", fileUpload);
 		return "forward:/auction/auction_info.jsp";
 	}
-	/*		
-		@RequestMapping("/bidAdd.do")
-		public String bidAdd( @ModelAttribute("auction") Auction auction, Model model, HttpServletRequest request) throws Exception {
-
-
-			//접속된 유저정보를 통해 판매자 정보를 불러온다.
-			/*carService.getCar(request.getParameter("carNum"));
-			System.out.println("Car정보"+carService.getCar(request.getParameter("carNum")));
-			auctionService.getAuction(auction.getAuctionNo());
-			System.out.println("Auction정보"+auctionService.getAuction(auction.getAuctionNo()));
-	 */
-	/*		 
-			Map<String, Object> add = new HashMap<String,Object>();
-				add.put("car", carService.getCar(request.getParameter("carNum")));
-				add.put("auction", auctionService.getAuction(auction.getAuctionNo()));
-			auctionService.addAuctionCar(add);
-			//auctionListMapper값 넣기.
-
-			return "forward:/auction/auction_info.jsp";
-		}
-	 */	
-
-
+	
 
 
 
@@ -228,7 +196,10 @@ public class AuctionController {
 		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 		List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
-
+		
+		System.out.println("Tran+List"+list);
+		System.out.println("TranCode"+list.get(1).getBidCarNo().getTranCode());
+		
 		//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 		//list.get(0).getBidCarNo().getCarNo()
 		model.addAttribute("auctionList", list);

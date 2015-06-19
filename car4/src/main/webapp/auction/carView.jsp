@@ -170,9 +170,9 @@ td, tr {
 			</td>		
 			<td align="left"></td>
 			<td align="left">
-				<c:if test="${!empty (auctionList.bidCarNo.tranCode).trim() == '0'}">
+				<c:if test="${!empty (auctionList.bidCarNo.tranCode) && (auctionList.bidCarNo.tranCode).trim() == '0'}">
 				</c:if>
-				<c:if test="${!empty (auctionList.bidCarNo.tranCode).trim() == '1'}">
+				<c:if test="${!empty (auctionList.bidCarNo.tranCode) && (auctionList.bidCarNo.tranCode).trim() == '1'}">
 					<button type="button" class="label label-warning">낙찰</button>
 				</c:if>
 			</td>

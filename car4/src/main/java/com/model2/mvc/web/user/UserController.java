@@ -72,7 +72,7 @@ public class UserController {
 
 		System.out.println("/addUserView.do");
 
-		return "redirect:/user/addUserView.jsp";
+		return "forward:/user/addUserView.jsp";
 	}
 
 	@RequestMapping("/addUser.do")
@@ -82,8 +82,8 @@ public class UserController {
 		//Business Logic
 		user.setPhone(user.getPhone1()+user.getPhone2()+user.getPhone3());
 		userService.addUser(user);
-		
-		return "forward:user/welcome.jsp";
+
+		return "redirect:user/welcome.jsp";
 	}
 
 	@RequestMapping("/findUser.do")

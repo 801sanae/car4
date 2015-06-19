@@ -16,6 +16,7 @@
       <result property="bidPrice"			column="bid_price"			jdbcType="INTEGER" />
       <result property="bidRegDate"			column="bid_reg_date"		jdbcType="DATE" />
       
+      
 	  <association property="bidCarNo" javaType="com.model2.mvc.service.domain.Car">	
 			<result property="carNum" 		column="car_Num" 		jdbcType="VARCHAR" />	
 			<result property="carNo" 		column="car_No" 		jdbcType="INTEGER" />
@@ -82,13 +83,14 @@
 	 <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
 			resultMap="AuctionListSelectMap">
 		SELECT
-		*
+		a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
+
 		FROM
-		auctionlist
+		auctionlist a, car c
 		WHERE
-		auction_no = #{bidAuctionNo.auctionNo}
+		a.auction_no = #{bidAuctionNo.auctionNo}
 		and
-		car_no = #{bidCarNo.carNo}
+		a.car_no = #{bidCarNo.carNo}
 	</select>
 
  <!-- // 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보 -->

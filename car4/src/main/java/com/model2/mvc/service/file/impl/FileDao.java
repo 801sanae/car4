@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.FileUpload;
+import com.model2.mvc.common.Search;
 
 @Repository("fileDao")
 public class FileDao{
@@ -45,4 +46,5 @@ public class FileDao{
 	public void updateFile(FileUpload file)throws Exception{
 	      sqlSession.update("FileMapper.updateFile", file);
 	   }
+	
 }

@@ -45,7 +45,7 @@ body {
         	<div class="intro-text">
               <h1 style="color: navy">${user.userName}님 Welcome!</h1>
               <br>
-                <a href="../index.jsp" class="service page-scroll btn btn-xl"><span class="glyphicon glyphicon-home">&nbsp;</span>서비스 시작하기!</a>
+                <a href="../index.jsp" class="service page-scroll btn btn-xl"><span class="glyphicon glyphicon-home">&nbsp;</span>Service 시작하기!</a>
             </div>
         </div>
     </div>

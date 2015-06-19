@@ -13,6 +13,7 @@ public class FileUpload {
 	private int imgNum;
 	private Car car;
 	private int carNo;
+	private String carNum;
 	
 	public FileUpload(){
 		System.out.println(this.getClass());
@@ -51,6 +52,14 @@ public class FileUpload {
 
 	public void setCarNo(int carNo) {
 		this.carNo = carNo;
+	}
+
+	public String getCarNum() {
+		return carNum;
+	}
+
+	public void setCarNum(String carNum) {
+		this.carNum = carNum;
 	}
 	
 	

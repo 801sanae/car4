@@ -6,7 +6,6 @@
 <jsp:useBean id="toDay" class="java.util.Date" />
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +77,7 @@
 		$("#userId").val(userId);
 		
 		
-		window.open("쪽지 보내기", "value", "top=250,left=600,width=470,height=260");
+		window.open("쪽지 보내기", "value", "top=250,left=600,width=500,height=300");
 		document.detailForm.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
 		document.detailForm.action = "message/message.jsp";
 		/* ?userName="+userName+"&userNo="+userNo; //새창으로 띄울 jsp */
@@ -226,7 +225,7 @@
 
 
 
-	<!-- 역경매 게시글 리스트 -->
+		<!-- 역경매 게시글 리스트 -->
 		<div class="col-md-12">
 			
 					
@@ -309,70 +308,6 @@
 	
 							</table>
 	
-
-	
-	
-					<!-- 페이지네이션 -->
-							<input type="hidden" id="currentPage" name="currentPage" value=""/>
-					
-							<div class="clearfix"></div>
-								 <ul class="pagination pull-right">
-				 		<!-- 아무기능없는 이전버튼 -->
-							 	<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
-									<li class="disabled">
-										<span class="glyphicon glyphicon-chevron-left">
-										</span>
-									</li>
-								</c:if> 
-						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
-								 
-								<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
-									<li class="disabled">
-										<a href="javascript:fncGetList('${ resultPage.currentPage-1}')">
-											<span class="glyphicon glyphicon-chevron-left">
-											</span>
-										</a>
-									</li>
-								</c:if>
-								
-						<!-- 가운데 보여질 페이지들 -->
-								<c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
-									<li>
-										<a href="javascript:fncGetList('${ i }');">${ i }
-										</a>
-									</li>
-								</c:forEach>
-						<!-- 아무기능없는 다음버튼 -->
-								<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
-									<li>
-											<span class="glyphicon glyphicon-chevron-right">
-											</span>
-									</li>
-								</c:if>
-								
-						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
-								<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
-									<li>
-										<a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
-										<span class="glyphicon glyphicon-chevron-right">
-										</span>
-										</a>
-										
-									</li>
-								</c:if>
-							</ul> 
-					<!-- /페이지네이션 -->
-							
-						</div>
-					</div>
-					
-					</form>
-					
-				</div>
-			</div>
-	
-	<!-- /역경매 게시글 리스트 -->
-
 
 
 

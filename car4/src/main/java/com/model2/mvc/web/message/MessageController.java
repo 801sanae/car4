@@ -67,11 +67,7 @@ public class MessageController {
 		User sender = (User)session.getAttribute("user");		//보낸사람 : 세션 값
 		User receiver = userService.getUserForNo(userNo);	//받는사람 : 가져온 값
 			
-//		//메세지를 보낸적이 있다면
-//		if(messageNo != 0) {
-//			receiver = (User)session.getAttribute("user");		//받는사람 : 세션 값 
-//			sender = userService.getUserForNo(userNo);		//보낸사람 : 가져온 값 
-//		}
+		
 			
 		message.setSendUser(sender.getUserNo()); 
 		message.setUser(receiver);

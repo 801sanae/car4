@@ -14,6 +14,8 @@
 		<result property="imgNum" 	column="img_num"	jdbcType="INTEGER"/>
 		<result property="imgPath" 	column="img_path"	jdbcType="VARCHAR"/>
 		<result property="carNo" 	column="car_No" 			jdbcType="INTEGER" />
+		<result property="carNum" 	column="car_Num" 			jdbcType="VARCHAR" />
+		
 	</resultMap>
 
 
@@ -29,13 +31,15 @@
 		img_path
 		FROM image
 		WHERE car_No = #{value}
+		
 	</select>
 	
 	<select id="getFileList" parameterType="Integer" resultMap="fileSelectMap">
 		SELECT
-		img_path
-		From image
-		WHERE car_No = #{value}
+		img_path, c.car_Num
+		From image f, car c
+		WHERE f.car_No = #{value}
+		and c.car_no = f.car_no
 	</select>
 	
 	

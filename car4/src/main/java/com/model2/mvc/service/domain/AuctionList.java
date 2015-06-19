@@ -9,7 +9,7 @@ public class AuctionList {
 	private Car bidCarNo;			//입찰차량
 	private Auction bidAuctionNo;	//옥션글
 	private Date bidRegDate;
-	
+		
 	//default Constructor
 	public AuctionList() {
 		System.out.println(this.getClass());
