@@ -244,7 +244,14 @@
 										<tr>
 											<td >${ ((resultPage.currentPage)*(resultPage.pageSize)) - (resultPage.pageSize - i) }</td>
 											<td>${auction.model}</td>
-											<td><a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a></td>
+											<td>
+											<a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
+											<c:if test="${auction.regDate}">
+											<span class="label label-danger">Danger</span>
+											</c:if>
+											<c:if test="${auction.regDate}">
+											</c:if>
+											</td>
 											<td>${auction.user.userName}</td>
 											<td>${auction.regDate}</td>
 																						
