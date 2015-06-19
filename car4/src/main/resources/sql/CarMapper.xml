@@ -19,7 +19,7 @@
 		<result property="color" 		column="color" 			jdbcType="VARCHAR" />
 		<result property="year" 		column="year"		 	jdbcType="INTEGER" />
 		<result property="carYear"   	column="car_Year" 		jdbcType="INTEGER" />
-		<result property="transmission" column="transmission" 	jdbcType="VARCHAR" />
+		<result property="transmission" column="trans mission" 	jdbcType="VARCHAR" />
 		<result property="cc"   		column="cc" 			jdbcType="INTEGER" />
 		<result property="fuel"   		column="fuel" 			jdbcType="VARCHAR" />
 		<result property="mileage"   	column="mileage" 		jdbcType="INTEGER" />
@@ -28,6 +28,7 @@
 		<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
 		<result property="tranCode"		column="tran_code" 	    jdbcType="VARCHAR" />
 		<result property="info"			column="info" 	    	jdbcType="VARCHAR" />
+	  
 		
 	</resultMap>
 
@@ -84,10 +85,9 @@
 		<result property="audio "   	column="audio" 		jdbcType="VARCHAR" />
 		<result property="wheelTiger"   	column="wheelTiger" 		jdbcType="VARCHAR" />
 		<result property="burcketsheet"   	column="burcketsheet" 		jdbcType="VARCHAR" />
-		 
+		
 	</resultMap>
 	
-
 
 
  	<insert id="addCar" parameterType="com.model2.mvc.service.domain.Car">
@@ -136,15 +136,16 @@
 		FROM car
 		WHERE car_Num = #{value}
 	</select>
+	
 	<select id="carViewOption" parameterType="Integer" resultMap="carOption">
 		SELECT
 		*
 		FROM carOption
 		WHERE car_No = #{value}
 	</select>
-	
-	<!-- 지워도될부분 -->
-	 <select 	id="getCarList" resultMap="carSelectMap" parameterType="com.model2.mvc.common.Search">
+<!-- 	
+	지워도될부분
+	<select 	id="getCarList" resultMap="carSelectMap" parameterType="com.model2.mvc.common.Search">
 		
 		SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
@@ -169,7 +170,8 @@
 		#{currentPage}*#{pageSize}
 	 </select>
 	
-	<select 	id="getTotalCount" resultType="int" parameterType="com.model2.mvc.common.Search">
+	 -->
+	<select id="getTotalCount" resultType="int" parameterType="com.model2.mvc.common.Search">
 		
 		SELECT COUNT(*)
 	  	FROM(	SELECT car_No, model, manu_co, car_year
@@ -188,9 +190,26 @@
 							</where>
 						</if> ) countTable						
 	 </select>
-	
-	<!-- 지워도될부분 -->
-	
+	 
+	 	<!-- <select id="getMycarTotalCount" resultType="int" parameterType="com.model2.mvc.common.Search">
+		
+		SELECT COUNT(*)
+	  	FROM(	SELECT car_No, model, manu_co, car_year
+					FROM car
+						<if test="searchCondition != null">
+							<where>
+								<if test="searchCondition == 0 and searchKeyword !='' ">
+						 			car_No = #{searchKeyword}
+								</if>
+								<if test="searchCondition == 1 and searchKeyword !='' ">
+						 			model LIKE #{searchKeyword}
+								</if>
+								<if test="searchCondition == 2 and searchKeyword !='' ">
+									manu_co = #{searchKeyword}
+								</if>
+							</where>
+						</if> ) countTable						
+	 </select> -->	
 	
 	<!-- Auction에서 Car정보 가져가기 -->
 	
@@ -199,10 +218,11 @@
 	</select>
 	
 	
-<select id="selectCar" parameterType="integer" resultMap="carSelectMap">
-		select*from car where user_no = #{value}
-</select>
+	<select id="selectCar" parameterType="integer" resultMap="carSelectMap">
+			select*from car where user_no = #{value}
+	</select>
 	
+	<!-- TRANCODE!!!! -->
 	<update id="updateCar" parameterType="integer" >
 		UPDATE car
 		<set>
@@ -212,7 +232,6 @@
 	
 	</update>
 	
-	
 	<!-- 영범이 부분 -->
 	<select id="getCar2" parameterType="Integer" resultMap="carSelectMap">
 		SELECT
@@ -221,14 +240,39 @@
 		WHERE car_no = #{value}
 	</select>
 	
-	<!--  상훈형님 부분  -->
-	<select id="getCarInfo" parameterType="int" resultMap="carSelectMap">
-    SELECT
-    *
-    FROM car
-    WHERE user_no = #{value}
-  </select>
-	
+	<select id="getCarInfo" parameterType="hashMap" resultMap="carSelectMap">
+
+		SELECT car_no, tran_code,car_num ,car_no, manu_Co, manu_Country, model, sum(tran_Code)  AS tran_code
+		FROM (	SELECT c.car_num AS car_num, c.car_no AS car_no, c.manu_Co AS manu_Co, c.manu_Country AS manu_Country , c.model AS model , c.tran_Code AS tran_code, a.success_car AS success_car
+		
+		FROM ( SELECT inner_table.* , ROWNUM AS row_seq
+		FROM ( SELECT * FROM car WHERE user_no = #{userNo}
+		<if test="search.searchCondition != null">
+			AND
+			<where>
+				<if test="search.searchCondition == 0 and search.searchKeyword !='' ">
+					car_No = #{search.searchKeyword}
+				</if>
+				<if test="search.searchCondition == 1 and search.searchKeyword !='' ">
+					model LIKE #{search.searchKeyword}
+				</if>
+				<if test="search.searchCondition == 2 and search.searchKeyword !='' ">
+					manu_co = #{search.searchKeyword}
+				</if>
+			</where>
+		</if>
+		) inner_table WHERE ROWNUM &lt;= #{search.endRowNum} ) c, auction a,
+		auctionlist al
+
+		where c.car_no = al.car_no(+)
+		AND al.auction_no = a.auction_no(+)
+		AND c.row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum}
+		ORDER BY c.car_no DESC
+		) temp
+		GROUP BY car_no, tran_code,car_num ,car_no, manu_Co, manu_Country, model, tran_Code
+	</select>
+ 
+
 	<select id="getCarInfo2" parameterType="int" resultMap="carSelectMap">
     SELECT
     *
@@ -242,7 +286,6 @@
     FROM carOption
     WHERE car_No = #{value}
   </select>
-  
   
   <update id="updateCar2" parameterType="com.model2.mvc.service.domain.Car" >
       UPDATE car
@@ -288,7 +331,5 @@
       WHERE car_No = #{car.carNo}
   </update>
   
-	
-	
-	
+  
 </mapper>
