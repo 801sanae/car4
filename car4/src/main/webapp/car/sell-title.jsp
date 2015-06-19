@@ -289,6 +289,14 @@ $(document).ready(function() {
 }
 </style>
 <script>
+function openMsgList(){
+		window.open("listMessage.do", "value", "top=250,left=600,width=500,height=300");
+		document.msgList.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
+		document.msgList.action = "listMessage.do";
+		document.msgList.submit();
+}
+</script>
+<script>
 $(document).ready(function() {
    $(".dropdown").hover(function() {
       $('.dropdown-menu', this).stop(true, true).slideDown("fast");
@@ -309,7 +317,7 @@ $("[data-toggle=tooltip]").tooltip();
 
 <!--  Nav End -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
-        <div class="container-fluid" style="margin-left: 48px">
+         <div class="container-fluid" style="margin-left: 48px">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -318,14 +326,17 @@ $("[data-toggle=tooltip]").tooltip();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.jsp">Car4</a>
+                <a class="navbar-brand page-scroll" href="../index.do">Car4</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                							<form name="msgList">
+                
                 <ul class="nav navbar-nav navbar-right">
-                	<li><a href="getUserInfo.do">Sell</a></li>
-               		<li><a href="buy.jsp">Buy</a></li>
+                	<li><a href="../getUserInfo.do">Sell</a></li>
+               		<li><a href="../buy/buy.jsp">Buy</a></li>
+               		<li><a href="../listAuction.do">Auction</a></li>
                     <li>
                         <a></a>
                     </li>
@@ -334,19 +345,28 @@ $("[data-toggle=tooltip]").tooltip();
                     </li>
                     <li>
                     
-			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a  href="user/getUser.jsp" > ${user.userName} 님 접속중</a></li>
-				</c:if>
+				    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
+					<li>
+						<a href="#none" onclick="openMsgList()">
+							<span class="glyphicon glyphicon-envelope"></span>
+						</a>
+					</li>
+					<li>
+						<a  href="../auction/mypage.jsp" > ${user.userName} 님 접속중</a>
+					</li>
+					</c:if>
 					<li class="dropdown">
 	                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Page<span class="caret"></span></a>
-	                    <ul class="dropdown-menu" role="menu" style="display: none;">
-	                      <li><a href="getUser.do">회원정보 수정</a></li>
-	                      <li><a href="listUserBuy.do">구매리스트</a></li>
-	                      <li><a href="listUserSell.do">판매리스트</a></li>
+	                    <ul class="dropdown-menu navDropdown-menu" role="menu" style="display: none;">
+	                      <li><a href="../user/getUser.jsp">회원정보 수정</a></li>
+	                      <li><a href="../listUserBuy.do">구매리스트</a></li>
+	                      <li><a href="../listUserSell.do">판매리스트</a></li>
 	                    </ul>
+	                    							</form>
+	                    
 	                </li>	
 			    <c:if test="${!empty sessionScope.user && (user.role) eq 'user' }">
-					<li><a style="cursor: pointer;" href="logout.do">Logout</a></li>
+					<li><a style="cursor: pointer;" href="../logout.do"><span class="glyphicon glyphicon-off" ></span> Logout</a></li>
 				</c:if>
                 </ul>
             </div>
@@ -355,8 +375,7 @@ $("[data-toggle=tooltip]").tooltip();
         <!-- /.container-fluid -->
     </nav>
 <!--  nav -->
-	<section style="background: #ffffff;">
-	
+	<br><br>
 		<div class="container-fluid">
 			<div class="row">
 			
@@ -1588,7 +1607,6 @@ $("[data-toggle=tooltip]").tooltip();
 </div>
 </div>
 </div>
-</section>
 
 
 </body>
