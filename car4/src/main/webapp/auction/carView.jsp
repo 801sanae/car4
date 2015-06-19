@@ -145,10 +145,15 @@ td, tr {
 				<td><a href="getSeller.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}&carNo=${auctionList.bidCarNo.carNo}">
 					${auctionList.bidCarNo.model}</a></td>	
 			</c:if>
+			
 			<c:if test="${user.userNo != auction.user.userNo}">
 				<td>${auctionList.bidCarNo.model}</td>	
 			</c:if>
-			
+		
+		
+		
+		
+		
 				
 			<td align="left"></td>
 			<td align="left"><fmt:formatNumber type="currency" currencySymbol="￦" value="${auctionList.bidPrice }"/></td>
