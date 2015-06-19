@@ -31,7 +31,7 @@
       
       <result property="successCar"   	column="success_car" 			jdbcType="INTEGER" />
       <result property="su"   		column="su" 				jdbcType="NUMERIC" />
-      	
+      <!-- su : 내가 입찰했는지에 대한 여부 ( auctionList에서 auction_no와 car_no를 비교한다) -->	
              
       <association property="user" javaType="com.model2.mvc.service.domain.User">
 			<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
@@ -153,7 +153,7 @@
 														auction_no DESC
 												    </otherwise>
 												  </choose> ) inner_table
-														WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u,(SELECT al.auction_no AS auction_no, c.car_no AS temp 
+														WHERE ROWNUM &lt;= #{search.endRowNum} ) a, users u,(SELECT al.auction_no AS auction_no, c.car_no AS su 
 																												FROM auctionlist al, car c
 																												WHERE al.car_no = c.car_no 
 																												AND c.user_no =  #{userNo}) bid	
