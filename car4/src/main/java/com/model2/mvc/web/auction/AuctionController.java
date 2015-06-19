@@ -326,6 +326,8 @@ public class AuctionController {
 		return "forward:auctionInfo.jsp";
 	}
 	
+	//로그인 시 구매목록 들어가기 위해 가는 곳!!
+	//아무나 갈 수 있는곳 ( mypage.do는 낙찰한 사람만 들어올 수 있는 곳)
 	@RequestMapping("listUserBuy.do")
 	public String listUserBuy(Model model, Auction auction, HttpServletRequest request, HttpSession session) throws Exception {
 		

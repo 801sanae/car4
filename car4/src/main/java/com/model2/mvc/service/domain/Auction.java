@@ -23,11 +23,11 @@ public class Auction {
 	private int successCar;				//낙찰차량
 	private int cnt;
 	private int bidCnt;
-	private int su;
-	private String han;
 	
+	private int su;	//숫자 temp필드 
+	private String mon;//문자 temp필드
 	
-	
+
 	public int getSu() {
 		return su;
 	}
@@ -38,13 +38,13 @@ public class Auction {
 	}
 
 
-	public String getHan() {
-		return han;
+	public String getMon() {
+		return mon;
 	}
 
 
-	public void setHan(String han) {
-		this.han = han;
+	public void setMon(String mon) {
+		this.mon = mon;
 	}
 
 
@@ -234,9 +234,7 @@ public class Auction {
 				+ carDetail + ", title=" + title + ", user=" + user
 				+ ", regDate=" + regDate + ", successCar=" + successCar
 				+ ", cnt=" + cnt + ", bidCnt=" + bidCnt + ", su=" + su
-				+ ", han=" + han + "]";
+				+ ", mon=" + mon + "]";
 	}
-
-
 
 }
