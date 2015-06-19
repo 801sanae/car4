@@ -58,7 +58,7 @@ td, tr {
 <jsp:include page="../nav.jsp"></jsp:include>
 <br><br><br><br>
 <div class="container">
-${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
+<!--  1번 Table 시작  -->
 <div class="container-fluid" id="#container-info">
 		<div class="row">
 			<div class="col-lg-12 toggle-header" align="center">구매상세정보</div>
@@ -126,7 +126,7 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 		<td class="ct_line02"></td>
 		<td class="ct_list_b" width="150">등록일</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b">현재상태</td>
+		
 			
 	</tr>
 	<tr>
@@ -164,9 +164,14 @@ ${auctionList[0].auctionListNo }<!--  1번 Table 시작  -->
 				</c:choose>
 			</td>		
 			<td align="left"></td>
-			<td align="left">${empty auctionList.bidCarNo.tranCode ? "안팔림" : "팔림"  }</td>
-		
-		</td>
+			<td align="left">
+				<c:if test="${!empty (auctionList.bidCarNo.tranCode).trim() == '0'}">
+				</c:if>
+				<c:if test="${!empty (auctionList.bidCarNo.tranCode).trim() == '1'}">
+					<button type="button" class="label label-warning">낙찰</button>
+				</c:if>
+			</td>
+
 		</tr>
 		
 		<tr>
