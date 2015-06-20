@@ -23,7 +23,7 @@ password varchar2(30) NOT NULL,
 sex varchar2(10) NOT NULL,
 role varchar2(30),
 phone varchar2(100),
-addr varchar2(50) NOT NULL, 
+addr varchar2(255) NOT NULL, 
 reg_date DATE NOT NULL,
 PRIMARY KEY(user_no)
 );
