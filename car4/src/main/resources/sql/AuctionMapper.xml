@@ -62,7 +62,7 @@
                
             #{transmission},
             #{year},
-            #{mileage},
+            #{mileage:VARCHAR},
            'professor',
            1000,
                
