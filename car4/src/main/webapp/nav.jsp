@@ -73,6 +73,7 @@ $("[data-toggle=tooltip]").tooltip();
                 <ul class="nav navbar-nav navbar-right">
                 	<li><a href="../getUserInfo.do">Sell</a></li>
                		<li><a href="../buy/buy.jsp">Buy</a></li>
+               		<li><a href="../listAuction.do">Auction</a></li>
                     <li>
                         <a></a>
                     </li>
