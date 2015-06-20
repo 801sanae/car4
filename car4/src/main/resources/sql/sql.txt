@@ -1,3 +1,4 @@
+drop table message;
 drop table auctionList;
 drop table carOption;
 drop table image;
@@ -10,6 +11,7 @@ DROP SEQUENCE auction_no;
 DROP SEQUENCE car_no;
 DROP SEQUENCE auctionList_no;
 DROP SEQUENCE carOption_no;
+DROP SEQUENCE message_no;
 
 
 CREATE TABLE users (
@@ -47,8 +49,6 @@ user_no integer references users(user_no),
 primary key(car_no)
 );
 
-
-drop table carOption;
 
 CREATE TABLE carOption (
 	car_no NUMBER(20) not null, /* 자동차일련번호 */
