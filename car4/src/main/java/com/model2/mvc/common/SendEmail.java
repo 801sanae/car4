@@ -18,7 +18,7 @@ public class SendEmail {
 		String host = "smtp.gmail.com";
 		String subject = "Car4 인증번호전달";
 		String fromName ="";
-		String from="car4.findpwd";
+		String from="gre0507@gmail.com";
 		String to1 = email;
 		
 		String content = "인증번호[" + authNum + "]";
@@ -37,7 +37,7 @@ public class SendEmail {
 			Session mailSession = Session.getInstance(props,
 					new javax.mail.Authenticator(){
 						protected PasswordAuthentication getPasswordAuthentication() {
-							return new PasswordAuthentication("car4.findpwd","car4.password");
+							return new PasswordAuthentication("gre0507@gmail.com","k1058431");
 						}
 			});
 			Message msg = new MimeMessage(mailSession);

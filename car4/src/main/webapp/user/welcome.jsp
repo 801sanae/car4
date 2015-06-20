@@ -43,7 +43,7 @@ body {
     <div class="row">
         <div class="col-md-12">
         	<div class="intro-text">
-              <h1 style="color: navy">${user.userName}님 Welcome!</h1>
+              <h1 style="color: white">${user.userName}님 Welcome!</h1>
               <br>
                 <a href="../index.jsp" class="service page-scroll btn btn-xl"><span class="glyphicon glyphicon-home">&nbsp;</span>Service 시작하기!</a>
             </div>

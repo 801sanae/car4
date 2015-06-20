@@ -112,7 +112,7 @@ $(document).ready(function() {
         var check = $.isNumeric(phone2);
         
         if( check == false){
-          alert("숫자만입력해주세요.");
+          
         }
         
       });
@@ -122,7 +122,7 @@ $(document).ready(function() {
         var check = $.isNumeric(phone3);
         
         if( check == false){
-          alert("숫자만입력해주세요.");
+          
         }
         
       });

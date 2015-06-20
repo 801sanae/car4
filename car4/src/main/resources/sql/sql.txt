@@ -23,7 +23,7 @@ password varchar2(30) NOT NULL,
 sex varchar2(10) NOT NULL,
 role varchar2(30),
 phone varchar2(100),
-addr varchar2(255) NOT NULL, 
+addr varchar2(50) NOT NULL, 
 reg_date DATE NOT NULL,
 PRIMARY KEY(user_no)
 );
@@ -45,6 +45,7 @@ mileage integer not null,
 sell  varchar2(50) not null,
 accident  varchar2(50) not null,
 tran_code char(3),
+info varchar(255),
 user_no integer references users(user_no), 
 primary key(car_no)
 );
@@ -126,6 +127,7 @@ success_car integer,
 user_no integer REFERENCES users(user_no),
 PRIMARY KEY(auction_no)
 );
+
 
 create table auctionList(
 auctionlist_no integer,

@@ -197,8 +197,6 @@ public class AuctionController {
 		System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 		List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
 		
-		System.out.println("Tran+List"+list);
-		System.out.println("TranCode"+list.get(1).getBidCarNo().getTranCode());
 		
 		//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 		//list.get(0).getBidCarNo().getCarNo()

@@ -49,9 +49,9 @@
     
     
     $("#findId").click(function() { // 아이디 찾기 클릭이벤트
-        alert("3");
+        
         if($("#findIdName").val()=="" || $("#findIdPhone").val()==""){
-            alert("asdf");
+           
             $("#findidmessage2").text("아이디 또는 전화번호를 입력하세요.").css("color","red");
             $("#findidmessage2").show();
         }else if($("#findIdName").val()!="" && $("#findIdPhone").val()!=""){
