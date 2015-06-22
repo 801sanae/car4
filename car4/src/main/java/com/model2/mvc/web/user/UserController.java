@@ -146,7 +146,7 @@ public class UserController {
 
 		System.out.println("/loginView.do");
 
-		return "redirect:index.jsp";
+		return "redirect:index.do";
 	}
 
 	@RequestMapping("/login.do")
