@@ -338,6 +338,16 @@
       WHERE car_No = #{car.carNo}
   </update>
   
+  	<delete id="deleteCar" parameterType="int">
+		DELETE FROM car
+		WHERE
+		car_no = #{carNo}
+	</delete>
+    <delete id="deleteCarOption" parameterType="int">
+		DELETE FROM carOption
+		WHERE
+		car_no = #{carNo}
+	</delete>
   
  <select id="getCarCnt" resultType="int">
      SELECT count(*) 
