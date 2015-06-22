@@ -173,4 +173,10 @@
 		WHERE user_no = #{user.userNo}
 	</select>
 
+	<delete id="deleteAuction" parameterType="int">
+		DELETE FROM auction
+		WHERE
+		auction_no = #{auctionNo}
+	</delete>
+
 </mapper>
