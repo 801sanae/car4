@@ -51,7 +51,7 @@ ${resultPage.currentPage} 페이지</th>
 <td >${auction.model }</td>
 <td><fmt:formatDate value="${auction.regDate}" pattern="MM / dd"></fmt:formatDate>
 </td>
-<td >${auction.title } </td>
+<td ><a href="getAuctionView.do?auctionNo=${auction.auctionNo}">${auction.title } </td>
 <td >
 <c:if test="${auction.successCar == '0' }"><a type="button" class="btn btn-primary"
 href="getAuctionView.do?auctionNo=${auction.auctionNo }">경매중</a></c:if>
