@@ -128,7 +128,7 @@ public class CarDao {
 		sqlSession.update("CarMapper.updateOption", carOption);
 	}
 	
-	public void deleteAuction(int carNo) throws Exception{
+	public void deleteCar(int carNo) throws Exception{
 		System.out.println("delete:: auctionNO = " + carNo);
 		sqlSession.delete("CarMapper.deleteCarOption", carNo);
 		sqlSession.delete("CarMapper.deleteCar",carNo);
