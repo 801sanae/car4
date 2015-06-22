@@ -40,5 +40,8 @@ public interface CarService {
 	public void updateCar(int carNo) throws Exception;
 	
 	public Car getCar2(int carNo) throws Exception;
+	
+	// 현재까지 등록된 차 수 세기(tran_code=0)
+	public int getCarCnt() throws Exception;
 
 }

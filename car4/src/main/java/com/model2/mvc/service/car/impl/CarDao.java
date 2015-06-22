@@ -124,5 +124,9 @@ public class CarDao {
 		sqlSession.update("CarMapper.updateOption", carOption);
 	}
 
+	//현재까지 등록된 차 수 세기(tran_code=0)
+    public int getCarCnt() throws Exception{
+    	return sqlSession.selectOne("CarMapper.getCarCnt");
+    }
 	
 }

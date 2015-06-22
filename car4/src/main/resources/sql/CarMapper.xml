@@ -332,4 +332,11 @@
   </update>
   
   
+ <select id="getCarCnt" resultType="int">
+     SELECT count(*) 
+     FROM car
+     WHERE tran_code = 0
+   </select>
+  
+  
 </mapper>

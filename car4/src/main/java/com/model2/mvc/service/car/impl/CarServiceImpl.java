@@ -128,6 +128,12 @@ public class CarServiceImpl implements CarService {
 	public CarOption getCarInfo3(int carNo) throws Exception {
 		return CarDao.getCarInfo3(carNo);
 	}
+	
+	// 현재까지 등록된 차 수 세기(tran_code=0)
+		public int getCarCnt() throws Exception {
+			return CarDao.getCarCnt();
+		}
+
 
 	
 }

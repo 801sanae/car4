@@ -320,13 +320,18 @@ public class UserController {
 	      
 	      return "forward:/car/my_sell.jsp";
 	   }
+	
 	@RequestMapping("/index.do")
-	public String index() throws Exception{
-		
-	
-		return "redirect:/index.jsp";
-	}
-	
-	
+	public String getCarCnt(Car car, Model model) throws Exception {
+
+      System.out.println("/index.do");
+      
+      int carCnt = carService.getCarCnt();
+      // Model 과 View 연결
+      System.out.println(carCnt);
+      model.addAttribute("carCnt", carCnt);
+
+      return "forward:/index.jsp";
+	   }
 	
 }
