@@ -72,25 +72,28 @@ td, tr {
 				<img src="img/${auction.manuCo }/${auction.model }.jpg" style="width: 100%;">
 			</div>
 			<div class="col-md-8">
-			<button type="button" class="btn btn-success">차량정보</button>
-			<br>
+	
 				<table class="table table-hover" style="text-align:center; height: 235px">
 						<tr>
-						<br>
-							<td width="15%">제조사</td>
-							<td>${auction.manuCountry}</td> <!-- Action만 넣으삼 -->
-						</tr>
-						<tr>
-							<td>모델</td>
-							<td>${auction.model }</td> <!-- Action 값만 넣으삼 -->
-						</tr>
-						<tr>
-							<td>연식</td>
-							<td>${auction.year }</td> <!-- Action 값만 넣으삼 -->
+					
+							<td width="15%">차량명</td>
+							<td>${auction.manuCountry} > ${auction.manuCo} > ${auction.model } </td> <!-- Action만 넣으삼 -->
 						</tr>
 						<tr>
 							<td>연료</td>
 							<td>${auction.fuel }</td> <!-- Action 값만 넣으삼 -->
+						</tr>
+						<tr>
+							<td>변속기</td>
+							<td>${auction.transmission}</td> <!-- Action 값만 넣으삼 -->
+						</tr>
+						<tr>
+							<td>주행거리 | 연식</td>
+							<td>${auction.mileage} | ${auction.year}</td> <!-- Action 값만 넣으삼 -->
+						</tr>
+						<tr>
+							<td>설명글</td>
+							<td>${auction.carDetail}</td> <!-- Action 값만 넣으삼 -->
 						</tr>
 				
 				</table>
@@ -128,13 +131,11 @@ td, tr {
 		<td class="ct_list_b" width="150"></td>
 		
 		
-		
 			
 	</tr>
 	<tr>
 		<td colspan="11" bgcolor="808285" height="1"></td>
 	</tr>
-
 
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
@@ -264,21 +265,8 @@ td, tr {
 <c:if test="${user.userNo eq auction.user.userNo}">	
 </c:if>
 			<c:if test="${user.userNo != auction.user.userNo}">
-				<c:if test="${auction.successCar ==0}">
-				<c:choose>
-				<c:when test="${car.carNo !=null }">
-				<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
-					경매 참여하기</a>
-				</c:when>
-				<c:when test="${car.carNo == null }">
-					<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" onclick="pageMove()" >
-					경매 참여하기</a>
-				</c:when>	
-				</c:choose>
-				
-				</c:if>
-				<c:if test="${auction.successCar != 0}">
-				</c:if>
+			<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
+		경매 참여하기</a>	
 			</c:if>
 </div>
 </div><!-- Container 끝 -->
