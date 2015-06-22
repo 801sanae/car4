@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <%--날짜 포맷 라이브러리 --%>
 
  
 <!DOCTYPE html>
@@ -135,7 +136,9 @@ $(document).ready(function() {
 		              			<th><a href="getAuctionView.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}" style="color:red;">${auctionList.bidAuctionNo.title}</a></th>
 			             		<th style="color:red;">${auctionList.bidAuctionNo.mon}</th>	              	
 			                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
-			                	<th style="color:red;">${auctionList.bidRegDate}</th>
+			                	<th style="color:red;">
+			                		<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd" />
+			                	</th>
 			                	<th style="color:red;">
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
 				                	경매중
@@ -152,7 +155,8 @@ $(document).ready(function() {
 		              			<th><a href="getAuctionView.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}">${auctionList.bidAuctionNo.title}</a></th>
 			             		<th>${auctionList.bidAuctionNo.mon}</th>	              	
 			                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
-			                	<th>${auctionList.bidRegDate}</th>
+			                	<th>
+									<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd" />
 			                	<th>
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
 				                	경매중
