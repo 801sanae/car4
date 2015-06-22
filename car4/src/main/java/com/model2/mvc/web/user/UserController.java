@@ -30,6 +30,7 @@ import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.AuctionList;
 import com.model2.mvc.service.domain.Car;
 import com.model2.mvc.service.domain.User;
+import com.model2.mvc.service.file.FileService;
 import com.model2.mvc.service.user.UserService;
 
 
@@ -51,6 +52,10 @@ public class UserController {
 	@Qualifier("auctionListServiceImpl")
 	private AuctionListService auctionListService;
 	public AuctionList auctionList;
+	
+	@Autowired
+	@Qualifier("fileServiceImpl")
+	private FileService fileService;
 
 	public UserController(){
 		System.out.println(this.getClass());
@@ -328,7 +333,7 @@ public class UserController {
 			@ModelAttribute("search") Search search   ) throws Exception{
 
 		System.out.println("/deleteCar.do");
-
+		fileService.deleteImg(carNo);
 		carService.deleteCar(carNo);
 		
 		System.out.println("::carNo = " + carNo);

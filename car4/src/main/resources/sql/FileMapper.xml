@@ -31,7 +31,6 @@
 		img_path
 		FROM image
 		WHERE car_No = #{value}
-		
 	</select>
 	
 	<select id="getFileList" parameterType="Integer" resultMap="fileSelectMap">
@@ -44,11 +43,11 @@
 	
 	
 	<select id="getFile2" parameterType="int" resultMap="fileSelectMap">
-    SELECT
-    *
-    FROM image
-    WHERE car_No = #{value}
-  </select>
+	    SELECT
+	    *
+	    FROM image
+	    WHERE car_No = #{value}
+  	</select>
   
   
   <update id="updateFile" parameterType="com.model2.mvc.common.FileUpload" >
@@ -60,6 +59,12 @@
       WHERE car_No = #{car.carNo}
       and img_num = #{imgNum}
   </update>
+  
+  <delete id="deleteImg"  parameterType="int">
+  		DELETE FROM image
+		WHERE
+		car_no = #{carNo}
+  </delete>
 	
 
 </mapper>

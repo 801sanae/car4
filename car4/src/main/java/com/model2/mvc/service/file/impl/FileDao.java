@@ -46,5 +46,8 @@ public class FileDao{
 	public void updateFile(FileUpload file)throws Exception{
 	      sqlSession.update("FileMapper.updateFile", file);
 	   }
+	public void deleteImg(int carNo) throws Exception{
+		sqlSession.delete("FileMapper.deleteImg", carNo);
+	}
 	
 }

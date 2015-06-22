@@ -51,6 +51,11 @@ public class FileServiceImpl implements FileService{
 	public void updateFile(FileUpload file)throws Exception{
 	      fileDao.updateFile(file);
 	   }
+
+	@Override
+	public void deleteImg(int carNo) throws Exception {
+		fileDao.deleteImg(carNo);
+	}
 	
 	
 }
