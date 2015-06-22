@@ -87,9 +87,12 @@ td, tr {
 							<td>변속기</td>
 							<td>${auction.transmission}</td> <!-- Action 값만 넣으삼 -->
 						</tr>
+						
+						<c:set var="year" value="${auction.year}" />
+						
 						<tr>
-							<td>주행거리 | 연식</td>
-							<td>${auction.mileage} | ${auction.year}</td> <!-- Action 값만 넣으삼 -->
+							<td>주행거리&nbsp;&nbsp;|&nbsp;&nbsp;연식 </td>
+							<td>${auction.mileage} km&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;${fn:substring(year,0,2)}년 ${fn:substring(year,2,4)}월 ~  ${fn:substring(year,5,7)}년 ${fn:substring(year,7,9)}월<td> <!-- Action 값만 넣으삼 -->
 						</tr>
 						<tr>
 							<td>설명글</td>
