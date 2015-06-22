@@ -104,11 +104,6 @@ td, tr {
 							<td>연료</td>
 							<td>${auction.fuel }</td> <!-- Action 값만 넣으삼 -->
 						</tr>
-						<tr>
-						
-							<td>주행거리</td>
-							<td>${auction.mileage }</td> <!-- Action 값만 넣으삼 -->
-						</tr>
 				
 				</table>
 				<!-- <div id="list">차량종류</div>
