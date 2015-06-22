@@ -221,6 +221,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<jsp:include page="../nav.jsp"></jsp:include> 
+<br><br><br>
+
 <div class="container">
 <div class="row">
         <div class="col-sm-offset-2 col-sm-7">
