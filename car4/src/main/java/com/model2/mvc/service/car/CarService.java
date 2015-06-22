@@ -11,6 +11,7 @@ public interface CarService {
 	public void addCar(Car car) throws Exception;
 	
 	public Car getCar(String carNum) throws Exception;
+	public Car getCarUser(int userNo) throws Exception;
 	
 	public void addOption(CarOption carOption) throws Exception;
 	

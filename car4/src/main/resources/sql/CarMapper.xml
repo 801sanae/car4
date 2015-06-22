@@ -130,6 +130,13 @@
 		WHERE car_Num = #{value}
 	</select>
 	
+	<select id="getCarUser" parameterType="int" resultMap="carSelectMap">
+		SELECT
+		*
+		FROM car
+		WHERE user_No = #{value}
+	</select>
+	
 	<select id="carView" parameterType="String" resultMap="carSelectMap">
 		SELECT
 		*

@@ -131,10 +131,10 @@ PRIMARY KEY(auction_no)
 
 create table auctionList(
 auctionlist_no integer,
+bid_price integer,
+bid_reg_Date date,
 car_no integer REFERENCES car(car_no),
 auction_no integer REFERENCES auction(auction_no),
-bid_reg_Date date,
-bid_price integer,
 PRIMARY KEY(auctionList_no)
 );
 

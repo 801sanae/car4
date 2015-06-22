@@ -247,7 +247,7 @@
 											<td>
 											<a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
 											<c:choose>
-												<c:when test="${toDay == auction.regDate}">ㅑ
+												<c:when test="${toDay == auction.regDate}">
 													&nbsp;&nbsp;
 													<span class="label label-danger">new</span>
 												</c:when>
@@ -255,7 +255,17 @@
 											    </c:otherwise>
 											</c:choose>
 											</td>
-											<td>${auction.user.userName}</td>
+											<td style="position: relative;"><span
+											class="glyphicon glyphicon-user"></span> 
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop1"> ${auction.user.userName} </a>
+											<ul aria-labelledby="drop1" class="dropdown-menu"
+												style="margin-left: 60px; margin-top: -15px;" role="menu">
+												<li><a href="#message"
+													onClick="OpenWindow( '${auction.user.userName}',${auction.user.userNo}, '${auction.user.userId}')"
+													style="background-color: while"}"
+													><span
+														class="glyphicon glyphicon-pencil"></span> 쪽지쓰기</a></li>
+											</ul></td>
 											<td>${auction.regDate}
 											<%-- <c:choose>
 												<c:when test="${toDay == auction.regDate}">

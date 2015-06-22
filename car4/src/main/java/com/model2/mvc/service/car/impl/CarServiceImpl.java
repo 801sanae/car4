@@ -38,6 +38,9 @@ public class CarServiceImpl implements CarService {
 	public Car getCar(String carNum) throws Exception {
 		return CarDao.getCar(carNum);
 	}
+	public Car getCarUser(int userNo) throws Exception {
+		return CarDao.getCarUser(userNo);
+	}
 
 	@Override
 	public void addOption(CarOption carOption) throws Exception {

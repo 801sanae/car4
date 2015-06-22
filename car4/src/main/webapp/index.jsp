@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>내 차 마련의 기준 Car4!</title>
 
     <!-- Bootstrap Core CSS -->
    <jsp:include page="/common/attribute.jsp"></jsp:include>
@@ -225,9 +225,9 @@ $(document).ready(function() {
             <div class="row">
                 <div class="col-sm-2">
                     <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <img src="img/team/H.jpeg" class="img-responsive img-circle" alt="">
+                        <h4>Heung Yul</h4>
+                        <p class="text-muted">Team Leader</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -241,9 +241,9 @@ $(document).ready(function() {
                 
                 <div class="col-sm-2">
                     <div class="team-member">
-                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
+                        <img src="img/team/YB.png" class="img-responsive img-circle" alt="">
+                        <h4>Young Bum</h4>
+                        <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -257,8 +257,8 @@ $(document).ready(function() {
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <h4>Jeong Min</h4>
+                        <p class="text-muted">From Beginning</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -273,7 +273,7 @@ $(document).ready(function() {
                 <div class="col-sm-2">
                     <div class="team-member">
                         <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
+                        <h4>Sang Hun</h4>
                         <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -287,9 +287,9 @@ $(document).ready(function() {
                 </div>
                 <div class="col-sm-2">
                     <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <img src="img/team/MY.jpeg" class="img-responsive img-circle" alt="">
+                        <h4>Min Young</h4>
+                        <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>

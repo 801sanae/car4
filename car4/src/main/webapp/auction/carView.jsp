@@ -35,24 +35,12 @@ function fncGetProductList(currentPage){
 	document.getElementById("currentPage").value = currentPage;
 	document.detailForm.submit();
 }
-
-//bidPrice앞숫자 2개만 보이게
-/* function fncbidPrice(carNo, bidPrice) {
-
-	var bph = bidPrice.substring(0,1); // = substr(0,2);
-	var bpf = "";
-	
-	for(var i=0; i<bidPrice.length()-2 ; i++) {
-		bpf += "*";
-	}
-	
-	var bp = bph + bpf;
-
-var aaa = "#"+carNo;
-$(aaa).html(bp);
-} */
 </script>
-
+<script type="text/javascript">
+	function pageMove(){
+		alert("차량 등록을 완료하셔야 경매 참여 가능합니다.");
+	}
+</script>
 
 <style>
 th {
@@ -140,11 +128,13 @@ td, tr {
 		<td class="ct_list_b" width="150"></td>
 		
 		
+		
 			
 	</tr>
 	<tr>
 		<td colspan="11" bgcolor="808285" height="1"></td>
 	</tr>
+
 
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
@@ -274,8 +264,21 @@ td, tr {
 <c:if test="${user.userNo eq auction.user.userNo}">	
 </c:if>
 			<c:if test="${user.userNo != auction.user.userNo}">
-			<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
-		경매 참여하기</a>	
+				<c:if test="${auction.successCar ==0}">
+				<c:choose>
+				<c:when test="${car.carNo !=null }">
+				<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
+					경매 참여하기</a>
+				</c:when>
+				<c:when test="${car.carNo == null }">
+					<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" onclick="pageMove()" >
+					경매 참여하기</a>
+				</c:when>	
+				</c:choose>
+				
+				</c:if>
+				<c:if test="${auction.successCar != 0}">
+				</c:if>
 			</c:if>
 </div>
 </div><!-- Container 끝 -->

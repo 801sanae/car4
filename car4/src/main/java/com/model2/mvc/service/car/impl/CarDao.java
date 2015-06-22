@@ -41,6 +41,10 @@ public class CarDao {
 	public Car getCar(String carNum) throws Exception {
 		return sqlSession.selectOne("CarMapper.getCar", carNum);
 	}
+	
+	public Car getCarUser(int userNo) throws Exception {
+		return sqlSession.selectOne("CarMapper.getCarUser", userNo);
+	}
 
 	public void addOption(CarOption carOption) throws Exception {
 		sqlSession.insert("CarMapper.addCarOption", carOption);

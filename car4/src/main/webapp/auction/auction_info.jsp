@@ -107,7 +107,7 @@ $(document).ready(function() {
 				  src: "${file[0].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[0].imgPath}",
+				  src: "${file[1].imgPath}",
 				});
 	 		$("#c1 tr td:eq(14)").append("${list[0].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[0].model}");
@@ -118,7 +118,7 @@ $(document).ready(function() {
 				  src: "${file[1].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[1].imgPath}",
+				  src: "${file[2].imgPath}",
 				});
 			$("#c1 tr td:eq(14)").append("${list[1].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[1].model}");
@@ -129,7 +129,7 @@ $(document).ready(function() {
 				  src: "${file[2].imgPath}",
 				});
 			$( "#c1 tr td:eq(12) img" ).attr({
-				  src: "${file[2].imgPath}",
+				  src: "${file[3].imgPath}",
 				});
 			$("#c1 tr td:eq(14)").append("${list[2].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[2].model}");
@@ -270,11 +270,7 @@ $(document).ready(function() {
 							<td>연료</td>
 							<td>${auction.fuel }</td> <!-- Action만 넣으삼 --> 
 						</tr>
-						<tr>
-						
-							<td>주행거리</td>
-							<td>${auction.mileage }</td><!-- Action만 넣으삼 --> 
-						</tr>
+					
 				
 				</table>
 				
@@ -331,20 +327,20 @@ $(document).ready(function() {
 								
 								<br>
 								<tr>
-									<td>제조사</td>
+									<td colspan="2">제조사</td>
 											<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
-									<td>모델명</td>
+									<td colspan="2">모델명</td>
 									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
-									<td>주행거리</td>
+									<td colspan="2">주행거리</td>
 									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 								<tr>
 								
-									<td>연식</td>
+									<td colspan="2">연식</td>
 									<td></td> <!-- Action 값만 넣으삼 -->
 								</tr>
 						</table>

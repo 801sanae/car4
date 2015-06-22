@@ -153,7 +153,7 @@ public class AuctionController {
 		System.out.println("CarNo"+carService.selectCar(user.getUserNo()));
 		List<Car> carNo = carService.selectCar(user.getUserNo());
 
-
+		System.out.println("CarNU8888m"+carNo);
 
 		List<FileUpload> fileUpload = new ArrayList<FileUpload>();
 		//CarNo List에서 뽑아온놈 0번째 놈
@@ -162,13 +162,17 @@ public class AuctionController {
 
 		//System.out.println("fdsafas"+fileService.getFileList(carNo.get(0).getCarNo()).get(0));
 
+		System.out.println("FileService"+fileService.getFileList(carNo.get(0).getCarNo()));
 		
 		
 		for(int i=0; i<carNo.size(); i++) {
-				fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
-				System.out.println("CARNUM :::::"+fileService.getFileList(carNo.get(i).getCarNo()).get(i).getCarNum());
+			for(int j=0; j < fileService.getFileList(carNo.get(i).getCarNo()).size(); j++){
+				fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(j));
+			}
 		}
-		System.out.println("fileSize"+fileUpload.size());
+		
+		
+		
 		//auction클릭시 발생하는 부분 
 
 		System.out.println("auctionNo:::: "+ auction.getAuctionNo());
@@ -186,10 +190,17 @@ public class AuctionController {
 
 	@RequestMapping("/getAuctionView.do")
 	public String listCar(@ModelAttribute("serach") Search search, Model model , 
-			HttpServletRequest request, Auction auction, HttpSession session)throws Exception{
+			HttpServletRequest request, Auction auction, HttpSession session,Car car)throws Exception{
 
 		User user = (User)session.getAttribute("user");
+		
+		//차 있는지 체크하는 부분 
+		int check = carService.selectCar(user.getUserNo()).get(0).getCarNo();
+		System.out.println("CCCHECK" + check);
+		car.setCarNo(check);
+	
 
+		
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
 
 		dbAuction.getUser().getUserNo();
@@ -199,6 +210,9 @@ public class AuctionController {
 		
 		//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 		//list.get(0).getBidCarNo().getCarNo()
+		
+		
+		model.addAttribute("car",car);
 		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		model.addAttribute("auctionList", list);
 		model.addAttribute("user", user);
@@ -235,8 +249,10 @@ public class AuctionController {
 		auctionList.setBidCarNo(car);
 
 		//Auction으로 AuctionList selectOne
+		System.out.println("여기?");
 		auctionList = auctionListService.getAuction(auctionList);
-
+		System.out.println("여기?2");
+		
 		//여기까진 잘나옴
 		//SelectCar
 		//바구니에 담기
