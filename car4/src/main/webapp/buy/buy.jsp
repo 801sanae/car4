@@ -100,7 +100,7 @@ function listValueSeparate(obj, id) {
 		<div class="col-md-6 col-md-offset-3">
     	 <div class="well">
               <div class="input-group" style="width: 100%;">
-                 <input class="btn btn-lg" name="title" id="title" placeholder="제목을 입력하시오." required/>
+                 <input class="btn btn-lg" style="width: 100%;" name="title" id="title" placeholder="제목을 입력하시오." required/>
               </div>
     	 </div>
          
