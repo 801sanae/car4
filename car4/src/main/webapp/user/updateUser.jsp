@@ -75,7 +75,7 @@
 					<tr>
 						<td>Phone:</td>
 						<td>
-							<div class="col-md-1">
+							<div class="col-md-2">
 								<select class="form-control" name="phone" id="phone">
 										<option value="010" <c:if test="${user.phone eq '010' }">selected</c:if> >010</option>
 										<option value="011" <c:if test="${user.phone eq '011' }">selected</c:if> >011</option>
@@ -84,10 +84,10 @@
 								</select>
 							</div>
 
-							<div class="col-md-1">
+							<div class="col-md-2">
 								<input class="form-control" name="phone2" id="phone2" value="${user.phone2}">
 							</div>
-							<div class="col-md-1">
+							<div class="col-md-2">
 								<input class="form-control" name="phone3" id="phone3" value="${user.phone3}">
 							</div>
 						</td>
@@ -95,7 +95,7 @@
 					<tr>
 						<td>Address:</td>
 						<td>
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<input type="text" class="form-control" name="addr" id="addr"
 									value="${user.addr}">
 							</div>
