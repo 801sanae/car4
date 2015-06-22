@@ -146,7 +146,6 @@ td, tr {
 		<td colspan="11" bgcolor="808285" height="1"></td>
 	</tr>
 
-
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
 		<c:set var="i" value="${i+1}" />
@@ -171,27 +170,27 @@ td, tr {
 			<td align="left"></td>
 			<td align="left">
 			
+			
 			<!-- bidPrice보여주기 -->
 			
-			<!-- 등록자가 아닌 사람이 가격보기 -->
-			<c:if test="${user.userNo != auction.user.userNo}">
+			<!-- 등록자가 아닌 사람&자기차 제외 입찰가격 못보기  -->
+			<c:if test="${user.userNo != auction.user.userNo && auctionList.bidCarNo.user.userNo != user.userNo }">
 			
-			<!-- *로 바꿔 넣기 -->
-			<c:set var="bidPrice">${auctionList.bidPrice}</c:set>
-			<c:set var="bpf" value=""/>
- 
-			<c:forEach var="i"  begin="1" end="${fn:length(bidPrice)-2}" step="1">
+				<!-- *로 바꿔 넣기 -->
+				<c:set var="bidPrice">${auctionList.bidPrice}</c:set> <!-- 숫자를 문자로 변환하는 식 -->
+				<c:set var="bpf" value=""/>
+	
+				<c:forEach var="i"  begin="1" end="${fn:length(bidPrice)-2}" step="1">
+	
+					<c:set var="bpf" value="${bpf}*"/>			
+				</c:forEach>
 
-			<c:set var="bpf" value="${bpf}*"/>			
-			</c:forEach> 
-			
-			<%-- <span id="${auctionList.bidCarNo.carNo}"  onLoad="bidPrice(${auctionList.bidCarNo.carNo} ,${auctionList.bidPrice})" ></span> --%>
-			<fmt:formatNumber type="currency" currencySymbol="￦" value="${fn:substring(bidPrice,0,1)}"/>${bpf}
+				<fmt:formatNumber type="currency" currencySymbol="￦" value="${fn:substring(bidPrice,0,2)}"/>${bpf}
 			</c:if>
 			<!-- /등록자가 아닌 사람이 가격보기 -->
 			
-			<!-- 등록자만 가격보기 -->
-			<c:if test="${user.userNo eq auction.user.userNo}">
+			<!-- 등록자&입찰자(자기가격)만 가격보기 -->
+			<c:if test="${user.userNo eq auction.user.userNo || auctionList.bidCarNo.user.userNo eq user.userNo}">
 			<fmt:formatNumber type="currency" currencySymbol="￦" value="${auctionList.bidPrice}"/>
 			</c:if>
 			<!-- /등록자만 가격보기 -->

@@ -247,7 +247,7 @@
 											<td>
 											<a href="getAuctionView.do?auctionNo=${auction.auctionNo }">${auction.title}</a>
 											<c:choose>
-												<c:when test="${toDay == auction.regDate}">
+												<c:when test="${toDay == auction.regDate}">ㅑ
 													&nbsp;&nbsp;
 													<span class="label label-danger">new</span>
 												</c:when>

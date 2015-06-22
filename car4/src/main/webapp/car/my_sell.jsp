@@ -119,6 +119,7 @@ $(document).ready(function() {
 		                	<th class="col-md-1">이름</th>
 		            		<th class="col-md-1">경매번호</th>
 		                	<th class="col-md-1">등록일</th>
+		                	<th class="col-md-1">경매진행상태</th>
 		                	<th class="col-md-1">입찰가격</th>
 	              		</tr>
 	              		</c:if>
@@ -129,21 +130,38 @@ $(document).ready(function() {
    
 	                 	<tr class="${car.carNo} collapse" id="bidList">
 	                 	
-	                 		<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
-	              			<th style="color:red;">${j}</th>
-	              			<th style="color:red;">${auctionList.bidAuctionNo.title}</th>
-		             		<th style="color:red;">${auctionList.bidAuctionNo.mon}</th>	              	
-		                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
-		                	<th style="color:red;">${auctionList.bidRegDate}</th>
-		                	<th style="color:red;">${auctionList.bidPrice}</th> 
+	                 		<c:if test="${auctionList.bidAuctionNo.successCar == car.carNo}">
+		              			<th style="color:red;">${j}</th>
+		              			<th><a href="getAuctionView.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}" style="color:red;">${auctionList.bidAuctionNo.title}</a></th>
+			             		<th style="color:red;">${auctionList.bidAuctionNo.mon}</th>	              	
+			                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
+			                	<th style="color:red;">${auctionList.bidRegDate}</th>
+			                	<th style="color:red;">
+				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
+				                	경매중
+				                	</c:if>
+				                	<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
+				                	경매종료
+				                	</c:if>
+			                	</th> 
+			                	<th style="color:red;">${auctionList.bidPrice}</th> 
 		                	</c:if>
+		                	
 		                	<c:if test="${auctionList.bidAuctionNo.successCar eq 0}">
-	              			<th>${j}</th>
-	              			<th>${auctionList.bidAuctionNo.title}</th>
-		             		<th>${auctionList.bidAuctionNo.mon}</th>	              	
-		                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
-		                	<th>${auctionList.bidRegDate}</th>
-		                	<th>${auctionList.bidPrice}</th> 
+		              			<th>${j}</th>
+		              			<th><a href="getAuctionView.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}">${auctionList.bidAuctionNo.title}</a></th>
+			             		<th>${auctionList.bidAuctionNo.mon}</th>	              	
+			                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
+			                	<th>${auctionList.bidRegDate}</th>
+			                	<th>
+				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
+				                	경매중
+				                	</c:if>
+				                	<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
+				                	경매종료
+				                	</c:if>
+			                	</th> 
+			                	<th>${auctionList.bidPrice}</th> 
 		                	</c:if>
 		               	
 	              		</tr>
