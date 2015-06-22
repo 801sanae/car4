@@ -12,8 +12,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="../nav.jsp"></jsp:include>
 </head>
+<script>
+	function conf(carNo) {
+		if (confirm("삭제하겠습니까?")) {
+			location.href = "deleteCar.do?carNo=" + carNo;
+		} else {
+			history.go(1);
+		}
+	}
+</script>
 
  <script type="text/javascript">
 
@@ -47,7 +55,7 @@ $(document).ready(function() {
 </script>
 
 <body>
- 
+<jsp:include page="../nav.jsp"></jsp:include>
   <br><br><br><br>
 
 
@@ -64,12 +72,12 @@ $(document).ready(function() {
               <table id="mytable" class="table">
                 <thead>
                   <th class="col-md-1" id="no">No</th>
-                  <th class="col-md-3" id="carNum">차량번호</th>
+                  <th class="col-md-2" id="carNum">차량번호</th>
                   <th class="col-md-2" id="title">제조국</th>
                   <th class="col-md-2" id="id">제조사</th>
                   <th class="col-md-2" id="regDate">모델명</th>
                   <th class="col-md-2">낙찰여부</th>				
-
+				  <th class="col-md-2">삭제여부</th>			
                 </thead>
  
                 <tbody id="table">
@@ -90,6 +98,8 @@ $(document).ready(function() {
                       	  </td>
                       <td>${car.manuCo}</td>
                       <td>${car.model}</td>
+                      <td><a onclick="conf(${car.carNo})"><span
+												class="glyphicon glyphicon-trash"></span></a></td>
                       <td>
             			  <c:if test="${!empty (car.tranCode) && (car.tranCode).trim() != '0' }">
                      	  <button type="button" class="btn btn-primary">낙찰</button>
@@ -138,7 +148,7 @@ $(document).ready(function() {
 			                	<th style="color:red;">${auctionList.bidAuctionNo.auctionNo}</th>
 			                	<th style="color:red;">
 			                		<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd" />
-			                	</th>
+								</th>
 			                	<th style="color:red;">
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
 				                	경매중
@@ -156,7 +166,8 @@ $(document).ready(function() {
 			             		<th>${auctionList.bidAuctionNo.mon}</th>	              	
 			                	<th>${auctionList.bidAuctionNo.auctionNo}</th>
 			                	<th>
-									<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd" />
+								<fmt:formatDate value="${auctionList.bidRegDate}" pattern="YYYY-MM-dd" />
+								</th>
 			                	<th>
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
 				                	경매중
