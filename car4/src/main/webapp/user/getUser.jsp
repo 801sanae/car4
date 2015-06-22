@@ -65,8 +65,8 @@
 				</tbody>
 			</table>
 			<div class="col-md-offset-5" style="padding-top: 20px">
-				<button type="submit" name="submit" style="border-radius: 4px">수정</button>
-				<button type="button" style="border-radius: 4px">확인</button>
+				<button type="button" class="btn btn-primary btn-lg">이전</button>
+				<button class="btn btn-primary btn-lg" type="submit">수정</button>				
 			</div>
 		</div>
 	</form>

@@ -117,8 +117,8 @@
 		</table>
 
 		<div class="col-md-offset-5" style="padding-top: 20px">
-			<button type="submit" style="border-radius: 4px">수정</button>
-			<button type="reset" style="border-radius: 4px">Cancel</button>
+			<button type="reset" class="btn btn-primary btn-lg">취소</button>
+			<button class="btn btn-primary btn-lg" type="submit">수정</button>			
 		</div>
 
 	</div>
