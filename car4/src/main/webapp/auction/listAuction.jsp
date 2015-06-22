@@ -9,6 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- nav.jsp -->
+<jsp:include page="../nav.jsp"></jsp:include> 
+<!-- nav.jsp -->
 <link href="css\tabs.css" rel="stylesheet">
 
 
@@ -26,19 +29,20 @@
 		document.getElementById("tabs").value = ${search.tabs};
 	   	document.detailForm.submit();		
 	}
-	
+		
 	function fncTabs() {
-		alert(event.target.id);
+		//alert(event.target.id);
 		//$("#tabs").val(event.target.id);
 		document.getElementById("tabs").value = event.target.id;
-		$('#event.target.id').trigger('click');
+		//alert(document.getElementById("tabs").value);
+		//$('#'+event.target.id).trigger('click');
+
 		
 		//tabs가 변하면 검색값들이 변경되어야한다.
 		document.getElementById("currentPage").value = 1;
-		document.getElementById("searchCondition").value = -1;
-		$("#searchKeyword").val('');
+		//document.getElementById("searchCondition").value = -1;
 	
-		
+		$("#searchKeyword").val('');
 		document.detailForm.submit();		
 	}
 
@@ -57,10 +61,10 @@
 </script>
 
 <script>
-	$('.dropdown-toggle').dropdown();
+	//$('.dropdown-toggle').dropdown();
 </script>
 
-<script language="javascript">
+<script>
 	function OpenWindow() {
 		window
 				.open("message/message.jsp", "_blank",
@@ -68,7 +72,7 @@
 	}
 </script>
 
-<script language="javascript">
+<script>
 	function OpenWindow(userName,userNo,userId) {
 		/*  window.open("value","_blank","top=250,left=600,width=470,height=240,resizable=1,scrollbars=no");  */
 		
@@ -82,6 +86,7 @@
 		document.detailForm.action = "message/message.jsp";
 		/* ?userName="+userName+"&userNo="+userNo; //새창으로 띄울 jsp */
 		document.detailForm.submit();
+		
 
 	}
 </script>
@@ -96,9 +101,7 @@
 		<input type="hidden" id="userNo" name="userNo"> 
 		<input type="hidden" id="userId" name="userId">
 
-<!-- nav.jsp -->
-<jsp:include page="../nav.jsp"></jsp:include> 
-<!-- nav.jsp -->
+
 <br><br><br><br>
 
 
@@ -188,31 +191,17 @@
 				<div class="col-md-12">
 					<!-- <h3>경매현황게시판</h3> -->
 
-					<input type="hidden" id="tabs" name="tabs" />
+					<input type="hidden" id="tabs" name="tabs" value=""/>
 
 					<div class="tabbable-line">
-						<c:if test="${ !empty search.tabs }">
-							<ul class="nav nav-tabs" onclick="javascript:fncTabs();">
-								<li class="active"><a href="#tab_default_1"
-									data-toggle="tab" style="font-size: 15pt" id="0">전체</a></li>
-								<li><a href="#tab_default_2" data-toggle="tab"
-									style="font-size: 15pt" id="1">경매중</a></li>
-								<li><a href="#tab_default_3" data-toggle="tab"
-									style="font-size: 15pt" id="2">경매종료</a></li>
-							</ul>
-						</c:if>
-						<c:if test="${ empty search.tabs }">
-							<ul class="nav nav-tabs" onclick="javascript:fncTabs();">
-								<li class="active"><a href="#tab_default_1"
-									data-toggle="tab" style="font-size: 15pt" id="0">전체</a></li>
-								<li><a href="#tab_default_2" data-toggle="tab"
-									style="font-size: 15pt" id="1">경매중</a></li>
-								<li><a href="#tab_default_3" data-toggle="tab"
-									style="font-size: 15pt" id="2">경매종료</a></li>
-							</ul>
-						</c:if>
-
-
+						<ul class="nav nav-tabs">
+							<li <c:if test="${search.tabs eq 0}">class="active"</c:if>><a href="#tab_default_1"  onclick="javascript:fncTabs(0);"
+								data-toggle="tab" style="font-size: 15pt" id="0">전체</a></li>
+							<li <c:if test="${search.tabs eq 1}">class="active"</c:if>><a href="#tab_default_2" data-toggle="tab" onclick="javascript:fncTabs(1);"
+								style="font-size: 15pt" id="1">경매중</a></li>
+							<li <c:if test="${search.tabs eq 2}">class="active"</c:if>><a href="#tab_default_3" data-toggle="tab" onclick="javascript:fncTabs(2);"
+								style="font-size: 15pt" id="2">경매종료</a></li>
+						</ul>
 						<div class="tab-content"></div>
 					</div>
 				</div>
@@ -307,6 +296,67 @@
 								</tbody>
 	
 							</table>
+						<!-- 페이지네이션 -->
+							<input type="hidden" id="currentPage" name="currentPage" value=""/>
+					
+							<div class="clearfix"></div>
+								 <ul class="pagination pull-right">
+				 		<!-- 아무기능없는 이전버튼 -->
+							 	<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
+									<li class="disabled">
+										<span class="glyphicon glyphicon-chevron-left">
+										</span>
+									</li>
+								</c:if> 
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 이전버튼 -->
+								 
+								<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
+									<li class="disabled">
+										<a href="javascript:fncGetList('${ resultPage.currentPage-1}')">
+											<span class="glyphicon glyphicon-chevron-left">
+											</span>
+										</a>
+									</li>
+								</c:if>
+								
+						<!-- 가운데 보여질 페이지들 -->
+								<c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
+									<li>
+										<a href="javascript:fncGetList('${ i }');">${ i }
+										</a>
+									</li>
+								</c:forEach>
+						<!-- 아무기능없는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
+									<li>
+											<span class="glyphicon glyphicon-chevron-right">
+											</span>
+									</li>
+								</c:if>
+								
+						<!-- 페이지유닛수를 넘어갈때 링크기능이 있는 다음버튼 -->
+								<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
+									<li>
+										<a href="javascript:fncGetList('${resultPage.endUnitPage+1}')">
+										<span class="glyphicon glyphicon-chevron-right">
+										</span>
+										</a>
+										
+									</li>
+								</c:if>
+							</ul> 
+					<!-- /페이지네이션 -->
+							
+						</div>
+					</div>
+					
+					</form>
+					
+				</div>
+			</div>
+	
+	<!-- /역경매 게시글 리스트 -->
+						
 	
 
 

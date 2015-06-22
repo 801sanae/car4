@@ -193,13 +193,13 @@ public class AuctionController {
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
 
 		dbAuction.getUser().getUserNo();
-		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 		List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
 		
 		
 		//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 		//list.get(0).getBidCarNo().getCarNo()
+		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		model.addAttribute("auctionList", list);
 		model.addAttribute("user", user);
 		return "forward:/auction/carView.jsp";

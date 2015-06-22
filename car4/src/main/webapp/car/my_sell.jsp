@@ -11,20 +11,41 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="../nav.jsp"></jsp:include>
+</head>
 
-<script type="text/javascript">
+ <script type="text/javascript">
 
-  function fncGetList(currentPage) {
-    document.getElementById("currentPage").value = currentPage;
-      document.detailForm.submit();  
-  }
+ function fncGetList(currentPage) {
+   document.getElementById("currentPage").value = currentPage;
+     document.detailForm.submit();  
+}
+ 
+//collapse 클릭했을 때 아이콘모양 변경
+
+$(document).ready(function() {
+	$("button").click(function (event) {
+	
+		var str = '#'+event.target.id;
+		/* if( $("#bidList").legnth ) */
+				
+		
+		if($(str+"  >  i").hasClass('glyphicon-chevron-down'))
+			{
+				console.log(str);
+			    $(this).html('<i class="glyphicon glyphicon-chevron-up"></i>'); 
+			}
+		else
+			{      
+				console.log(str);
+			    $(this).html('<i class="glyphicon glyphicon-chevron-down"></i>'); 
+			}
+	});
+}); 
 
 </script>
 
-</head>
-
 <body>
-<jsp:include page="../nav.jsp"></jsp:include>
  
   <br><br><br><br>
 
@@ -78,19 +99,19 @@
                      	</td>
                     
                     	<td>
-                        <button type="button" class="btn btn-primary btn-sm hidden-xs" data-toggle="collapse" id="${car.carNo}" data-target=".${car.carNo}">
-                                        <i class="glyphicon glyphicon-chevron-down"></i>
-                                        <!-- <i class="glyphicon glyphicon-chevron-up"></i> -->
-                                        
+                    	<c:set var="temp">${i-1}</c:set>
+                        <button type="button" class="btn btn-primary btn-sm hidden-xs" data-toggle="collapse" id="${car.carNo}" data-target=".${car.carNo}"
+                        	<c:if test="${empty bidMapAll.get(temp)}" > disabled </c:if> >
+                          <i class="glyphicon glyphicon-chevron-down"></i>
+                                      
                           </button>
+                         		
                         </td>
            
                     
                     	</tr>
-						<c:set var="temp">${i-1}</c:set>
 						
-						<c:if test="${empty bidMapAll.get(temp)}">
-						</c:if>
+						
 						<c:if test="${!empty bidMapAll.get(temp)}">
 	                 	<tr class="${car.carNo} collapse" id="th" >
 		                	<th class="col-md-1">No</th>
@@ -124,9 +145,7 @@
 		                	<th>${auctionList.bidRegDate}</th>
 		                	<th>${auctionList.bidPrice}</th> 
 		                	</c:if>
-		                	
-		                	
-		                	
+		               	
 	              		</tr>
 	              		
 	              		
@@ -204,7 +223,7 @@
  
  
  
- 
+
 
 </body>
 </html>

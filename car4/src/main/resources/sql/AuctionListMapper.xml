@@ -72,15 +72,17 @@
 	 
 	 <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
 	  SELECT
-		 a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
+		 al.auctionlist_no, al.auction_no, al.car_no,
+		 c.model, al.bid_price, al.bid_reg_date
 		 FROM
-		 auctionlist a , car c
-		 WHERE
-		 auction_no = #{value}
-		 and c.car_no = a.car_no
-		 ORDER BY a.bid_price
+		 auctionlist al , car c
+		 WHERE al.car_no = c.car_no
+		 AND al.auction_no = #{value}
+		 ORDER BY al.bid_price
+		 
 	 </select>
-	 <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
+	<!-- auctionlistmapper의 getauctionlist / 어느 컨트롤러에서 쓰이는 곳이 없는 것으로 확인되어서 우선 주석(어디서 쓰아는지 모르겟음)-->
+	<!--  <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
 			resultMap="AuctionListSelectMap">
 		SELECT
 		a.auctionlist_no, a.auction_no, a.car_no, a.bid_price, a.bid_reg_date, c.model, c.tran_code
@@ -91,7 +93,7 @@
 		a.auction_no = #{bidAuctionNo.auctionNo}
 		and
 		a.car_no = #{bidCarNo.carNo}
-	</select>
+	</select> -->
 
  <!-- // 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보 -->
 	<select id="getBidListByCarNo" parameterType="Integer" resultMap="AuctionListSelectMap">

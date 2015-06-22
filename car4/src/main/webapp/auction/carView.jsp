@@ -35,6 +35,22 @@ function fncGetProductList(currentPage){
 	document.getElementById("currentPage").value = currentPage;
 	document.detailForm.submit();
 }
+
+//bidPrice앞숫자 2개만 보이게
+/* function fncbidPrice(carNo, bidPrice) {
+
+	var bph = bidPrice.substring(0,1); // = substr(0,2);
+	var bpf = "";
+	
+	for(var i=0; i<bidPrice.length()-2 ; i++) {
+		bpf += "*";
+	}
+	
+	var bp = bph + bpf;
+
+var aaa = "#"+carNo;
+$(aaa).html(bp);
+} */
 </script>
 
 
@@ -126,6 +142,8 @@ td, tr {
 		<td class="ct_line02"></td>
 		<td class="ct_list_b" width="150">등록일</td>
 		<td class="ct_line02"></td>
+		<td class="ct_list_b" width="150"></td>
+		
 		
 			
 	</tr>
@@ -156,7 +174,35 @@ td, tr {
 		
 				
 			<td align="left"></td>
-			<td align="left"><fmt:formatNumber type="currency" currencySymbol="￦" value="${auctionList.bidPrice }"/></td>
+			<td align="left">
+			
+			<!-- bidPrice보여주기 -->
+			
+			<!-- 등록자가 아닌 사람이 가격보기 -->
+			<c:if test="${user.userNo != auction.user.userNo}">
+			
+			<!-- *로 바꿔 넣기 -->
+			<c:set var="bidPrice">${auctionList.bidPrice}</c:set>
+			<c:set var="bpf" value=""/>
+ 
+			<c:forEach var="i"  begin="1" end="${fn:length(bidPrice)-2}" step="1">
+
+			<c:set var="bpf" value="${bpf}*"/>			
+			</c:forEach> 
+			
+			<%-- <span id="${auctionList.bidCarNo.carNo}"  onLoad="bidPrice(${auctionList.bidCarNo.carNo} ,${auctionList.bidPrice})" ></span> --%>
+			<fmt:formatNumber type="currency" currencySymbol="￦" value="${fn:substring(bidPrice,0,1)}"/>${bpf}
+			</c:if>
+			<!-- /등록자가 아닌 사람이 가격보기 -->
+			
+			<!-- 등록자만 가격보기 -->
+			<c:if test="${user.userNo eq auction.user.userNo}">
+			<fmt:formatNumber type="currency" currencySymbol="￦" value="${auctionList.bidPrice}"/>
+			</c:if>
+			<!-- /등록자만 가격보기 -->
+			
+			<!-- /bidPrice보여주기 -->
+			</td>
 			<td align="left"></td>
 			<td align="left">
 				<c:choose>
@@ -170,10 +216,11 @@ td, tr {
 			</td>		
 			<td align="left"></td>
 			<td align="left">
-				<c:if test="${!empty (auctionList.bidCarNo.tranCode) && (auctionList.bidCarNo.tranCode).trim() == '0'}">
+				<c:if test="${!empty (auctionList.bidCarNo.carNo) && (auctionList.bidCarNo.carNo) != (auction.successCar)}">
 				</c:if>
-				<c:if test="${!empty (auctionList.bidCarNo.tranCode) && (auctionList.bidCarNo.tranCode).trim() == '1'}">
-					<button type="button" class="label label-warning">낙찰</button>
+				<c:if test="${!empty (auctionList.bidCarNo.carNo) && (auctionList.bidCarNo.carNo) == (auction.successCar)}">
+					<span class="label label-warning">낙찰</span>
+
 				</c:if>
 			</td>
 
