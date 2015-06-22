@@ -7,10 +7,13 @@
 </head>
 <link href="css/getMessage.css" rel="stylesheet">
 <script>
-function test(){
-	var returnValue = confirm("삭제하시겠습니까?");
-	document.write(returnValue);
-}
+	function conf(msgNo) {
+		if (confirm("삭제하겠습니까?")) {
+			location.href = "deleteMessage.do?messageNo=" + msgNo;
+		} else {
+			history.go(1);
+		}
+	}
 </script>
 <body>
 	<div class="container">
@@ -27,7 +30,7 @@ function test(){
 					<a href="listMessage.do" class="btn btn-info"> <span
 						class="glyphicon glyphicon-arrow-left"></span> 뒤로
 					</a> 
-						 <a href="deleteMessage.do?messageNo=${message.messageNo }" class="btn btn-info confrim" onclick="test()"> 
+						 <a class="btn btn-info confrim" onclick="conf(${message.messageNo })"> 
 						<span class="glyphicon glyphicon-trash"></span>삭제</a>
 					<a href="message/message.jsp?userName=<%=request.getParameter("userName")%>&userNo=<%=request.getParameter("userNo")%>"
 						class="btn btn-info">답장하기 <span class="glyphicon glyphicon-arrow-right"></span>

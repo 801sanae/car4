@@ -75,4 +75,9 @@ public class AuctionDao{
 	public List<Auction> listUserBuy(Auction auction) {
 		return sqlSession.selectList("AuctionMapper.listUserBuy", auction);
 	}
+	
+	public void deleteAuction(int auctionNO) throws Exception{
+		System.out.println("delete:: auctionNO = " + auctionNO);
+		sqlSession.delete("AuctionMapper.deleteAuction",auctionNO);
+	}
 }	

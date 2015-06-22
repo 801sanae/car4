@@ -44,13 +44,13 @@ public class UserController {
 
 	@Autowired
 	@Qualifier("carServiceImpl")
-	   private CarService carService;
-	   public Car car;
-	   
+	private CarService carService;
+	public Car car;
+
 	@Autowired
 	@Qualifier("auctionListServiceImpl")
-	   private AuctionListService auctionListService;
-	   public AuctionList auctionList;
+	private AuctionListService auctionListService;
+	public AuctionList auctionList;
 
 	public UserController(){
 		System.out.println(this.getClass());
@@ -80,7 +80,7 @@ public class UserController {
 
 		System.out.println("/addUser.do");
 		//Business Logic
-		user.setPhone(user.getPhone1()+user.getPhone2()+user.getPhone3());
+		user.setPhone(user.getPhone1(), user.getPhone2(), user.getPhone3());
 		userService.addUser(user);
 
 		return "forward:user/welcome.jsp";
@@ -119,7 +119,7 @@ public class UserController {
 	public String updateUserView(Model model, HttpSession session) throws Exception{
 		session.getAttribute("user");
 		model.addAttribute("user", user);
-		
+
 		return "forward:/user/updateUser.jsp";
 	}
 
@@ -146,7 +146,7 @@ public class UserController {
 
 		System.out.println("/loginView.do");
 
-		return "redirect:index.do";
+		return "redirect:index.jsp";
 	}
 
 	@RequestMapping("/login.do")
@@ -168,7 +168,7 @@ public class UserController {
 
 		System.out.println("logout.do");
 		session.invalidate();
-		
+
 		return "redirect:/index.jsp";
 	}
 
@@ -178,13 +178,13 @@ public class UserController {
 		System.out.println("/checkDuplication.do");
 		//Business Logic
 		boolean result=userService.checkDuplication(userId);
-		
+
 		model.addAttribute("result", new Boolean(result));
 		model.addAttribute("userId", userId);
 
 		return "forward:/user/checkDuplication.jsp";
 	}
-	
+
 	@RequestMapping("/listUser.do")
 	public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
 
@@ -208,120 +208,142 @@ public class UserController {
 
 		return "forward:/user/listUser.jsp";
 	}
-	
+
 	@RequestMapping("/updatePassword.do")
 	public String updatePassword( @ModelAttribute("user") User user , Model model , HttpSession session
 			,HttpServletRequest request,HttpServletResponse reponse) throws Exception{
-		
+
 		String userId = request.getParameter("hideUserId");
 		user.setUserId(userId);
-		
+
 		System.out.println("/updatePassword.do");
 		//Business Logic
 		userService.updatePassword(user);
-		
-			
+
+
 		return "redirect:/index.jsp";
 	}
-	
+
 	@RequestMapping("/emailAuth.do")
-	   @ResponseBody
-	   public ResponseEntity<String> emailAuth(HttpServletRequest request,
-	         HttpServletResponse response)throws Exception{
-	      
-	      String email = request.getParameter("email");
-	      
-	      String authNum = "";
-	      authNum = SendEmail.RandomNum();
-	      
-	      SendEmail.sendEmail(email, authNum);
-	      
-	      /*ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public ResponseEntity<String> emailAuth(HttpServletRequest request,
+			HttpServletResponse response)throws Exception{
+
+		String email = request.getParameter("email");
+
+		String authNum = "";
+		authNum = SendEmail.RandomNum();
+
+		SendEmail.sendEmail(email, authNum);
+
+		/*ModelAndView mv = new ModelAndView();
 	      mv.setViewName("/emailAuth.jsp");
 	      mv.addObject("email", email);
 	      mv.addObject("authNum", authNum);*/
-	      HttpHeaders headers = new HttpHeaders();
-	      headers.set("Content-Type", "text/plain;charset=UTF-8");
-	      
-	      HashMap<String,String> result = new HashMap<String,String>();
-	      result.put("status", "YES");
-	      result.put("authNum", authNum);
-	      
-	      //객체를 JSON(JavaScript Object Notation) 형식의 문자열로 만들기
-	      String jsonString = new Gson().toJson(result);
-	      
-	      return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
-	   }
-	
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "text/plain;charset=UTF-8");
+
+		HashMap<String,String> result = new HashMap<String,String>();
+		result.put("status", "YES");
+		result.put("authNum", authNum);
+
+		//객체를 JSON(JavaScript Object Notation) 형식의 문자열로 만들기
+		String jsonString = new Gson().toJson(result);
+
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	}
+
 	@RequestMapping("/getUserInfo.do")
 	public String getUserInfo( @ModelAttribute("user") User user ,Model model , HttpSession session ) throws Exception{
-		
+
 		System.out.println("/getUserInfo.do");
-		
+
 		User users = (User)session.getAttribute("user");
 		System.out.println("들어와1?"+user);
-		
+
 		//Business Logic
 		User userInfo = userService.getUserInfo(users);
-		
+
 		// Model 과 View 연결
 		model.addAttribute("user", users);
 		model.addAttribute("userInfo", userInfo);
 		return "forward:/car/sell-title.jsp";
 	}
-	
-	
+
+
 	@RequestMapping("/listUserSell.do")
-	   public String getUserCarInfo(Model model , HttpSession session,
-	         @ModelAttribute("search") Search search   ) throws Exception{
-	      
-	      System.out.println("/listUserSell.do");
-	      if(search.getCurrentPage() ==0 ){
-	         search.setCurrentPage(1);
-	      }
-	      search.setPageSize(pageSize);
-	      
-	      int userNo = ((User)session.getAttribute("user")).getUserNo();
-	      
-	      Map<String , Object> myCarMap = carService.getCarListByUserNo(userNo, search);
-	      Page resultPage = new Page( search.getCurrentPage(), ((Integer)myCarMap.get("totalCount")).intValue(), pageUnit, pageSize);
-	      System.out.println("####1. UserController - listUserSell.do : "+myCarMap);
-	      System.out.println(resultPage);
-	      System.out.println(search);
-	     
-	      List<Car> carList = (List<Car>) myCarMap.get("myCarList");
-	      
-	      System.out.println("####2. UserController - carList : "+carList);
-	    
-	      Map<String , Object> bidMapAll = new HashMap<String, Object>();
-	      int carNo;
-	      for(int i=0; i < carList.size() ; i++) {
-	    	  carNo = carList.get(i).getCarNo();
-		      System.out.println("####3. UserController - carNo: "+carNo);
+	public String getUserCarInfo(Model model , HttpSession session,
+			@ModelAttribute("search") Search search   ) throws Exception{
 
-		      List<AuctionList> bidList = auctionListService.getBidListByCarNo(carNo);
-		      
-		      System.out.println("####4. UserController - bidList : "+bidList);
+		System.out.println("/listUserSell.do");
+		if(search.getCurrentPage() ==0 ){
+			search.setCurrentPage(1);
+		}
+		search.setPageSize(pageSize);
 
-		      String aaa = Integer.toString(i);
-		      bidMapAll.put(aaa, bidList);
-		      System.out.println("####5. UserController - carNo : "+carList.get(i).getCarNo());
-		      
-		      
-		      System.out.println("BIDMAPALL " + bidMapAll.get("2") );
-	      }
-	      
-	      System.out.println("####6. UserController - bidMapAll : "+bidMapAll);
+		int userNo = ((User)session.getAttribute("user")).getUserNo();
 
-	      model.addAttribute("myCarList", myCarMap.get("myCarList"));
-	      model.addAttribute("bidMapAll", bidMapAll);
-	      model.addAttribute("resultPage", resultPage);
-	      model.addAttribute("search", search);
-	      
-	      return "forward:/car/my_sell.jsp";
-	   }
+		Map<String , Object> myCarMap = carService.getCarListByUserNo(userNo, search);
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)myCarMap.get("totalCount")).intValue(), pageUnit, pageSize);
+		System.out.println("####1. UserController - listUserSell.do : "+myCarMap);
+		System.out.println(resultPage);
+		System.out.println(search);
+
+		List<Car> carList = (List<Car>) myCarMap.get("myCarList");
+
+		System.out.println("####2. UserController - carList : "+carList);
+
+		Map<String , Object> bidMapAll = new HashMap<String, Object>();
+		int carNo;
+		for(int i=0; i < carList.size() ; i++) {
+			carNo = carList.get(i).getCarNo();
+			System.out.println("####3. UserController - carNo: "+carNo);
+
+			List<AuctionList> bidList = auctionListService.getBidListByCarNo(carNo);
+
+			System.out.println("####4. UserController - bidList : "+bidList);
+
+			String aaa = Integer.toString(i);
+			bidMapAll.put(aaa, bidList);
+			System.out.println("####5. UserController - carNo : "+carList.get(i).getCarNo());
+
+
+			System.out.println("BIDMAPALL " + bidMapAll.get("2") );
+		}
+
+		System.out.println("####6. UserController - bidMapAll : "+bidMapAll);
+
+		model.addAttribute("myCarList", myCarMap.get("myCarList"));
+		model.addAttribute("bidMapAll", bidMapAll);
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
+
+		return "forward:/car/my_sell.jsp";
+	}
+
+	@RequestMapping("/deleteCar.do")
+	public String deleteCar(
+			@RequestParam("carNo") int carNo,
+			Model model , HttpSession session,
+			@ModelAttribute("search") Search search   ) throws Exception{
+
+		System.out.println("/deleteCar.do");
+
+		carService.deleteCar(carNo);
+		
+		System.out.println("::carNo = " + carNo);
+
+		return "/listUserSell.do";
+	}
+
 	
 	@RequestMapping("/index.do")
+	public String index() throws Exception{
+		return "redirect:/index.jsp";
+	}
+
+
+
 	public String getCarCnt(Car car, Model model) throws Exception {
 
       System.out.println("/index.do");

@@ -21,11 +21,13 @@ import com.model2.mvc.common.FileUpload;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.auction.AuctionService;
+import com.model2.mvc.service.auction.impl.AuctionDao;
 import com.model2.mvc.service.auctionlist.AuctionListService;
 import com.model2.mvc.service.car.CarService;
 import com.model2.mvc.service.domain.Auction;
 import com.model2.mvc.service.domain.AuctionList;
 import com.model2.mvc.service.domain.Car;
+import com.model2.mvc.service.domain.Message;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.file.FileService;
 import com.model2.mvc.service.user.UserService;
@@ -153,7 +155,7 @@ public class AuctionController {
 		System.out.println("CarNo"+carService.selectCar(user.getUserNo()));
 		List<Car> carNo = carService.selectCar(user.getUserNo());
 
-		System.out.println("CarNU8888m"+carNo);
+
 
 		List<FileUpload> fileUpload = new ArrayList<FileUpload>();
 		//CarNo List에서 뽑아온놈 0번째 놈
@@ -162,17 +164,13 @@ public class AuctionController {
 
 		//System.out.println("fdsafas"+fileService.getFileList(carNo.get(0).getCarNo()).get(0));
 
-		System.out.println("FileService"+fileService.getFileList(carNo.get(0).getCarNo()));
 		
 		
 		for(int i=0; i<carNo.size(); i++) {
-			for(int j=0; j < fileService.getFileList(carNo.get(i).getCarNo()).size(); j++){
-				fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(j));
-			}
+				fileUpload.add(fileService.getFileList(carNo.get(i).getCarNo()).get(i));
+				System.out.println("CARNUM :::::"+fileService.getFileList(carNo.get(i).getCarNo()).get(i).getCarNum());
 		}
-		
-		
-		
+		System.out.println("fileSize"+fileUpload.size());
 		//auction클릭시 발생하는 부분 
 
 		System.out.println("auctionNo:::: "+ auction.getAuctionNo());
@@ -190,30 +188,20 @@ public class AuctionController {
 
 	@RequestMapping("/getAuctionView.do")
 	public String listCar(@ModelAttribute("serach") Search search, Model model , 
-			HttpServletRequest request, Auction auction, HttpSession session,Car car)throws Exception{
+			HttpServletRequest request, Auction auction, HttpSession session)throws Exception{
 
 		User user = (User)session.getAttribute("user");
-		
-		//차 있는지 체크하는 부분 
-		int check = carService.selectCar(user.getUserNo()).get(0).getCarNo();
-		System.out.println("CCCHECK" + check);
-		car.setCarNo(check);
-	
 
-		
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
 
 		dbAuction.getUser().getUserNo();
+		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		System.out.println("auction.getAuctionNo()::::::" + auction.getAuctionNo());
 		List<AuctionList> list = auctionListService.getBidList(auction.getAuctionNo()); //???????
 		
 		
 		//System.out.println("list ::::::" + list.get(0).getAuctionListNo() );
 		//list.get(0).getBidCarNo().getCarNo()
-		
-		
-		model.addAttribute("car",car);
-		model.addAttribute("auction", dbAuction); //옥션 정보 연결
 		model.addAttribute("auctionList", list);
 		model.addAttribute("user", user);
 		return "forward:/auction/carView.jsp";
@@ -249,10 +237,8 @@ public class AuctionController {
 		auctionList.setBidCarNo(car);
 
 		//Auction으로 AuctionList selectOne
-		System.out.println("여기?");
 		auctionList = auctionListService.getAuction(auctionList);
-		System.out.println("여기?2");
-		
+
 		//여기까진 잘나옴
 		//SelectCar
 		//바구니에 담기
@@ -320,4 +306,14 @@ public class AuctionController {
 		return "forward:/auction/mypage.jsp";
 	}
 	
+	@RequestMapping("/deleteAuction.do")
+	public String deleteAuction(
+			@RequestParam("auctionNo") int auctionNo,
+			Auction auction,Model model, HttpSession session) throws Exception {	
+		System.out.println("/deleteAuction.do");
+		
+		auctionService.deleteAuction(auctionNo);
+		
+		return "forward:listUserBuy.do";		
+	}
 }

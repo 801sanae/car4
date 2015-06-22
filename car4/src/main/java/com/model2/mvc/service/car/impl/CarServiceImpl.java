@@ -138,5 +138,10 @@ public class CarServiceImpl implements CarService {
 		}
 
 
+	@Override
+	public void deleteCar(int carNo) throws Exception {
+		CarDao.deleteAuction(carNo);
+	}
+
 	
 }

@@ -88,6 +88,11 @@ public class AuctionServiceImpl implements AuctionService {
 	public List<Auction> listUserBuy(Auction auction) throws Exception {
 		return auctionDao.listUserBuy(auction);
 	}
+
+	@Override
+	public void deleteAuction(int auctionNo) throws Exception {
+		auctionDao.deleteAuction(auctionNo);
+	}
 	
 	
 }

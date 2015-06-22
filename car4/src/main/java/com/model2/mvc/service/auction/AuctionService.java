@@ -27,4 +27,7 @@ public interface AuctionService {
 
 	//내 옥션 리스트
 	public List<Auction> listUserBuy(Auction auction) throws Exception;
+	
+	
+	public void deleteAuction(int auctionNo) throws Exception; 
 }

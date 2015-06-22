@@ -127,6 +127,13 @@ public class CarDao {
 	public void updateOption(CarOption carOption) throws Exception {
 		sqlSession.update("CarMapper.updateOption", carOption);
 	}
+	
+	public void deleteAuction(int carNo) throws Exception{
+		System.out.println("delete:: auctionNO = " + carNo);
+		sqlSession.delete("CarMapper.deleteCarOption", carNo);
+		sqlSession.delete("CarMapper.deleteCar",carNo);
+		
+	}
 
 	//현재까지 등록된 차 수 세기(tran_code=0)
     public int getCarCnt() throws Exception{
