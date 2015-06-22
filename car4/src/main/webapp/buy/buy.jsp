@@ -416,8 +416,9 @@ function listValueSeparate(obj, id) {
 
 		<div class="row">
 			<div class="col-md-3 col-md-offset-3"></div>
-			<div class="col-md-3 col-md-offset-3">
-                 <button class="btn btn-primary btn-lg" type="submit">등록</button>
+			<div class="col-md-3 col-md-offset-2">
+				<a href="../index.do" class="btn btn-primary btn-lg">이전</a>
+				<button class="btn btn-primary btn-lg" type="submit">등록</button>
 			</div>
 		</div>
 	</form>
