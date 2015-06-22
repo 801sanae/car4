@@ -98,14 +98,9 @@ function listValueSeparate(obj, id) {
 		
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-        <hgroup>
-          
-          <h1 class="free">구매를 위한 제목 입력란</h1>
-         </hgroup>
     	 <div class="well">
               <div class="input-group" style="width: 100%;">
                  <input class="btn btn-lg" name="title" id="title" placeholder="제목을 입력하시오." required/>
-                 <button class="btn btn-primary btn-lg" type="button">등록</button>
               </div>
     	 </div>
          
@@ -422,10 +417,7 @@ function listValueSeparate(obj, id) {
 		<div class="row">
 			<div class="col-md-3 col-md-offset-3"></div>
 			<div class="col-md-3 col-md-offset-3">
-				<button type="button" class="btn btn-default">
-					<a href="index.jsp">이전</a>
-				</button>
-				<button type="submit" class="btn btn-default">다음</button>
+                 <button class="btn btn-primary btn-lg" type="submit">등록</button>
 			</div>
 		</div>
 	</form>
