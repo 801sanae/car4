@@ -358,7 +358,7 @@ $(document).ready(function() {
 					<br><br><br>
 				</div>
     			<input type="hidden" name="carNo" value="${list[0].carNo }">
-                <button type="submit" class="btn btn-primary col-xs-12">Submit</button>
+                <button type="submit" class="btn btn-primary col-xs-12">입찰하기</button>
             </form>
             <br><br><br><br><br><br>
         </div>
