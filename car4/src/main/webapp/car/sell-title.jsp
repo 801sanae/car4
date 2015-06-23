@@ -599,6 +599,12 @@ $("[data-toggle=tooltip]").tooltip();
 														<option class="list3-bmw" value="320d">320d</option>
 														<option class="list3-bmw" value="i3">i3</option>
 														<option class="list3-bmw" value="i8">i8</option>
+														
+														<!-- chevolet -->
+														<option class="list3-chevolet" value="spark">스파크</option>
+														<option class="list3-chevolet" value="cruze">크루즈</option>
+														<option class="list3-chevolet" value="malibu">말리부</option>
+														<!-- chevolet -->
 													</select>
 													<!-- /bmw -->
 												</div>
@@ -615,21 +621,15 @@ $("[data-toggle=tooltip]").tooltip();
 														<!-- /basic -->
 
 														<!-- 소나타 -->
-														<option class="list4-sonata" value="red">빨강</option>
-														<option class="list4-sonata" value="orange">주황</option>
+														<option class="list4" value="red">화이트</option>
+														<option class="list4" value="silver">실버</option>
+														<option class="list4" value="black">블랙</option>
+														<option class="list4" value="blue">블루</option>
+														<option class="list4" value="red">레드</option>
+														<option class="list4" value="yellow">옐로</option>
 														<!-- /소나타 -->
-
-														<!-- 카니발 -->
-														<option class="list4-carnival" value="yellow">노랑</option>
-														<option class="list4-carnival" value="green">초록</option>
-														<!-- /카니발 -->
-
-														<!-- 320d -->
-														<option class="list4-320d" value="blue">파랑</option>
-														<option class="list4-320d" value="pupple">보라</option>
+														
 													</select>
-													<!-- /320d -->
-
 												</div>
 											</div>
 											<!-- /자동차 선택 리스트 -->
