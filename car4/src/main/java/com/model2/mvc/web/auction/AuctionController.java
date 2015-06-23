@@ -197,10 +197,11 @@ public class AuctionController {
 		User user = (User)session.getAttribute("user");
 		
 		//차 있는지 체크하는 부분 
-		int check = carService.selectCar(user.getUserNo()).get(0).getCarNo();
-		System.out.println("CCCHECK" + check);
-		car.setCarNo(check);
-	
+		if(carService.selectCar(user.getUserNo()).size()==0){
+			car.setCarNo(0);
+		}else{
+			car.setCarNo(carService.selectCar(user.getUserNo()).get(0).getCarNo());
+		}
 
 		
 		Auction dbAuction = auctionService.getAuction(auction.getAuctionNo()); //옥션 정보 가져오기
