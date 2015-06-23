@@ -169,11 +169,10 @@ public class User {
 	}
 
 
-	//혹시
-	//TODO
-	public void setPhone(String phone1, String phone2, String phone3) {
-		this.phone = phone1 + phone2 + phone3;
-		System.out.println("나오긴 하냐? "+phone);
+
+	public void setPhone(String phone1) {
+		this.phone = phone1;
+		System.out.println("나오긴 하냐? "+phone1);
 	}
 
 

@@ -85,7 +85,7 @@ public class UserController {
 
 		System.out.println("/addUser.do");
 		//Business Logic
-		user.setPhone(user.getPhone1(), user.getPhone2(), user.getPhone3());
+		user.setPhone(user.getPhone1()+user.getPhone2()+user.getPhone3());
 		userService.addUser(user);
 
 		return "forward:user/welcome.jsp";
