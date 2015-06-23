@@ -12,6 +12,8 @@ function init_all() {
 	$(".list3-hyundai").hide();
 	$(".list3-kia").hide();
 	$(".list3-bmw").hide();
+	$(".list3-chevolet").hide();
+	
 	$(".list4-sonata").hide();
 	$(".list4-carnival").hide();
 	$(".list4-320d").hide();
@@ -24,6 +26,7 @@ function init_list2() {
 	$(".list3-hyundai").hide();
 	$(".list3-kia").hide();
 	$(".list3-bmw").hide(); 
+	$(".list3-chevolet").hide(); 
 	$(".list4-sonata").hide();
 	$(".list4-carnival").hide();
 	$(".list4-320d").hide();
@@ -123,7 +126,7 @@ $(function() {
 	$("#list3").change(function() {
 		init_list3();
 		var aaa = $("#list3 option:selected").val();
-		$(".list4-" + aaa).show();
+		$(".list4").show();
 	});
 	
 	
