@@ -268,8 +268,21 @@ td, tr {
 <c:if test="${user.userNo eq auction.user.userNo}">	
 </c:if>
 			<c:if test="${user.userNo != auction.user.userNo}">
-			<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
-		경매 참여하기</a>	
+				<c:if test="${auction.successCar ==0}">
+				<c:choose>
+				<c:when test="${car.carNo !=null }">
+				<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" href="auctionInfo.do?auctionNo=${auction.auctionNo}">
+					경매 참여하기</a>
+				</c:when>
+				<c:when test="${car.carNo == null }">
+					<a class="btn btn-primary col-md-2 col-md-offset-10 col-xs-12" onclick="pageMove()" >
+					경매 참여하기</a>
+				</c:when>	
+				</c:choose>
+				
+				</c:if>
+				<c:if test="${auction.successCar != 0}">
+				</c:if>
 			</c:if>
 </div>
 </div><!-- Container 끝 -->

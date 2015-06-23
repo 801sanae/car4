@@ -49,4 +49,8 @@ public class AuctionListDao{
 		return bidList;
 	}
 
+	public void deleteAuctionList(int carNo) throws Exception{
+		sqlSession.delete("AuctionListMapper.deleteAuctionList", carNo);
+	}
+	
 }	

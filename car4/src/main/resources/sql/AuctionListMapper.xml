@@ -107,5 +107,12 @@
 		ORDER BY al.bid_reg_date desc
 		
 	</select>
+	
+	  <delete id="deleteAuctionList"  parameterType="int">
+  		DELETE FROM auctionList
+		WHERE
+		car_no = #{carNo}
+  </delete>
+	
 
 </mapper>

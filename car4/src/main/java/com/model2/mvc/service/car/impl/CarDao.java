@@ -130,7 +130,10 @@ public class CarDao {
 	
 	public void deleteCar(int carNo) throws Exception{
 		System.out.println("delete:: auctionNO = " + carNo);
+		
+		sqlSession.delete("CarMapper.deleteImg", carNo);
 		sqlSession.delete("CarMapper.deleteCarOption", carNo);
+		sqlSession.delete("CarMapper.deleteAuctionList",carNo);
 		sqlSession.delete("CarMapper.deleteCar",carNo);
 		
 	}
@@ -140,4 +143,7 @@ public class CarDao {
     	return sqlSession.selectOne("CarMapper.getCarCnt");
     }
 	
+    
+    
+    
 }

@@ -50,5 +50,11 @@ public class AuctionListServiceImpl implements AuctionListService {
 		return auctionListDao.getBidListByCarNo(carNo);
 	}
 
+	@Override
+	public void deleteAuctionList(int carNo) throws Exception {
+		auctionListDao.deleteAuctionList(carNo);
+	}
+	
+
 
 }

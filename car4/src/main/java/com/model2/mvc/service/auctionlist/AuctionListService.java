@@ -16,6 +16,9 @@ public interface AuctionListService {
 	
 	// 내가 등록한 각 차들의 입찰정보 - 낙찰여부/옥션정보
 	public List<AuctionList> getBidListByCarNo(int carNo) throws Exception ;
-
+	
+	
+	public void deleteAuctionList(int carNo) throws Exception ;
+	
 	
 }

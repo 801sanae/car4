@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+
 <script>
 	function conf(carNo) {
 		if (confirm("삭제하겠습니까?")) {
@@ -53,7 +53,7 @@ $(document).ready(function() {
 }); 
 
 </script>
-
+</head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
   <br><br><br><br>
