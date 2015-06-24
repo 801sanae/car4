@@ -48,6 +48,7 @@ $(document).ready(function() {
 	}
 	if("${auction.model}"=="${list[1].model}"){
 		$("#selectBox").append("<option value='${list[1].carNum}'>${list[1].carNum}</option>");
+		
 	}
 	if("${auction.model}"=="${list[2].model}"){
 		$("#selectBox").append("<option value='${list[2].carNum}'>${list[2].carNum}</option>");
@@ -109,6 +110,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[1].imgPath}",
 				});
+			$("#carNo").val("${list[0].carNo}");
 	 		$("#c1 tr td:eq(14)").append("${list[0].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[0].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[0].mileage}");
@@ -120,6 +122,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[2].imgPath}",
 				});
+			$("#carNo").val("${list[1].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[1].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[1].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[1].mileage}");
@@ -131,6 +134,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[3].imgPath}",
 				});
+			$("#carNo").append("${list[2].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[2].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[2].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[2].mileage}");
@@ -142,6 +146,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[3].imgPath}",
 				});
+			$("#carNo").append("${list[3].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[3].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[3].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[3].mileage}");
@@ -153,6 +158,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[1].imgPath}",
 				});
+			$("#carNo").append("${list[4].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[4].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[4].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[4].mileage}");
@@ -164,6 +170,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[5].imgPath}",
 				});
+			$("#carNo").append("${list[5].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[5].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[5].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[5].mileage}");
@@ -175,6 +182,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[1].imgPath}",
 				});
+			$("#carNo").append("${list[6].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[6].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[6].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[6].mileage}");
@@ -186,6 +194,7 @@ $(document).ready(function() {
 			$( "#c1 tr td:eq(12) img" ).attr({
 				  src: "${file[1].imgPath}",
 				});
+			$("#carNo").append("${list[7].carNo}");
 			$("#c1 tr td:eq(14)").append("${list[7].manuCo}");
 	    	$("#c1 tr td:eq(16)").append("${list[7].model}");
 	    	$("#c1 tr td:eq(18)").append("${list[7].mileage}");
@@ -353,12 +362,14 @@ $(document).ready(function() {
 					<!--  입찰가격 -->
 					<br><br><br>
 				</div>
-    			<input type="hidden" name="carNo" value="${list[0].carNo }">
+    			<input type="hidden" id="carNo" name="carNo">
+    			
                 <button type="submit" class="btn btn-primary col-xs-12">입찰하기</button>
             </form>
             <br><br><br><br><br><br>
         </div>
         </div>
     </div>
+    
 </body>
 </html>

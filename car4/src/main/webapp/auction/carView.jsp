@@ -42,6 +42,35 @@ function fncGetProductList(currentPage){
 	}
 </script>
 
+<script>
+	function OpenWindow() {
+		window
+				.open("message/message.jsp", "_blank",
+						"top=250,left=600,width=470,height=250,resizable=1,scrollbars=no");
+	}
+</script>
+
+<script>
+	function OpenWindow(userName,userNo,userId) {
+		/*  window.open("value","_blank","top=250,left=600,width=470,height=240,resizable=1,scrollbars=no");  */
+		
+		$('#userName').val(userName);
+		$("#userNo").val(userNo);
+		$("#userId").val(userId);
+		
+		
+		window.open("쪽지 보내기", "value", "top=250,left=600,width=500,height=300");
+		document.detailForm.target = "value"; //새창에서 지정한 value옵션으로 타겟을 지정
+		document.detailForm.action = "message/message.jsp";
+		/* ?userName="+userName+"&userNo="+userNo; //새창으로 띄울 jsp */
+		document.detailForm.submit();
+		
+
+	}
+</script>
+
+
+
 <style>
 th {
     border: 1px solid black;
@@ -60,6 +89,14 @@ td, tr {
 <body>
 <fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" var="toDay"/> <%--${toDay} 값에 toDay 세팅 var 지우면 toDay확인가능 --%>
 <jsp:include page="../nav.jsp"></jsp:include>
+
+<form name="detailForm" action="listAuction.do" method="post">
+		<input type="hidden" id="userName" name="userName"> 
+		<input type="hidden" id="userNo" name="userNo"> 
+		<input type="hidden" id="userId" name="userId">
+</form>
+
+
 <br><br><br><br>
 <div class="container">
 <!--  1번 Table 시작  -->
@@ -113,40 +150,28 @@ td, tr {
 
 <hr/>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+<table class="table table-bordred table-striped">
 	<tr>
 		<%--
 		<td colspan="11" >전체  <%= resultPage.getTotalCount() %> 건수,	현재 <%= resultPage.getCurrentPage() %> 페이지</td>--%>
-		<td colspan="11" >
-			전체  ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage}  페이지
-		</td>
-	
+<thead>	
+	<tr align="center">
+		<td class="col-md-1" align="center">No</td>
+		<td class="col-md-1" >상품명</td>
+		<td class="col-md-1" >가격</td>
+		<td class="col-md-1" >등록일</td>
+		<td class="col-md-1" >입찰현황</td>
+		<td class="col-md-1">사용자정보</td>			
 	</tr>
-	<tr>
-		<td class="ct_list_b" width="100" align="center">No</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">상품명</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">가격</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">등록일</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150"></td>
-		
-		
-			
-	</tr>
-	<tr>
-		<td colspan="11" bgcolor="808285" height="1"></td>
-	</tr>
+</thead>
 
+	<tbody id="table" align="center">
 	<c:set var="i" value="0" />
 	<c:forEach var="auctionList" items="${auctionList}">
 		<c:set var="i" value="${i+1}" />
 		<fmt:formatDate value="${auctionList.bidRegDate}" pattern="yyyy-MM-dd" var="auctionDay"/>
-		<tr class="ct_list_pop">
+		<tr align="center">
 			<td align="center">${ i }</td>
-			<td align="center"></td>
 			<c:if test="${user.userNo eq auction.user.userNo}">
 				<td><a href="getSeller.do?auctionNo=${auctionList.bidAuctionNo.auctionNo}&carNo=${auctionList.bidCarNo.carNo}">
 					${auctionList.bidCarNo.model}</a></td>	
@@ -161,8 +186,8 @@ td, tr {
 		
 		
 				
-			<td align="left"></td>
-			<td align="left">
+			
+			<td align="center">
 			
 			
 			<!-- bidPrice보여주기 -->
@@ -174,12 +199,12 @@ td, tr {
 				<c:set var="bidPrice">${auctionList.bidPrice}</c:set> <!-- 숫자를 문자로 변환하는 식 -->
 				<c:set var="bpf" value=""/>
 	
-				<c:forEach var="i"  begin="1" end="${fn:length(bidPrice)-2}" step="1">
+				<c:forEach var="i"  begin="1" end="${fn:length(bidPrice)-1}" step="1">
 	
 					<c:set var="bpf" value="${bpf}*"/>			
 				</c:forEach>
 
-				<fmt:formatNumber type="currency" currencySymbol="￦" value="${fn:substring(bidPrice,0,2)}"/>${bpf}
+				<fmt:formatNumber type="currency" currencySymbol="￦" value="${fn:substring(bidPrice,0,1)}"/>${bpf}
 			</c:if>
 			<!-- /등록자가 아닌 사람이 가격보기 -->
 			
@@ -191,8 +216,7 @@ td, tr {
 			
 			<!-- /bidPrice보여주기 -->
 			</td>
-			<td align="left"></td>
-			<td align="left">
+			<td align="center">
 				<c:choose>
 					<c:when test="${toDay < auctionDay}">
  						<fmt:formatDate value="${auctionList.bidRegDate}" pattern="MM-dd hh:mm"/>
@@ -202,8 +226,8 @@ td, tr {
     				</c:otherwise>
 				</c:choose>
 			</td>		
-			<td align="left"></td>
-			<td align="left">
+
+			<td align="center">
 				<c:if test="${!empty (auctionList.bidCarNo.carNo) && (auctionList.bidCarNo.carNo) != (auction.successCar)}">
 				</c:if>
 				<c:if test="${!empty (auctionList.bidCarNo.carNo) && (auctionList.bidCarNo.carNo) == (auction.successCar)}">
@@ -211,14 +235,19 @@ td, tr {
 
 				</c:if>
 			</td>
+	
+			<td align="center"><a href="#message"
+													onClick="OpenWindow( '${auctionList.bidCarNo.user.userName}',${auctionList.bidCarNo.user.userNo}, '${auctionList.bidCarNo.user.userId}')"
+													style="background-color: while"}"
+													>${auctionList.bidCarNo.user.userName}   <span
+														class="glyphicon glyphicon-envelope"></span> </a></td>
 
 		</tr>
 		
-		<tr>
-		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-		</tr>
 		
-	</c:forEach>	
+		
+	</c:forEach>
+	</tbody>	
 </table>
 
 <!-- PageNavigation Start... -->

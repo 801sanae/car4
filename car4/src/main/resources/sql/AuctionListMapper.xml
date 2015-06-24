@@ -32,7 +32,20 @@
 			<result property="mileage"   	column="mileage" 		jdbcType="INTEGER" />
 			<result property="sell"  	 	column="sell" 			jdbcType="VARCHAR" />
 			<result property="accident"   	column="accident" 		jdbcType="VARCHAR" />
-			<result property="user.userNo"	column="user_no" 	    jdbcType="INTEGER" />
+			
+			
+				<association property="user" javaType="com.model2.mvc.service.domain.User">	
+				<result property="userId" 	column="user_id" 		jdbcType="VARCHAR"/>
+				<result property="userNo"	column="user_no" 	    jdbcType="INTEGER" />
+				<result property="userName" column="user_name"     	jdbcType="VARCHAR" />
+				<result property="password" column="password" 	    jdbcType="VARCHAR" />
+				<result property="phone" 	column="phone"		 	jdbcType="VARCHAR" />
+				<result property="sex"  	column="sex" 			jdbcType="VARCHAR" />
+				<result property="regDate" 	column="reg_date"		jdbcType="DATE" />
+				<result property="role"   	column="role" 			jdbcType="VARCHAR" />
+				<result property="addr"   	column="addr" 			jdbcType="VARCHAR" />
+			</association>
+			
 		</association>
 		
 		<association property="bidAuctionNo" javaType="com.model2.mvc.service.domain.Auction">	
@@ -72,15 +85,14 @@
 	 
 	 <select id="getBidList" parameterType="Integer" resultMap="AuctionListSelectMap">
 	  SELECT
-		 al.auctionlist_no, al.auction_no, al.car_no, c.user_no,
-		 c.model, al.bid_price, al.bid_reg_date
+		 *
 		 FROM
-		 auctionlist al , car c
-		 WHERE al.car_no = c.car_no
+		 auctionlist al , car c, users u
+		 WHERE al.car_no = c.car_no and u.user_no = c.user_no
 		 AND al.auction_no = #{value}
 		 ORDER BY al.bid_price
-		 
 	 </select>
+	 
 	<!-- auctionlistmapper의 getauctionlist / 어느 컨트롤러에서 쓰이는 곳이 없는 것으로 확인되어서 우선 주석(어디서 쓰아는지 모르겟음)-->
 	  <select id="getAuctionList" parameterType="com.model2.mvc.service.domain.AuctionList"
 			resultMap="AuctionListSelectMap">

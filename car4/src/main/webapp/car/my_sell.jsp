@@ -98,17 +98,18 @@ $(document).ready(function() {
                       	  </td>
                       <td>${car.manuCo}</td>
                       <td>${car.model}</td>
-                      <td><a onclick="conf(${car.carNo})"><span
-												class="glyphicon glyphicon-trash"></span></a></td>
+                   
                       <td>
             			  <c:if test="${!empty (car.tranCode) && (car.tranCode).trim() != '0' }">
-                     	  <button type="button" class="btn btn-primary">낙찰</button>
+                     	  <button type="button" class="btn btn-danger" disabled="disabled">낙찰</button>
                      	  </c:if>
                      	  <c:if test="${!empty (car.tranCode) && (car.tranCode).trim() eq '0' }">
-                     	 
+                     	 <button type="button" class="btn btn-primary">경매중</button>
+                     	  
                      	  </c:if>
                      	</td>
-                    
+                       <td><a onclick="conf(${car.carNo})"><span
+												class="glyphicon glyphicon-trash"></span></a></td>
                     	<td>
                     	<c:set var="temp">${i-1}</c:set>
                         <button type="button" class="btn btn-primary btn-sm hidden-xs" data-toggle="collapse" id="${car.carNo}" data-target=".${car.carNo}"
@@ -151,10 +152,10 @@ $(document).ready(function() {
 								</th>
 			                	<th style="color:red;">
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
-				                	경매중
+				                	 <button type="button" class="btn btn-primary">경매중</button>
 				                	</c:if>
 				                	<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
-				                	경매종료
+				                	 <button type="button" class="btn btn-danger" disabled="disabled">경매중</button>
 				                	</c:if>
 			                	</th> 
 			                	<th style="color:red;">${auctionList.bidPrice}</th> 
@@ -170,10 +171,10 @@ $(document).ready(function() {
 								</th>
 			                	<th>
 				                	<c:if test="${auctionList.bidAuctionNo.successCar == 0}">
-				                	경매중
+				                	 <button type="button" class="btn btn-primary">경매중</button>
 				                	</c:if>
 				                	<c:if test="${auctionList.bidAuctionNo.successCar != 0}">
-				                	경매종료
+				                	 <button type="button" class="btn btn-danger" disabled="disabled">경매중</button>
 				                	</c:if>
 			                	</th> 
 			                	<th>${auctionList.bidPrice}</th> 

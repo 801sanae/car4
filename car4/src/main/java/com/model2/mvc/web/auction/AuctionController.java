@@ -102,6 +102,7 @@ public class AuctionController {
 
 		System.out.println("listAuction.do");
 
+		
 		if(search.getCurrentPage()==0) {
 			search.setCurrentPage(1);
 		}
@@ -328,6 +329,8 @@ public class AuctionController {
 			@RequestParam("auctionNo") int auctionNo,
 			Auction auction,Model model, HttpSession session) throws Exception {	
 		System.out.println("/deleteAuction.do");
+		
+		
 		
 		auctionService.deleteAuction(auctionNo);
 		
